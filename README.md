@@ -2,7 +2,7 @@
 
 This is an API client library for the [Constellix](https://www.constellix.com) API.
 
-More information about the API may be found in the [official API documentation]().
+More information about the API may be found in the [official API documentation](https://api.dns.constellix.com/v4/docs).
 
  - [Installation](#installation)
  - [Usage](#usage)
