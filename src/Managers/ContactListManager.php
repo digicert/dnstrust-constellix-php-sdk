@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\ContactListManagerInterface;
-use Constellix\Client\Interfaces\Managers\TagManagerInterface;
-use Constellix\Client\Interfaces\Models\ContactListInterface;
-use Constellix\Client\Interfaces\Models\TagInterface;
 use Constellix\Client\Models\Concise\ConciseContactList;
+use Constellix\Client\Models\ContactList;
 
 /**
  * Managed Contact List Resources.
  * @package Constellix\Client\Managers
  */
-class ContactListManager extends AbstractManager implements ContactListManagerInterface
+class ContactListManager extends AbstractManager
 {
     /**
      * The base URI for contact lists.
@@ -22,12 +19,12 @@ class ContactListManager extends AbstractManager implements ContactListManagerIn
      */
     protected string $baseUri = '/contactlists';
 
-    public function create(): ContactListInterface
+    public function create(): ContactList
     {
         return $this->createObject();
     }
 
-    public function get(int $id): ContactListInterface
+    public function get(int $id): ContactList
     {
         return $this->getObject($id);
     }

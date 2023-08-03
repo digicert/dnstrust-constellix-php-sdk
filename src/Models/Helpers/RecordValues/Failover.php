@@ -8,14 +8,17 @@ use Constellix\Client\Models\Helpers\RecordValue;
 
 class Failover extends RecordValue
 {
-    public $mode = 'normal';
+    public string $mode = 'normal';
     public bool $enabled = true;
+    /**
+     * @var array<object>
+     */
     public array $values;
 
-    public function transformForApi()
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
-        $payload->values = array_map(function($value) {
+        $payload->values = array_map(function ($value) {
             return (object) [
                 'value' => $value->value,
                 'order' => $value->order,

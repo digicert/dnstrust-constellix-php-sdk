@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace Constellix\Client\Models\Concise;
 
 use Constellix\Client\Enums\Pools\PoolType;
-use Constellix\Client\Interfaces\Models\Basic\BasicDomainInterface;
-use Constellix\Client\Interfaces\Models\Concise\ConcisePoolInterface;
-use Constellix\Client\Interfaces\Models\Concise\ConcisePoolValueInterface;
-use Constellix\Client\Interfaces\Models\Basic\BasicTemplateInterface;
-use Constellix\Client\Interfaces\Models\Helpers\ITOInterface;
-use Constellix\Client\Interfaces\Models\PoolInterface;
+use Constellix\Client\Models\Basic\BasicDomain;
+use Constellix\Client\Models\Basic\BasicTemplate;
 use Constellix\Client\Models\Common\CommonPool;
+use Constellix\Client\Models\Helpers\ITO;
+use Constellix\Client\Models\Pool;
 
 /**
  * Represents a concise representation of a Pool resource.
@@ -23,15 +21,15 @@ use Constellix\Client\Models\Common\CommonPool;
  * @property-read int $minimumFailover
  * @property-read bool $failed
  * @property-read bool $enabled
- * @property-read BasicDomainInterface[] $domains
- * @property-read BasicTemplateInterface[] $templates
- * @property-read ITOInterface $ito
- * @property-read ConcisePoolValueInterface[] $values
- * @property-read PoolInterface $full
+ * @property-read BasicDomain[] $domains
+ * @property-read BasicTemplate[] $templates
+ * @property-read ITO $ito
+ * @property-read ConcisePoolValue[] $values
+ * @property-read Pool $full
  */
-class ConcisePool extends CommonPool implements ConcisePoolInterface
+class ConcisePool extends CommonPool
 {
-    protected function getFull()
+    protected function getFull(): Pool
     {
         return $this->manager->get($this->type, $this->id);
     }
@@ -41,7 +39,7 @@ class ConcisePool extends CommonPool implements ConcisePoolInterface
         parent::parseApiData($data);
         $this->props['values'] = [];
         if (property_exists($data, 'values') && $data->values) {
-            $this->props['values'] = array_map(function($valueData) {
+            $this->props['values'] = array_map(function ($valueData) {
                 return new ConcisePoolValue($valueData);
             }, $data->values);
         }

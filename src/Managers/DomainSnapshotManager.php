@@ -4,19 +4,15 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\DomainSnapshotManagerInterface;
-use Constellix\Client\Interfaces\Models\AbstractModelInterface;
-use Constellix\Client\Interfaces\Models\DomainHistoryInterface;
-use Constellix\Client\Interfaces\Models\DomainRecordInterface;
-use Constellix\Client\Interfaces\Models\DomainSnapshotInterface;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
+use Constellix\Client\Models\DomainSnapshot;
 use Constellix\Client\Traits\DomainAware;
 
 /**
  * Manages domain history snapshots
  * @package Constellix\Client\Managers
  */
-class DomainSnapshotManager extends AbstractManager implements DomainSnapshotManagerInterface, DomainAwareInterface
+class DomainSnapshotManager extends AbstractManager implements DomainAwareInterface
 {
     use DomainAware;
 
@@ -26,29 +22,32 @@ class DomainSnapshotManager extends AbstractManager implements DomainSnapshotMan
      */
     protected string $baseUri = '/domains/:domain_id/snapshots';
 
-    public function get(int $version): DomainSnapshotInterface
+    public function get(int $version): DomainSnapshot
     {
         return $this->getObject($version);
     }
 
     protected function getBaseUri(): string
     {
-        return str_replace(':domain_id', $this->domain->id, $this->baseUri);
+        return str_replace(':domain_id', (string)$this->domain->id, $this->baseUri);
     }
 
-    protected function getIdPropertyName()
+    protected function getIdPropertyName(): string
     {
         return 'version';
     }
 
-    public function apply(DomainSnapshotInterface $snapshot)
+    public function apply(DomainSnapshot $snapshot): void
     {
         $url = $this->getObjectUri($snapshot) . "/apply";
         $this->client->post($url);
     }
 
-    protected function createObject(?string $className = null): AbstractModelInterface
+    protected function createObject(?string $className = null): DomainSnapshot
     {
+        /**
+         * @var DomainSnapshot $object
+         */
         $object = parent::createObject($className);
         $object->setDomain($this->domain);
         return $object;

@@ -9,6 +9,6 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class HINFO extends RecordValue
 {
     public bool $enabled = true;
-    public $cpu;
-    public $os;
+    public string $cpu;
+    public string $os;
 }

@@ -12,5 +12,4 @@ use Constellix\Client\Exceptions\ConstellixException;
  */
 class JsonDecodeException extends ConstellixException
 {
-
 }

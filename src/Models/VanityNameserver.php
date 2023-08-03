@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\VanityNameserverInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Models\Common\CommonVanityNameserver;
 use Constellix\Client\Traits\EditableModel;
@@ -16,13 +15,16 @@ use Constellix\Client\Traits\EditableModel;
  * @property string $name
  * @property bool $default
  * @property bool $public
- * @property object $nameserverGroup
+ * @property object{'id': int} $nameserverGroup
  * @property string[] $nameservers;
  */
-class VanityNameserver extends CommonVanityNameserver implements VanityNameserverInterface, EditableModelInterface
+class VanityNameserver extends CommonVanityNameserver implements EditableModelInterface
 {
     use EditableModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'default' => null,
@@ -31,6 +33,9 @@ class VanityNameserver extends CommonVanityNameserver implements VanityNameserve
         'nameservers' => [],
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'default',
@@ -38,7 +43,7 @@ class VanityNameserver extends CommonVanityNameserver implements VanityNameserve
         'nameservers',
     ];
 
-    protected function setInitialProperties()
+    protected function setInitialProperties(): void
     {
         $this->props['nameserverGroup'] = (object) [
             'id' => 1,
@@ -46,6 +51,9 @@ class VanityNameserver extends CommonVanityNameserver implements VanityNameserve
         ];
     }
 
+    /**
+     * @param string $nameserver
+     */
     public function addNameServer(string $nameserver): self
     {
         if (!in_array($nameserver, $this->nameservers)) {
@@ -67,8 +75,9 @@ class VanityNameserver extends CommonVanityNameserver implements VanityNameserve
         return $this;
     }
 
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
+
         $payload = parent::transformForApi();
         $payload->nameserverGroup = $this->nameserverGroup->id;
         return $payload;

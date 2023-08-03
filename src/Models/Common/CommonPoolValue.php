@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models\Common;
 
-use Constellix\Client\Interfaces\Models\Common\CommonPoolValueInterface;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Traits\HelperModel;
 
@@ -15,10 +14,13 @@ use Constellix\Client\Traits\HelperModel;
  * @property string $value
  * @property int $weight
  */
-abstract class CommonPoolValue extends AbstractModel implements CommonPoolValueInterface
+abstract class CommonPoolValue extends AbstractModel
 {
     use HelperModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'value' => null,
         'weight' => null,

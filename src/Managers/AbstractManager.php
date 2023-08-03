@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
+use Constellix\Client\Client;
 use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\Client\Http\NotFoundException;
 use Constellix\Client\Exceptions\Client\ModelNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
-use Constellix\Client\Interfaces\ClientInterface;
-use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
-use Constellix\Client\Interfaces\Models\AbstractModelInterface;
+use Constellix\Client\Interfaces\ManagerInterface;
+use Constellix\Client\Models\AbstractModel;
 
 /**
  * Abstract class for a resource manager.
  * @package Constellix\Client\Managers
  */
-abstract class AbstractManager implements AbstractManagerInterface
+abstract class AbstractManager
 {
     /**
      * The Constellix API Client.
-     * @var ClientInterface
+     * @var Client
      */
-    protected ClientInterface $client;
+    protected Client $client;
 
     /**
      * The URI for the resource.
@@ -32,19 +32,19 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * A cache of objects fetched from the API.
-     * @var AbstractModelInterface[]
+     * @var AbstractModel[]
      */
     protected array $objectCache = [];
 
     /**
      * Fetches an object from the cache, or if not found, from the API.
      * @param int $id
-     * @return AbstractModelInterface
+     * @return AbstractModel
      * @throws ModelNotFoundException
      * @throws HttpException
      * @throws \ReflectionException
      */
-    protected function getObject(int $id): AbstractModelInterface
+    protected function getObject(int $id): AbstractModel
     {
         $objectId = $this->getObjectId($id);
         if ($this->getFromCache($objectId)) {
@@ -65,37 +65,40 @@ abstract class AbstractManager implements AbstractManagerInterface
      *
      * @param int $page
      * @param int $perPage
-     * @param array|null $filters
+     * @param array<mixed> $filters
      * @return Paginator|mixed
      * @throws HttpException
      */
-    public function paginate(int $page = 1, int $perPage = 20, $filters = [])
+    public function paginate(int $page = 1, int $perPage = 20, array $filters = [])
     {
         $params = $filters + [
                 'page' => $page,
                 'per_page' => $perPage,
             ];
         $data = $this->client->get($this->getBaseUri(), $params);
+        if (!$data) {
+            throw new ConstellixException('No data returned from API');
+        }
         $items = array_map(
             function ($data) {
                 $data = $this->transformConciseApiData($data);
-                return $this->createExistingObject($data, $this->getConciseModelClass());;
+                return $this->createExistingObject($data, $this->getConciseModelClass());
+                ;
             },
             $data->data
         );
 
-        $hasMorePages = (bool) $data->meta->links->next;
         return $this->client->getPaginatorFactory()->paginate($items, $data->meta->pagination->total, $perPage, $page);
     }
 
     /**
      * Get the object from the API.
      * @param int $id
-     * @return object
+     * @return \stdClass
      * @throws ModelNotFoundException
      * @throws HttpException
      */
-    protected function getFromApi(int $id): object
+    protected function getFromApi(int $id): \stdClass
     {
         $uri = $this->getObjectUriFromId($id);
         try {
@@ -103,15 +106,18 @@ abstract class AbstractManager implements AbstractManagerInterface
         } catch (NotFoundException $e) {
             throw new ModelNotFoundException("Unable to find object with ID {$id}");
         }
+        if (!$data) {
+            throw new ConstellixException('No data returned from API');
+        }
         return $this->transformApiData($data->data);
     }
 
     /**
      * Create a new object.
      * @param string|null $className
-     * @return AbstractModelInterface
+     * @return AbstractModel
      */
-    protected function createObject(?string $className = null): AbstractModelInterface
+    protected function createObject(?string $className = null): AbstractModel
     {
         if (!$className) {
             $className = $this->getModelClass();
@@ -122,11 +128,11 @@ abstract class AbstractManager implements AbstractManagerInterface
     /**
      * Deletes the object passed to it. If the object doesn't have an ID, no action is taken. The object is also
      * removed from the cache.
-     * @param AbstractModelInterface $object
+     * @param AbstractModel $object
      * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
      * @internal
      */
-    public function delete(AbstractModelInterface $object): void
+    public function delete(AbstractModel $object): void
     {
         $idProperty = $this->getIdPropertyName();
         $id = $object->{$idProperty};
@@ -140,28 +146,34 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Saves the object passed to it.
-     * @param AbstractModelInterface $object
+     * @param AbstractModel $object
      * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
      * @internal
      */
-    public function save(AbstractModelInterface $object): void
+    public function save(AbstractModel $object): void
     {
         $idProperty = $this->getIdPropertyName();
         if ($object->{$idProperty}) {
             $data = $this->client->post($this->getObjectUri($object), $object->transformForApi());
+            if (!$data) {
+                throw new ConstellixException('No data returned from API');
+            }
             $object->populateFromApi($data->data);
         } else {
             $data = $this->client->post($this->getBaseUri(), $object->transformForApi());
+            if (!$data) {
+                throw new ConstellixException('No data returned from API');
+            }
             $object->populateFromApi($data->data, false);
         }
     }
 
     /**
      * Constructor for a Manager class.
-     * @param ClientInterface $client
+     * @param Client $client
      * @internal
      */
-    public function __construct(ClientInterface $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }
@@ -177,10 +189,10 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Fetches the URI for a resource with the specified ID.
-     * @param AbstractModelInterface $object
+     * @param AbstractModel $object
      * @return string
      */
-    protected function getObjectUri(AbstractModelInterface $object): string
+    protected function getObjectUri(AbstractModel $object): string
     {
         $idPropertyName = $this->getIdPropertyName();
         if (!$object->{$idPropertyName}) {
@@ -224,12 +236,12 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Returns a string ID to give a unique ID to this resource.
-     * @param $input
-     * @param string|null $name
+     * @param mixed $input
+     * @param ?string $name
      * @return string
      * @throws \ReflectionException
      */
-    protected function getObjectId($input, string $name = null)
+    protected function getObjectId(mixed $input, string $name = null)
     {
         if ($name === null) {
             $name = $this->getModelClass();
@@ -243,25 +255,25 @@ abstract class AbstractManager implements AbstractManagerInterface
         } elseif (is_object($input) && property_exists($input, $idPropertyName)) {
             $id = $input->{$idPropertyName};
             return "{$name}:{$id}";
-        } elseif (is_array($input) && array_key_exists($input, $idPropertyName)) {
+        } elseif (is_array($input) && array_key_exists($idPropertyName, $input)) {
             return "{$name}:{$input[$idPropertyName]}";
         }
         return "{$name}:" . (string)$input;
     }
 
-    protected function getIdPropertyName()
+    protected function getIdPropertyName(): string
     {
         return 'id';
     }
 
     /**
      * Creates a new instance of an object from existing API data.
-     * @param object $data
+     * @param \stdClass $data
      * @param string $className
-     * @return AbstractModelInterface
+     * @return AbstractModel
      * @throws \ReflectionException
      */
-    protected function createExistingObject(object $data, string $className): AbstractModelInterface
+    protected function createExistingObject(\stdClass $data, string $className): AbstractModel
     {
         $objectId = $this->getObjectId($data, $className);
         if ($this->getFromCache($objectId)) {
@@ -278,25 +290,26 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Fetch the object from the local cache.
-     * @param $key
-     * @return AbstractModelInterface
+     * @param string $key
+     * @return ?AbstractModel
      * @internal
      */
-    public function getFromCache($key)
+    public function getFromCache(string $key): ?AbstractModel
     {
         if (array_key_exists($key, $this->objectCache)) {
             $this->client->logger->debug("[Constellix] Object Cache: Fetching {$key}");
             return $this->objectCache[$key];
         }
+        return null;
     }
 
     /**
      * Put the object into the local cache.
-     * @param $key
-     * @param $object
+     * @param string $key
+     * @param AbstractModel $object
      * @internal
      */
-    public function putInCache($key, $object)
+    public function putInCache(string $key, AbstractModel $object): void
     {
         $this->client->logger->debug("[Constellix] Object Cache: Putting {$key}");
         $this->objectCache[$key] = $object;
@@ -304,10 +317,10 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Remove the object from the local cache.
-     * @param $object
+     * @param mixed $object
      * @internal
      */
-    public function removeFromCache($object)
+    public function removeFromCache(mixed $object): void
     {
         if (is_object($object)) {
             $index = array_search($object, $this->objectCache);
@@ -324,11 +337,11 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Updates the object to the latest version in the API.
-     * @param AbstractModelInterface $object
+     * @param AbstractModel $object
      * @throws ModelNotFoundException
      * @internal
      */
-    public function refresh(AbstractModelInterface $object): void
+    public function refresh(AbstractModel $object): void
     {
         if (!$object->id) {
             return;
@@ -340,20 +353,20 @@ abstract class AbstractManager implements AbstractManagerInterface
 
     /**
      * Applies transformations to the API data before it is used to instantiate a model.
-     * @param object $data
-     * @return object
+     * @param \stdClass $data
+     * @return \stdClass
      */
-    protected function transformApiData(object $data): object
+    protected function transformApiData(\stdClass $data): \stdClass
     {
         return $data;
     }
 
     /**
      * Applies transformations to the concise API data before it is used to instantiate a model.
-     * @param object $data
-     * @return object
+     * @param \stdClass $data
+     * @return \stdClass
      */
-    protected function transformConciseApiData(object $data): object
+    protected function transformConciseApiData(\stdClass $data): \stdClass
     {
         return $this->transformApiData($data);
     }

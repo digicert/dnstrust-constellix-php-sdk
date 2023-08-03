@@ -8,6 +8,6 @@ use Constellix\Client\Models\Helpers\RecordValue;
 
 class Standard extends RecordValue
 {
-    public $value;
+    public string $value;
     public bool $enabled = true;
 }

@@ -12,5 +12,4 @@ use Constellix\Client\Exceptions\ConstellixException;
  */
 class ModelNotFoundException extends ConstellixException
 {
-
 }

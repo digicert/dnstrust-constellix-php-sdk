@@ -6,6 +6,7 @@ namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Models\AbstractDomainHistoryInterface;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
+use Constellix\Client\Managers\DomainHistoryManager;
 use Constellix\Client\Traits\DomainAware;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -15,10 +16,12 @@ use Constellix\Client\Traits\ManagedModel;
  *
  * @property string $name
  */
-abstract class AbstractDomainHistory extends AbstractModel implements AbstractDomainHistoryInterface, DomainAwareInterface
+abstract class AbstractDomainHistory extends AbstractModel implements DomainAwareInterface
 {
     use DomainAware;
     use ManagedModel;
+
+    protected DomainHistoryManager $manager;
 
     protected array $props = [
         'name' => null,
@@ -26,21 +29,21 @@ abstract class AbstractDomainHistory extends AbstractModel implements AbstractDo
         'updatedAt' => null
     ];
 
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
         $this->props['name'] = $data->name;
         $this->props['version'] = $data->version;
         $this->props['updatedAt'] = new \DateTime($data->updatedAt);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): \stdClass
     {
         $data = parent::jsonSerialize();
         unset($data->id);
         return $data;
     }
 
-    public function apply(): AbstractDomainHistoryInterface
+    public function apply(): AbstractDomainHistory
     {
         $this->manager->apply($this);
         return $this;

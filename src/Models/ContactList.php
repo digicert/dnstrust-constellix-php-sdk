@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\ContactListInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Models\Common\CommonContactList;
 use Constellix\Client\Traits\EditableModel;
@@ -13,18 +12,24 @@ use Constellix\Client\Traits\EditableModel;
  * Represents a Contact List resource.
  * @package Constellix\Client\Models
  *
- * @property string[] $emails
+ * @property \stdClass[] $emails
  */
-class ContactList extends CommonContactList implements ContactListInterface, EditableModelInterface
+class ContactList extends CommonContactList implements EditableModelInterface
 {
     use EditableModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'emailCount' => null,
         'emails' => [],
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'emails',
@@ -66,7 +71,7 @@ class ContactList extends CommonContactList implements ContactListInterface, Edi
         return $this;
     }
 
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
         $payload->emails = [];

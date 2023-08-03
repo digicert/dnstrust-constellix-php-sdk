@@ -9,7 +9,7 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class CAA extends RecordValue
 {
     public bool $enabled = true;
-    public $tag;
-    public $flags;
-    public $data;
+    public string $tag;
+    public string $flags;
+    public string $data;
 }

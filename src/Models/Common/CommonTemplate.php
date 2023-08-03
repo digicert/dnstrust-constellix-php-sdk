@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models\Common;
 
-use Constellix\Client\Interfaces\Models\Common\CommonTemplateInterface;
-use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
+use Constellix\Client\Managers\TemplateManager;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -15,10 +14,15 @@ use Constellix\Client\Traits\ManagedModel;
  *
  * @property string $name
  */
-abstract class CommonTemplate extends AbstractModel implements CommonTemplateInterface, ManagedModelInterface
+abstract class CommonTemplate extends AbstractModel
 {
     use ManagedModel;
 
+    protected TemplateManager $manager;
+
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
     ];

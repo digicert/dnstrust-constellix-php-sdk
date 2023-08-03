@@ -23,10 +23,13 @@ use Constellix\Client\Traits\HelperModel;
  * @property int $expire
  * @property int $negativeCache
  */
-class SOA extends AbstractModel implements SOAInterface
+class SOA extends AbstractModel
 {
     use HelperModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'primaryNameserver' => null,
         'email' => null,
@@ -38,6 +41,9 @@ class SOA extends AbstractModel implements SOAInterface
         'negativeCache' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'primaryNameserver',
         'email',
@@ -48,7 +54,7 @@ class SOA extends AbstractModel implements SOAInterface
         'negativeCache',
     ];
 
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
         unset($payload->serial);

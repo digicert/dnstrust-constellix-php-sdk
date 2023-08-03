@@ -9,5 +9,5 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class NS extends RecordValue
 {
     public bool $enabled = true;
-    public $host;
+    public string $host;
 }

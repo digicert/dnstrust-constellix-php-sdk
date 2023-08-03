@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models\Concise;
 
-use Constellix\Client\Interfaces\Models\Concise\ConciseContactListInterface;
-use Constellix\Client\Interfaces\Models\ContactListInterface;
 use Constellix\Client\Models\Basic\BasicContactList;
+use Constellix\Client\Models\ContactList;
 
 /**
  * Represents a concise representation of a Contact List resource.
@@ -14,10 +13,13 @@ use Constellix\Client\Models\Basic\BasicContactList;
  *
  * @property-read string $name;
  * @property-read int $emailsCount
- * @property-read ContactListInterface $full;
+ * @property-read ContactList $full;
  */
-class ConciseContactList extends BasicContactList implements ConciseContactListInterface
+class ConciseContactList extends BasicContactList
 {
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'emailCount' => null,

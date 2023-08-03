@@ -10,5 +10,4 @@ namespace Constellix\Client\Exceptions\Client\Http;
  */
 class BadRequestException extends HttpException
 {
-
 }

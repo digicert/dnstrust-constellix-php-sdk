@@ -19,5 +19,4 @@ use Spatie\Enum\Enum;
  */
 class GTDLocation extends Enum
 {
-
 }

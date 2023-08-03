@@ -28,9 +28,6 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Constellix API Client SDK
- *
- * @package Constellix\Client\Interfaces
  * @property-read TagManagerInterface $tags
  * @property-read ContactListManagerInterface $contactlists;
  * @property-read VanityNameserverManagerInterface $vanitynameservers;
@@ -117,7 +114,7 @@ interface ClientInterface
     /**
      * Make a GET request to the API. The parameters will be encoded as query string parameters.
      * @param string $url
-     * @param array $params
+     * @param array<mixed> $params
      * @return object|null
      * @throws HttpException
      * @throws JsonDecodeException

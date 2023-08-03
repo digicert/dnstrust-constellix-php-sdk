@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models\Helpers\RecordValues;
 
-use Constellix\Client\Interfaces\Models\Common\CommonPoolInterface;
+use Constellix\Client\Models\Common\CommonPool;
 use Constellix\Client\Models\Helpers\RecordValue;
 
 class Pool extends RecordValue
 {
-    public CommonPoolInterface $pool;
+    public CommonPool $pool;
 
-    public function transformForApi()
+    public function transformForApi(): int
     {
         return $this->pool->id;
     }

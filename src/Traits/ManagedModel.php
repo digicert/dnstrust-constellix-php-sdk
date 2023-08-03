@@ -4,31 +4,27 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Traits;
 
-use Constellix\Client\Interfaces\ClientInterface;
-use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
+use Constellix\Client\Client;
+use Constellix\Client\Interfaces\ManagerInterface;
+use Constellix\Client\Managers\AbstractManager;
+use Constellix\Client\Managers\DomainHistoryManager;
 
 trait ManagedModel
 {
     /**
-     * The manager for this object.
-     * @var AbstractManagerInterface
-     */
-    protected $manager;
-
-    /**
      * The Constellix API Client
-     * @var ClientInterface
+     * @var Client
      */
-    protected ClientInterface $client;
+    protected Client $client;
 
     /**
      * Creates the model and optionally populates it with data.
-     * @param AbstractManagerInterface $manager
-     * @param ClientInterface $client
-     * @param object|null $data
+     * @param AbstractManager $manager
+     * @param Client $client
+     * @param ?\stdClass $data
      * @internal
      */
-    public function __construct(AbstractManagerInterface $manager, ClientInterface $client, ?object $data = null)
+    public function __construct(AbstractManager $manager, Client $client, ?\stdClass $data = null)
     {
         $this->setInitialProperties();
         $this->manager = $manager;

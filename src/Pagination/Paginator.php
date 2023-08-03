@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Constellix\Pagination;
+namespace Constellix\Client\Pagination;
 
 use ArrayIterator;
 use Traversable;
@@ -11,10 +11,15 @@ use Traversable;
  * Simple object paginator. Can be iterated over, accessed like an array and used in a similar manner to Illuminate's
  * LengthAwarePaginator.
  *
+ * @implements \ArrayAccess<int,object>
+ * @implements \IteratorAggregate<int>
  * @package Constellix\Pagination
  */
 class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+    /**
+     * @var array<object>
+     */
     protected array $items;
     protected int $totalItems;
     protected int $perPage;
@@ -23,7 +28,7 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
 
     /**
      * Creates a new Paginator
-     * @param array $items
+     * @param array<object> $items
      * @param int $totalItems
      * @param int $perPage
      * @param int $currentPage
@@ -42,7 +47,7 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
      * @param mixed $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->items[$offset]);
     }
@@ -50,9 +55,9 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Get the item at the specified offset.
      * @param mixed $offset
-     * @return mixed
+     * @return object
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->items[$offset];
     }
@@ -62,7 +67,7 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
      * @param mixed $offset
      * @param mixed $value
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->items[$offset] = $value;
     }
@@ -71,7 +76,7 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
      * Removes the item at the specified offset.
      * @param mixed $offset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->items[$offset]);
     }
@@ -80,14 +85,14 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
      * Gets the number of items in the current page.
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return (int)count($this->items);
     }
 
     /**
      * Gets the items in the current page.
-     * @return array
+     * @return array<object>
      */
     public function items(): array
     {
@@ -173,11 +178,11 @@ class Paginator implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * Fetch an iterator for the items in the page. Allows the paginator to be iterated through.
-     * @return ArrayIterator|Traversable
+     * Returns the iterator for the paginator
+     * @return ArrayIterator<int, mixed>
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
-        return new ArrayIterator($this->items());
+        return new \ArrayIterator($this->items());
     }
 }

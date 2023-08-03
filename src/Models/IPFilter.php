@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Enums\Continent;
-use Constellix\Client\Interfaces\Models\IPFilterInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
+use Constellix\Client\Managers\IPFilterManager;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -23,11 +23,16 @@ use Constellix\Client\Traits\ManagedModel;
  * @property string[] $ipv4;
  * @property string[] $ipv6;
  */
-class IPFilter extends AbstractModel implements IPFilterInterface, EditableModelInterface, ManagedModelInterface
+class IPFilter extends AbstractModel implements EditableModelInterface, ManagedModelInterface
 {
     use EditableModel;
     use ManagedModel;
 
+    protected IPFilterManager $manager;
+
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'rulesLimit' => 100,
@@ -38,6 +43,9 @@ class IPFilter extends AbstractModel implements IPFilterInterface, EditableModel
         'ipv6' => [],
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'rulesLimit',
@@ -48,10 +56,10 @@ class IPFilter extends AbstractModel implements IPFilterInterface, EditableModel
         'ipv6',
     ];
 
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
-        $payload->continents = array_map(function($continent) {
+        $payload->continents = array_map(function ($continent) {
             return $continent->value;
         }, $this->continents);
         return $payload;
@@ -63,14 +71,14 @@ class IPFilter extends AbstractModel implements IPFilterInterface, EditableModel
         if (property_exists($data, 'continents')) {
             $this->props['continents'] = array_map(
                 function ($continent) {
-                    return Continent::make($continent);
+                    return Continent::from($continent);
                 },
                 $data->continents
             );
         }
     }
 
-    protected function addValue(string $property, $value): self
+    protected function addValue(string $property, mixed $value): self
     {
         if (!in_array($value, $this->{$property})) {
             $list = $this->{$property};
@@ -80,7 +88,7 @@ class IPFilter extends AbstractModel implements IPFilterInterface, EditableModel
         return $this;
     }
 
-    public function removeValue(string $property, $value): self
+    public function removeValue(string $property, mixed $value): self
     {
         $index = array_search($value, $this->{$property});
         if ($index !== false) {
@@ -91,52 +99,52 @@ class IPFilter extends AbstractModel implements IPFilterInterface, EditableModel
         return $this;
     }
 
-    public function addContinent(Continent $continent): IPFilterInterface
+    public function addContinent(Continent $continent): self
     {
         return $this->addValue('continents', $continent);
     }
 
-    public function removeContinent(Continent $continent): IPFilterInterface
+    public function removeContinent(Continent $continent): self
     {
         return $this->removeValue('continents', $continent);
     }
 
-    public function addCountry(string $country): IPFilterInterface
+    public function addCountry(string $country): self
     {
         return $this->addValue('countries', $country);
     }
 
-    public function removeCountry(string $country): IPFilterInterface
+    public function removeCountry(string $country): self
     {
         return $this->removeValue('countries', $country);
     }
 
-    public function addASN(int $asn): IPFilterInterface
+    public function addASN(int $asn): self
     {
         return $this->addValue('asn', $asn);
     }
 
-    public function removeASN(int $asn): IPFilterInterface
+    public function removeASN(int $asn): self
     {
         return $this->removeValue('asn', $asn);
     }
 
-    public function addIPv4(string $ip): IPFilterInterface
+    public function addIPv4(string $ip): self
     {
         return $this->addValue('ipv4', $ip);
     }
 
-    public function removeIPv4(string $ip): IPFilterInterface
+    public function removeIPv4(string $ip): self
     {
         return $this->removeValue('ipv4', $ip);
     }
 
-    public function addIPv6(string $ip): IPFilterInterface
+    public function addIPv6(string $ip): self
     {
         return $this->addValue('ipv6', $ip);
     }
 
-    public function removeIPv6(string $ip): IPFilterInterface
+    public function removeIPv6(string $ip): self
     {
         return $this->removeValue('ipv6', $ip);
     }

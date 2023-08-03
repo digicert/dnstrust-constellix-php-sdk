@@ -7,8 +7,6 @@ namespace Constellix\Client\Models;
 use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Enums\Records\RecordType;
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
-use Constellix\Client\Exceptions\ConstellixException;
-use Constellix\Client\Interfaces\Models\RecordInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Models\Basic\BasicPool;
 use Constellix\Client\Models\Helpers\RecordValue;
@@ -36,12 +34,16 @@ use Constellix\Client\Traits\ManagedModel;
  * @package Constellix\Client\Models
  *
  * @property string $name
+ * @property mixed $value
  */
-abstract class Record extends AbstractModel implements RecordInterface, EditableModelInterface
+abstract class Record extends AbstractModel implements EditableModelInterface
 {
     use EditableModel;
     use ManagedModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'type' => null,
@@ -59,6 +61,9 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
 
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'type',
@@ -74,12 +79,16 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         'contacts',
     ];
 
-    protected function setInitialProperties()
+    protected function setInitialProperties(): void
     {
         $this->props['mode'] = RecordMode::STANDARD();
     }
 
-    protected function parseApiData(object $data): void
+    /**
+     * @param \stdClass $data
+     * @return void
+     */
+    protected function parseApiData(\stdClass $data): void
     {
         unset(
             $data->domain,
@@ -99,7 +108,13 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         $this->props['value'] = $lastValues[$this->props['mode']->value];
     }
 
-    protected function parseValue(RecordType $type, RecordMode $mode, $data)
+    /**
+     * @param RecordType $type
+     * @param RecordMode $mode
+     * @param array<mixed> $data
+     * @return mixed
+     */
+    protected function parseValue(RecordType $type, RecordMode $mode, array $data): mixed
     {
         // Special case - this is not an array of values
         if ($type == RecordType::HTTP()) {
@@ -108,25 +123,27 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
 
         switch ($type) {
             case RecordType::A():
+                // Intentionally continuing
             case RecordType::AAAA():
                 // A and AAAA have RoundRobinFailover as modes
                 if ($mode == RecordMode::ROUNDROBINFAILOVER()) {
-                    return array_map(function($value) {
+                    return array_map(function ($value) {
                         return new RoundRobinFailover($value);
                     }, $data);
                 }
                 // Intentionally continuing
             case RecordType::CNAME():
+                // Intentionally continuing
             case RecordType::ANAME():
                 switch ($mode) {
                     case RecordMode::STANDARD():
-                        return array_map(function($value) {
+                        return array_map(function ($value) {
                             return new Standard($value);
                         }, $data);
 
                     case RecordMode::POOLS():
-                        return array_map(function($value) {
-                            return new PoolRecordValue((object) [
+                        return array_map(function ($value) {
+                            return new PoolRecordValue([
                                 'pool' => new BasicPool($this->client->pools, $this->client, $value),
                             ]);
                         }, $data);
@@ -134,6 +151,7 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
                     case RecordMode::FAILOVER():
                         return new Failover($data);
                 }
+                // Intentionally continuing
             default:
                 $classMap = [
                     RecordType::CAA()->value => CAA::class,
@@ -149,7 +167,7 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
                     RecordType::TXT()->value => TXT::class,
                 ];
                 if (array_key_exists($type->value, $classMap)) {
-                    return array_map(function($value) use ($type, $classMap) {
+                    return array_map(function ($value) use ($type, $classMap) {
                         $className = $classMap[$type->value];
                         return new $className($value);
                     }, $data);
@@ -159,11 +177,11 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         return null;
     }
 
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
-        $payload = parent::transformForApi(); // TODO: Change the autogenerated stub
+        $payload = parent::transformForApi();
         if (is_array($this->value)) {
-            $payload->value = array_map(function($value) {
+            $payload->value = array_map(function ($value) {
                 return $value->transformForApi();
             }, $this->value);
         } elseif ($this->value) {
@@ -175,7 +193,7 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         return $payload;
     }
 
-    public function setType(RecordType $type)
+    public function setType(RecordType $type): void
     {
         if ($this->id) {
             throw new ReadOnlyPropertyException('Unable to set type on a record that has been created');
@@ -184,7 +202,7 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         $this->changed[] = 'type';
     }
 
-    public function setValue($recordValue)
+    public function setValue(mixed $recordValue): void
     {
         $this->changed[] = 'mode';
         $this->changed[] = 'value';
@@ -208,14 +226,14 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         }
     }
 
-    public function addValue(RecordValue $recordValue)
+    public function addValue(RecordValue $recordValue): void
     {
         if (!$this->value) {
             $this->setValue($recordValue);
         } else {
             $values = $this->value;
             $values[] = $recordValue;
-            $this->values = $values;
+            $this->value = $values;
         }
     }
 }

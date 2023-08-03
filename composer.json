@@ -3,25 +3,12 @@
     "description": "PHP SDK for the Constellix API",
     "type": "library",
     "require": {
-        "ext-json": "^7.4||^8.0",
-        "php": "^7.4||^8.0",
-        "ext-mbstring": "^7.4||^8.0",
-        "psr/container": "^1.0||^2.0",
-        "psr/http-client-implementation": "^1.0||^2.0",
-        "guzzlehttp/psr7": "^1.7||^2.0",
-        "psr/log": "^2.0||^3.0",
-        "spatie/enum": "^3.6",
-        "guzzlehttp/guzzle": ">=6"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "php-http/mock-client": "^1.4",
-        "phpstan/phpstan": "^0.12",
-        "phpunit/phpunit": "^8.5",
-        "squizlabs/php_codesniffer": "^3.5",
-        "monolog/monolog": "^2.1",
-        "symfony/var-dumper": "^5.1",
-        "http-interop/http-factory-guzzle": "^1.2"
+        "ext-json": "^8.0||^8.1||^8.2",
+        "php": "^8.0||^8.1||^8.2",
+        "ext-mbstring": "^8.0||^8.1||^8.2",
+        "spatie/enum": "^3.13",
+        "psr/log": "^3.0",
+        "guzzlehttp/guzzle": "^7.7"
     },
     "config": {
         "optimize-autoloader": true,
@@ -41,9 +28,10 @@
         }
     },
     "scripts": {
-        "cs-check": "phpcs",
-        "cs-fix": "phpcbf",
-        "test": "phpunit"
+        "phpcs": "vendor/bin/phpcs",
+        "phpcbf": "vendor/bin/phpcbf",
+        "phpstan": "vendor/bin/phpstan",
+        "phpunit": "vendor/bin/phpunit"
     },
     "license": "MIT",
     "authors": [
@@ -52,5 +40,15 @@
             "email": "jessica.smith@digicert.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.22",
+        "php-http/mock-client": "^1.6",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.2",
+        "squizlabs/php_codesniffer": "^3.7",
+        "monolog/monolog": "^2",
+        "symfony/var-dumper": "^6.3",
+        "http-interop/http-factory-guzzle": "^1.2"
+    }
 }

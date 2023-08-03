@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\TagManagerInterface;
-use Constellix\Client\Interfaces\Models\TagInterface;
+use Constellix\Client\Models\Tag;
 
 /**
  * Manages Tag API resources.
  * @package Constellix\Client\Managers
  */
-class TagManager extends AbstractManager implements TagManagerInterface
+class TagManager extends AbstractManager
 {
     /**
      * The base URI for tags.
@@ -19,12 +18,12 @@ class TagManager extends AbstractManager implements TagManagerInterface
      */
     protected string $baseUri = '/tags';
 
-    public function create(): TagInterface
+    public function create(): Tag
     {
         return $this->createObject();
     }
 
-    public function get(int $id): TagInterface
+    public function get(int $id): Tag
     {
         return $this->getObject($id);
     }

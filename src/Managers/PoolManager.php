@@ -5,20 +5,18 @@ declare(strict_types=1);
 namespace Constellix\Client\Managers;
 
 use Constellix\Client\Enums\Pools\PoolType;
-use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\Client\Http\NotFoundException;
 use Constellix\Client\Exceptions\Client\ModelNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
-use Constellix\Client\Interfaces\Managers\PoolManagerInterface;
-use Constellix\Client\Interfaces\Models\AbstractModelInterface;
-use Constellix\Client\Interfaces\Models\PoolInterface;
+use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Models\Concise\ConcisePool;
+use Constellix\Client\Models\Pool;
 
 /**
  * Manages Pool Resources
  * @package Constellix\Client\Managers
  */
-class PoolManager extends AbstractManager implements PoolManagerInterface
+class PoolManager extends AbstractManager
 {
     /**
      * The base URI for resources.
@@ -26,12 +24,12 @@ class PoolManager extends AbstractManager implements PoolManagerInterface
      */
     protected string $baseUri = '/pools';
 
-    public function create(): PoolInterface
+    public function create(): Pool
     {
         return $this->createObject();
     }
 
-    public function get(PoolType $type, int $id): PoolInterface
+    public function get(PoolType $type, int $id): Pool
     {
         $objectId = $this->getObjectId($type->value . $id);
         if ($this->getFromCache($objectId)) {
@@ -42,9 +40,12 @@ class PoolManager extends AbstractManager implements PoolManagerInterface
         return $this->createExistingObject($data, $this->getModelClass());
     }
 
-    public function refresh(AbstractModelInterface $object): void
+    public function refresh(AbstractModel $object): void
     {
-        if (!$object->id || !$object->type) {
+        /**
+         * @var Pool $object
+         */
+        if ($object->id === null || $object->type === null) {
             return;
         }
 
@@ -54,24 +55,27 @@ class PoolManager extends AbstractManager implements PoolManagerInterface
 
     /**
      * Fetches the URI for a resource with the specified ID.
-     * @param AbstractModelInterface $object
+     * @param Pool $object
      * @return string
      */
-    protected function getObjectUri(AbstractModelInterface $object): string
+    protected function getObjectUri(AbstractModel $object): string
     {
-        if (!$object->id || !$object->type) {
+        if ($object->id === null || $object->type === null) {
             throw new ConstellixException('No ID or Type available on object');
         }
         return "{$this->getBaseUri()}/{$object->type}/{$object->id}";
     }
 
-    protected function getPoolFromApi(PoolType $type, int $id): object
+    protected function getPoolFromApi(PoolType $type, int $id): \stdClass
     {
         $uri = "{$this->getBaseUri()}/{$type->value}/{$id}";
         try {
             $data = $this->client->get($uri);
         } catch (NotFoundException $e) {
             throw new ModelNotFoundException("Unable to find object with Type {$type->value} and ID {$id}");
+        }
+        if (!$data) {
+            throw new ConstellixException('No data returned from API');
         }
         return $this->transformApiData($data->data);
     }

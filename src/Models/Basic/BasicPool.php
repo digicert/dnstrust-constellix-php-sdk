@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models\Basic;
 
-use Constellix\Client\Interfaces\Models\Basic\BasicPoolInterface;
-use Constellix\Client\Interfaces\Models\PoolInterface;
 use Constellix\Client\Models\Common\CommonPool;
+use Constellix\Client\Models\Pool;
 
 /**
  * Represents a basic representation of a Domain resource.
@@ -14,12 +13,12 @@ use Constellix\Client\Models\Common\CommonPool;
  *
 
  * @property-read string $name
- * @property-read PoolInterface $full
+ * @property-read Pool $full
  */
-class BasicPool extends CommonPool implements BasicPoolInterface
+class BasicPool extends CommonPool
 {
-    protected function getFull()
+    protected function getFull(): Pool
     {
-        return $this->manager->get($this->id);
+        return $this->manager->get($this->type, $this->id);
     }
 }

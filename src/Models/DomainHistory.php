@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\DomainHistoryInterface;
-use Constellix\Client\Interfaces\Models\DomainSnapshotInterface;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
 use Constellix\Client\Traits\DomainAware;
 
@@ -15,19 +13,25 @@ use Constellix\Client\Traits\DomainAware;
  *
  * @property string $name
  */
-class DomainHistory extends AbstractDomainHistory implements DomainHistoryInterface, DomainAwareInterface
+class DomainHistory extends AbstractDomainHistory implements DomainAwareInterface
 {
     use DomainAware;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
     ];
 
-    public function snapshot(): DomainSnapshotInterface
+    public function snapshot(): DomainSnapshot
     {
         return $this->manager->snapshot($this);
     }

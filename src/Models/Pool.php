@@ -6,16 +6,13 @@ namespace Constellix\Client\Models;
 
 use Constellix\Client\Enums\Pools\PoolType;
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
-use Constellix\Client\Interfaces\Models\Common\CommonContactListInterface;
-use Constellix\Client\Interfaces\Models\Concise\ConciseContactListInterface;
-use Constellix\Client\Interfaces\Models\Basic\BasicDomainInterface;
-use Constellix\Client\Interfaces\Models\Basic\BasicTemplateInterface;
-use Constellix\Client\Interfaces\Models\Helpers\ITOInterface;
-use Constellix\Client\Interfaces\Models\PoolInterface;
-use Constellix\Client\Interfaces\Models\PoolValueInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
+use Constellix\Client\Models\Basic\BasicDomain;
+use Constellix\Client\Models\Basic\BasicTemplate;
+use Constellix\Client\Models\Common\CommonContactList;
 use Constellix\Client\Models\Common\CommonPool;
 use Constellix\Client\Models\Basic\BasicContactList;
+use Constellix\Client\Models\Helpers\ITO;
 use Constellix\Client\Traits\EditableModel;
 
 /**
@@ -28,16 +25,19 @@ use Constellix\Client\Traits\EditableModel;
  * @property int $minimumFailover
  * @property-read bool $failed
  * @property bool $enabled
- * @property-read BasicDomainInterface[] $domains
- * @property-read BasicTemplateInterface[] $templates
- * @property ConciseContactListInterface[] $contacts
- * @property ITOInterface $ito
- * @property PoolValueInterface[] $values
+ * @property-read BasicDomain[] $domains
+ * @property-read BasicTemplate[] $templates
+ * @property CommonContactList[] $contacts
+ * @property ITO $ito
+ * @property PoolValue[] $values
  */
-class Pool extends CommonPool implements PoolInterface, EditableModelInterface
+class Pool extends CommonPool implements EditableModelInterface
 {
     use EditableModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'type' => null,
@@ -52,6 +52,9 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         'ito' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'type',
@@ -63,12 +66,12 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         'ito',
     ];
 
-    protected function setInitialProperties()
+    protected function setInitialProperties(): void
     {
         $this->props['ito'] = new ITO();
     }
 
-    protected function setType($type)
+    protected function setType(string $type): void
     {
         if ($this->id) {
             throw new ReadOnlyPropertyException('Unable to set type after a Pool has been created');
@@ -77,26 +80,26 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         $this->changed[] = 'type';
     }
 
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
 
         $this->props['values'] = [];
         if (property_exists($data, 'values') && $data->values) {
-            $this->props['values'] = array_map(function($valueData) {
+            $this->props['values'] = array_map(function ($valueData) {
                 return new PoolValue($valueData);
             }, $data->values);
         }
 
         $this->props['contacts'] = [];
         if (property_exists($data, 'contacts') && $data->contacts) {
-            $this->props['values'] = array_map(function($contactData) {
+            $this->props['values'] = array_map(function ($contactData) {
                 return new BasicContactList($this->client->contactlists, $this->client, $contactData);
             }, $data->contacts);
         }
     }
 
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
         unset(
@@ -107,14 +110,14 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         $payload->values = array_map(function ($value) {
             return $value->transformForApi();
         }, $this->values);
-        $payload->contacts = array_map(function ($contact) {
+        $payload->contacts = array_map(function (CommonContactList $contact) {
             return $contact->id;
         }, $this->contacts);
 
         return $payload;
     }
 
-    protected function hasContactList(CommonContactListInterface $contactList): bool
+    protected function hasContactList(CommonContactList $contactList): bool
     {
         foreach ($this->contacts as $list) {
             if ($list->id == $contactList->id) {
@@ -124,7 +127,7 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         return false;
     }
 
-    public function addContactList(CommonContactListInterface $contactList): self
+    public function addContactList(CommonContactList $contactList): self
     {
         if ($this->hasContactList($contactList)) {
             return $this;
@@ -136,7 +139,7 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         return $this;
     }
 
-    public function removeContactList(CommonContactListInterface $contactList): self
+    public function removeContactList(CommonContactList $contactList): self
     {
         if (!$this->hasContactList($contactList)) {
             return $this;
@@ -153,7 +156,7 @@ class Pool extends CommonPool implements PoolInterface, EditableModelInterface
         return $this;
     }
 
-    public function createValue(?string $value = null): PoolValueInterface
+    public function createValue(?string $value = null): PoolValue
     {
         $data = (object) [];
         if ($value) {

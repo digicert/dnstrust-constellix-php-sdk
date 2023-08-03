@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\TemplateInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
+use Constellix\Client\Models\Common\CommonTemplate;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -21,11 +21,14 @@ use Constellix\Client\Traits\ManagedModel;
  * @property \DateTime $createdAt
  * @property \DateTime $updatedAt
  */
-class Template extends AbstractModel implements TemplateInterface, EditableModelInterface, ManagedModelInterface
+class Template extends CommonTemplate implements EditableModelInterface, ManagedModelInterface
 {
     use EditableModel;
     use ManagedModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'version' => null,
@@ -35,13 +38,16 @@ class Template extends AbstractModel implements TemplateInterface, EditableModel
         'updatedAt' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'geoip',
         'gtd',
     ];
 
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
         if (property_exists($data, 'createdAt')) {

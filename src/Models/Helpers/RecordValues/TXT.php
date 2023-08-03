@@ -9,5 +9,5 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class TXT extends RecordValue
 {
     public bool $enabled = true;
-    public $value;
+    public string $value;
 }

@@ -17,6 +17,9 @@ use Spatie\Enum\Enum;
  */
 class RecordMode extends Enum
 {
+    /**
+     * @return string[]
+     */
     protected static function values(): array
     {
         return [

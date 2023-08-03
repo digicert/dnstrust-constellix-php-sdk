@@ -10,9 +10,9 @@ class HttpRedirection extends RecordValue
 {
     public bool $enabled = true;
     public bool $hard;
-    public $redirectType;
-    public $title;
-    public $keywords;
-    public $description;
-    public $url;
+    public int $redirectType;
+    public string $title;
+    public string $keywords;
+    public string $description;
+    public string $url;
 }

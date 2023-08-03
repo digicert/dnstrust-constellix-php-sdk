@@ -12,5 +12,5 @@ class SRV extends RecordValue
     public int $priority;
     public int $port;
     public int $weight;
-    public $host;
+    public string $host;
 }

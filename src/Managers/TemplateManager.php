@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\TemplateManagerInterface;
-use Constellix\Client\Interfaces\Models\TemplateInterface;
+use Constellix\Client\Models\Template;
 
 /**
  * Manages Template API resources.
  * @package Constellix\Client\Managers
  */
-class TemplateManager extends AbstractManager implements TemplateManagerInterface
+class TemplateManager extends AbstractManager
 {
     /**
      * The base URI for objects.
@@ -19,12 +18,12 @@ class TemplateManager extends AbstractManager implements TemplateManagerInterfac
      */
     protected string $baseUri = '/templates';
 
-    public function create(): TemplateInterface
+    public function create(): Template
     {
         return $this->createObject();
     }
 
-    public function get(int $id): TemplateInterface
+    public function get(int $id): Template
     {
         return $this->getObject($id);
     }

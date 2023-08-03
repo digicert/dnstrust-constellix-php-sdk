@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Traits;
 
-use Constellix\Client\Interfaces\Models\Common\CommonTemplateInterface;
 use Constellix\Client\Interfaces\Traits\TemplateAwareInterface;
+use Constellix\Client\Models\Common\CommonTemplate;
 
 trait TemplateAware
 {
-    protected ?CommonTemplateInterface $template = null;
+    protected CommonTemplate $template;
 
-    public function setTemplate(CommonTemplateInterface $template): TemplateAwareInterface
+    /**
+     * @param CommonTemplate $template
+     * @return TemplateAwareInterface
+     */
+    public function setTemplate(CommonTemplate $template): TemplateAwareInterface
     {
         $this->template = $template;
         return $this;

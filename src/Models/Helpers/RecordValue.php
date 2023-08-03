@@ -6,29 +6,39 @@ namespace Constellix\Client\Models\Helpers;
 
 abstract class RecordValue
 {
-    public function __construct($data = null)
+    /**
+     * @param array<mixed> $data
+     */
+    public function __construct(array $data = [])
     {
         if ($data) {
             $this->populateFromApi($data);
         }
     }
 
-    protected function parseApiData(object $data)
+    /**
+     * @param array<mixed> $data
+     * @return array<mixed>
+     */
+    protected function parseApiData(array $data): array
     {
         return $data;
     }
 
-    public function populateFromApi(object $data): self
+    /**
+     * @param array<mixed> $data
+     * @return self
+     */
+    public function populateFromApi(array $data): self
     {
         $data = $this->parseApiData($data);
-        foreach ($data as $prop => $name)
-        {
+        foreach ($data as $prop => $name) {
             $this->{$prop} = $name;
         }
         return $this;
     }
 
-    public function transformForApi()
+    public function transformForApi(): mixed
     {
         return (object) (array) $this;
     }

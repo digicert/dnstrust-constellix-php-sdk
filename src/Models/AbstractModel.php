@@ -8,6 +8,7 @@ use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
 use Constellix\Client\Interfaces\ClientInterface;
 use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
 use Constellix\Client\Interfaces\Models\AbstractModelInterface;
+use Constellix\Client\Managers\AbstractManager;
 use JsonSerializable;
 use Spatie\Enum\Enum;
 
@@ -17,7 +18,7 @@ use Spatie\Enum\Enum;
  * @package Constellix\Client\Models
  * @property-read int $id
  */
-abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
+abstract class AbstractModel implements JsonSerializable
 {
     /**
      * The ID of the object.
@@ -27,38 +28,38 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * A list of properties that have been modified since the object was last saved.
-     * @var array
+     * @var array<string>
      */
     protected array $changed = [];
 
     /**
      * The properties of this object.
-     * @var array
+     * @var array<mixed>
      */
     protected array $props = [];
 
     /**
      * The original properties from when the object was instantiated/last loaded from the API.
-     * @var array
+     * @var array<mixed>
      */
     protected array $originalProps = [];
 
     /**
      * A list of properties that are editable on this model.
-     * @var array
+     * @var array<string>
      */
     protected array $editable = [];
 
     /**
      * The original data retrieved from the API.
-     * @var object|null
+     * @var ?\stdClass
      */
-    protected ?object $apiData = null;
+    protected ?\stdClass $apiData = null;
 
     /**
      * Allow easy custom initialisation of properties in models.
      */
-    protected function setInitialProperties()
+    protected function setInitialProperties(): void
     {
         // Do nothing by default
     }
@@ -80,19 +81,21 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
     }
 
     /**
-     * @param object $data
+     * @param ?\stdClass $data
      * @param bool $parse
      * @internal
      */
-    public function populateFromApi(object $data, bool $parse = true): void
+    public function populateFromApi(?\stdClass $data, bool $parse = true): void
     {
         $this->apiData = $data;
-        unset($data->links);
-        if (property_exists($data, 'id')) {
-            $this->id = $data->id;
-        }
-        if ($parse) {
-            $this->parseApiData($data);
+        if ($data !== null) {
+            unset($data->links);
+            if (property_exists($data, 'id')) {
+                $this->id = $data->id;
+            }
+            if ($parse) {
+                $this->parseApiData($data);
+            }
         }
         $this->originalProps = $this->props;
         $this->changed = [];
@@ -100,11 +103,11 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * Parses the API data and assigns it to properties on this object.
-     * @param object $data
+     * @param \stdClass $data
      */
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
-        foreach ($data as $prop => $value) {
+        foreach ((array)$data as $prop => $value) {
             try {
                 $this->{$prop} = $value;
             } catch (ReadOnlyPropertyException $ex) {
@@ -115,17 +118,17 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * Generate a representation of the object for sending to the API.
-     * @return object
+     * @return \stdClass
      * @internal
      */
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $obj = $this->jsonSerialize();
         if ($this->id === null) {
             unset($obj->{$this->id});
         }
         // These don't exist
-        foreach ($obj as $key => $value) {
+        foreach ((array)$obj as $key => $value) {
             if ($value === null || (is_array($value) && !$value)) {
                 unset($obj->$key);
             }
@@ -135,10 +138,10 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * Returns a JSON serializable representation of the resource.
-     * @return mixed|object
+     * @return \stdClass
      * @internal
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): \stdClass
     {
         $result = (object)[
             'id' => $this->id,
@@ -167,11 +170,11 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
     /**
      * Magic method to fetch properties for the object. If a get{Name} method exists, it will be called  first,
      * otherwise it will try and fetch it from the properties array.
-     * @param $name
+     * @param string $name
      * @return mixed
      * @internal
      */
-    public function __get($name)
+    public function __get(string $name): mixed
     {
         $methodName = 'get' . ucfirst($name);
         if (method_exists($this, $methodName)) {
@@ -179,6 +182,7 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
         } elseif (array_key_exists($name, $this->props)) {
             return $this->props[$name];
         }
+        return null;
     }
 
     /**
@@ -187,12 +191,12 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
      *
      * Changes are tracked to allow us to see any changes.
      *
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param mixed $value
      * @throws ReadOnlyPropertyException
      * @internal
      */
-    public function __set($name, $value)
+    public function __set(string $name, mixed $value): void
     {
         $methodName = 'set' . ucfirst($name);
         if (method_exists($this, $methodName)) {

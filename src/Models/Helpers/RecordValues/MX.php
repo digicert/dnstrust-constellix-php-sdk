@@ -9,6 +9,6 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class MX extends RecordValue
 {
     public bool $enabled = true;
-    public $server;
+    public string $server;
     public int $priority;
 }

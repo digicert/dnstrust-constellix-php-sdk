@@ -6,25 +6,20 @@ namespace Constellix\Client\Models;
 
 use Constellix\Client\Enums\DomainStatus;
 use Constellix\Client\Exceptions\ConstellixException;
-use Constellix\Client\Interfaces\Managers\DomainHistoryManagerInterface;
-use Constellix\Client\Interfaces\Managers\DomainRecordManagerInterface;
-use Constellix\Client\Interfaces\Managers\DomainSnapshotManagerInterface;
-use Constellix\Client\Interfaces\Models\Common\CommonContactListInterface;
-use Constellix\Client\Interfaces\Models\Common\CommonTemplateInterface;
-use Constellix\Client\Interfaces\Models\Common\CommonVanityNameserverInterface;
-use Constellix\Client\Interfaces\Models\Concise\ConciseContactListInterface;
-use Constellix\Client\Interfaces\Models\DomainInterface;
-use Constellix\Client\Interfaces\Models\TagInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
 use Constellix\Client\Managers\DomainHistoryManager;
+use Constellix\Client\Managers\DomainManager;
 use Constellix\Client\Managers\DomainRecordManager;
 use Constellix\Client\Managers\DomainSnapshotManager;
 use Constellix\Client\Models\Basic\BasicContactList;
 use Constellix\Client\Models\Basic\BasicVanityNameserver;
+use Constellix\Client\Models\Common\CommonContactList;
 use Constellix\Client\Models\Common\CommonDomain;
 use Constellix\Client\Models\Basic\BasicTemplate;
 use Constellix\Client\Models\Common\CommonTemplate;
+use Constellix\Client\Models\Common\CommonVanityNameserver;
+use Constellix\Client\Models\Concise\ConciseContactList;
 use Constellix\Client\Models\Helpers\SOA;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
@@ -37,29 +32,25 @@ use Constellix\Client\Traits\ManagedModel;
  * @property string $note
  * @property-read DomainStatus $status
  * @property-read int $version
- * @property object $soa
+ * @property ?SOA $soa
  * @property bool $geoip
  * @property bool $gtd
  * @property string $nameservers
- * @property object[] $tags
- * @property object $template
- * @property object $vanityNameserver
- * @property ConciseContactListInterface[] $contacts
+ * @property Tag[] $tags
+ * @property ?CommonTemplate $template
+ * @property ?CommonVanityNameserver $vanityNameserver
+ * @property CommonContactList[] $contacts
  * @property-read \DateTime $createdAt
  * @property-read \DateTime $updatedAt
- * @property-read DomainSnapshotManagerInterface $snapshots
- * @property-read DomainHistoryManagerInterface $history
- * @property-read DomainRecordManagerInterface $records
  */
-class Domain extends CommonDomain implements DomainInterface, EditableModelInterface, ManagedModelInterface
+class Domain extends CommonDomain implements EditableModelInterface, ManagedModelInterface
 {
     use EditableModel;
     use ManagedModel;
 
-    protected ?DomainSnapshotManagerInterface $snapshots = null;
-    protected ?DomainHistoryManagerInterface $history = null;
-    protected ?DomainRecordManagerInterface  $records = null;
-
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'note' => null,
@@ -76,6 +67,9 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         'updatedAt' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'note',
@@ -89,48 +83,12 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
 
     ];
 
-    protected function getRecords()
+    protected function setInitialProperties(): void
     {
-        if (!$this->id) {
-            throw new ConstellixException('Domain must be created before you can access records');
-        }
-        if (!$this->records) {
-            $this->records = new DomainRecordManager($this->client);
-            $this->records->setDomain($this);
-        }
-        return $this->records;
+        $this->props['soa'] = new SOA();
     }
 
-    protected function getHistory()
-    {
-        if (!$this->id) {
-            throw new ConstellixException('Domain must be created before you can access history');
-        }
-        if (!$this->history) {
-            $this->history = new DomainHistoryManager($this->client);
-            $this->history->setDomain($this);
-        }
-        return $this->history;
-    }
-
-    protected function getSnapshots()
-    {
-        if (!$this->id) {
-            throw new ConstellixException('Domain must be created before you can access snapshots');
-        }
-        if (!$this->snapshots) {
-            $this->snapshots = new DomainSnapshotManager($this->client);
-            $this->snapshots->setDomain($this);
-        }
-        return $this->snapshots;
-    }
-
-    protected function setInitialProperties()
-    {
-        $this->props['soa'] = new SOA;
-    }
-
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
 
@@ -144,15 +102,21 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
             $payload->template = $this->template->id;
         }
 
-        $payload->tags = array_map(function($tag) {
+        $payload->tags = array_map(function ($tag) {
+            /**
+             * @var \stdClass $tag
+             */
             return $tag->id;
         }, $this->tags);
 
-        $payload->contacts = array_map(function($contact) {
+        $payload->contacts = array_map(function ($contact) {
+            /**
+             * @var \stdClass $contact
+             */
             return $contact->id;
         }, $this->contacts);
 
-        if ($this->soa) {
+        if ($this->soa !== null) {
             $payload->soa = $this->soa->transformForApi();
         }
         unset(
@@ -164,7 +128,7 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return $payload;
     }
 
-    protected function hasTag(TagInterface $tag): bool
+    protected function hasTag(Tag $tag): bool
     {
         foreach ($this->tags as $index => $domainTag) {
             if ($tag->id == $domainTag->id) {
@@ -174,7 +138,7 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return false;
     }
 
-    public function addTag(TagInterface $tag): self
+    public function addTag(Tag $tag): self
     {
         if (!$this->hasTag($tag)) {
             $tags = $this->tags;
@@ -184,7 +148,7 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return $this;
     }
 
-    public function removeTag(TagInterface $tag): self
+    public function removeTag(Tag $tag): self
     {
         $tags = $this->tags;
         foreach ($tags as $index => $domainTag) {
@@ -197,7 +161,7 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return $this;
     }
 
-    protected function hasContactList(CommonContactListInterface $contactList): bool
+    protected function hasContactList(CommonContactList $contactList): bool
     {
         foreach ($this->contacts as $index => $contact) {
             if ($contactList->id == $contact->id) {
@@ -207,7 +171,7 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return false;
     }
 
-    public function addContactList(CommonContactListInterface $contactList): self
+    public function addContactList(CommonContactList $contactList): self
     {
         if (!$this->hasContactList($contactList)) {
             $contacts = $this->contacts;
@@ -217,7 +181,7 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return $this;
     }
 
-    public function removeContactList(CommonContactListInterface $contactList): self
+    public function removeContactList(CommonContactList $contactList): self
     {
         $contacts = $this->contacts;
         foreach ($contacts as $index => $contact) {
@@ -230,33 +194,39 @@ class Domain extends CommonDomain implements DomainInterface, EditableModelInter
         return $this;
     }
 
-    protected function setTemplate($template)
+    protected function setTemplate(int|CommonTemplate|null $template): void
     {
+        if ($template === null) {
+            return;
+        }
         if (is_integer($template)) {
             $template = new BasicTemplate($this->client->templates, $this->client, (object) [
                 'id' => $template,
             ]);
         }
-        if ($template instanceof CommonTemplateInterface) {
+        if ($template instanceof CommonTemplate) {
             $this->props['template'] = $template;
             $this->changed[] = 'template';
         }
     }
 
-    protected function setVanityNameserver($nameserver)
+    protected function setVanityNameserver(int|CommonVanityNameserver|null $nameserver): void
     {
+        if ($nameserver === null) {
+            return;
+        }
         if (is_integer($nameserver)) {
             $nameserver = new BasicVanityNameserver($this->client->vanitynameservers, $this->client, (object) [
                 'id' => $nameserver,
             ]);
         }
-        if ($nameserver instanceof CommonVanityNameserverInterface) {
+        if ($nameserver instanceof CommonVanityNameserver) {
             $this->props['vanityNameserver'] = $nameserver;
             $this->changed[] = 'vanityNameserver';
         }
     }
 
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
         if (property_exists($data, 'createdAt')) {

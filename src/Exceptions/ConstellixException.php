@@ -9,5 +9,4 @@ namespace Constellix\Client\Exceptions;
  */
 class ConstellixException extends \Exception
 {
-
 }

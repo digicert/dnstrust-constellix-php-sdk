@@ -5,13 +5,8 @@ declare(strict_types=1);
 namespace Constellix\Client\Models\Common;
 
 use Constellix\Client\Enums\Pools\PoolType;
-use Constellix\Client\Interfaces\Managers\PoolManagerInterface;
-use Constellix\Client\Interfaces\Models\Common\CommonPoolInterface;
-use Constellix\Client\Interfaces\Models\Common\CommonPoolValueInterface;
-use Constellix\Client\Interfaces\Models\Basic\BasicDomainInterface;
-use Constellix\Client\Interfaces\Models\Basic\BasicTemplateInterface;
-use Constellix\Client\Interfaces\Models\Helpers\ITOInterface;
-use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
+use Constellix\Client\Managers\AbstractManager;
+use Constellix\Client\Managers\PoolManager;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Models\Basic\BasicDomain;
 use Constellix\Client\Models\Basic\BasicTemplate;
@@ -28,26 +23,26 @@ use Constellix\Client\Traits\ManagedModel;
  * @property int $minimumFailover
  * @property-read bool $failed
  * @property bool $enabled
- * @property BasicDomainInterface[] $domains
- * @property BasicTemplateInterface[] $templates
- * @property ITOInterface $ito
- * @property CommonPoolValueInterface[] $values
+ * @property BasicDomain[] $domains
+ * @property BasicTemplate[] $templates
+ * @property ITO $ito
+ * @property CommonPoolValue[] $values
  */
-abstract class CommonPool extends AbstractModel implements CommonPoolInterface, ManagedModelInterface
+abstract class CommonPool extends AbstractModel
 {
     use ManagedModel;
 
-    /**
-     * @var PoolManagerInterface
-     */
-    protected $manager;
+    protected PoolManager $manager;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'type' => null,
     ];
 
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
         if (property_exists($data, 'type') && $data->type) {
@@ -56,14 +51,14 @@ abstract class CommonPool extends AbstractModel implements CommonPoolInterface, 
 
         $this->props['domains'] = [];
         if (property_exists($data, 'domains') && $data->domains) {
-            $this->props['domains'] = array_map(function($domainData) {
+            $this->props['domains'] = array_map(function ($domainData) {
                 return new BasicDomain($this->client->domains, $this->client, $domainData);
             }, $data->domains);
         }
 
         $this->props['templates'] = [];
         if (property_exists($data, 'templates') && $data->templates) {
-            $this->props['templates'] = array_map(function($templateData) {
+            $this->props['templates'] = array_map(function ($templateData) {
                 return new BasicTemplate($this->client->templates, $this->client, $templateData);
             }, $data->templates);
         }

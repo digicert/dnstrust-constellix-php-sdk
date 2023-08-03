@@ -29,5 +29,4 @@ use Spatie\Enum\Enum;
  */
 class RecordType extends Enum
 {
-
 }

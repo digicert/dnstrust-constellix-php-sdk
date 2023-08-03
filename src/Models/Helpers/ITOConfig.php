@@ -6,7 +6,6 @@ namespace Constellix\Client\Models\Helpers;
 
 use Constellix\Client\Enums\Pools\ITOHandicapFactor;
 use Constellix\Client\Enums\Pools\ITORegion;
-use Constellix\Client\Interfaces\Models\Helpers\ITOConfigInterface;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Traits\HelperModel;
 
@@ -20,10 +19,13 @@ use Constellix\Client\Traits\HelperModel;
  * @property ITORegion $monitoringRegion
  * @property ITOHandicapFactor $handicapFactor
  */
-class ITOConfig extends AbstractModel implements ITOConfigInterface
+class ITOConfig extends AbstractModel
 {
     use HelperModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'frequency' => null,
         'maximumNumberOfResults' => null,
@@ -32,6 +34,9 @@ class ITOConfig extends AbstractModel implements ITOConfigInterface
         'handicapFactor' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'frequency',
         'maximumNumberOfResults',
@@ -40,7 +45,7 @@ class ITOConfig extends AbstractModel implements ITOConfigInterface
         'handicapFactor',
     ];
 
-    public function __construct(?object $data = null)
+    public function __construct(?\stdClass $data = null)
     {
         $this->props['monitoringRegion'] = ITORegion::world();
         $this->props['handicapFactor'] = ITOHandicapFactor::none();

@@ -30,7 +30,7 @@ class HttpException extends ConstellixException
      * Set the request that caused the exception.
      * @param RequestInterface $request
      */
-    public function setRequest(RequestInterface $request)
+    public function setRequest(RequestInterface $request): void
     {
         $this->request = $request;
     }
@@ -48,7 +48,7 @@ class HttpException extends ConstellixException
      * Set the response that caused the exception.
      * @param ResponseInterface $response
      */
-    public function setResponse(ResponseInterface $response)
+    public function setResponse(ResponseInterface $response): void
     {
         $this->response = $response;
     }

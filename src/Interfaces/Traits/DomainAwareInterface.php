@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Interfaces\Traits;
 
-use Constellix\Client\Interfaces\Models\Common\CommonDomainInterface;
+use Constellix\Client\Models\Common\CommonDomain;
 
 /**
  * Trait for objects that know about domains
  *
  * @package Constellix\Client\Interfaces
  *
- * @property-read CommonDomainInterface $domain
+ * @property-read CommonDomain $domain
  */
 interface DomainAwareInterface
 {
-    public function setDomain(CommonDomainInterface $domain): DomainAwareInterface;
+    public function setDomain(CommonDomain $domain): DomainAwareInterface;
 }

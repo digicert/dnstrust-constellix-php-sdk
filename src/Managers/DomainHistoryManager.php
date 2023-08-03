@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\DomainHistoryManagerInterface;
-use Constellix\Client\Interfaces\Models\AbstractModelInterface;
-use Constellix\Client\Interfaces\Models\DomainHistoryInterface;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
+use Constellix\Client\Models\AbstractDomainHistory;
+use Constellix\Client\Models\DomainHistory;
 use Constellix\Client\Models\DomainSnapshot;
 use Constellix\Client\Traits\DomainAware;
 
@@ -15,7 +14,7 @@ use Constellix\Client\Traits\DomainAware;
  * Manages domain history resources.
  * @package Constellix\Client\Managers
  */
-class DomainHistoryManager extends AbstractManager implements DomainHistoryManagerInterface, DomainAwareInterface
+class DomainHistoryManager extends AbstractManager implements DomainAwareInterface
 {
     use DomainAware;
 
@@ -25,35 +24,39 @@ class DomainHistoryManager extends AbstractManager implements DomainHistoryManag
      */
     protected string $baseUri = '/domains/:domain_id/history';
 
-    public function get(int $version): DomainHistoryInterface
+    public function get(int $version): DomainHistory
     {
         return $this->getObject($version);
     }
 
     protected function getBaseUri(): string
     {
-        return str_replace(':domain_id', $this->domain->id, $this->baseUri);
+
+        return str_replace(':domain_id', (string)$this->domain->id, $this->baseUri);
     }
 
-    protected function createObject(?string $className = null): AbstractModelInterface
+    protected function createObject(?string $className = null): DomainHistory
     {
+        /**
+         * @var DomainHistory $object
+         */
         $object = parent::createObject($className);
         $object->setDomain($this->domain);
         return $object;
     }
 
-    protected function getIdPropertyName()
+    protected function getIdPropertyName(): string
     {
         return 'version';
     }
 
-    public function apply(DomainHistoryInterface $history)
+    public function apply(AbstractDomainHistory $history): void
     {
         $url = $this->getObjectUri($history) . "/apply";
         $this->client->post($url);
     }
 
-    public function snapshot(DomainHistoryInterface $history)
+    public function snapshot(AbstractDomainHistory $history): DomainSnapshot
     {
         $url = $this->getObjectUri($history) . "/snapshot";
         $this->client->post($url);

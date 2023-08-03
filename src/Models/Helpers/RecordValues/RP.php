@@ -9,6 +9,6 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class RP extends RecordValue
 {
     public bool $enabled = true;
-    public $mailbox;
-    public $txt;
+    public string $mailbox;
+    public string $txt;
 }

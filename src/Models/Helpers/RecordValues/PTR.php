@@ -9,5 +9,5 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class PTR extends RecordValue
 {
     public bool $enabled = true;
-    public $system;
+    public string $system;
 }

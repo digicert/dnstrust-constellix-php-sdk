@@ -11,8 +11,8 @@ class NAPTR extends RecordValue
     public bool $enabled = true;
     public int $order;
     public int $preference;
-    public $flags;
-    public $service;
-    public $regularExpression;
-    public $replacement;
+    public string $flags;
+    public string $service;
+    public string $regularExpression;
+    public string $replacement;
 }
