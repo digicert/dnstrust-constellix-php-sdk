@@ -6,7 +6,7 @@ namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
-use Constellix\Client\Models\Common\CommonTemplate;
+use Constellix\Client\Managers\TemplateManager;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -21,10 +21,12 @@ use Constellix\Client\Traits\ManagedModel;
  * @property \DateTime $createdAt
  * @property \DateTime $updatedAt
  */
-class Template extends CommonTemplate implements EditableModelInterface, ManagedModelInterface
+class Template extends AbstractModel implements EditableModelInterface, ManagedModelInterface
 {
     use EditableModel;
     use ManagedModel;
+
+    protected TemplateManager $manager;
 
     /**
      * @var array<mixed>

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Interfaces\Traits;
 
-use Constellix\Client\Models\Common\CommonTemplate;
+use Constellix\Client\Models\Template;
 
 /**
  * Trait for objects that know about templates.
  *
  * @package Constellix\Client\Interfaces
  *
- * @property-read CommonTemplate $template
+ * @property-read Template $template
  */
 interface TemplateAwareInterface
 {
-    public function setTemplate(CommonTemplate $template): TemplateAwareInterface;
+    public function setTemplate(Template $template): TemplateAwareInterface;
 }

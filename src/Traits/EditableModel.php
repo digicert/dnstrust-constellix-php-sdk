@@ -28,9 +28,4 @@ trait EditableModel
         }
         $this->manager->delete($this);
     }
-
-    public function refresh(): void
-    {
-        $this->manager->refresh($this);
-    }
 }

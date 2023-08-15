@@ -28,14 +28,4 @@ class ContactListManager extends AbstractManager
     {
         return $this->getObject($id);
     }
-
-    /**
-     * Return the name of the model class for the concise version of the resource.
-     * @return string
-     * @throws \ReflectionException
-     */
-    protected function getConciseModelClass(): string
-    {
-        return ConciseContactList::class;
-    }
 }

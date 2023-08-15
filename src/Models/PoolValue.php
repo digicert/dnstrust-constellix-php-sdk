@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Enums\Pools\PoolValuePolicy;
-use Constellix\Client\Models\Common\CommonPoolValue;
+use Constellix\Client\Traits\HelperModel;
 
 /**
  * Represents a value for a Pool
@@ -21,8 +21,10 @@ use Constellix\Client\Models\Common\CommonPoolValue;
  * @property-read bool $failed
  * @property-read float $speed
  */
-class PoolValue extends CommonPoolValue
+class PoolValue extends AbstractModel
 {
+    use HelperModel;
+
     /**
      * @var array<mixed>
      */
@@ -77,5 +79,14 @@ class PoolValue extends CommonPoolValue
         }
 
         return $payload;
+    }
+
+    public function __toString()
+    {
+        if ($this->value) {
+            return $this->value;
+        } else {
+            return 'PoolValue';
+        }
     }
 }

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Constellix\Client\Traits;
 
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
-use Constellix\Client\Models\Common\CommonDomain;
+use Constellix\Client\Models\Domain;
 
 trait DomainAware
 {
-    protected CommonDomain $domain;
+    protected Domain $domain;
 
-    public function setDomain(CommonDomain $domain): DomainAwareInterface
+    public function setDomain(Domain $domain): DomainAwareInterface
     {
         $this->domain = $domain;
         return $this;

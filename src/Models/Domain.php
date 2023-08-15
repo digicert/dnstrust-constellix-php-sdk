@@ -12,14 +12,6 @@ use Constellix\Client\Managers\DomainHistoryManager;
 use Constellix\Client\Managers\DomainManager;
 use Constellix\Client\Managers\DomainRecordManager;
 use Constellix\Client\Managers\DomainSnapshotManager;
-use Constellix\Client\Models\Basic\BasicContactList;
-use Constellix\Client\Models\Basic\BasicVanityNameserver;
-use Constellix\Client\Models\Common\CommonContactList;
-use Constellix\Client\Models\Common\CommonDomain;
-use Constellix\Client\Models\Basic\BasicTemplate;
-use Constellix\Client\Models\Common\CommonTemplate;
-use Constellix\Client\Models\Common\CommonVanityNameserver;
-use Constellix\Client\Models\Concise\ConciseContactList;
 use Constellix\Client\Models\Helpers\SOA;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
@@ -37,13 +29,16 @@ use Constellix\Client\Traits\ManagedModel;
  * @property bool $gtd
  * @property string $nameservers
  * @property Tag[] $tags
- * @property ?CommonTemplate $template
- * @property ?CommonVanityNameserver $vanityNameserver
- * @property CommonContactList[] $contacts
+ * @property ?Template $template
+ * @property ?VanityNameserver $vanityNameserver
+ * @property ContactList[] $contacts
  * @property-read \DateTime $createdAt
  * @property-read \DateTime $updatedAt
+ * @property-read DomainSnapshotManager $snapshots
+ * @property-read DomainHistoryManager $history
+ * @property-read DomainRecordManager $records
  */
-class Domain extends CommonDomain implements EditableModelInterface, ManagedModelInterface
+class Domain extends AbstractModel implements EditableModelInterface, ManagedModelInterface
 {
     use EditableModel;
     use ManagedModel;
@@ -82,6 +77,11 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
         'tags',
 
     ];
+
+    protected DomainManager $manager;
+    protected ?DomainSnapshotManager $snapshots = null;
+    protected ?DomainHistoryManager $history = null;
+    protected ?DomainRecordManager $records = null;
 
     protected function setInitialProperties(): void
     {
@@ -161,7 +161,7 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
         return $this;
     }
 
-    protected function hasContactList(CommonContactList $contactList): bool
+    protected function hasContactList(ContactList $contactList): bool
     {
         foreach ($this->contacts as $index => $contact) {
             if ($contactList->id == $contact->id) {
@@ -171,7 +171,7 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
         return false;
     }
 
-    public function addContactList(CommonContactList $contactList): self
+    public function addContactList(ContactList $contactList): self
     {
         if (!$this->hasContactList($contactList)) {
             $contacts = $this->contacts;
@@ -181,7 +181,7 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
         return $this;
     }
 
-    public function removeContactList(CommonContactList $contactList): self
+    public function removeContactList(ContactList $contactList): self
     {
         $contacts = $this->contacts;
         foreach ($contacts as $index => $contact) {
@@ -194,33 +194,33 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
         return $this;
     }
 
-    protected function setTemplate(int|CommonTemplate|null $template): void
+    protected function setTemplate(int|Template|null $template): void
     {
         if ($template === null) {
             return;
         }
         if (is_integer($template)) {
-            $template = new BasicTemplate($this->client->templates, $this->client, (object) [
+            $template = new Template($this->client->templates, $this->client, (object) [
                 'id' => $template,
             ]);
         }
-        if ($template instanceof CommonTemplate) {
+        if ($template instanceof Template) {
             $this->props['template'] = $template;
             $this->changed[] = 'template';
         }
     }
 
-    protected function setVanityNameserver(int|CommonVanityNameserver|null $nameserver): void
+    protected function setVanityNameserver(int|VanityNameserver|null $nameserver): void
     {
         if ($nameserver === null) {
             return;
         }
         if (is_integer($nameserver)) {
-            $nameserver = new BasicVanityNameserver($this->client->vanitynameservers, $this->client, (object) [
+            $nameserver = new VanityNameserver($this->client->vanitynameservers, $this->client, (object) [
                 'id' => $nameserver,
             ]);
         }
-        if ($nameserver instanceof CommonVanityNameserver) {
+        if ($nameserver instanceof VanityNameserver) {
             $this->props['vanityNameserver'] = $nameserver;
             $this->changed[] = 'vanityNameserver';
         }
@@ -237,11 +237,11 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
         }
 
         if (property_exists($data, 'vanityNameserver') && $data->vanityNameserver) {
-            $this->props['vanityNameserver'] = new BasicVanityNameserver($this->client->vanitynameservers, $this->client, $data->vanityNameserver);
+            $this->props['vanityNameserver'] = new VanityNameserver($this->client->vanitynameservers, $this->client, $data->vanityNameserver);
         }
 
         if (property_exists($data, 'template') && $data->template) {
-            $this->props['template'] = new BasicTemplate($this->client->templates, $this->client, $data->template);
+            $this->props['template'] = new Template($this->client->templates, $this->client, $data->template);
         }
 
         if (property_exists($data, 'soa') && $data->soa) {
@@ -250,7 +250,7 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
 
         if (property_exists($data, 'contacts') && $data->contacts) {
             $this->props['contacts'] = array_map(function ($data) {
-                return new BasicContactList($this->client->contactlists, $this->client, $data);
+                return new ContactList($this->client->contactlists, $this->client, $data);
             }, $data->contacts);
         }
 
@@ -259,5 +259,41 @@ class Domain extends CommonDomain implements EditableModelInterface, ManagedMode
                 return new Tag($this->client->tags, $this->client, $data);
             }, $data->tags);
         }
+    }
+
+    protected function getHistory(): DomainHistoryManager
+    {
+        if (!$this->id) {
+            throw new ConstellixException('Domain must be created before you can access history');
+        }
+        if ($this->history === null) {
+            $this->history = new DomainHistoryManager($this->client);
+            $this->history->setDomain($this);
+        }
+        return $this->history;
+    }
+
+    protected function getSnapshots(): DomainSnapshotManager
+    {
+        if (!$this->id) {
+            throw new ConstellixException('Domain must be created before you can access snapshots');
+        }
+        if ($this->snapshots === null) {
+            $this->snapshots = new DomainSnapshotManager($this->client);
+            $this->snapshots->setDomain($this);
+        }
+        return $this->snapshots;
+    }
+
+    protected function getRecords(): DomainRecordManager
+    {
+        if (!$this->id) {
+            throw new ConstellixException('Domain must be created before you can access records');
+        }
+        if ($this->records === null) {
+            $this->records = new DomainRecordManager($this->client);
+            $this->records->setDomain($this);
+        }
+        return $this->records;
     }
 }

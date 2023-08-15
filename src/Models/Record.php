@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
+use Constellix\Client\Enums\Pools\PoolType;
 use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Enums\Records\RecordType;
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
+use Constellix\Client\Managers\AbstractManager;
 use Constellix\Client\Models\Basic\BasicPool;
 use Constellix\Client\Models\Helpers\RecordValue;
 use Constellix\Client\Models\Helpers\RecordValues\CAA;
@@ -28,6 +30,8 @@ use Constellix\Client\Models\Helpers\RecordValues\Standard;
 use Constellix\Client\Models\Helpers\RecordValues\TXT;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
+
+use function Symfony\Component\String\s;
 
 /**
  * Represents a Record resource.
@@ -111,13 +115,13 @@ abstract class Record extends AbstractModel implements EditableModelInterface
     /**
      * @param RecordType $type
      * @param RecordMode $mode
-     * @param array<mixed> $data
+     * @param mixed $data
      * @return mixed
      */
-    protected function parseValue(RecordType $type, RecordMode $mode, array $data): mixed
+    protected function parseValue(RecordType $type, RecordMode $mode, mixed $data): mixed
     {
         // Special case - this is not an array of values
-        if ($type == RecordType::HTTP()) {
+        if ($type === RecordType::HTTP()) {
             return new HttpRedirection($data);
         }
 
@@ -126,7 +130,7 @@ abstract class Record extends AbstractModel implements EditableModelInterface
                 // Intentionally continuing
             case RecordType::AAAA():
                 // A and AAAA have RoundRobinFailover as modes
-                if ($mode == RecordMode::ROUNDROBINFAILOVER()) {
+                if ($mode === RecordMode::ROUNDROBINFAILOVER()) {
                     return array_map(function ($value) {
                         return new RoundRobinFailover($value);
                     }, $data);
@@ -143,8 +147,16 @@ abstract class Record extends AbstractModel implements EditableModelInterface
 
                     case RecordMode::POOLS():
                         return array_map(function ($value) {
-                            return new PoolRecordValue([
-                                'pool' => new BasicPool($this->client->pools, $this->client, $value),
+                            $matches = [];
+                            preg_match('/\/pools\/(?<type>.*)\/\d+$/', $value->links->self, $matches);
+                            $value = (object) [
+                                'id' => $value->id,
+                                'name' => $value->name,
+                                'type' => $matches['type'],
+                            ];
+                            dump($value);
+                            return new PoolRecordValue((object) [
+                                'pool' => new Pool($this->client->pools, $this->client, $value),
                             ]);
                         }, $data);
 

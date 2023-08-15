@@ -34,4 +34,16 @@ trait ManagedModel
             $this->populateFromApi($data);
         }
     }
+
+    /**
+     * Refresh the object with the representation from the API
+     * @return void
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     */
+    public function refresh(): void
+    {
+        $this->manager->refresh($this);
+        // A refresh should fully load the object
+        $this->fullyLoaded = true;
+    }
 }

@@ -81,8 +81,8 @@ abstract class AbstractManager
         }
         $items = array_map(
             function ($data) {
-                $data = $this->transformConciseApiData($data);
-                return $this->createExistingObject($data, $this->getConciseModelClass());
+                $data = $this->transformApiData($data);
+                return $this->createExistingObject($data, $this->getModelClass());
                 ;
             },
             $data->data
@@ -225,23 +225,13 @@ abstract class AbstractManager
     }
 
     /**
-     * Return the name of the model class for the concise version of the resource.
-     * @return string
-     * @throws \ReflectionException
-     */
-    protected function getConciseModelClass(): string
-    {
-        return $this->getModelClass();
-    }
-
-    /**
      * Returns a string ID to give a unique ID to this resource.
      * @param mixed $input
      * @param ?string $name
      * @return string
      * @throws \ReflectionException
      */
-    protected function getObjectId(mixed $input, string $name = null)
+    protected function getObjectId(mixed $input, ?string $name = null)
     {
         if ($name === null) {
             $name = $this->getModelClass();
@@ -359,15 +349,5 @@ abstract class AbstractManager
     protected function transformApiData(\stdClass $data): \stdClass
     {
         return $data;
-    }
-
-    /**
-     * Applies transformations to the concise API data before it is used to instantiate a model.
-     * @param \stdClass $data
-     * @return \stdClass
-     */
-    protected function transformConciseApiData(\stdClass $data): \stdClass
-    {
-        return $this->transformApiData($data);
     }
 }

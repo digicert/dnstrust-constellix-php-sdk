@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Models\VanityNameserver;
 
 /**

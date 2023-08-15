@@ -79,14 +79,4 @@ class PoolManager extends AbstractManager
         }
         return $this->transformApiData($data->data);
     }
-
-    /**
-     * Return the name of the model class for the concise version of the resource.
-     * @return string
-     * @throws \ReflectionException
-     */
-    protected function getConciseModelClass(): string
-    {
-        return ConcisePool::class;
-    }
 }

@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
-use Constellix\Client\Models\Common\CommonVanityNameserver;
+use Constellix\Client\Managers\VanityNameserverManager;
 use Constellix\Client\Traits\EditableModel;
+use Constellix\Client\Traits\ManagedModel;
 
 /**
  * Represents a Vanity Nameserver resource.
@@ -18,9 +19,12 @@ use Constellix\Client\Traits\EditableModel;
  * @property object{'id': int} $nameserverGroup
  * @property string[] $nameservers;
  */
-class VanityNameserver extends CommonVanityNameserver implements EditableModelInterface
+class VanityNameserver extends AbstractModel implements EditableModelInterface
 {
     use EditableModel;
+    use ManagedModel;
+
+    protected VanityNameserverManager $manager;
 
     /**
      * @var array<mixed>

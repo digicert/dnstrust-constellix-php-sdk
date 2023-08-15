@@ -7,9 +7,9 @@ namespace Constellix\Client\Models\Helpers;
 abstract class RecordValue
 {
     /**
-     * @param array<mixed> $data
+     * @param \stdClass $data
      */
-    public function __construct(array $data = [])
+    public function __construct(\stdClass $data = null)
     {
         if ($data) {
             $this->populateFromApi($data);
@@ -17,22 +17,22 @@ abstract class RecordValue
     }
 
     /**
-     * @param array<mixed> $data
-     * @return array<mixed>
+     * @param \stdClass $data
+     * @return \stdClass
      */
-    protected function parseApiData(array $data): array
+    protected function parseApiData(\stdClass $data): \stdClass
     {
         return $data;
     }
 
     /**
-     * @param array<mixed> $data
+     * @param \stdClass $data
      * @return self
      */
-    public function populateFromApi(array $data): self
+    public function populateFromApi(\stdClass $data): self
     {
         $data = $this->parseApiData($data);
-        foreach ($data as $prop => $name) {
+        foreach ((array) $data as $prop => $name) {
             $this->{$prop} = $name;
         }
         return $this;

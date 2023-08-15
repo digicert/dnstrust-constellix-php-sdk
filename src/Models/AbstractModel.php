@@ -39,6 +39,12 @@ abstract class AbstractModel implements JsonSerializable
     protected array $props = [];
 
     /**
+     * The properties that we have loaded
+     * @var array<string>
+     */
+    protected array $loadedProps = [];
+
+    /**
      * The original properties from when the object was instantiated/last loaded from the API.
      * @var array<mixed>
      */
@@ -55,6 +61,12 @@ abstract class AbstractModel implements JsonSerializable
      * @var ?\stdClass
      */
     protected ?\stdClass $apiData = null;
+
+    /**
+     * Have we fully loaded this object?
+     * @var bool
+     */
+    protected bool $fullyLoaded = false;
 
     /**
      * Allow easy custom initialisation of properties in models.
@@ -108,6 +120,10 @@ abstract class AbstractModel implements JsonSerializable
     protected function parseApiData(\stdClass $data): void
     {
         foreach ((array)$data as $prop => $value) {
+            if (!in_array($prop, $this->loadedProps)) {
+                $this->loadedProps[] = $prop;
+            }
+            $this->loadedProps[] = $prop;
             try {
                 $this->{$prop} = $value;
             } catch (ReadOnlyPropertyException $ex) {
@@ -180,6 +196,9 @@ abstract class AbstractModel implements JsonSerializable
         if (method_exists($this, $methodName)) {
             return $this->{$methodName}();
         } elseif (array_key_exists($name, $this->props)) {
+            if (!in_array($name, $this->loadedProps) && !$this->fullyLoaded) {
+                $this->loadFulLObject();
+            }
             return $this->props[$name];
         }
         return null;
@@ -203,9 +222,33 @@ abstract class AbstractModel implements JsonSerializable
             $this->{$methodName}($value);
         } elseif (in_array($name, $this->editable)) {
             $this->props[$name] = $value;
+            if (!in_array($name, $this->loadedProps)) {
+                $this->loadedProps[] = $name;
+            }
             $this->changed[] = $name;
         } elseif (array_key_exists($name, $this->props)) {
             throw new ReadOnlyPropertyException("Unable to set {$name}");
         }
+    }
+
+    /**
+     * Load the full object from the API
+     * @return void
+     */
+    protected function loadFullObject(): void
+    {
+        if ($this->fullyLoaded) {
+            return;
+        }
+        if ($this->id === null) {
+            return;
+        }
+        $this->refresh();
+        $this->fullyLoaded = true;
+    }
+
+    public function refresh(): void
+    {
+        // Do nothing by default
     }
 }

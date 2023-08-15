@@ -7,13 +7,10 @@ namespace Constellix\Client\Models;
 use Constellix\Client\Enums\Pools\PoolType;
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
-use Constellix\Client\Models\Basic\BasicDomain;
-use Constellix\Client\Models\Basic\BasicTemplate;
-use Constellix\Client\Models\Common\CommonContactList;
-use Constellix\Client\Models\Common\CommonPool;
-use Constellix\Client\Models\Basic\BasicContactList;
+use Constellix\Client\Managers\PoolManager;
 use Constellix\Client\Models\Helpers\ITO;
 use Constellix\Client\Traits\EditableModel;
+use Constellix\Client\Traits\ManagedModel;
 
 /**
  * Represents a Pool resource.
@@ -25,15 +22,18 @@ use Constellix\Client\Traits\EditableModel;
  * @property int $minimumFailover
  * @property-read bool $failed
  * @property bool $enabled
- * @property-read BasicDomain[] $domains
- * @property-read BasicTemplate[] $templates
- * @property CommonContactList[] $contacts
+ * @property-read Domain[] $domains
+ * @property-read Template[] $templates
+ * @property ContactList[] $contacts
  * @property ITO $ito
  * @property PoolValue[] $values
  */
-class Pool extends CommonPool implements EditableModelInterface
+class Pool extends AbstractModel implements EditableModelInterface
 {
     use EditableModel;
+    use ManagedModel;
+
+    protected PoolManager $manager;
 
     /**
      * @var array<mixed>
@@ -83,6 +83,27 @@ class Pool extends CommonPool implements EditableModelInterface
     protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
+        if (property_exists($data, 'type') && $data->type) {
+            $this->props['type'] = PoolType::make($data->type);
+        }
+
+        $this->props['domains'] = [];
+        if (property_exists($data, 'domains') && $data->domains) {
+            $this->props['domains'] = array_map(function ($domainData) {
+                return new Domain($this->client->domains, $this->client, $domainData);
+            }, $data->domains);
+        }
+
+        $this->props['templates'] = [];
+        if (property_exists($data, 'templates') && $data->templates) {
+            $this->props['templates'] = array_map(function ($templateData) {
+                return new Template($this->client->templates, $this->client, $templateData);
+            }, $data->templates);
+        }
+
+        if (property_exists($data, 'ito') && $data->ito) {
+            $this->props['ito'] = new ITO($data->ito);
+        }
 
         $this->props['values'] = [];
         if (property_exists($data, 'values') && $data->values) {
@@ -94,7 +115,7 @@ class Pool extends CommonPool implements EditableModelInterface
         $this->props['contacts'] = [];
         if (property_exists($data, 'contacts') && $data->contacts) {
             $this->props['values'] = array_map(function ($contactData) {
-                return new BasicContactList($this->client->contactlists, $this->client, $contactData);
+                return new ContactList($this->client->contactlists, $this->client, $contactData);
             }, $data->contacts);
         }
     }
@@ -110,14 +131,14 @@ class Pool extends CommonPool implements EditableModelInterface
         $payload->values = array_map(function ($value) {
             return $value->transformForApi();
         }, $this->values);
-        $payload->contacts = array_map(function (CommonContactList $contact) {
+        $payload->contacts = array_map(function (ContactList $contact) {
             return $contact->id;
         }, $this->contacts);
 
         return $payload;
     }
 
-    protected function hasContactList(CommonContactList $contactList): bool
+    protected function hasContactList(ContactList $contactList): bool
     {
         foreach ($this->contacts as $list) {
             if ($list->id == $contactList->id) {
@@ -127,7 +148,7 @@ class Pool extends CommonPool implements EditableModelInterface
         return false;
     }
 
-    public function addContactList(CommonContactList $contactList): self
+    public function addContactList(ContactList $contactList): self
     {
         if ($this->hasContactList($contactList)) {
             return $this;
@@ -139,7 +160,7 @@ class Pool extends CommonPool implements EditableModelInterface
         return $this;
     }
 
-    public function removeContactList(CommonContactList $contactList): self
+    public function removeContactList(ContactList $contactList): self
     {
         if (!$this->hasContactList($contactList)) {
             return $this;

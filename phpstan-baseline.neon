@@ -121,32 +121,12 @@ parameters:
 			path: src/Models/AbstractDomainHistory.php
 
 		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonContactList\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\ContactListManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\ContactList\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\ContactListManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
 			count: 1
-			path: src/Models/Common/CommonContactList.php
+			path: src/Models/ContactList.php
 
 		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonDomain\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\DomainManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
-			count: 1
-			path: src/Models/Common/CommonDomain.php
-
-		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonPool\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\PoolManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
-			count: 1
-			path: src/Models/Common/CommonPool.php
-
-		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonTemplate\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\TemplateManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
-			count: 1
-			path: src/Models/Common/CommonTemplate.php
-
-		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonVanityNameserver\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\VanityNameserverManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
-			count: 1
-			path: src/Models/Common/CommonVanityNameserver.php
-
-		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonDomain\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\DomainManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Domain\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\DomainManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
 			count: 1
 			path: src/Models/Domain.php
 
@@ -161,6 +141,11 @@ parameters:
 			path: src/Models/IPFilter.php
 
 		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Pool\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\PoolManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/Pool.php
+
+		-
 			message: "#^Access to an undefined property Constellix\\\\Client\\\\Models\\\\Record\\:\\:\\$manager\\.$#"
 			count: 4
 			path: src/Models/Record.php
@@ -171,6 +156,11 @@ parameters:
 			path: src/Models/Tag.php
 
 		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\Common\\\\CommonTemplate\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\TemplateManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Template\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\TemplateManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
 			count: 1
 			path: src/Models/Template.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\VanityNameserver\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\VanityNameserverManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/VanityNameserver.php

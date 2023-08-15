@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
-use Constellix\Client\Models\Common\CommonContactList;
+use Constellix\Client\Managers\ContactListManager;
 use Constellix\Client\Traits\EditableModel;
+use Constellix\Client\Traits\ManagedModel;
 
 /**
  * Represents a Contact List resource.
@@ -14,9 +15,12 @@ use Constellix\Client\Traits\EditableModel;
  *
  * @property \stdClass[] $emails
  */
-class ContactList extends CommonContactList implements EditableModelInterface
+class ContactList extends AbstractModel implements EditableModelInterface
 {
     use EditableModel;
+    use ManagedModel;
+
+    protected ContactListManager $manager;
 
     /**
      * @var array<mixed>
