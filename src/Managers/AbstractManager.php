@@ -52,7 +52,9 @@ abstract class AbstractManager
         }
 
         $data = $this->getFromApi($id);
-        return $this->createExistingObject($data, $this->getModelClass());
+        $object = $this->createExistingObject($data, $this->getModelClass());
+        $object->fullyLoaded = true;
+        return $object;
     }
 
     /**
@@ -73,7 +75,7 @@ abstract class AbstractManager
     {
         $params = $filters + [
                 'page' => $page,
-                'per_page' => $perPage,
+                'perPage' => $perPage,
             ];
         $data = $this->client->get($this->getBaseUri(), $params);
         if (!$data) {
@@ -154,7 +156,7 @@ abstract class AbstractManager
     {
         $idProperty = $this->getIdPropertyName();
         if ($object->{$idProperty}) {
-            $data = $this->client->post($this->getObjectUri($object), $object->transformForApi());
+            $data = $this->client->put($this->getObjectUri($object), $object->transformForApi());
             if (!$data) {
                 throw new ConstellixException('No data returned from API');
             }
@@ -338,6 +340,7 @@ abstract class AbstractManager
         }
 
         $data = $this->getFromApi($object->id);
+        $object->fullyLoaded = true;
         $object->populateFromApi($data);
     }
 

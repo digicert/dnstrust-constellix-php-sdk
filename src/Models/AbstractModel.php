@@ -65,8 +65,9 @@ abstract class AbstractModel implements JsonSerializable
     /**
      * Have we fully loaded this object?
      * @var bool
+     * @internal
      */
-    protected bool $fullyLoaded = false;
+    public bool $fullyLoaded = false;
 
     /**
      * Allow easy custom initialisation of properties in models.
@@ -124,6 +125,10 @@ abstract class AbstractModel implements JsonSerializable
                 $this->loadedProps[] = $prop;
             }
             $this->loadedProps[] = $prop;
+            // We skip loading the data if we've changed this property locally
+            if (in_array($prop, $this->changed)) {
+                continue;
+            }
             try {
                 $this->{$prop} = $value;
             } catch (ReadOnlyPropertyException $ex) {
@@ -159,6 +164,7 @@ abstract class AbstractModel implements JsonSerializable
      */
     public function jsonSerialize(): \stdClass
     {
+        $this->loadFullObject();
         $result = (object)[
             'id' => $this->id,
         ];

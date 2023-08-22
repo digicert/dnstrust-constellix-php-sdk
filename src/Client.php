@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client;
 
+use Carbon\Carbon;
 use Constellix\Client\Exceptions\Client\Http\AuthenticationException;
 use Constellix\Client\Exceptions\Client\Http\BadRequestException;
 use Constellix\Client\Exceptions\Client\Http\HttpException;
@@ -23,7 +24,6 @@ use Constellix\Client\Managers\TemplateManager;
 use Constellix\Client\Managers\VanityNameserverManager;
 use Constellix\Client\Pagination\Factories\PaginatorFactory;
 use DateTime;
-use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Client\ClientInterface as HttpClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -46,21 +46,21 @@ class Client implements LoggerAwareInterface
 {
     /**
      * The HTTP Client for all requests.
-     * @var HttpClientInterface
+     * @var null|HttpClientInterface
      */
-    protected HttpClientInterface $client;
+    protected ?HttpClientInterface $client = null;
 
     /**
      * The Constellix API Key
-     * @var string
+     * @var null|string
      */
-    protected string $apiKey;
+    protected ?string $apiKey = null;
 
     /**
      * The Constellix Secret Key
-     * @var string
+     * @var null|string
      */
-    protected string $secretKey;
+    protected ?string $secretKey = null;
 
     /**
      * The Constellix API Endpoint
@@ -105,19 +105,19 @@ class Client implements LoggerAwareInterface
      * The request limit on the API.
      * @var int|null
      */
-    protected ?int $requestLimit;
+    protected ?int $requestLimit = null;
 
     /**
      * The number of requests remaining until the limit is hit.
      * @var int|null
      */
-    protected ?int $requestsRemaining;
+    protected ?int $requestsRemaining = null;
 
     /**
      * The time that the request limit resets
-     * @var DateTime|null
+     * @var Carbon|null
      */
-    protected ?DateTime $limitReset;
+    protected ?Carbon $limitReset = null;
 
     /**
      * Creates a new client.
@@ -131,17 +131,15 @@ class Client implements LoggerAwareInterface
         ?PaginatorFactoryInterface $paginatorFactory = null,
         ?LoggerInterface $logger = null
     ) {
-        // If we weren't given a HTTP client, create a new Guzzle client.
-        if ($client === null) {
-            $client = new HttpClient();
-        }
 
         // If we don't have a paginator factory, use our own.
         if ($paginatorFactory === null) {
             $this->paginatorFactory = new PaginatorFactory();
         }
 
-        $this->setHttpClient($client);
+        if ($client) {
+            $this->setHttpClient($client);
+        }
 
         // If we don't have a logger, use the null logger.
         if ($logger === null) {
@@ -165,7 +163,7 @@ class Client implements LoggerAwareInterface
         $this->client = $client;
     }
 
-    public function getHttpClient(): HttpClientInterface
+    public function getHttpClient(): ?HttpClientInterface
     {
         return $this->client;
     }
@@ -185,7 +183,7 @@ class Client implements LoggerAwareInterface
         $this->apiKey = $key;
     }
 
-    public function getApiKey(): string
+    public function getApiKey(): ?string
     {
         return $this->apiKey;
     }
@@ -195,7 +193,7 @@ class Client implements LoggerAwareInterface
         $this->secretKey = $key;
     }
 
-    public function getSecretKey(): string
+    public function getSecretKey(): ?string
     {
         return $this->secretKey;
     }
@@ -274,6 +272,9 @@ class Client implements LoggerAwareInterface
 
     public function send(RequestInterface $request): ?\stdClass
     {
+        if (!$this->client) {
+            throw new ConstellixException('No HTTP client has been specified');
+        }
         $this->logger->debug("[Constellix] API Request: {$request->getMethod()} {$request->getUri()}");
 
         $request = $request->withHeader('Accept', 'application/json');
@@ -284,9 +285,15 @@ class Client implements LoggerAwareInterface
         $this->updateLimits($response);
         $statusCode = $response->getStatusCode();
         if ((int)substr((string)$statusCode, 0, 1) <= 3) {
-            $body = json_decode((string) $response->getBody());
-            if ($body === false) {
-                throw new JsonDecodeException('Failed to decode request');
+            $body = (string)$response->getBody();
+            if ($body) {
+                try {
+                    $body = json_decode(json: $body, flags: JSON_THROW_ON_ERROR);
+                } catch (\JsonException) {
+                    throw new JsonDecodeException('Failed to decode request');
+                }
+            } else {
+                $body = null;
             }
             return $body;
         } else {
@@ -314,17 +321,9 @@ class Client implements LoggerAwareInterface
     protected function updateLimits(ResponseInterface $response): void
     {
         $this->requestsRemaining = (int)current($response->getHeader('X-RateLimit-Remaining'));
-        if (!$this->requestsRemaining) {
-            $this->requestsRemaining = null;
-        }
-
         $this->requestLimit = (int)current($response->getHeader('X-RateLimit-Limit'));
-        if (!$this->requestLimit) {
-            $this->requestLimit = null;
-        }
-
         $reset = (int)current($response->getHeader('X-RateLimit-Reset'));
-        $this->limitReset = new DateTime('@' . (time() + $reset));
+        $this->limitReset = Carbon::now()->addSeconds($reset);
     }
 
     /**
@@ -347,9 +346,9 @@ class Client implements LoggerAwareInterface
 
     /**
      * Get the datetime that the request limit resets.
-     * @return DateTime|null
+     * @return Carbon|null
      */
-    public function getLimitReset(): ?DateTime
+    public function getLimitReset(): ?Carbon
     {
         return $this->limitReset;
     }
@@ -362,9 +361,9 @@ class Client implements LoggerAwareInterface
      */
     protected function addAuthHeaders(RequestInterface $request): RequestInterface
     {
-        $now = new DateTime('now', new \DateTimeZone('UTC'));
+        $now = Carbon::now('UTC');
         $timestamp = (string) ($now->getTimestamp() * 1000);
-        $hmac = base64_encode(hash_hmac('sha1', $timestamp, $this->getSecretKey(), true));
+        $hmac = base64_encode(hash_hmac('sha1', $timestamp, (string)$this->getSecretKey(), true));
 
         $request = $request->withHeader('Authorization', "Bearer {$this->getApiKey()}:{$hmac}:{$timestamp}");
         return $request;
@@ -385,14 +384,9 @@ class Client implements LoggerAwareInterface
      * Gets the manager with the specified name.
      * @param string $name
      * @return AbstractManager
-     * @throws ManagerNotFoundException
      */
     protected function getManager(string $name): AbstractManager
     {
-        if (!$this->hasManager($name)) {
-            throw new ManagerNotFoundException();
-        }
-
         $name = strtolower($name);
 
         if (!isset($this->managers[$name])) {
@@ -416,6 +410,8 @@ class Client implements LoggerAwareInterface
         // If we have a manager with this name, return it.
         if ($this->hasManager($name)) {
             return $this->getManager($name);
+        } else {
+            throw new ManagerNotFoundException();
         }
     }
 }

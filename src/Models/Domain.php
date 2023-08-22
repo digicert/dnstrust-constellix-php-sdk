@@ -194,7 +194,7 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         return $this;
     }
 
-    protected function setTemplate(int|Template|null $template): void
+    protected function setTemplate(mixed $template): void
     {
         if ($template === null) {
             return;
@@ -204,13 +204,16 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
                 'id' => $template,
             ]);
         }
+        if ($template instanceof \stdClass) {
+            $template = new Template($this->client->templates, $this->client, $template);
+        }
         if ($template instanceof Template) {
             $this->props['template'] = $template;
             $this->changed[] = 'template';
         }
     }
 
-    protected function setVanityNameserver(int|VanityNameserver|null $nameserver): void
+    protected function setVanityNameserver(mixed $nameserver): void
     {
         if ($nameserver === null) {
             return;
@@ -219,6 +222,9 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
             $nameserver = new VanityNameserver($this->client->vanitynameservers, $this->client, (object) [
                 'id' => $nameserver,
             ]);
+        }
+        if ($nameserver instanceof \stdClass) {
+            $nameserver = new VanityNameserver($this->client->vanitynameservers, $this->client, $nameserver);
         }
         if ($nameserver instanceof VanityNameserver) {
             $this->props['vanityNameserver'] = $nameserver;

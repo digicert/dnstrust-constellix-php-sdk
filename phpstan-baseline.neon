@@ -164,3 +164,8 @@ parameters:
 			message: "#^Property Constellix\\\\Client\\\\Models\\\\VanityNameserver\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\VanityNameserverManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
 			count: 1
 			path: src/Models/VanityNameserver.php
+
+		-
+			message: "#^Access to an undefined property Constellix\\\\Client\\\\Client\\:\\:\\$nonExistentManager\\.$#"
+			count: 1
+			path: tests/Unit/ClientTest.php

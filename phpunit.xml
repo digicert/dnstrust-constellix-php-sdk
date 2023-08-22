@@ -13,4 +13,10 @@
       <directory suffix=".php">src/</directory>
     </include>
   </source>
+  <coverage includeUncoveredFiles="true">
+    <report>
+      <clover outputFile="clover.xml" />
+      <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90" />
+    </report>
+  </coverage>
 </phpunit>

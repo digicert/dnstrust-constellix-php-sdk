@@ -17,7 +17,7 @@ class PaginatorFactory implements PaginatorFactoryInterface
     /**
      * Returns a paginator based on the supplied items and parameters.
      *
-     * @param array<object> $items
+     * @param array<mixed> $items
      * @param int $totalItems
      * @param int $perPage
      * @param int $currentPage

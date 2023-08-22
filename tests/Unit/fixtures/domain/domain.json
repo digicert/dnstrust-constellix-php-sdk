@@ -1,0 +1,65 @@
+{
+  "data": {
+    "id": 366246,
+    "name": "example.com",
+    "note": "My Domain",
+    "status": "ACTIVE",
+    "enabled": true,
+    "version": 3,
+    "soa": {
+      "primaryNameserver": "ns11.constellix.com",
+      "email": "admin.example.com",
+      "ttl": 86400,
+      "serial": 2020061601,
+      "refresh": 86400,
+      "retry": 7200,
+      "expire": 3600000,
+      "negativeCache": 180
+    },
+    "geoip": true,
+    "gtd": true,
+    "nameservers": [
+      "ns11.constellix.com",
+      "ns21.constellix.com",
+      "ns31.constellix.com"
+    ],
+    "tags": [
+      {
+        "id": 824,
+        "name": "My Tag",
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/tags/824"
+        }
+      }
+    ],
+    "template": {
+      "id": 83675283,
+      "name": "My Template",
+      "version": 3,
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/templates/83675283",
+        "records": "https://api.dns.constellix.com/v4/records?template=83675283"
+      }
+    },
+    "vanityNameserver": {
+      "id": 82648967,
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/vanitynameservers/82648967"
+      }
+    },
+    "contacts": [
+      {
+        "id": 2668228,
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+        }
+      }
+    ],
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/domains/366246",
+      "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+    }
+  }
+}
