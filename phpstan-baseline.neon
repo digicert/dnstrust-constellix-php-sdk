@@ -116,7 +116,7 @@ parameters:
 			path: src/Managers/VanityNameserverManager.php
 
 		-
-			message: "#^Property Constellix\\\\Client\\\\Models\\\\AbstractDomainHistory\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\DomainHistoryManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			message: "#^Call to an undefined method Constellix\\\\Client\\\\Managers\\\\AbstractManager\\:\\:apply\\(\\)\\.$#"
 			count: 1
 			path: src/Models/AbstractDomainHistory.php
 

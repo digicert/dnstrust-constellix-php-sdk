@@ -9,7 +9,6 @@ use Constellix\Client\Exceptions\Client\Http\NotFoundException;
 use Constellix\Client\Exceptions\Client\ModelNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Models\AbstractModel;
-use Constellix\Client\Models\Concise\ConcisePool;
 use Constellix\Client\Models\Pool;
 
 /**
@@ -29,9 +28,15 @@ class PoolManager extends AbstractManager
         return $this->createObject();
     }
 
+    protected function getObjectId(mixed $input, ?string $name = null)
+    {
+        $input = (array)$input;
+        return "Pool:{$input['type']}:{$input['id']}";
+    }
+
     public function get(PoolType $type, int $id): Pool
     {
-        $objectId = $this->getObjectId($type->value . $id);
+        $objectId = $this->getObjectId(['type' => $type->value, 'id' => $id]);
         if ($this->getFromCache($objectId)) {
             return $this->getFromCache($objectId);
         }

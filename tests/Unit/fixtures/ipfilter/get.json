@@ -1,0 +1,38 @@
+{
+  "data": {
+    "id": 47345837,
+    "name": "My IP filter",
+    "rulesLimit": 100,
+    "continents": [
+      "EU",
+      "NA"
+    ],
+    "countries": [
+      "GB",
+      "DE"
+    ],
+    "regions": [
+      {
+        "continent": "NA",
+        "country": "US",
+        "region": "FL",
+        "asn": 64496
+      }
+    ],
+    "asn": [
+      64496,
+      64499
+    ],
+    "ipv4": [
+      "198.51.100.0/24",
+      "203.0.113.42"
+    ],
+    "ipv6": [
+      "2001:db8:200::/64",
+      "2001:db8:200:42::"
+    ],
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/ipfilters/47345837"
+    }
+  }
+}

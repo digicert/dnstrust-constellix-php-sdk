@@ -1,0 +1,19 @@
+{
+  "data": {
+    "id": 82648967,
+    "name": "My Vanity nameserver",
+    "default": false,
+    "public": false,
+    "nameserverGroup": {
+      "id": 674,
+      "name": "Nameserver Group 1"
+    },
+    "nameservers": [
+      "ns1.example.com",
+      "ns2.example.com"
+    ],
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/vanitynameservers/82648967"
+    }
+  }
+}

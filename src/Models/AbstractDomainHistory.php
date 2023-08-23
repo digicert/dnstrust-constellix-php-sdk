@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\AbstractDomainHistoryInterface;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
-use Constellix\Client\Managers\DomainHistoryManager;
+use Constellix\Client\Managers\AbstractManager;
 use Constellix\Client\Traits\DomainAware;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -15,13 +14,14 @@ use Constellix\Client\Traits\ManagedModel;
  * @package Constellix\Client\Models
  *
  * @property string $name
+ * @property-read string $version
+ * @property-read \DateTime $updatedAt
+ * @property AbstractManager $manager
  */
 abstract class AbstractDomainHistory extends AbstractModel implements DomainAwareInterface
 {
     use DomainAware;
     use ManagedModel;
-
-    protected DomainHistoryManager $manager;
 
     protected array $props = [
         'name' => null,

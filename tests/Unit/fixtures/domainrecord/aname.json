@@ -1,0 +1,97 @@
+{
+  "id": 732673,
+  "ttl": 3600,
+  "enabled": true,
+  "name": "www",
+  "region": "default",
+  "ipfilter": {
+    "id": 47345837,
+    "name": "My IP filter",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/ipfilters/47345837"
+    }
+  },
+  "geoproximity": {
+    "id": 4367769,
+    "name": "My Geo Proximity Location",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/geoproximities/4367769"
+    }
+  },
+  "ipfilterDrop": true,
+  "geoFailover": true,
+  "notes": "This is my DNS record",
+  "skipLookup": null,
+  "contacts": {
+    "id": 2668228,
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+    }
+  },
+  "mode": "standard",
+  "lastValues": {
+    "standard": [
+      {
+        "enabled": true,
+        "value": "myrecord.example.com"
+      }
+    ],
+    "failover": {
+      "mode": "normal",
+      "values": [
+        {
+          "enabled": true,
+          "order": 1,
+          "sonarCheckId": 76627,
+          "active": true,
+          "failed": false,
+          "status": "N/A",
+          "value": "myrecord.example.com"
+        }
+      ]
+    },
+    "pools": [
+      {
+        "id": 7665,
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/pools/a/7665"
+        }
+      }
+    ]
+  },
+  "type": "ANAME",
+  "value": [
+    {
+      "enabled": true,
+      "value": "myrecord.example.com"
+    }
+  ],
+  "domain": {
+    "id": 366246,
+    "name": "example.com",
+    "note": "My Domain",
+    "status": "ACTIVE",
+    "enabled": true,
+    "version": 3,
+    "geoip": true,
+    "gtd": true,
+    "tags": [
+      {
+        "id": 824,
+        "name": "My Tag",
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/tags/824"
+        }
+      }
+    ],
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/domains/366246",
+      "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+    }
+  },
+  "links": {
+    "self": "https://api.dns.constellix.com/v4/domains/366246/records/732673"
+  }
+}

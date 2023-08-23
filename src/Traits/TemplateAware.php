@@ -9,7 +9,7 @@ use Constellix\Client\Models\Template;
 
 trait TemplateAware
 {
-    protected Template $template;
+    public Template $template;
 
     /**
      * @param Template $template

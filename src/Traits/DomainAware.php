@@ -9,7 +9,7 @@ use Constellix\Client\Models\Domain;
 
 trait DomainAware
 {
-    protected Domain $domain;
+    public Domain $domain;
 
     public function setDomain(Domain $domain): DomainAwareInterface
     {

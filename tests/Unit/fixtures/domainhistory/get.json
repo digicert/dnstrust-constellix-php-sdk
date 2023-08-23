@@ -1,0 +1,32 @@
+{
+  "data": {
+    "name": "example.com",
+    "version": 3,
+    "updatedAt": "2019-08-24T14:15:22Z",
+    "domain": {
+      "id": 366246,
+      "name": "example.com",
+      "note": "My Domain",
+      "status": "ACTIVE",
+      "enabled": true,
+      "version": 3,
+      "geoip": true,
+      "gtd": true,
+      "tags": [
+        {
+          "id": 824,
+          "name": "My Tag",
+          "links": {
+            "self": "https://api.dns.constellix.com/v4/tags/824"
+          }
+        }
+      ],
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z",
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/domains/366246",
+        "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+      }
+    }
+  }
+}

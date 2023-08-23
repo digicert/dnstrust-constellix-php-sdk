@@ -1,0 +1,85 @@
+{
+  "data": {
+    "id": 7665,
+    "type": "A",
+    "name": "My Pool",
+    "return": 1,
+    "minimumFailover": 1,
+    "failed": false,
+    "enabled": true,
+    "domains": [
+      {
+        "id": 366246,
+        "name": "example.com",
+        "note": "My Domain",
+        "status": "ACTIVE",
+        "enabled": true,
+        "version": 3,
+        "geoip": true,
+        "gtd": true,
+        "tags": [
+          {
+            "id": 824,
+            "name": "My Tag",
+            "links": {
+              "self": "https://api.dns.constellix.com/v4/tags/824"
+            }
+          }
+        ],
+        "createdAt": "2019-08-24T14:15:22Z",
+        "updatedAt": "2019-08-24T14:15:22Z",
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/domains/366246",
+          "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+        }
+      }
+    ],
+    "templates": [
+      {
+        "id": 83675283,
+        "name": "My Template",
+        "version": 3,
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/templates/83675283",
+          "records": "https://api.dns.constellix.com/v4/records?template=83675283"
+        }
+      }
+    ],
+    "contacts": [
+      {
+        "id": 2668228,
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+        }
+      }
+    ],
+    "ito": {
+      "enabled": true,
+      "config": {
+        "period": 60,
+        "maximumNumberOfResults": 1,
+        "deviationAllowance": 90,
+        "monitoringRegion": "world",
+        "handicapFactor": "percent"
+      }
+    },
+    "values": [
+      {
+        "value": "198.51.100.42",
+        "weight": 1000,
+        "enabled": true,
+        "activated": true,
+        "failed": true,
+        "speed": 5.2,
+        "handicap": 5,
+        "policy": "follow_sonar",
+        "sonarCheckId": 76627
+      }
+    ],
+    "createdAt": "2020-10-14T18:30:36+00:00",
+    "updatedAt": "2020-10-14T18:30:36+00:00",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/pools/a/7665"
+    }
+  }
+}

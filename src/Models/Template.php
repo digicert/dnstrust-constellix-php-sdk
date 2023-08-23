@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
+use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
 use Constellix\Client\Managers\TemplateManager;
+use Constellix\Client\Managers\TemplateRecordManager;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -20,6 +22,7 @@ use Constellix\Client\Traits\ManagedModel;
  * @property bool $gtd
  * @property \DateTime $createdAt
  * @property \DateTime $updatedAt
+ * @property-read TemplateRecordManager $records
  */
 class Template extends AbstractModel implements EditableModelInterface, ManagedModelInterface
 {
@@ -49,6 +52,8 @@ class Template extends AbstractModel implements EditableModelInterface, ManagedM
         'gtd',
     ];
 
+    protected ?TemplateRecordManager $records = null;
+
     protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
@@ -58,5 +63,17 @@ class Template extends AbstractModel implements EditableModelInterface, ManagedM
         if (property_exists($data, 'updatedAt')) {
             $this->props['updatedAt'] = new \DateTime($data->updatedAt);
         }
+    }
+
+    protected function getRecords(): TemplateRecordManager
+    {
+        if (!$this->id) {
+            throw new ConstellixException('Template must be created before you can access records');
+        }
+        if ($this->records === null) {
+            $this->records = new TemplateRecordManager($this->client);
+            $this->records->setTemplate($this);
+        }
+        return $this->records;
     }
 }

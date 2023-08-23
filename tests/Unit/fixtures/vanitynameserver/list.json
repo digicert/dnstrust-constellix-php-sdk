@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": 82648967,
+      "name": "My Vanity nameserver",
+      "default": false,
+      "public": false,
+      "nameserverGroup": {
+        "id": 674,
+        "name": "Nameserver Group 1"
+      },
+      "nameservers": [
+        "ns1.example.com",
+        "ns2.example.com"
+      ],
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/vanitynameservers/82648967"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 23,
+      "count": 3,
+      "perPage": 50,
+      "currentPage": 1,
+      "totalPages": 1
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/domains?page=3",
+      "first": "https://api.dns.constellix.com/v4/domains?page=1",
+      "last": "https://api.dns.constellix.com/v4/domains?page=5",
+      "previous": "https://api.dns.constellix.com/v4/domains?page=2",
+      "next": "https://api.dns.constellix.com/v4/domains?page=4"
+    }
+  }
+}

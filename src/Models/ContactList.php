@@ -13,6 +13,8 @@ use Constellix\Client\Traits\ManagedModel;
  * Represents a Contact List resource.
  * @package Constellix\Client\Models
  *
+ * @property string $name
+ * @property-read int $emailCount
  * @property \stdClass[] $emails
  */
 class ContactList extends AbstractModel implements EditableModelInterface

@@ -81,7 +81,7 @@ class ClientTest extends TestCase
             'X-RateLimit-Remaining' => '99',
             'X-RateLimit-Limit' => '100',
             'X-RateLimit-Reset' => '20',
-        ], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        ], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
 
         $apiClient = $this->getAuthenticatedClient();
 
@@ -98,7 +98,7 @@ class ClientTest extends TestCase
 
     public function testMissingRateLimitsAreParsed(): void
     {
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
 
         $apiClient = $this->getAuthenticatedClient();
 
@@ -208,7 +208,7 @@ class ClientTest extends TestCase
     {
         $history = &$this->history();
         $client = $this->getAuthenticatedClient();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $params = [
             'foo' => 'bar',
             'name' => 'example',
@@ -223,7 +223,7 @@ class ClientTest extends TestCase
     {
         $history = &$this->history();
         $client = $this->getAuthenticatedClient();
-        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $params = [
             'name' => 'example.com',
         ];
@@ -234,7 +234,7 @@ class ClientTest extends TestCase
         $this->assertContains('application/json', $history[0]['request']->getHeader('Content-Type'));
         $this->assertEquals('https://api.dns.constellix.com/v4/domains', (string)$history[0]['request']->getUri());
 
-        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $client->post('/domains');
         // An empty body will just be the php://temp stream
         $this->assertEquals('php://temp', (string)$history[1]['request']->getBody());
@@ -253,7 +253,7 @@ class ClientTest extends TestCase
     {
         $history = &$this->history();
         $client = $this->getAuthenticatedClient();
-        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $params = [
             'name' => 'example.com',
         ];
@@ -264,7 +264,7 @@ class ClientTest extends TestCase
         $this->assertContains('application/json', $history[0]['request']->getHeader('Content-Type'));
         $this->assertEquals('https://api.dns.constellix.com/v4/domains/1', (string)$history[0]['request']->getUri());
 
-        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $client->put('/domains/1');
         // An empty body will just be the php://temp stream
         $this->assertEquals('php://temp', (string)$history[1]['request']->getBody());
@@ -283,7 +283,7 @@ class ClientTest extends TestCase
     {
         $history = &$this->history();
         $client = $this->getAuthenticatedClient();
-        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $params = [
             'name' => 'example.com',
         ];
@@ -317,7 +317,7 @@ class ClientTest extends TestCase
 
         $history = &$this->history();
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/domain.json')));
+        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/fixtures/domain/get.json')));
         $apiClient->get('/domains/1');
 
         $this->assertEquals('Bearer 1234:LZ6jDnnsZ+mehbpdBUSt5c+8FNk=:1672531200000', $history[0]['request']->getHeader('Authorization')[0]);

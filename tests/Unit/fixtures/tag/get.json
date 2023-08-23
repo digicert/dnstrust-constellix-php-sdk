@@ -1,0 +1,9 @@
+{
+  "data": {
+    "id": 824,
+    "name": "My Tag",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/tags/824"
+    }
+  }
+}

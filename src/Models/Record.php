@@ -151,10 +151,9 @@ abstract class Record extends AbstractModel implements EditableModelInterface
                             preg_match('/\/pools\/(?<type>.*)\/\d+$/', $value->links->self, $matches);
                             $value = (object) [
                                 'id' => $value->id,
-                                'name' => $value->name,
+                                'name' => $value->name ?? null,
                                 'type' => $matches['type'],
                             ];
-                            dump($value);
                             return new PoolRecordValue((object) [
                                 'pool' => new Pool($this->client->pools, $this->client, $value),
                             ]);

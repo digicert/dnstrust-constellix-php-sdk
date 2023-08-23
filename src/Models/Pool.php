@@ -71,10 +71,13 @@ class Pool extends AbstractModel implements EditableModelInterface
         $this->props['ito'] = new ITO();
     }
 
-    protected function setType(string $type): void
+    protected function setType(string|PoolType $type): void
     {
         if ($this->id) {
             throw new ReadOnlyPropertyException('Unable to set type after a Pool has been created');
+        }
+        if (is_string($type)) {
+            $type = PoolType::from($type);
         }
         $this->props['type'] = $type;
         $this->changed[] = 'type';

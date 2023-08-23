@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
+use Constellix\Client\Managers\DomainSnapshotManager;
 use Constellix\Client\Traits\DomainAware;
 
 /**
@@ -16,6 +17,8 @@ use Constellix\Client\Traits\DomainAware;
 class DomainSnapshot extends AbstractDomainHistory implements DomainAwareInterface
 {
     use DomainAware;
+
+    protected DomainSnapshotManager $manager;
 
     /**
      * @var array<mixed>
