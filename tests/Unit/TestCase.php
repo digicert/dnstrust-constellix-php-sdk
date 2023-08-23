@@ -51,4 +51,13 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $apiClient->setSecretKey('5678');
         return $apiClient;
     }
+
+    protected function getFixture(string $name): string
+    {
+        $filepath = __DIR__ . '/fixtures/' . $name;
+        if (file_exists($filepath)) {
+            return (string)file_get_contents($filepath);
+        }
+        return '';
+    }
 }

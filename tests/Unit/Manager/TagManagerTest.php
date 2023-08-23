@@ -28,7 +28,7 @@ class TagManagerTest extends TestCase
     public function testFetchingTags(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/tag/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/tag/get.json')));
         $tag = $this->api->tags->get(824);
         $this->assertInstanceOf(Tag::class, $tag);
         $this->assertEquals(824, $tag->id);
@@ -47,7 +47,7 @@ class TagManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/tag/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/tag/list.json')));
         $page = $this->api->tags->paginate();
 
         $this->assertCount(1, $page);

@@ -28,7 +28,7 @@ class ContactListManagerTest extends TestCase
     public function testFetchingContactList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/contactlist/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/contactlist/get.json')));
         $contactList = $this->api->contactlists->get(2668228);
         $this->assertInstanceOf(ContactList::class, $contactList);
         $this->assertEquals(2668228, $contactList->id);
@@ -47,7 +47,7 @@ class ContactListManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/contactlist/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/contactlist/list.json')));
         $page = $this->api->contactlists->paginate();
 
         $this->assertCount(1, $page);

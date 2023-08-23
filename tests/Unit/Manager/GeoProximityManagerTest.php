@@ -28,7 +28,7 @@ class GeoProximityManagerTest extends TestCase
     public function testFetchingGeoProximities(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/geoproximity/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/geoproximity/get.json')));
         $geoproximity = $this->api->geoproximity->get(4367769);
         $this->assertInstanceOf(GeoProximity::class, $geoproximity);
         $this->assertEquals(4367769, $geoproximity->id);
@@ -47,7 +47,7 @@ class GeoProximityManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/geoproximity/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/geoproximity/list.json')));
         $page = $this->api->geoproximity->paginate();
 
         $this->assertCount(1, $page);

@@ -28,7 +28,7 @@ class TemplateManagerTest extends TestCase
     public function testFetchingTemplates(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/template/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/template/get.json')));
         $template = $this->api->templates->get(83675283);
         $this->assertInstanceOf(Template::class, $template);
         $this->assertEquals(83675283, $template->id);
@@ -47,7 +47,7 @@ class TemplateManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/template/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/template/list.json')));
         $page = $this->api->templates->paginate();
 
         $this->assertCount(1, $page);

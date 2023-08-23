@@ -28,7 +28,7 @@ class VanityNameserverManagerTest extends TestCase
     public function testFetchingVanityNameservers(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/vanitynameserver/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/vanitynameserver/get.json')));
         $nameserver = $this->api->vanitynameservers->get(82648967);
         $this->assertInstanceOf(VanityNameserver::class, $nameserver);
         $this->assertEquals(82648967, $nameserver->id);
@@ -47,7 +47,7 @@ class VanityNameserverManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/vanitynameserver/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/vanitynameserver/list.json')));
         $page = $this->api->vanitynameservers->paginate();
 
         $this->assertCount(1, $page);

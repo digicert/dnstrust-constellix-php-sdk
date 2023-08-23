@@ -18,7 +18,7 @@ class TemplateRecordManagerTest extends TestCase
         parent::setUp();
         $this->api = $this->getAuthenticatedClient();
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/template/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/template/get.json')));
         $this->template = $this->api->templates->get(83675283);
     }
 
@@ -30,7 +30,7 @@ class TemplateRecordManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/templaterecord/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/templaterecord/list.json')));
         $page = $this->template->records->paginate();
         $this->assertCount(1, $page);
         $this->assertInstanceOf(TemplateRecord::class, $page[0]);
@@ -44,7 +44,7 @@ class TemplateRecordManagerTest extends TestCase
     public function testFetchingSingleRecord(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/templaterecord/a.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/templaterecord/a.json')));
         $record = $this->template->records->get(732673);
         $this->assertInstanceOf(TemplateRecord::class, $record);
         $this->assertEquals(732673, $record->id);

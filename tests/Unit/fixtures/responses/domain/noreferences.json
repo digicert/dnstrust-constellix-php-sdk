@@ -1,0 +1,37 @@
+{
+  "data": {
+    "id": 366246,
+    "name": "example.com",
+    "note": "My Domain",
+    "status": "ACTIVE",
+    "enabled": true,
+    "version": 3,
+    "soa": {
+      "primaryNameserver": "ns11.constellix.com",
+      "email": "admin.example.com",
+      "ttl": 86400,
+      "serial": 2020061601,
+      "refresh": 86400,
+      "retry": 7200,
+      "expire": 3600000,
+      "negativeCache": 180
+    },
+    "geoip": true,
+    "gtd": true,
+    "nameservers": [
+      "ns11.constellix.com",
+      "ns21.constellix.com",
+      "ns31.constellix.com"
+    ],
+    "tags": [],
+    "template": null,
+    "vanityNameserver": null,
+    "contacts": [],
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/domains/366246",
+      "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+    }
+  }
+}

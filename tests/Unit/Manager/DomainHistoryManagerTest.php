@@ -19,7 +19,7 @@ class DomainHistoryManagerTest extends TestCase
     {
         parent::setUp();
         $this->api = $this->getAuthenticatedClient();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $this->domain = $this->api->domains->get(366246);
     }
 
@@ -31,7 +31,7 @@ class DomainHistoryManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainhistory/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/list.json')));
         $page = $this->domain->history->paginate();
         $this->assertCount(1, $page);
         $this->assertInstanceOf(DomainHistory::class, $page[0]);
@@ -45,7 +45,7 @@ class DomainHistoryManagerTest extends TestCase
     public function testFetchingSingleVersion(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainhistory/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
         $domainHistory = $this->domain->history->get(3);
         $this->assertInstanceOf(DomainHistory::class, $domainHistory);
         $this->assertEquals(3, $domainHistory->version);
@@ -61,7 +61,7 @@ class DomainHistoryManagerTest extends TestCase
     {
         $history = &$this->history();
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainhistory/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
         $domainHistory = $this->domain->history->get(3);
 
         $this->mock->append(new Response(204, [], ''));
@@ -77,7 +77,7 @@ class DomainHistoryManagerTest extends TestCase
     {
         $history = &$this->history();
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainhistory/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
         $domainHistory = $this->domain->history->get(3);
 
         $this->mock->append(new Response(204, [], ''));

@@ -28,7 +28,7 @@ class IPFilterManagerTest extends TestCase
     public function testFetchingIPFilters(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/ipfilter/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/ipfilter/get.json')));
         $ipfilter = $this->api->ipfilters->get(47345837);
         $this->assertInstanceOf(IPFilter::class, $ipfilter);
         $this->assertEquals(47345837, $ipfilter->id);
@@ -47,7 +47,7 @@ class IPFilterManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/ipfilter/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/ipfilter/list.json')));
         $page = $this->api->ipfilters->paginate();
 
         $this->assertCount(1, $page);

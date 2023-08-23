@@ -34,7 +34,7 @@ class PoolManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/list.json')));
         $page = $this->api->pools->paginate();
         $this->assertCount(1, $page);
         $this->assertInstanceOf(Pool::class, $page[0]);
@@ -48,7 +48,7 @@ class PoolManagerTest extends TestCase
     public function testFetchingSinglePool(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/get.json')));
         $pool = $this->api->pools->get(PoolType::A(), 7665);
         $this->assertInstanceOf(Pool::class, $pool);
         $this->assertEquals(7665, $pool->id);
@@ -78,8 +78,8 @@ class PoolManagerTest extends TestCase
     public function testRefresh(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/get.json')));
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/get.json')));
 
         $this->assertCount(0, $history);
         $pool = $this->api->pools->get(PoolType::A(), 7665);
@@ -95,9 +95,9 @@ class PoolManagerTest extends TestCase
     public function testCacheIsUsedCorrectly(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/get.json')));
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/get.json')));
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/pool/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/pool/get.json')));
 
         $this->assertCount(0, $history);
         $pool1 = $this->api->pools->get(PoolType::A(), 7665);
@@ -109,7 +109,7 @@ class PoolManagerTest extends TestCase
 
     public function testNoObjectFoundHandledCorrectly(): void
     {
-        $this->mock->append(new Response(404, [], (string)file_get_contents(__DIR__ . '/../fixtures/error/notfound.json')));
+        $this->mock->append(new Response(404, [], $this->getFixture('responses/error/notfound.json')));
 
         $this->expectException(ModelNotFoundException::class);
         $this->expectExceptionMessage('Unable to find object with Type A and ID 7665');

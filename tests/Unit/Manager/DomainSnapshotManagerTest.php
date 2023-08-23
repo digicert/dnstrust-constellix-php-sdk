@@ -18,7 +18,7 @@ class DomainSnapshotManagerTest extends TestCase
     {
         parent::setUp();
         $this->api = $this->getAuthenticatedClient();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $this->domain = $this->api->domains->get(366246);
     }
 
@@ -30,7 +30,7 @@ class DomainSnapshotManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainsnapshot/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainsnapshot/list.json')));
         $page = $this->domain->snapshots->paginate();
         $this->assertCount(1, $page);
         $this->assertInstanceOf(DomainSnapshot::class, $page[0]);
@@ -44,7 +44,7 @@ class DomainSnapshotManagerTest extends TestCase
     public function testFetchingSingleVersion(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainsnapshot/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainsnapshot/get.json')));
         $snapshot = $this->domain->snapshots->get(3);
         $this->assertInstanceOf(DomainSnapshot::class, $snapshot);
         $this->assertEquals(3, $snapshot->version);
@@ -60,7 +60,7 @@ class DomainSnapshotManagerTest extends TestCase
     {
         $history = &$this->history();
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainsnapshot/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainsnapshot/get.json')));
         $snapshot = $this->domain->snapshots->get(3);
 
         $this->mock->append(new Response(204, [], ''));

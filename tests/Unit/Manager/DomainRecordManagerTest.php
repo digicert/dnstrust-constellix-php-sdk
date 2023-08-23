@@ -18,7 +18,7 @@ class DomainRecordManagerTest extends TestCase
         parent::setUp();
         $this->api = $this->getAuthenticatedClient();
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $this->domain = $this->api->domains->get(366246);
     }
 
@@ -30,7 +30,7 @@ class DomainRecordManagerTest extends TestCase
     public function testFetchingList(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainrecord/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainrecord/list.json')));
         $page = $this->domain->records->paginate();
         $this->assertCount(1, $page);
         $this->assertInstanceOf(DomainRecord::class, $page[0]);
@@ -44,7 +44,7 @@ class DomainRecordManagerTest extends TestCase
     public function testFetchingSingleRecord(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domainrecord/a.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainrecord/a.json')));
         $record = $this->domain->records->get(732673);
         $this->assertInstanceOf(DomainRecord::class, $record);
         $this->assertEquals(732673, $record->id);

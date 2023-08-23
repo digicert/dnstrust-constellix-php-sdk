@@ -6,9 +6,13 @@ namespace Constellix\Client\Traits;
 
 trait EditableModel
 {
-    public function hasChanged(): bool
+    public function hasChanged(?string $property = null): bool
     {
-        return (bool)$this->changed;
+        if ($property === null) {
+            return (bool)$this->changed;
+        }
+
+        return in_array($property, $this->changed);
     }
 
     public function save(): void

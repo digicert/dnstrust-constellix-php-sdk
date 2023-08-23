@@ -37,7 +37,7 @@ class DomainManagerTest extends TestCase
     public function testFetchingDomain(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $domain = $this->api->domains->get(366246);
         $this->assertInstanceOf(Domain::class, $domain);
         $this->assertEquals(366246, $domain->id);
@@ -52,7 +52,7 @@ class DomainManagerTest extends TestCase
         $history = &$this->history();
         $this->expectException(ModelNotFoundException::class);
         $this->expectExceptionMessage('Unable to find object with ID 1234');
-        $this->mock->append(new Response(404, [], (string)file_get_contents(__DIR__ . '/../fixtures/error/notfound.json')));
+        $this->mock->append(new Response(404, [], $this->getFixture('responses/error/notfound.json')));
         $this->api->domains->get(1234);
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/domains/1234', $history[0]['request']->getUri()->getPath());
@@ -78,7 +78,7 @@ class DomainManagerTest extends TestCase
     public function testNewDomainSave(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(201, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/create.json')));
+        $this->mock->append(new Response(201, [], $this->getFixture('responses/domain/create.json')));
         $domain = $this->api->domains->create();
         $domain->name = 'example.com';
         $domain->save();
@@ -103,8 +103,8 @@ class DomainManagerTest extends TestCase
     public function testExistingDomainSave(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $domain = $this->api->domains->get(366246);
         $domain->note = 'Foobar';
         $domain->save();
@@ -125,7 +125,7 @@ class DomainManagerTest extends TestCase
     public function testCaching(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $domain1 = $this->api->domains->get(366246);
         $domain2 = $this->api->domains->get(366246);
 
@@ -150,7 +150,7 @@ class DomainManagerTest extends TestCase
     public function testDeletingExistingObject(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $this->mock->append(new Response(204, [], ''));
         $domain = $this->api->domains->get(366246);
         $domain->delete();
@@ -172,8 +172,8 @@ class DomainManagerTest extends TestCase
     public function testRefreshOnExistingObject(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $domain = $this->api->domains->get(366246);
 
         $this->assertCount(1, $history);
@@ -190,7 +190,7 @@ class DomainManagerTest extends TestCase
     {
         $this->assertNull($this->api->domains->getFromCache('Domain:366246'));
 
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/get.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $domain = $this->api->domains->get(366246);
 
         $domain2 = $this->api->domains->getFromCache('Domain:366246');
@@ -203,7 +203,7 @@ class DomainManagerTest extends TestCase
     public function testPaginationParameters(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/list.json')));
         $this->api->domains->paginate(5, 10, ['foo' => 'bar', 'thing' => 'other']);
 
         $this->assertCount(1, $history);
@@ -215,7 +215,7 @@ class DomainManagerTest extends TestCase
     public function testCanOverridePaginationParameters(): void
     {
         $history = &$this->history();
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/list.json')));
         $this->api->domains->paginate(5, 10, ['foo' => 'bar', 'thing' => 'other', 'page' => 100, 'perPage' => 50]);
 
         $this->assertCount(1, $history);
@@ -226,7 +226,7 @@ class DomainManagerTest extends TestCase
 
     public function testPaginationResultMatchesReturnedData(): void
     {
-        $this->mock->append(new Response(200, [], (string)file_get_contents(__DIR__ . '/../fixtures/domain/list.json')));
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/list.json')));
         $page = $this->api->domains->paginate(14, 1);
 
         $this->assertInstanceOf(Paginator::class, $page);
