@@ -6,6 +6,7 @@ namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Managers\VanityNameserverManager;
+use Constellix\Client\Models\Helpers\NameserverGroup;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -16,7 +17,7 @@ use Constellix\Client\Traits\ManagedModel;
  * @property string $name
  * @property bool $default
  * @property bool $public
- * @property object{'id': int} $nameserverGroup
+ * @property NameserverGroup $nameserverGroup
  * @property string[] $nameservers;
  */
 class VanityNameserver extends AbstractModel implements EditableModelInterface
@@ -49,10 +50,10 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
 
     protected function setInitialProperties(): void
     {
-        $this->props['nameserverGroup'] = (object) [
+        $this->props['nameserverGroup'] = new NameserverGroup((object) [
             'id' => 1,
             'name' => 'NS User Group 1',
-        ];
+        ]);
     }
 
     /**
@@ -74,16 +75,23 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
         if ($index !== false) {
             $nameservers = $this->nameservers;
             unset($nameservers[$index]);
-            $this->nameservers = $nameservers;
+            $this->nameservers = array_values($nameservers);
         }
         return $this;
     }
 
+    public function parseApiData(\stdClass $data): void
+    {
+        parent::parseApiData($data);
+        if (property_exists($data, 'nameserverGroup')) {
+            $this->nameserverGroup = new NameserverGroup($data->nameserverGroup);
+        }
+    }
+
     public function transformForApi(): \stdClass
     {
-
         $payload = parent::transformForApi();
-        $payload->nameserverGroup = $this->nameserverGroup->id;
+        $payload->nameserverGroup = $this->nameserverGroup->transformForApi();
         return $payload;
     }
 }

@@ -11,7 +11,7 @@ use Constellix\Client\Traits\HelperModel;
  * Represents basic ITO configuration for a pool
  * @package Constellix\Client\Models
  *
- * @property bool $enabled
+ * @property ?bool $enabled
  * @property ITOConfig $config
  */
 class ITO extends AbstractModel
@@ -55,8 +55,9 @@ class ITO extends AbstractModel
 
     public function transformForApi(): \stdClass
     {
-        $payload = parent::transformForApi();
-        $payload->config = $this->config->transformForApi();
-        return $payload;
+        return (object) [
+            'enabled' => (bool)$this->enabled,
+            'config' => $this->config->transformForApi(),
+        ];
     }
 }

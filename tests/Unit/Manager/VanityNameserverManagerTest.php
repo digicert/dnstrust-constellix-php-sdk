@@ -33,6 +33,7 @@ class VanityNameserverManagerTest extends TestCase
         $this->assertInstanceOf(VanityNameserver::class, $nameserver);
         $this->assertEquals(82648967, $nameserver->id);
         $this->assertEquals('My Vanity nameserver', $nameserver->name);
+        $this->assertTrue($nameserver->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/vanitynameservers/82648967', $history[0]['request']->getUri()->getPath());

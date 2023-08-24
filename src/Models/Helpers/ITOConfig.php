@@ -16,6 +16,7 @@ use Constellix\Client\Traits\HelperModel;
  * @property int $frequency
  * @property int $maximumNumberOfResults
  * @property int $deviationAllowance
+ * @property int $period
  * @property ITORegion $monitoringRegion
  * @property ITOHandicapFactor $handicapFactor
  */
@@ -32,6 +33,7 @@ class ITOConfig extends AbstractModel
         'deviationAllowance' => null,
         'monitoringRegion' => null,
         'handicapFactor' => null,
+        'period' => null,
     ];
 
     /**
@@ -43,12 +45,13 @@ class ITOConfig extends AbstractModel
         'deviationAllowance',
         'monitoringRegion',
         'handicapFactor',
+        'period',
     ];
 
     public function __construct(?\stdClass $data = null)
     {
-        $this->props['monitoringRegion'] = ITORegion::world();
-        $this->props['handicapFactor'] = ITOHandicapFactor::none();
+        $this->props['monitoringRegion'] = ITORegion::WORLD();
+        $this->props['handicapFactor'] = ITOHandicapFactor::NONE();
         if ($data) {
             $this->populateFromApi($data);
         }

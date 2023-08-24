@@ -50,6 +50,7 @@ class DomainHistoryManagerTest extends TestCase
         $this->assertInstanceOf(DomainHistory::class, $domainHistory);
         $this->assertEquals(3, $domainHistory->version);
         $this->assertSame($this->domain, $domainHistory->domain);
+        $this->assertTrue($domainHistory->fullyLoaded);
 
         $this->assertCount(1, $history);
         $request = $history[0]['request'];
@@ -80,12 +81,12 @@ class DomainHistoryManagerTest extends TestCase
         $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
         $domainHistory = $this->domain->history->get(3);
 
-        $this->mock->append(new Response(204, [], ''));
+        $this->mock->append(new Response(202, [], $this->getFixture('responses/domainsnapshot/create.json')));
         $snapshot = $this->domain->history->snapshot($domainHistory);
 
         $this->assertInstanceOf(DomainSnapshot::class, $snapshot);
         $this->assertSame($this->domain, $snapshot->domain);
-        $this->assertEquals(3, $snapshot->version);
+        $this->assertEquals(4, $snapshot->version);
 
         $this->assertCount(2, $history);
         $request = $history[1]['request'];

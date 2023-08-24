@@ -70,7 +70,7 @@ class ContactList extends AbstractModel implements EditableModelInterface
         foreach ($emails as $index => $value) {
             if ($value->address === $email) {
                 unset($emails[$index]);
-                $this->emails = $emails;
+                $this->emails = array_values($emails);
                 return $this;
             }
         }

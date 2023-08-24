@@ -229,7 +229,7 @@ class ClientTest extends TestCase
         ];
         $client->post('/domains', $params);
         $this->assertEquals('POST', $history[0]['request']->getMethod());
-        $this->assertJson('{"name":"example.com"}', $history[0]['request']->getBody());
+        $this->assertJsonStringEqualsJsonString('{"name":"example.com"}', $history[0]['request']->getBody());
         $this->assertContains('application/json', $history[0]['request']->getHeader('Accept'));
         $this->assertContains('application/json', $history[0]['request']->getHeader('Content-Type'));
         $this->assertEquals('https://api.dns.constellix.com/v4/domains', (string)$history[0]['request']->getUri());
@@ -259,7 +259,7 @@ class ClientTest extends TestCase
         ];
         $client->put('/domains/1', $params);
         $this->assertEquals('PUT', $history[0]['request']->getMethod());
-        $this->assertJson('{"name":"example.com"}', $history[0]['request']->getBody());
+        $this->assertJsonStringEqualsJsonString('{"name":"example.com"}', $history[0]['request']->getBody());
         $this->assertContains('application/json', $history[0]['request']->getHeader('Accept'));
         $this->assertContains('application/json', $history[0]['request']->getHeader('Content-Type'));
         $this->assertEquals('https://api.dns.constellix.com/v4/domains/1', (string)$history[0]['request']->getUri());
@@ -289,7 +289,7 @@ class ClientTest extends TestCase
         ];
         $client->delete('/domains/1', $params);
         $this->assertEquals('DELETE', $history[0]['request']->getMethod());
-        $this->assertJson('{"name":"example.com"}', $history[0]['request']->getBody());
+        $this->assertJsonStringEqualsJsonString('{"name":"example.com"}', $history[0]['request']->getBody());
         $this->assertContains('application/json', $history[0]['request']->getHeader('Accept'));
         $this->assertContains('application/json', $history[0]['request']->getHeader('Content-Type'));
         $this->assertEquals('https://api.dns.constellix.com/v4/domains/1', (string)$history[0]['request']->getUri());

@@ -53,11 +53,12 @@ class PoolManagerTest extends TestCase
         $this->assertInstanceOf(Pool::class, $pool);
         $this->assertEquals(7665, $pool->id);
         $this->assertEquals(PoolType::A(), $pool->type);
+        $this->assertTrue($pool->fullyLoaded);
 
         $this->assertCount(1, $history);
         $request = $history[0]['request'];
         $this->assertEquals('GET', $request->getMethod());
-        $this->assertEquals('/v4/pools/A/7665', $request->getUri()->getPath());
+        $this->assertEquals('/v4/pools/a/7665', $request->getUri()->getPath());
     }
 
     public function testRefreshNoopOnNewPool(): void
@@ -89,7 +90,7 @@ class PoolManagerTest extends TestCase
 
         $request = $history[1]['request'];
         $this->assertEquals('GET', $request->getMethod());
-        $this->assertEquals('/v4/pools/A/7665', $request->getUri()->getPath());
+        $this->assertEquals('/v4/pools/a/7665', $request->getUri()->getPath());
     }
 
     public function testCacheIsUsedCorrectly(): void

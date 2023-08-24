@@ -1,0 +1,7 @@
+{
+  "name": "My Contact List",
+  "emails": [
+    "bob@example.com",
+    "alice@example.com"
+  ]
+}

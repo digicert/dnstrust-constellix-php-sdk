@@ -33,6 +33,7 @@ class ContactListManagerTest extends TestCase
         $this->assertInstanceOf(ContactList::class, $contactList);
         $this->assertEquals(2668228, $contactList->id);
         $this->assertEquals('My Contact List', $contactList->name);
+        $this->assertTrue($contactList->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/contactlists/2668228', $history[0]['request']->getUri()->getPath());

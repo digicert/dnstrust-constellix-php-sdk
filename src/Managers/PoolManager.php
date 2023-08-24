@@ -42,7 +42,9 @@ class PoolManager extends AbstractManager
         }
 
         $data = $this->getPoolFromApi($type, $id);
-        return $this->createExistingObject($data, $this->getModelClass());
+        $object = $this->createExistingObject($data, $this->getModelClass());
+        $object->fullyLoaded = true;
+        return $object;
     }
 
     public function refresh(AbstractModel $object): void
@@ -55,6 +57,7 @@ class PoolManager extends AbstractManager
         }
 
         $data = $this->getPoolFromApi($object->type, $object->id);
+        $object->fullyLoaded = true;
         $object->populateFromApi($data);
     }
 
@@ -68,12 +71,14 @@ class PoolManager extends AbstractManager
         if ($object->id === null || $object->type === null) {
             throw new ConstellixException('No ID or Type available on object');
         }
-        return "{$this->getBaseUri()}/{$object->type}/{$object->id}";
+        $type = strtolower((string)$object->type->value);
+        return "{$this->getBaseUri()}/{$type}/{$object->id}";
     }
 
     protected function getPoolFromApi(PoolType $type, int $id): \stdClass
     {
-        $uri = "{$this->getBaseUri()}/{$type->value}/{$id}";
+        $lowerType = strtolower((string)$type->value);
+        $uri = "{$this->getBaseUri()}/{$lowerType}/{$id}";
         try {
             $data = $this->client->get($uri);
         } catch (NotFoundException $e) {

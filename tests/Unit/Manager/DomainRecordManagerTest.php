@@ -49,6 +49,7 @@ class DomainRecordManagerTest extends TestCase
         $this->assertInstanceOf(DomainRecord::class, $record);
         $this->assertEquals(732673, $record->id);
         $this->assertSame($this->domain, $record->domain);
+        $this->assertTrue($record->fullyLoaded);
 
         $this->assertCount(1, $history);
         $request = $history[0]['request'];

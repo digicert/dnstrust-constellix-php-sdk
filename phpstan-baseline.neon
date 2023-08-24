@@ -169,3 +169,8 @@ parameters:
 			message: "#^Access to an undefined property Constellix\\\\Client\\\\Client\\:\\:\\$nonExistentManager\\.$#"
 			count: 1
 			path: tests/Unit/ClientTest.php
+
+		-
+			message: "#^Access to an undefined property Constellix\\\\Client\\\\Models\\\\Domain\\:\\:\\$foobar\\.$#"
+			count: 1
+			path: tests/Unit/Model/DomainTest.php

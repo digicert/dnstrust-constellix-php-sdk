@@ -42,6 +42,7 @@ class DomainManagerTest extends TestCase
         $this->assertInstanceOf(Domain::class, $domain);
         $this->assertEquals(366246, $domain->id);
         $this->assertEquals('example.com', $domain->name);
+        $this->assertTrue($domain->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/domains/366246', $history[0]['request']->getUri()->getPath());

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
+use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
 use Constellix\Client\Models\AbstractDomainHistory;
 use Constellix\Client\Models\DomainHistory;
@@ -59,10 +60,11 @@ class DomainHistoryManager extends AbstractManager implements DomainAwareInterfa
     public function snapshot(AbstractDomainHistory $history): DomainSnapshot
     {
         $url = $this->getObjectUri($history) . "/snapshot";
-        $this->client->post($url);
-        // The snapshot data is the same as a history object
-        $data = $history->jsonSerialize();
-        $snapshot = new DomainSnapshot($this->domain->snapshots, $this->client, $data);
+        $response = $this->client->post($url);
+        if (!$response) {
+            throw new ConstellixException('No data returned from API');
+        }
+        $snapshot = new DomainSnapshot($this->domain->snapshots, $this->client, $response->data);
         $snapshot->setDomain($this->domain);
         return $snapshot;
     }

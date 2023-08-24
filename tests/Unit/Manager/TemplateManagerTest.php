@@ -33,6 +33,7 @@ class TemplateManagerTest extends TestCase
         $this->assertInstanceOf(Template::class, $template);
         $this->assertEquals(83675283, $template->id);
         $this->assertEquals('My Template', $template->name);
+        $this->assertTrue($template->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/templates/83675283', $history[0]['request']->getUri()->getPath());

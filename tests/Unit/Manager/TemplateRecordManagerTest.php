@@ -49,6 +49,7 @@ class TemplateRecordManagerTest extends TestCase
         $this->assertInstanceOf(TemplateRecord::class, $record);
         $this->assertEquals(732673, $record->id);
         $this->assertSame($this->template, $record->template);
+        $this->assertTrue($record->fullyLoaded);
 
         $this->assertCount(1, $history);
         $request = $history[0]['request'];

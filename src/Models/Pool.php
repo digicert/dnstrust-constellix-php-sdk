@@ -71,7 +71,7 @@ class Pool extends AbstractModel implements EditableModelInterface
         $this->props['ito'] = new ITO();
     }
 
-    protected function setType(string|PoolType $type): void
+    public function setType(string|PoolType $type): void
     {
         if ($this->id) {
             throw new ReadOnlyPropertyException('Unable to set type after a Pool has been created');
@@ -117,7 +117,7 @@ class Pool extends AbstractModel implements EditableModelInterface
 
         $this->props['contacts'] = [];
         if (property_exists($data, 'contacts') && $data->contacts) {
-            $this->props['values'] = array_map(function ($contactData) {
+            $this->props['contacts'] = array_map(function ($contactData) {
                 return new ContactList($this->client->contactlists, $this->client, $contactData);
             }, $data->contacts);
         }
@@ -131,6 +131,7 @@ class Pool extends AbstractModel implements EditableModelInterface
             $payload->templates,
             $payload->failed
         );
+        $payload->ito = $this->ito->transformForApi();
         $payload->values = array_map(function ($value) {
             return $value->transformForApi();
         }, $this->values);
@@ -173,10 +174,10 @@ class Pool extends AbstractModel implements EditableModelInterface
         foreach ($lists as $index => $list) {
             if ($list->id == $contactList->id) {
                 unset($lists[$index]);
+                $this->contacts = array_values($lists);
                 break;
             }
         }
-        $this->contacts = $lists;
         return $this;
     }
 

@@ -124,7 +124,6 @@ abstract class AbstractModel implements JsonSerializable
             if (!in_array($prop, $this->loadedProps)) {
                 $this->loadedProps[] = $prop;
             }
-            $this->loadedProps[] = $prop;
             // We skip loading the data if we've changed this property locally
             if (in_array($prop, $this->changed)) {
                 continue;

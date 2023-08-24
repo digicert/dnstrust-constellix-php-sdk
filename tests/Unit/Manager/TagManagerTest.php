@@ -33,6 +33,7 @@ class TagManagerTest extends TestCase
         $this->assertInstanceOf(Tag::class, $tag);
         $this->assertEquals(824, $tag->id);
         $this->assertEquals('My Tag', $tag->name);
+        $this->assertTrue($tag->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/tags/824', $history[0]['request']->getUri()->getPath());

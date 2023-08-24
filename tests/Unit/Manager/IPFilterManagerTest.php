@@ -33,6 +33,7 @@ class IPFilterManagerTest extends TestCase
         $this->assertInstanceOf(IPFilter::class, $ipfilter);
         $this->assertEquals(47345837, $ipfilter->id);
         $this->assertEquals('My IP filter', $ipfilter->name);
+        $this->assertTrue($ipfilter->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/ipfilters/47345837', $history[0]['request']->getUri()->getPath());

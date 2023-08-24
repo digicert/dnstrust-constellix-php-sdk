@@ -17,7 +17,7 @@ use Constellix\Client\Traits\ManagedModel;
  * @property string $name
  * @property string $country
  * @property string $region
- * @property string $city
+ * @property int $city
  * @property float $longitude
  * @property float $latitude
  */

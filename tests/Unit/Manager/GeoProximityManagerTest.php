@@ -33,6 +33,7 @@ class GeoProximityManagerTest extends TestCase
         $this->assertInstanceOf(GeoProximity::class, $geoproximity);
         $this->assertEquals(4367769, $geoproximity->id);
         $this->assertEquals('My Geo Proximity Location', $geoproximity->name);
+        $this->assertTrue($geoproximity->fullyLoaded);
 
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/geoproximities/4367769', $history[0]['request']->getUri()->getPath());

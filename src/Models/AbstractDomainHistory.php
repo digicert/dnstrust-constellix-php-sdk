@@ -29,11 +29,26 @@ abstract class AbstractDomainHistory extends AbstractModel implements DomainAwar
         'updatedAt' => null
     ];
 
+    public function __toString()
+    {
+        $rClass = new \ReflectionClass($this);
+        $modelName = $rClass->getShortName();
+        return "{$modelName}:{$this->version}";
+    }
+
     protected function parseApiData(\stdClass $data): void
     {
-        $this->props['name'] = $data->name;
+        $this->id = $data->version;
         $this->props['version'] = $data->version;
-        $this->props['updatedAt'] = new \DateTime($data->updatedAt);
+        $this->loadedProps[] = 'version';
+        if (property_exists($data, 'name')) {
+            $this->props['name'] = $data->name;
+            $this->loadedProps[] = 'name';
+        }
+        if (property_exists($data, 'updatedAt')) {
+            $this->loadedProps[] = 'updatedAt';
+            $this->props['updatedAt'] = new \DateTime($data->updatedAt);
+        }
     }
 
     public function jsonSerialize(): \stdClass

@@ -25,13 +25,7 @@ class DomainSnapshot extends AbstractDomainHistory implements DomainAwareInterfa
      */
     protected array $props = [
         'name' => null,
-    ];
-
-    /**
-     * @var string[]
-     */
-    protected array $editable = [
-        'name',
+        'version' => null,
     ];
 
     public function delete(): void

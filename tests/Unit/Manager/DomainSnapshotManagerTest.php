@@ -41,7 +41,7 @@ class DomainSnapshotManagerTest extends TestCase
         $this->assertEquals('/v4/domains/366246/snapshots', $request->getUri()->getPath());
     }
 
-    public function testFetchingSingleVersion(): void
+    public function testFetchingSingleSnapshot(): void
     {
         $history = &$this->history();
         $this->mock->append(new Response(200, [], $this->getFixture('responses/domainsnapshot/get.json')));
@@ -49,6 +49,7 @@ class DomainSnapshotManagerTest extends TestCase
         $this->assertInstanceOf(DomainSnapshot::class, $snapshot);
         $this->assertEquals(3, $snapshot->version);
         $this->assertSame($this->domain, $snapshot->domain);
+        $this->assertTrue($snapshot->fullyLoaded);
 
         $this->assertCount(1, $history);
         $request = $history[0]['request'];

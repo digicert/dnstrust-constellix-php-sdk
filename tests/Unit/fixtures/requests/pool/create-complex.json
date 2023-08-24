@@ -1,0 +1,30 @@
+{
+  "type": "A",
+  "name": "My Pool",
+  "return": 1,
+  "minimumFailover": 1,
+  "enabled": true,
+  "values": [
+    {
+      "value": "198.51.100.42",
+      "weight": 1000,
+      "handicap": 10,
+      "policy": "follow_sonar",
+      "sonarCheckId": 76627
+    }
+  ],
+  "contacts": [
+    11,
+    22
+  ],
+  "ito": {
+    "enabled": true,
+    "config": {
+      "period": 60,
+      "maximumNumberOfResults": 1,
+      "deviationAllowance": 90,
+      "monitoringRegion": "world",
+      "handicapFactor": "percent"
+    }
+  }
+}

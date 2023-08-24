@@ -24,10 +24,11 @@ use Constellix\Client\Traits\ManagedModel;
  * @property string $note
  * @property-read DomainStatus $status
  * @property-read int $version
+ * @property bool $enabled
  * @property ?SOA $soa
  * @property bool $geoip
  * @property bool $gtd
- * @property string $nameservers
+ * @property array<string> $nameservers
  * @property Tag[] $tags
  * @property ?Template $template
  * @property ?VanityNameserver $vanityNameserver
@@ -49,12 +50,14 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
     protected array $props = [
         'name' => null,
         'note' => null,
+        'enabled' => null,
         'status' => null,
         'version' => null,
         'soa' => null,
         'geoip' => null,
         'gtd' => null,
         'tags' => [],
+        'nameservers' => [],
         'template' => null,
         'vanityNameserver' => null,
         'contacts' => [],
@@ -67,6 +70,7 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
      */
     protected array $editable = [
         'name',
+        'enabled',
         'note',
         'soa',
         'geoip',
@@ -154,7 +158,7 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         foreach ($tags as $index => $domainTag) {
             if ($tag->id == $domainTag->id) {
                 unset($tags[$index]);
-                $this->tags = $tags;
+                $this->tags = array_values($tags);
                 break;
             }
         }
@@ -187,7 +191,7 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         foreach ($contacts as $index => $contact) {
             if ($contactList->id == $contact->id) {
                 unset($contacts[$index]);
-                $this->contacts = $contacts;
+                $this->contacts = array_values($contacts);
                 break;
             }
         }
