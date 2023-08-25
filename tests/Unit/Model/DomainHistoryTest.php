@@ -64,4 +64,25 @@ class DomainHistoryTest extends TestCase
         $this->assertEquals('POST', $history[1]['request']->getMethod());
         $this->assertEquals('/v4/domains/366246/history/3/snapshot', $history[1]['request']->getUri()->getPath());
     }
+
+    public function testApiDataParsedCorrectly(): void
+    {
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
+        $history = $this->domain->history->get(3);
+
+        $this->assertEquals(3, $history->id);
+        $this->assertEquals(3, $history->version);
+        $this->assertSame($this->domain, $history->domain);
+        $this->assertEquals('2019-08-24T14:15:22+00:00', $history->updatedAt->format('c'));
+    }
+
+    public function testJsoNSerializeDoesNotHaveId(): void
+    {
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
+        $history = $this->domain->history->get(3);
+
+        $this->assertEquals(3, $history->id);
+        $json = $history->jsonSerialize();
+        $this->assertObjectNotHasProperty('id', $json);
+    }
 }

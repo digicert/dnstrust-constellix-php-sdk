@@ -197,9 +197,6 @@ abstract class AbstractManager
     protected function getObjectUri(AbstractModel $object): string
     {
         $idPropertyName = $this->getIdPropertyName();
-        if (!$object->{$idPropertyName}) {
-            throw new ConstellixException("No {$idPropertyName} available on object");
-        }
         $id = $object->{$idPropertyName};
         return "{$this->getBaseUri()}/{$id}";
     }
@@ -233,7 +230,7 @@ abstract class AbstractManager
      * @return string
      * @throws \ReflectionException
      */
-    protected function getObjectId(mixed $input, ?string $name = null)
+    protected function getObjectId(mixed $input, ?string $name = null): string
     {
         if ($name === null) {
             $name = $this->getModelClass();
@@ -242,15 +239,11 @@ abstract class AbstractManager
         $rClass = new \ReflectionClass($name);
         $name = $rClass->getShortName();
         $idPropertyName = $this->getIdPropertyName();
-        if (is_scalar($input)) {
-            return "{$name}:{$input}";
-        } elseif (is_object($input) && property_exists($input, $idPropertyName)) {
+        if (is_object($input) && property_exists($input, $idPropertyName)) {
             $id = $input->{$idPropertyName};
             return "{$name}:{$id}";
-        } elseif (is_array($input) && array_key_exists($idPropertyName, $input)) {
-            return "{$name}:{$input[$idPropertyName]}";
         }
-        return "{$name}:" . (string)$input;
+        return "{$name}:{$input}";
     }
 
     protected function getIdPropertyName(): string

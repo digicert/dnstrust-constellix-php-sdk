@@ -28,7 +28,7 @@ class PoolManager extends AbstractManager
         return $this->createObject();
     }
 
-    protected function getObjectId(mixed $input, ?string $name = null)
+    protected function getObjectId(mixed $input, ?string $name = null): string
     {
         $input = (array)$input;
         return "Pool:{$input['type']}:{$input['id']}";
@@ -68,9 +68,6 @@ class PoolManager extends AbstractManager
      */
     protected function getObjectUri(AbstractModel $object): string
     {
-        if ($object->id === null || $object->type === null) {
-            throw new ConstellixException('No ID or Type available on object');
-        }
         $type = strtolower((string)$object->type->value);
         return "{$this->getBaseUri()}/{$type}/{$object->id}";
     }

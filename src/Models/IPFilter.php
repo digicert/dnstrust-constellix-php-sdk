@@ -8,6 +8,7 @@ use Constellix\Client\Enums\Continent;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
 use Constellix\Client\Interfaces\Traits\ManagedModelInterface;
 use Constellix\Client\Managers\IPFilterManager;
+use Constellix\Client\Models\Helpers\IPFilterRegion;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -22,6 +23,7 @@ use Constellix\Client\Traits\ManagedModel;
  * @property int[] $asn;
  * @property string[] $ipv4;
  * @property string[] $ipv6;
+ * @property IPFilterRegion[] $regions
  */
 class IPFilter extends AbstractModel implements EditableModelInterface, ManagedModelInterface
 {
@@ -41,6 +43,7 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
         'asn' => [],
         'ipv4' => [],
         'ipv6' => [],
+        'regions' => [],
     ];
 
     /**
@@ -54,6 +57,7 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
         'asn',
         'ipv4',
         'ipv6',
+        'regions',
     ];
 
     public function transformForApi(): \stdClass
@@ -62,6 +66,9 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
         $payload->continents = array_map(function ($continent) {
             return $continent->value;
         }, $this->continents);
+        $payload->regions = array_map(function (IPFilterRegion $region) {
+            return $region->transformForApi();
+        }, $this->regions);
         return $payload;
     }
 
@@ -75,6 +82,11 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
                 },
                 $data->continents
             );
+        }
+        if (property_exists($data, 'regions') && is_array($data->regions)) {
+            $this->props['regions'] = array_map(function ($data) {
+                return new IPFilterRegion($data);
+            }, $data->regions);
         }
     }
 
@@ -94,7 +106,7 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
         if ($index !== false) {
             $list = $this->{$property};
             unset($list[$index]);
-            $this->{$property} = $list;
+            $this->{$property} = array_values($list);
         }
         return $this;
     }
@@ -147,5 +159,15 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
     public function removeIPv6(string $ip): self
     {
         return $this->removeValue('ipv6', $ip);
+    }
+
+    public function addRegion(IPFilterRegion $region): self
+    {
+        return $this->addValue('regions', $region);
+    }
+
+    public function removeRegion(IPFilterRegion $region): self
+    {
+        return $this->removeValue('regions', $region);
     }
 }

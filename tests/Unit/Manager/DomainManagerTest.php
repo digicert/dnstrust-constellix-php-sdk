@@ -134,6 +134,19 @@ class DomainManagerTest extends TestCase
         $this->assertSame($domain1, $domain2);
     }
 
+    public function testFetchingPageContainingExistingObjectFromCacheReturnsCachedObject(): void
+    {
+        $history = &$this->history();
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
+        $domain = $this->api->domains->get(366346);
+        $this->assertCount(1, $history);
+
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/list.json')));
+        $page = $this->api->domains->paginate();
+        $this->assertCount(2, $history);
+        $this->assertEquals($domain, $page[0]);
+    }
+
     public function testDeletingNewObject(): void
     {
         $history = &$this->history();

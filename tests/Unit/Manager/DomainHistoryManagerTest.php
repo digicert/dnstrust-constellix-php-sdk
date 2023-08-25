@@ -3,6 +3,7 @@
 namespace Constellix\Client\Tests\Unit\Manager;
 
 use Constellix\Client\Client;
+use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Managers\DomainHistoryManager;
 use Constellix\Client\Models\Domain;
 use Constellix\Client\Models\DomainHistory;
@@ -92,5 +93,17 @@ class DomainHistoryManagerTest extends TestCase
         $request = $history[1]['request'];
         $this->assertEquals('POST', $request->getMethod());
         $this->assertEquals('/v4/domains/366246/history/3/snapshot', $request->getUri()->getPath());
+    }
+
+    public function testSnapshotWhenApiReturnsNoData(): void
+    {
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domainhistory/get.json')));
+        $domainHistory = $this->domain->history->get(3);
+
+        $this->expectException(ConstellixException::class);
+        $this->expectExceptionMessage('No data returned from API');
+
+        $this->mock->append(new Response(200, [], ''));
+        $this->domain->history->snapshot($domainHistory);
     }
 }
