@@ -7,8 +7,6 @@ namespace Constellix\Client\Models\Helpers;
 use Constellix\Client\Interfaces\Models\Helpers\ITOConfigInterface;
 use Constellix\Client\Interfaces\Models\Helpers\ITOInterface;
 use Constellix\Client\Interfaces\Models\Helpers\SOAInterface;
-use Constellix\Client\Models\AbstractModel;
-use Constellix\Client\Traits\HelperModel;
 
 /**
  * Represents a Nameserver Group on a Vanity Nameserver

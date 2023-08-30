@@ -90,84 +90,75 @@ class IPFilter extends AbstractModel implements EditableModelInterface, ManagedM
         }
     }
 
-    protected function addValue(string $property, mixed $value): self
-    {
-        if (!in_array($value, $this->{$property})) {
-            $list = $this->{$property};
-            $list[] = $value;
-            $this->{$property} = $list;
-        }
-        return $this;
-    }
-
-    public function removeValue(string $property, mixed $value): self
-    {
-        $index = array_search($value, $this->{$property});
-        if ($index !== false) {
-            $list = $this->{$property};
-            unset($list[$index]);
-            $this->{$property} = array_values($list);
-        }
-        return $this;
-    }
-
     public function addContinent(Continent $continent): self
     {
-        return $this->addValue('continents', $continent);
+        $this->addToCollection('continents', $continent);
+        return $this;
     }
 
     public function removeContinent(Continent $continent): self
     {
-        return $this->removeValue('continents', $continent);
+        $this->removeFromCollection('continents', $continent);
+        return $this;
     }
 
     public function addCountry(string $country): self
     {
-        return $this->addValue('countries', $country);
+        $this->addToCollection('countries', $country);
+        return $this;
     }
 
     public function removeCountry(string $country): self
     {
-        return $this->removeValue('countries', $country);
+        $this->removeFromCollection('countries', $country);
+        return $this;
     }
 
     public function addASN(int $asn): self
     {
-        return $this->addValue('asn', $asn);
+        $this->addToCollection('asn', $asn);
+        return $this;
     }
 
     public function removeASN(int $asn): self
     {
-        return $this->removeValue('asn', $asn);
+        $this->removeFromCollection('asn', $asn);
+        return $this;
     }
 
     public function addIPv4(string $ip): self
     {
-        return $this->addValue('ipv4', $ip);
+        $this->addToCollection('ipv4', $ip);
+        return $this;
     }
 
     public function removeIPv4(string $ip): self
     {
-        return $this->removeValue('ipv4', $ip);
+        $this->removeFromCollection('ipv4', $ip);
+        return $this;
     }
 
     public function addIPv6(string $ip): self
     {
-        return $this->addValue('ipv6', $ip);
+        $this->addToCollection('ipv6', $ip);
+        return $this;
     }
 
     public function removeIPv6(string $ip): self
     {
-        return $this->removeValue('ipv6', $ip);
+        $this->removeFromCollection('ipv6', $ip);
+        return $this;
     }
 
     public function addRegion(IPFilterRegion $region): self
     {
-        return $this->addValue('regions', $region);
+        $this->addToCollection('regions', $region);
+        return $this;
     }
 
     public function removeRegion(IPFilterRegion $region): self
     {
-        return $this->removeValue('regions', $region);
+        $this->removeFromCollection('regions', $region);
+        return $this;
     }
 }

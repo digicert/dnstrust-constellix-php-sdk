@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Enums\Pools\PoolType;
+use Constellix\Client\Enums\GTDLocation;
 use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Enums\Records\RecordType;
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
-use Constellix\Client\Managers\AbstractManager;
-use Constellix\Client\Models\Basic\BasicPool;
 use Constellix\Client\Models\Helpers\RecordValue;
 use Constellix\Client\Models\Helpers\RecordValues\CAA;
 use Constellix\Client\Models\Helpers\RecordValues\CERT;
@@ -31,14 +29,25 @@ use Constellix\Client\Models\Helpers\RecordValues\TXT;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
-use function Symfony\Component\String\s;
-
 /**
  * Represents a Record resource.
  * @package Constellix\Client\Models
  *
  * @property string $name
- * @property mixed $value
+ * @property RecordType $type
+ * @property int $ttl
+ * @property RecordMode $mode;
+ * @property ?GTDLocation $region;
+ * @property ?IPFilter $ipfilter;
+ * @property ?GeoProximity $geoproximity;
+ * @property bool $geoFailover;
+ * @property bool $ipfilterDrop;
+ * @property bool $enabled;
+ * @property ?string $notes;
+ * @property ?bool $skipLookup;
+ * @property ContactList[] $contacts;
+ * @property mixed $value;
+ * @property \stdClass $lastValues
  */
 abstract class Record extends AbstractModel implements EditableModelInterface
 {
@@ -55,13 +64,15 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         'mode' => null,
         'region' => null,
         'ipfilter' => null,
+        'geoFailover' => null,
         'ipfilterDrop' => null,
         'geoproximity' => null,
         'enabled' => null,
         'value' => null,
-        'lastValues' => [],
+        'lastValues' => null,
         'notes' => null,
         'contacts' => [],
+        'skipLookup' => null,
 
     ];
 
@@ -75,12 +86,14 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         'mode',
         'region',
         'ipfilter',
+        'geoFailover',
         'ipfilterDrop',
         'geoproximity',
         'enabled',
         'value',
         'notes',
         'contacts',
+        'skipLookup',
     ];
 
     protected function setInitialProperties(): void
@@ -98,18 +111,35 @@ abstract class Record extends AbstractModel implements EditableModelInterface
             $data->domain,
             $data->template,
         );
-        $data->type = RecordType::make($data->type);
-        $data->mode = RecordMode::make($data->mode);
+        $data->mode = RecordMode::from($data->mode);
+        $data->type = RecordType::from($data->type);
 
         parent::parseApiData($data);
 
-        $lastValues = [];
+        $this->props['mode'] = $data->mode;
+
+        $lastValues = new \stdClass();
         foreach ($data->lastValues as $mode => $lastValue) {
-            $mode = RecordMode::make($mode);
-            $lastValues[$mode->value] = $this->parseValue($this->props['type'], $mode, $lastValue);
+            $mode = RecordMode::from($mode);
+            $lastValues->{$mode->value} = $this->parseValue($this->props['type'], $mode, $lastValue);
         }
         $this->props['lastValues'] = $lastValues;
-        $this->props['value'] = $lastValues[$this->props['mode']->value];
+        $this->props['value'] = $lastValues->{$this->props['mode']->value};
+
+        if (property_exists($data, 'ipfilter') && $data->ipfilter) {
+            $this->props['ipfilter'] = new IPFilter($this->client->ipfilters, $this->client, $data->ipfilter);
+        }
+        if (property_exists($data, 'region') && $data->region) {
+            $this->props['region'] = GTDLocation::from($data->region);
+        }
+        if (property_exists($data, 'geoproximity') && $data->geoproximity) {
+            $this->props['geoproximity'] = new GeoProximity($this->client->geoproximity, $this->client, $data->geoproximity);
+        }
+        if (property_exists($data, 'contacts') && $data->contacts) {
+            $this->props['contacts'] = array_map(function ($data) {
+                return new ContactList($this->client->contactlists, $this->client, $data);
+            }, $data->contacts);
+        }
     }
 
     /**
@@ -136,6 +166,7 @@ abstract class Record extends AbstractModel implements EditableModelInterface
                     }, $data);
                 }
                 // Intentionally continuing
+                // no break
             case RecordType::CNAME():
                 // Intentionally continuing
             case RecordType::ANAME():
@@ -149,12 +180,12 @@ abstract class Record extends AbstractModel implements EditableModelInterface
                         return array_map(function ($value) {
                             $matches = [];
                             preg_match('/\/pools\/(?<type>.*)\/\d+$/', $value->links->self, $matches);
-                            $value = (object) [
+                            $value = (object)[
                                 'id' => $value->id,
                                 'name' => $value->name ?? null,
                                 'type' => $matches['type'],
                             ];
-                            return new PoolRecordValue((object) [
+                            return new PoolRecordValue((object)[
                                 'pool' => new Pool($this->client->pools, $this->client, $value),
                             ]);
                         }, $data);
@@ -163,34 +194,34 @@ abstract class Record extends AbstractModel implements EditableModelInterface
                         return new Failover($data);
                 }
                 // Intentionally continuing
+                // no break
             default:
-                $classMap = [
-                    RecordType::CAA()->value => CAA::class,
-                    RecordType::CERT()->value => CERT::class,
-                    RecordType::HINFO()->value => HINFO::class,
-                    RecordType::MX()->value => MX::class,
-                    RecordType::NAPTR()->value => NAPTR::class,
-                    RecordType::NS()->value => NS::class,
-                    RecordType::PTR()->value => PTR::class,
-                    RecordType::RP()->value => RP::class,
-                    RecordType::SPF()->value => SPF::class,
-                    RecordType::SRV()->value => SRV::class,
-                    RecordType::TXT()->value => TXT::class,
-                ];
-                if (array_key_exists($type->value, $classMap)) {
-                    return array_map(function ($value) use ($type, $classMap) {
-                        $className = $classMap[$type->value];
-                        return new $className($value);
-                    }, $data);
-                }
                 break;
         }
-        return null;
+
+        $classMap = [
+            RecordType::CAA()->value => CAA::class,
+            RecordType::CERT()->value => CERT::class,
+            RecordType::HINFO()->value => HINFO::class,
+            RecordType::MX()->value => MX::class,
+            RecordType::NAPTR()->value => NAPTR::class,
+            RecordType::NS()->value => NS::class,
+            RecordType::PTR()->value => PTR::class,
+            RecordType::RP()->value => RP::class,
+            RecordType::SPF()->value => SPF::class,
+            RecordType::SRV()->value => SRV::class,
+            RecordType::TXT()->value => TXT::class,
+        ];
+        return array_map(function ($value) use ($type, $classMap) {
+            $className = $classMap[$type->value];
+            return new $className($value);
+        }, $data);
     }
 
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
+
         if (is_array($this->value)) {
             $payload->value = array_map(function ($value) {
                 return $value->transformForApi();
@@ -201,6 +232,16 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         unset(
             $payload->lastValues
         );
+
+        $payload->ipfilter = $this->ipfilter->id ?? null;
+        $payload->geoproximity = $this->geoproximity->id ?? null;
+        $payload->contacts = array_map(function ($contact) {
+            /**
+             * @var \stdClass $contact
+             */
+            return $contact->id;
+        }, $this->contacts);
+
         return $payload;
     }
 
@@ -246,5 +287,27 @@ abstract class Record extends AbstractModel implements EditableModelInterface
             $values[] = $recordValue;
             $this->value = $values;
         }
+    }
+
+    public function addContactList(ContactList $contactList): self
+    {
+        $this->addToCollection('contacts', $contactList);
+        return $this;
+    }
+
+    public function removeContactList(ContactList $contactList): self
+    {
+        $this->removeFromCollection('contacts', $contactList);
+        return $this;
+    }
+
+    public function setIPFilter(null|int|\stdClass|IPFilter $ipfilter): void
+    {
+        $this->setObjectReference($this->client->ipfilters, IPFilter::class, 'ipfilter', $ipfilter);
+    }
+
+    public function setGeoProximity(null|int|\stdClass|GeoProximity $geoproximity): void
+    {
+        $this->setObjectReference($this->client->geoproximity, GeoProximity::class, 'geoproximity', $geoproximity);
     }
 }

@@ -61,22 +61,13 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
      */
     public function addNameServer(string $nameserver): self
     {
-        if (!in_array($nameserver, $this->nameservers)) {
-            $nameservers = $this->nameservers;
-            $nameservers[] = $nameserver;
-            $this->nameservers = $nameservers;
-        }
+        $this->addToCollection('nameservers', $nameserver);
         return $this;
     }
 
     public function removeNameServer(string $nameserver): self
     {
-        $index = array_search($nameserver, $this->nameservers);
-        if ($index !== false) {
-            $nameservers = $this->nameservers;
-            unset($nameservers[$index]);
-            $this->nameservers = array_values($nameservers);
-        }
+        $this->removeFromCollection('nameservers', $nameserver);
         return $this;
     }
 

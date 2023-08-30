@@ -132,112 +132,38 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         return $payload;
     }
 
-    protected function hasTag(Tag $tag): bool
-    {
-        foreach ($this->tags as $index => $domainTag) {
-            if ($tag->id == $domainTag->id) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public function addTag(Tag $tag): self
     {
-        if (!$this->hasTag($tag)) {
-            $tags = $this->tags;
-            $tags[] = $tag;
-            $this->tags = $tags;
-        }
+        $this->addToCollection('tags', $tag);
         return $this;
     }
 
     public function removeTag(Tag $tag): self
     {
-        $tags = $this->tags;
-        foreach ($tags as $index => $domainTag) {
-            if ($tag->id == $domainTag->id) {
-                unset($tags[$index]);
-                $this->tags = array_values($tags);
-                break;
-            }
-        }
+        $this->removeFromCollection('tags', $tag);
         return $this;
-    }
-
-    protected function hasContactList(ContactList $contactList): bool
-    {
-        foreach ($this->contacts as $index => $contact) {
-            if ($contactList->id == $contact->id) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public function addContactList(ContactList $contactList): self
     {
-        if (!$this->hasContactList($contactList)) {
-            $contacts = $this->contacts;
-            $contacts[] = $contactList;
-            $this->contacts = $contacts;
-        }
+        $this->addToCollection('contacts', $contactList);
         return $this;
     }
 
     public function removeContactList(ContactList $contactList): self
     {
-        $contacts = $this->contacts;
-        foreach ($contacts as $index => $contact) {
-            if ($contactList->id == $contact->id) {
-                unset($contacts[$index]);
-                $this->contacts = array_values($contacts);
-                break;
-            }
-        }
+        $this->removeFromCollection('contacts', $contactList);
         return $this;
     }
 
     public function setTemplate(null|int|\stdClass|Template $template): void
     {
-        if ($template === null) {
-            $this->props['template'] = null;
-            $this->changed[] = 'template';
-            return;
-        }
-        if (is_integer($template)) {
-            $template = new Template($this->client->templates, $this->client, (object) [
-                'id' => $template,
-            ]);
-        }
-        if ($template instanceof \stdClass) {
-            $template = new Template($this->client->templates, $this->client, $template);
-        }
-        if ($template instanceof Template) {
-            $this->props['template'] = $template;
-            $this->changed[] = 'template';
-        }
+        $this->setObjectReference($this->client->templates, Template::class, 'template', $template);
     }
 
     public function setVanityNameserver(null|int|\stdClass|VanityNameserver $nameserver): void
     {
-        if ($nameserver === null) {
-            $this->props['vanityNameserver'] = null;
-            $this->changed[] = 'vanityNameserver';
-            return;
-        }
-        if (is_integer($nameserver)) {
-            $nameserver = new VanityNameserver($this->client->vanitynameservers, $this->client, (object) [
-                'id' => $nameserver,
-            ]);
-        }
-        if ($nameserver instanceof \stdClass) {
-            $nameserver = new VanityNameserver($this->client->vanitynameservers, $this->client, $nameserver);
-        }
-        if ($nameserver instanceof VanityNameserver) {
-            $this->props['vanityNameserver'] = $nameserver;
-            $this->changed[] = 'vanityNameserver';
-        }
+        $this->setObjectReference($this->client->vanitynameservers, VanityNameserver::class, 'vanityNameserver', $nameserver);
     }
 
     protected function parseApiData(\stdClass $data): void

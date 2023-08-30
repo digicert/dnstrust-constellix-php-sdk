@@ -1,0 +1,25 @@
+{
+  "name": "",
+  "type": "NAPTR",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "order": 100,
+    "preference": 10,
+    "flags": "S",
+    "service": "SIP+D2U",
+    "regularExpression": "!^.*$!sip:customer-service@example.com!",
+    "replacement": "_sip._udp.example.com."
+  }, {
+    "enabled": false,
+    "order": 120,
+    "preference": 50,
+    "flags": "S",
+    "service": "SIP+D2U",
+    "regularExpression": "!^.*$!sip:users@example.com!",
+    "replacement": "_sip._udp.example.com."
+  }]
+}

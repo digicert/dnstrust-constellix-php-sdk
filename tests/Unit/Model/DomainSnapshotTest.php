@@ -4,7 +4,6 @@ namespace Constellix\Client\Tests\Unit\Model;
 
 use Constellix\Client\Client;
 use Constellix\Client\Models\Domain;
-use Constellix\Client\Models\DomainSnapshot;
 use Constellix\Client\Tests\Unit\TestCase;
 use GuzzleHttp\Psr7\Response;
 

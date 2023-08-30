@@ -2,15 +2,12 @@
 
 namespace Constellix\Client\Tests\Unit;
 
-use Carbon\Carbon;
 use Carbon\Carbonite;
 use Constellix\Client\Client;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {

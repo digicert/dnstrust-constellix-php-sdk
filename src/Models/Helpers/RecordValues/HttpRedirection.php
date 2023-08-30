@@ -8,7 +8,6 @@ use Constellix\Client\Models\Helpers\RecordValue;
 
 class HttpRedirection extends RecordValue
 {
-    public bool $enabled = true;
     public bool $hard;
     public int $redirectType;
     public ?string $title;

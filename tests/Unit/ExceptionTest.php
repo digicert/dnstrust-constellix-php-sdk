@@ -2,8 +2,6 @@
 
 namespace Constellix\Client\Tests\Unit;
 
-use Constellix\Client\Enums\Pools\PoolValuePolicy;
-use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Exceptions\Client\Http\HttpException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;

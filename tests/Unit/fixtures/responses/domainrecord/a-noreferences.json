@@ -1,0 +1,86 @@
+{
+  "data": {
+    "id": 732673,
+    "ttl": 3600,
+    "enabled": true,
+    "name": "www",
+    "region": "default",
+    "ipfilter": null,
+    "geoproximity": null,
+    "ipfilterDrop": true,
+    "geoFailover": true,
+    "notes": "This is my DNS record",
+    "skipLookup": null,
+    "contacts": [],
+    "mode": "standard",
+    "lastValues": {
+      "standard": [
+        {
+          "enabled": true,
+          "value": "198.51.100.42"
+        }
+      ],
+      "failover": {
+        "mode": "normal",
+        "values": [
+          {
+            "enabled": true,
+            "order": 1,
+            "sonarCheckId": 76627,
+            "active": true,
+            "failed": false,
+            "status": "N/A",
+            "value": "198.51.100.42"
+          }
+        ]
+      },
+      "pools": [],
+      "roundRobinFailover": [
+        {
+          "enabled": true,
+          "order": 1,
+          "sonarCheckId": 76627,
+          "active": true,
+          "failed": false,
+          "status": "N/A",
+          "value": "198.51.100.42"
+        }
+      ]
+    },
+    "type": "A",
+    "value": [
+      {
+        "enabled": true,
+        "value": "198.51.100.42"
+      }
+    ],
+    "domain": {
+      "id": 366246,
+      "name": "example.com",
+      "note": "My Domain",
+      "status": "ACTIVE",
+      "enabled": true,
+      "version": 3,
+      "geoip": true,
+      "gtd": true,
+      "tags": [
+        {
+          "id": 824,
+          "name": "My Tag",
+          "links": {
+            "self": "https://api.dns.constellix.com/v4/tags/824"
+          }
+        }
+      ],
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z",
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/domains/366246",
+        "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+      }
+    }
+  },
+  "links": {
+    "self": "https://api.dns.constellix.com/v4/domains/366246/records/732673"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "www",
+  "type": "HTTP",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": {
+    "hard": false,
+    "redirectType": 302,
+    "title": "My Website",
+    "description": "A website containing example data",
+    "keywords": "Example",
+    "url": "https://www.example.com"
+  }
+}

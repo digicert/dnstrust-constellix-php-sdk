@@ -1,0 +1,15 @@
+{
+  "name": "",
+  "type": "NS",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "host": "ns1.example.com"
+  },{
+    "enabled": false,
+    "host": "ns2.example.com"
+  }]
+}

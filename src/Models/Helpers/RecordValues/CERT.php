@@ -9,8 +9,8 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class CERT extends RecordValue
 {
     public bool $enabled = true;
-    public string $certificateType;
-    public string $keyTag;
-    public string $algorithm;
+    public int $certificateType;
+    public int $keyTag;
+    public int $algorithm;
     public string $certificate;
 }

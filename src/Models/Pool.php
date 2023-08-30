@@ -142,42 +142,15 @@ class Pool extends AbstractModel implements EditableModelInterface
         return $payload;
     }
 
-    protected function hasContactList(ContactList $contactList): bool
-    {
-        foreach ($this->contacts as $list) {
-            if ($list->id == $contactList->id) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public function addContactList(ContactList $contactList): self
     {
-        if ($this->hasContactList($contactList)) {
-            return $this;
-        }
-
-        $lists = $this->contacts;
-        $lists[] = $contactList;
-        $this->contacts = $lists;
+        $this->addToCollection('contacts', $contactList);
         return $this;
     }
 
     public function removeContactList(ContactList $contactList): self
     {
-        if (!$this->hasContactList($contactList)) {
-            return $this;
-        }
-
-        $lists = $this->contacts;
-        foreach ($lists as $index => $list) {
-            if ($list->id == $contactList->id) {
-                unset($lists[$index]);
-                $this->contacts = array_values($lists);
-                break;
-            }
-        }
+        $this->removeFromCollection('contacts', $contactList);
         return $this;
     }
 

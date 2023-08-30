@@ -7,7 +7,6 @@ namespace Constellix\Client\Traits;
 use Constellix\Client\Client;
 use Constellix\Client\Interfaces\ManagerInterface;
 use Constellix\Client\Managers\AbstractManager;
-use Constellix\Client\Managers\DomainHistoryManager;
 
 trait ManagedModel
 {
@@ -45,5 +44,31 @@ trait ManagedModel
         $this->manager->refresh($this);
         // A refresh should fully load the object
         $this->fullyLoaded = true;
+    }
+
+    protected function setObjectReference(AbstractManager $manager, string $className, string $property, mixed $input): void
+    {
+        if ($input === null) {
+            $this->props[$property] = null;
+            $this->changed[] = $property;
+            return;
+        }
+
+        if (is_integer($input)) {
+            $input = new $className($manager, $this->client, (object)[
+                'id' => $input,
+            ]);
+        }
+
+        if ($input instanceof \stdClass) {
+            $input = new $className($manager, $this->client, $input);
+        }
+
+        if ($input instanceof $className) {
+            $this->props[$property] = $input;
+            if (!in_array($property, $this->changed)) {
+                $this->changed[] = $property;
+            }
+        }
     }
 }

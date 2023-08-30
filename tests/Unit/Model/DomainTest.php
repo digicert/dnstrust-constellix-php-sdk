@@ -380,7 +380,6 @@ class DomainTest extends TestCase
         $this->assertSame($contacts[1], $domain->contacts[0]);
     }
 
-
     // General Tests for Domains
 
     public function testSaveOnNewDomains(): void

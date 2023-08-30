@@ -16,7 +16,23 @@ use Spatie\Enum\Enum;
  * @method static self EUROPE()
  * @method static self ASIA_PAC()
  * @method static self OCEANIA()
+ * @method static self SOUTH_AMERICA()
  */
 class GTDLocation extends Enum
 {
+    /**
+     * @return string[]
+     */
+    protected static function values(): array
+    {
+        return [
+            'DEFAULT' => 'default',
+            'EUROPE' => 'europe',
+            'US_EAST' => 'us-east',
+            'US_WEST' => 'us-west',
+            'OCEANIA' => 'oceania',
+            'ASIA_PAC' => 'asia-pacific',
+            'SOUTH_AMERICA' => 'south-america',
+        ];
+    }
 }

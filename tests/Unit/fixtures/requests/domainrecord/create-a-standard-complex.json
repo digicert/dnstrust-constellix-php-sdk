@@ -1,0 +1,27 @@
+{
+  "name": "www",
+  "enabled": true,
+  "ttl": 60,
+  "notes": "This is my A record",
+  "skipLookup": true,
+  "region": "europe",
+  "ipfilter": 47345837,
+  "geoproximity": 4367769,
+  "ipfilterDrop": true,
+  "geoFailover": true,
+  "contacts": [
+    2668228
+  ],
+  "mode": "standard",
+  "type": "A",
+  "value": [
+    {
+      "enabled": true,
+      "value": "198.51.100.42"
+    },
+    {
+      "enabled": false,
+      "value": "198.51.100.43"
+    }
+  ]
+}

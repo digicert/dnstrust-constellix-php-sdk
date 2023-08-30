@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Interfaces\Traits;
 
-use Constellix\Client\Interfaces\ClientInterface;
 use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
 
 /**

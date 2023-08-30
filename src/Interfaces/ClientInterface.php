@@ -25,7 +25,6 @@ use Constellix\Client\Interfaces\Managers\VanityNameServerManagerInterface;
 use DateTime;
 use Psr\Http\Client\ClientInterface as HttpClientInterface;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * @property-read TagManagerInterface $tags

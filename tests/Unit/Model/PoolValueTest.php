@@ -2,7 +2,6 @@
 
 namespace Constellix\Client\Tests\Unit\Model;
 
-use Constellix\Client\Models\Pool;
 use Constellix\Client\Models\PoolValue;
 use Constellix\Client\Tests\Unit\TestCase;
 

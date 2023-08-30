@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
-use Constellix\Client\Interfaces\ClientInterface;
 use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
 use Constellix\Client\Interfaces\Models\AbstractModelInterface;
-use Constellix\Client\Managers\AbstractManager;
 use JsonSerializable;
 use Spatie\Enum\Enum;
 
@@ -104,7 +102,7 @@ abstract class AbstractModel implements JsonSerializable
         if ($data !== null) {
             unset($data->links);
             if (property_exists($data, 'id')) {
-                $this->id = $data->id;
+                $this->id = (int)$data->id;
             }
             if ($parse) {
                 $this->parseApiData($data);
@@ -120,20 +118,27 @@ abstract class AbstractModel implements JsonSerializable
      */
     protected function parseApiData(\stdClass $data): void
     {
+        $changed = $this->changed;
         foreach ((array)$data as $prop => $value) {
             if (!in_array($prop, $this->loadedProps)) {
                 $this->loadedProps[] = $prop;
             }
             // We skip loading the data if we've changed this property locally
-            if (in_array($prop, $this->changed)) {
+            if (in_array($prop, $changed)) {
                 continue;
             }
+            if ($prop === 'id') {
+                $value = (int)$value;
+            }
+
             try {
                 $this->{$prop} = $value;
             } catch (ReadOnlyPropertyException $ex) {
                 $this->props[$prop] = $value;
             }
         }
+        // Reset our changelist back to what it was
+        $this->changed = $changed;
     }
 
     /**
@@ -255,5 +260,28 @@ abstract class AbstractModel implements JsonSerializable
     public function refresh(): void
     {
         // Do nothing by default
+    }
+
+    protected function addToCollection(string $property, mixed $input): void
+    {
+        if (in_array($input, $this->{$property})) {
+            return;
+        }
+
+        $collection = $this->{$property};
+        $collection[] = $input;
+        $this->{$property} = $collection;
+    }
+
+    protected function removeFromCollection(string $property, mixed $input): void
+    {
+        $collection = $this->{$property};
+        foreach ($collection as $index => $obj) {
+            if ($obj == $input) {
+                unset($collection[$index]);
+                $this->{$property} = array_values($collection);
+                return;
+            }
+        }
     }
 }

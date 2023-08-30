@@ -23,12 +23,14 @@
     "geoFailover": true,
     "notes": "This is my DNS record",
     "skipLookup": null,
-    "contacts": {
-      "id": 2668228,
-      "links": {
-        "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+    "contacts": [
+        {
+        "id": 2668228,
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+        }
       }
-    },
+    ],
     "mode": "standard",
     "lastValues": {
       "standard": [

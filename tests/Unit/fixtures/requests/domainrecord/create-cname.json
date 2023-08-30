@@ -1,0 +1,14 @@
+{
+  "name": "www",
+  "type": "CNAME",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [
+    {
+      "enabled": true,
+      "value": "mydomain.example.com"
+    }
+  ]
+}

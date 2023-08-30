@@ -41,39 +41,25 @@ class ContactList extends AbstractModel implements EditableModelInterface
         'emails',
     ];
 
-    protected function hasEmail(string $address): bool
-    {
-        foreach ($this->emails as $email) {
-            if ($email->address == $address) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public function addEmail(string $email): self
     {
-        if (!$this->hasEmail($email)) {
-            $emails = $this->emails;
-            $emails[] = (object) [
-                'address' => $email,
-                'verified' => false,
-            ];
-            $this->emails = $emails;
-        }
+        $obj = (object)[
+            'address' => $email,
+            'verified' => false,
+        ];
+        $this->addToCollection('emails', $obj);
         return $this;
     }
 
     public function removeEmail(string $email): self
     {
-        $emails = $this->emails;
-        foreach ($emails as $index => $value) {
-            if ($value->address === $email) {
-                unset($emails[$index]);
-                $this->emails = array_values($emails);
-                return $this;
-            }
-        }
+        $obj = (object)[
+            'address' => $email,
+            'verified' => false,
+        ];
+        $this->removeFromCollection('emails', $obj);
+        $obj->verified = true;
+        $this->removeFromCollection('emails', $obj);
         return $this;
     }
 

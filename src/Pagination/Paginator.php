@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Constellix\Client\Pagination;
 
 use ArrayIterator;
-use Traversable;
 
 /**
  * Simple object paginator. Can be iterated over, accessed like an array and used in a similar manner to Illuminate's

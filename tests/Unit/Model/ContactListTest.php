@@ -3,7 +3,6 @@
 namespace Constellix\Client\Tests\Unit\Model;
 
 use Constellix\Client\Client;
-use Constellix\Client\Models\Helpers\NameserverGroup;
 use Constellix\Client\Tests\Unit\TestCase;
 use GuzzleHttp\Psr7\Response;
 

@@ -10,6 +10,6 @@ class CAA extends RecordValue
 {
     public bool $enabled = true;
     public string $tag;
-    public string $flags;
+    public int $flags;
     public string $data;
 }
