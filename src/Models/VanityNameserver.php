@@ -48,6 +48,11 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
         'nameservers',
     ];
 
+    /**
+     * Set our initial properties.
+     * @return void
+     */
+
     protected function setInitialProperties(): void
     {
         $this->props['nameserverGroup'] = new NameserverGroup((object) [
@@ -57,7 +62,9 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
     }
 
     /**
+     * Add a nameserver to the Vanity Nameserver.
      * @param string $nameserver
+     * @return $this
      */
     public function addNameServer(string $nameserver): self
     {
@@ -65,12 +72,23 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
         return $this;
     }
 
+    /**
+     * Remove a nameserver from the Vanity Nameserver.
+     * @param string $nameserver
+     * @return $this
+     */
     public function removeNameServer(string $nameserver): self
     {
         $this->removeFromCollection('nameservers', $nameserver);
         return $this;
     }
 
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     * @internal
+     */
     public function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
@@ -79,6 +97,12 @@ class VanityNameserver extends AbstractModel implements EditableModelInterface
         }
     }
 
+    /**
+     *
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();

@@ -51,6 +51,10 @@ class PoolValue extends AbstractModel
         'sonarCheckId',
     ];
 
+    /**
+     * Create a new Pool Value
+     * @param \stdClass|null $data
+     */
     public function __construct(?\stdClass $data = null)
     {
         $this->props['policy'] = PoolValuePolicy::FOLLOW_SONAR();
@@ -60,7 +64,12 @@ class PoolValue extends AbstractModel
         }
     }
 
-    protected function parseApiData(object $data): void
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
         if (property_exists($data, 'policy') && $data->policy) {
@@ -68,6 +77,10 @@ class PoolValue extends AbstractModel
         }
     }
 
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
@@ -81,6 +94,11 @@ class PoolValue extends AbstractModel
         return $payload;
     }
 
+    /**
+     * Return the string representation of this pool value
+     * @return string
+     * @internal
+     */
     public function __toString()
     {
         if ($this->value) {

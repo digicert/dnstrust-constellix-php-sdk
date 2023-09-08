@@ -6,6 +6,10 @@ namespace Constellix\Client\Models\Helpers\RecordValues;
 
 use Constellix\Client\Models\Helpers\RecordValue;
 
+/**
+ * Represents the data for SRV records.
+ * @package Constellix\Client\Models\RecordValues
+ */
 class SRV extends RecordValue
 {
     public bool $enabled = true;

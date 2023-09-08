@@ -18,8 +18,5 @@ class DomainRecord extends Record implements DomainAwareInterface
 {
     use DomainAware;
 
-    /**
-     * @var DomainRecordManager
-     */
     protected DomainRecordManager $manager;
 }

@@ -33,6 +33,7 @@ abstract class AbstractDomainHistory extends AbstractModel implements DomainAwar
     /**
      * Returns the string representation for this object.
      * @return string
+     * @internal
      */
     public function __toString()
     {

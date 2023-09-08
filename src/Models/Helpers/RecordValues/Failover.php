@@ -7,6 +7,10 @@ namespace Constellix\Client\Models\Helpers\RecordValues;
 use Constellix\Client\Enums\Records\FailoverMode;
 use Constellix\Client\Models\Helpers\RecordValue;
 
+/**
+ * Represents the data in failover mode for A, AAAA, CNAME and ANAME records.
+ * @package Constellix\Client\Models\RecordValues
+ */
 class Failover extends RecordValue
 {
     public FailoverMode $mode;
@@ -16,12 +20,21 @@ class Failover extends RecordValue
      */
     public array $values = [];
 
+    /**
+     * Construct a new Failover record value
+     * @param \stdClass|null $data
+     */
     public function __construct(\stdClass $data = null)
     {
         $this->mode = FailoverMode::NORMAL();
         parent::__construct($data);
     }
 
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return \stdClass
+     */
     public function parseApiData(\stdClass $data): \stdClass
     {
         if (property_exists($data, 'mode')) {
@@ -35,6 +48,11 @@ class Failover extends RecordValue
         return parent::parseApiData($data);
     }
 
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
@@ -45,6 +63,11 @@ class Failover extends RecordValue
         return $payload;
     }
 
+    /**
+     * Add a failover value to this failover record.
+     * @param FailoverValue $value
+     * @return void
+     */
     public function addValue(FailoverValue $value): void
     {
         if (!in_array($value, $this->values)) {

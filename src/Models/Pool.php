@@ -66,11 +66,21 @@ class Pool extends AbstractModel implements EditableModelInterface
         'ito',
     ];
 
+    /**
+     * Set initial properties on this Pool.
+     * @return void
+     */
     protected function setInitialProperties(): void
     {
         $this->props['ito'] = new ITO();
     }
 
+    /**
+     * Set the type of Pool. This can only be done on Pool creation.
+     * @param string|PoolType $type
+     * @return void
+     * @throws ReadOnlyPropertyException
+     */
     public function setType(string|PoolType $type): void
     {
         if ($this->id) {
@@ -83,6 +93,11 @@ class Pool extends AbstractModel implements EditableModelInterface
         $this->changed[] = 'type';
     }
 
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
     protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
@@ -123,6 +138,10 @@ class Pool extends AbstractModel implements EditableModelInterface
         }
     }
 
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
@@ -142,18 +161,33 @@ class Pool extends AbstractModel implements EditableModelInterface
         return $payload;
     }
 
+    /**
+     * Add a Contact List to this pool.
+     * @param ContactList $contactList
+     * @return $this
+     */
     public function addContactList(ContactList $contactList): self
     {
         $this->addToCollection('contacts', $contactList);
         return $this;
     }
 
+    /**
+     * Remove a Contact List from this pool.
+     * @param ContactList $contactList
+     * @return $this
+     */
     public function removeContactList(ContactList $contactList): self
     {
         $this->removeFromCollection('contacts', $contactList);
         return $this;
     }
 
+    /**
+     * Create a new Pool Value and add it to this Pool.
+     * @param string|null $value
+     * @return PoolValue
+     */
     public function createValue(?string $value = null): PoolValue
     {
         $data = (object) [];

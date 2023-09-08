@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
+use Carbon\Carbon;
 use Constellix\Client\Enums\DomainStatus;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
@@ -33,8 +34,8 @@ use Constellix\Client\Traits\ManagedModel;
  * @property ?Template $template
  * @property ?VanityNameserver $vanityNameserver
  * @property ContactList[] $contacts
- * @property-read \DateTime $createdAt
- * @property-read \DateTime $updatedAt
+ * @property-read Carbon $createdAt
+ * @property-read Carbon $updatedAt
  * @property-read DomainSnapshotManager $snapshots
  * @property-read DomainHistoryManager $history
  * @property-read DomainRecordManager $records
@@ -217,10 +218,10 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
     {
         parent::parseApiData($data);
         if (property_exists($data, 'createdAt')) {
-            $this->props['createdAt'] = new \DateTime($data->createdAt);
+            $this->props['createdAt'] = new Carbon($data->createdAt);
         }
         if (property_exists($data, 'updatedAt')) {
-            $this->props['updatedAt'] = new \DateTime($data->updatedAt);
+            $this->props['updatedAt'] = new Carbon($data->updatedAt);
         }
 
         if (property_exists($data, 'vanityNameserver') && $data->vanityNameserver) {

@@ -20,6 +20,10 @@ class NameserverGroup
     public int $id;
     public ?string $name = null;
 
+    /**
+     * Create a new nameserver group for a Vanity Nameserver.
+     * @param \stdClass|null $data
+     */
     public function __construct(?\stdClass $data = null)
     {
         if ($data !== null) {
@@ -27,6 +31,12 @@ class NameserverGroup
             $this->name = $data->name ?? null;
         }
     }
+
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
 
     public function transformForApi(): \stdClass
     {

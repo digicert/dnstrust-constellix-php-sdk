@@ -6,6 +6,10 @@ namespace Constellix\Client\Models\Helpers\RecordValues;
 
 use Constellix\Client\Models\Helpers\RecordValue;
 
+/**
+ * Represents the values of failover mode A, AAAA, CNAME and ANAME records.
+ * @package Constellix\Client\Models\RecordValues
+ */
 class FailoverValue extends RecordValue
 {
     public bool $enabled = true;
@@ -17,6 +21,12 @@ class FailoverValue extends RecordValue
     public ?bool $failed;
     public ?bool $active;
 
+
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();

@@ -96,12 +96,17 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         'skipLookup',
     ];
 
+    /**
+     * Set initial properties for the record.
+     * @return void
+     */
     protected function setInitialProperties(): void
     {
         $this->props['mode'] = RecordMode::STANDARD();
     }
 
     /**
+     * Parse the API response data and load it into this object.
      * @param \stdClass $data
      * @return void
      */
@@ -143,6 +148,7 @@ abstract class Record extends AbstractModel implements EditableModelInterface
     }
 
     /**
+     * Parse the record value and return the appropriate local typed object for it.
      * @param RecordType $type
      * @param RecordMode $mode
      * @param mixed $data
@@ -218,6 +224,11 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         }, $data);
     }
 
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
@@ -245,6 +256,12 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         return $payload;
     }
 
+    /**
+     * Set the type of record. This can only be done on new records.
+     * @param RecordType $type
+     * @return void
+     * @throws ReadOnlyPropertyException
+     */
     public function setType(RecordType $type): void
     {
         if ($this->id) {
@@ -254,6 +271,11 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         $this->changed[] = 'type';
     }
 
+    /**
+     * Set the value of a record. This can either be an array of values or a single RecordValue object.
+     * @param mixed $recordValue
+     * @return void
+     */
     public function setValue(mixed $recordValue): void
     {
         $this->changed[] = 'mode';
@@ -278,6 +300,11 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         }
     }
 
+    /**
+     * Add a value to this record.
+     * @param RecordValue $recordValue
+     * @return void
+     */
     public function addValue(RecordValue $recordValue): void
     {
         if (!$this->value) {
@@ -289,22 +316,43 @@ abstract class Record extends AbstractModel implements EditableModelInterface
         }
     }
 
+    /**
+     * Add a Contact List for this record.
+     * @param ContactList $contactList
+     * @return $this
+     */
     public function addContactList(ContactList $contactList): self
     {
         $this->addToCollection('contacts', $contactList);
         return $this;
     }
 
+    /**
+     * Remove a Contact List from this record.
+     * @param ContactList $contactList
+     * @return $this
+     */
     public function removeContactList(ContactList $contactList): self
     {
         $this->removeFromCollection('contacts', $contactList);
         return $this;
     }
 
+    /**
+     * Set the IP Filter for this record.
+     * @param int|\stdClass|IPFilter|null $ipfilter
+     * @return void
+     */
     public function setIPFilter(null|int|\stdClass|IPFilter $ipfilter): void
     {
         $this->setObjectReference($this->client->ipfilters, IPFilter::class, 'ipfilter', $ipfilter);
     }
+
+    /**
+     * Set the GeoProximity for this record.
+     * @param int|\stdClass|GeoProximity|null $geoproximity
+     * @return void
+     */
 
     public function setGeoProximity(null|int|\stdClass|GeoProximity $geoproximity): void
     {

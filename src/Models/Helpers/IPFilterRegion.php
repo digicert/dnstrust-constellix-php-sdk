@@ -7,6 +7,9 @@ use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Traits\HelperModel;
 
 /**
+ * Represents IP Filter Region configuration.
+ * @package Constellix\Client\Models
+ *
  * @property ?Continent $continent
  * @property ?string $country
  * @property ?string $region
@@ -37,6 +40,11 @@ class IPFilterRegion extends AbstractModel
     ];
 
 
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
     protected function parseApiData(object $data): void
     {
         parent::parseApiData($data);

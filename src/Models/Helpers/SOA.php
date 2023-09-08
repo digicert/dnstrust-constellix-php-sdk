@@ -11,7 +11,7 @@ use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Traits\HelperModel;
 
 /**
- * Represents basic ITO configuration for a pool
+ * Represents SOA configuration for a domain
  * @package Constellix\Client\Models
  *
  * @property string $primaryNameserver
@@ -53,6 +53,13 @@ class SOA extends AbstractModel
         'expire',
         'negativeCache',
     ];
+
+
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
 
     public function transformForApi(): \stdClass
     {

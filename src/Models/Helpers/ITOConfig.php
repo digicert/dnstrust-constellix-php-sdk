@@ -48,6 +48,10 @@ class ITOConfig extends AbstractModel
         'period',
     ];
 
+    /**
+     * Create a new ITO Config.
+     * @param \stdClass|null $data
+     */
     public function __construct(?\stdClass $data = null)
     {
         $this->props['monitoringRegion'] = ITORegion::WORLD();
@@ -57,7 +61,13 @@ class ITOConfig extends AbstractModel
         }
     }
 
-    protected function parseApiData(object $data): void
+
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
         if (property_exists($data, 'monitoringRegion') && $data->monitoringRegion) {

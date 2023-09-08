@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models\Helpers;
 
+/**
+ * Abstract class to represents a record value
+ * @package Constellix\Client\Models
+ */
 abstract class RecordValue
 {
     /**
@@ -17,6 +21,7 @@ abstract class RecordValue
     }
 
     /**
+     * Parse the API data and apply any transformations to it.
      * @param \stdClass $data
      * @return \stdClass
      */
@@ -26,8 +31,10 @@ abstract class RecordValue
     }
 
     /**
+     * Populate this object with the supplied API data.
      * @param \stdClass $data
      * @return self
+     * @internal
      */
     public function populateFromApi(\stdClass $data): self
     {
@@ -37,6 +44,13 @@ abstract class RecordValue
         }
         return $this;
     }
+
+
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return mixed
+     * @internal
+     */
 
     public function transformForApi(): mixed
     {

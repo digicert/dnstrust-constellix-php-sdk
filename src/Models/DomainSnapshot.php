@@ -30,7 +30,7 @@ class DomainSnapshot extends AbstractDomainHistory implements DomainAwareInterfa
     ];
 
     /**
-     * Delete the domain snapshot
+     * Delete the domain snapshot.
      * @return void
      * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
      */
