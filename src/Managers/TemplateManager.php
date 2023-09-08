@@ -18,11 +18,23 @@ class TemplateManager extends AbstractManager
      */
     protected string $baseUri = '/templates';
 
+    /**
+     * Create a new Template.
+     * @return Template
+     */
     public function create(): Template
     {
         return $this->createObject();
     }
 
+    /**
+     * Fetch an existing Template.
+     * @param int $id
+     * @return Template
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
     public function get(int $id): Template
     {
         return $this->getObject($id);

@@ -18,10 +18,23 @@ class VanityNameserverManager extends AbstractManager
      */
     protected string $baseUri = '/vanitynameservers';
 
+    /**
+     * Create a new Vanity Nameserver.
+     * @return VanityNameserver
+     */
     public function create(): VanityNameserver
     {
         return $this->createObject();
     }
+
+    /**
+     * Fetch an existing Vanity Nameserver.
+     * @param int $id
+     * @return VanityNameserver
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
     public function get(int $id): VanityNameserver
     {
         return $this->getObject($id);

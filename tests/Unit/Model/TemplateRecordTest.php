@@ -1,6 +1,6 @@
 <?php
 
-namespace Constellix\Client\Tests\Unit\Models;
+namespace Constellix\Client\Tests\Unit\Model;
 
 use Constellix\Client\Client;
 use Constellix\Client\Models\Record;

@@ -1,4 +1,4 @@
-# Constellix DNS API PHP Client Library
+# DigiCert Constellix DNS API PHP Client Library
 
 This is an API client library for the [Constellix](https://www.constellix.com) API.
 
@@ -11,17 +11,35 @@ More information about the API may be found in the [official API documentation](
 
 ## Installation
 
+### Standalone
+
 The easiest way to install and use this client library is using Composer. The following command will add the library to your application and install it from Packagist.
 
 ```bash
 composer require tiggee/constellix-v4-client
 ```
 
+You will also need a [PSR-18 HTTP Client](https://www.php-fig.org/psr/psr-18/) implementation. We recommend Guzzle, you you can use any compatible client.
+
+```bash
+composer require guzzlehttp/guzzle
+```
+
+### Laravel
+
+If you are using this package inside Laravel, then there is a Laravel-specific package you can include instead. This will add a service provider and use Laravel's own pagination methods. You can include this using:
+
+```bash
+composer require tiggee/constellix-v4-client-laravel
+```
+
+For more details, please see the [documentation for that package](https://github.com/Constellix/constellix-php-sdk-laravel).
+
 ## Getting Started
 
-*Instructions on getting an Account*
+You will need a DigiCert Constellix DNS account to manage DNS records. You can sign up for one on the [DigiCert Constellix DNS](https://constellix.com) site.
 
-If you are using Composer, you should be running Composer's autoload to load libraries:
+If you are using Composer, you should be using Composer's autoload to load libraries:
 
 ```php
 require_once 'vendor/_autoload.php';
@@ -30,7 +48,9 @@ require_once 'vendor/_autoload.php';
 With the libraries loaded, you just need to create the client and set the API key and secret key.
 
 ```php
-$client = new \Constellix\Client\Client;
+$httpClient = new \GuzzleHttp\Client();
+
+$client = new \Constellix\Client\Client($httpClient);
 $client->setApiKey(API_KEY);
 $client->setSecretKey(SECRET_KEY);
 ```
@@ -48,7 +68,8 @@ Putting this together, it's time for the API equivalent of Hello World. Let's ge
 require_once 'vendor/_autoload.php';
 
 // Create a new client and set our credentials
-$client = new \Constellix\Client\Client;
+$httpClient = new \GuzzleHttp\Client();
+$client = new \Constellix\Client\Client($client);
 $client->setApiKey("Your API Key");
 $client->setSecretKey("Your Secret Key");
 
@@ -72,17 +93,23 @@ There's more examples further down of using the API client SDK.
 
 ## Configuration
 
-There's additional configuration options you can use with the client as well as just specifying the sandbox.
+There's additional configuration options you can use with the client as well, including logging, and specifying a separate API URL.
 
  ### Logging
 
 You can specify a logger that implements the [PSR-3 Logger](https://www.php-fig.org/psr/psr-3/) specification such as MonoLog. The client is a `LoggerAwareInterface` and the logger can be specified either in the constructor or via a method call.
 
 ```php
-$client = new \Constellix\Client\Client(null, null, $myLogger);
+$myLogger = new \Monolog\Logger('name');
+$myLogger->pushHandler(new \Monolog\Handler\StreamHandler('php://stdout', \Psr\Log\LogLevel::DEBUG));
+
+$client = new \Constellix\Client\Client(logger: $myLogger);
 ```
 
 ```php
+$myLogger = new \Monolog\Logger('name');
+$myLogger->pushHandler(new \Monolog\Handler\StreamHandler('php://stdout', \Psr\Log\LogLevel::DEBUG));
+
 $client->setLogger($myLogger);
 ```
 
@@ -95,10 +122,16 @@ If you need additional configuration for HTTP requests in your application, for 
 You can specify the client using either the constructor or via a method call.
 
 ```php
-$client = new \Constellix\Client\Client($myClient);
+$myClient = new \GuzzleHttp\Client([
+    'proxy' => 'http://localhost:8123'
+]);
+$client = new \Constellix\Client\Client(client: $myClient);
 ```
 
 ```php
+$myClient = new \GuzzleHttp\Client([
+    'proxy' => 'http://localhost:8123'
+]);
 $client->setHttpClient($myClient);
 ```
 
@@ -232,6 +265,18 @@ $record->save();
 ```
 
 Some record types (A, AAAA, CNAME and ANAME) have different types of value you can use, including Failover, RoundRobinFailover and Pools. You can assign these values by creating the correct type of value object. For more details on all these classes, see the docs folder.
+
+## Contributing
+
+If you want to contribute to this SDK, we are open to pull requests. We use the following standards:
+
+ - PHP 8.0 - We will continue supporting 8.0 until at least 26 Nov 2023
+ - PSR12 Coding Standards - enforced using PHP CodeSniffer
+ - Unit Tests - 100% Test Coverage using PHPUnit
+ - Static Analysis - Level 8 PHPStan
+ - Documentation - PHP Documentor
+
+All pull requests must meet these requirements. 
 
 ## License
 

@@ -10,6 +10,7 @@ use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
  * Trait for models which can be edited.
  *
  * @package Constellix\Client\Interfaces
+ * @internal
  *
  * @property-read int $id
  */

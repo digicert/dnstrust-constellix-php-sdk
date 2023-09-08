@@ -15,5 +15,10 @@ use Constellix\Client\Models\Template;
  */
 interface TemplateAwareInterface
 {
+    /**
+     * Set the template relating to this object.
+     * @param Template $template
+     * @return TemplateAwareInterface
+     */
     public function setTemplate(Template $template): TemplateAwareInterface;
 }

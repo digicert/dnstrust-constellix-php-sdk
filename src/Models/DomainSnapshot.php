@@ -13,6 +13,7 @@ use Constellix\Client\Traits\DomainAware;
  * @package Constellix\Client\Models
  *
  * @property string $name
+ * @property int $version
  */
 class DomainSnapshot extends AbstractDomainHistory implements DomainAwareInterface
 {
@@ -28,6 +29,11 @@ class DomainSnapshot extends AbstractDomainHistory implements DomainAwareInterfa
         'version' => null,
     ];
 
+    /**
+     * Delete the domain snapshot
+     * @return void
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     */
     public function delete(): void
     {
         $this->manager->delete($this);

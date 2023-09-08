@@ -10,6 +10,7 @@ use Constellix\Client\Models\Helpers\RecordValue;
 class Failover extends RecordValue
 {
     public FailoverMode $mode;
+    public bool $enabled;
     /**
      * @var array<FailoverValue>
      */

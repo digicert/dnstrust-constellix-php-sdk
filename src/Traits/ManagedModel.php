@@ -46,6 +46,15 @@ trait ManagedModel
         $this->fullyLoaded = true;
     }
 
+    /**
+     * Set a property on this object that is a reference to another object. This takes almost any input type and assigns
+     * the correct object.
+     * @param AbstractManager $manager
+     * @param string $className
+     * @param string $property
+     * @param mixed $input
+     * @return void
+     */
     protected function setObjectReference(AbstractManager $manager, string $className, string $property, mixed $input): void
     {
         if ($input === null) {

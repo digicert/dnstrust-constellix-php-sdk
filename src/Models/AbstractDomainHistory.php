@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
+use Carbon\Carbon;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
 use Constellix\Client\Managers\AbstractManager;
 use Constellix\Client\Traits\DomainAware;
@@ -15,7 +16,7 @@ use Constellix\Client\Traits\ManagedModel;
  *
  * @property string $name
  * @property-read string $version
- * @property-read \DateTime $updatedAt
+ * @property-read Carbon $updatedAt
  * @property AbstractManager $manager
  */
 abstract class AbstractDomainHistory extends AbstractModel implements DomainAwareInterface
@@ -29,6 +30,10 @@ abstract class AbstractDomainHistory extends AbstractModel implements DomainAwar
         'updatedAt' => null
     ];
 
+    /**
+     * Returns the string representation for this object.
+     * @return string
+     */
     public function __toString()
     {
         $rClass = new \ReflectionClass($this);
@@ -36,6 +41,11 @@ abstract class AbstractDomainHistory extends AbstractModel implements DomainAwar
         return "{$modelName}:{$this->version}";
     }
 
+    /**
+     * Parse the API data and laod it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
     protected function parseApiData(\stdClass $data): void
     {
         $this->id = $data->version;
@@ -47,16 +57,26 @@ abstract class AbstractDomainHistory extends AbstractModel implements DomainAwar
         }
         if (property_exists($data, 'updatedAt')) {
             $this->loadedProps[] = 'updatedAt';
-            $this->props['updatedAt'] = new \DateTime($data->updatedAt);
+            $this->props['updatedAt'] = new Carbon($data->updatedAt);
         }
     }
 
+    /**
+     * Serialize this object as JSON.
+     * @return \stdClass
+     * @internal
+     */
     public function jsonSerialize(): \stdClass
     {
         $data = parent::jsonSerialize();
         unset($data->id);
         return $data;
     }
+
+    /**
+     * Apply the domain history or snapshot to the domain.
+     * @return $this
+     */
 
     public function apply(): AbstractDomainHistory
     {

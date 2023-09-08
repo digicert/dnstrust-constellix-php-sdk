@@ -41,6 +41,11 @@ class ContactList extends AbstractModel implements EditableModelInterface
         'emails',
     ];
 
+    /**
+     * Add an email to the contact list.
+     * @param string $email
+     * @return $this
+     */
     public function addEmail(string $email): self
     {
         $obj = (object)[
@@ -51,6 +56,11 @@ class ContactList extends AbstractModel implements EditableModelInterface
         return $this;
     }
 
+    /**
+     * Remove an email from the contact list.
+     * @param string $email
+     * @return $this
+     */
     public function removeEmail(string $email): self
     {
         $obj = (object)[
@@ -63,6 +73,11 @@ class ContactList extends AbstractModel implements EditableModelInterface
         return $this;
     }
 
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
     public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();

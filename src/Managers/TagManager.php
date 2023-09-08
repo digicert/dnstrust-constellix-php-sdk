@@ -18,10 +18,23 @@ class TagManager extends AbstractManager
      */
     protected string $baseUri = '/tags';
 
+    /**
+     * Create a new Tag.
+     * @return Tag
+     */
     public function create(): Tag
     {
         return $this->createObject();
     }
+
+    /**
+     * Fetch an existing Tag.
+     * @param int $id
+     * @return Tag
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
 
     public function get(int $id): Tag
     {

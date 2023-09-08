@@ -19,10 +19,23 @@ class ContactListManager extends AbstractManager
      */
     protected string $baseUri = '/contactlists';
 
+    /**
+     * Create a new Contact List.
+     * @return ContactList
+     */
     public function create(): ContactList
     {
         return $this->createObject();
     }
+
+    /**
+     * Fetch an existing Contact List.
+     * @param int $id
+     * @return ContactList
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
 
     public function get(int $id): ContactList
     {

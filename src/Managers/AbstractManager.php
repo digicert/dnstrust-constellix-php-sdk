@@ -246,6 +246,10 @@ abstract class AbstractManager
         return "{$name}:{$input}";
     }
 
+    /**
+     * Returns the property name that represents the ID of the object.
+     * @return string
+     */
     protected function getIdPropertyName(): string
     {
         return 'id';

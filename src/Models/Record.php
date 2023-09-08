@@ -36,17 +36,17 @@ use Constellix\Client\Traits\ManagedModel;
  * @property string $name
  * @property RecordType $type
  * @property int $ttl
- * @property RecordMode $mode;
- * @property ?GTDLocation $region;
- * @property ?IPFilter $ipfilter;
- * @property ?GeoProximity $geoproximity;
- * @property bool $geoFailover;
- * @property bool $ipfilterDrop;
- * @property bool $enabled;
- * @property ?string $notes;
- * @property ?bool $skipLookup;
- * @property ContactList[] $contacts;
- * @property mixed $value;
+ * @property RecordMode $mode
+ * @property ?GTDLocation $region
+ * @property ?IPFilter $ipfilter
+ * @property ?GeoProximity $geoproximity
+ * @property bool $geoFailover
+ * @property bool $ipfilterDrop
+ * @property bool $enabled
+ * @property ?string $notes
+ * @property ?bool $skipLookup
+ * @property ContactList[] $contacts
+ * @property mixed $value
  * @property \stdClass $lastValues
  */
 abstract class Record extends AbstractModel implements EditableModelInterface

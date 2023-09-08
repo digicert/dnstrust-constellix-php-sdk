@@ -11,6 +11,7 @@ use Constellix\Client\Managers\AbstractManager;
  * Interface models which can be edited.
  *
  * @package Constellix\Client\Interfaces
+ * @internal
  *
  * @property-read int $id
  */

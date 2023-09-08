@@ -18,7 +18,7 @@ use Constellix\Client\Traits\ManagedModel;
  * @property bool $default
  * @property bool $public
  * @property NameserverGroup $nameserverGroup
- * @property string[] $nameservers;
+ * @property string[] $nameservers
  */
 class VanityNameserver extends AbstractModel implements EditableModelInterface
 {

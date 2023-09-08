@@ -25,17 +25,34 @@ class DomainHistoryManager extends AbstractManager implements DomainAwareInterfa
      */
     protected string $baseUri = '/domains/:domain_id/history';
 
+    /**
+     * Fetch a specific version of the domain's history.
+     * @param int $version
+     * @return DomainHistory
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
     public function get(int $version): DomainHistory
     {
         return $this->getObject($version);
     }
 
+    /**
+     * The base URI for any requests to the API for this resource.
+     * @return string
+     */
     protected function getBaseUri(): string
     {
 
         return str_replace(':domain_id', (string)$this->domain->id, $this->baseUri);
     }
 
+    /**
+     * Instantiate a new DomainHistory object.
+     * @param string|null $className
+     * @return DomainHistory
+     */
     protected function createObject(?string $className = null): DomainHistory
     {
         /**
@@ -46,16 +63,40 @@ class DomainHistoryManager extends AbstractManager implements DomainAwareInterfa
         return $object;
     }
 
+    /**
+     * The unique ID property name for this resource.
+     * @return string
+     */
     protected function getIdPropertyName(): string
     {
         return 'version';
     }
+
+    /**
+     * Apply a version of the Domain to the Domain itself.
+     * @param AbstractDomainHistory $history
+     * @return void
+     * @throws ConstellixException
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\JsonDecodeException
+     * @internal
+     */
 
     public function apply(AbstractDomainHistory $history): void
     {
         $url = $this->getObjectUri($history) . "/apply";
         $this->client->post($url);
     }
+
+    /**
+     * Take a snapshot of a specific version of domain history.
+     * @param AbstractDomainHistory $history
+     * @return DomainSnapshot
+     * @throws ConstellixException
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\JsonDecodeException
+     * @internal
+     */
 
     public function snapshot(AbstractDomainHistory $history): DomainSnapshot
     {

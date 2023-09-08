@@ -22,20 +22,43 @@ class DomainRecordManager extends AbstractManager implements DomainAwareInterfac
      */
     protected string $baseUri = '/domains/:domain_id/records';
 
+    /**
+     * Create a new Domain Record.
+     * @return DomainRecord
+     */
     public function create(): DomainRecord
     {
         return $this->createObject();
     }
+
+    /**
+     * Fetch an existing Domain Record.
+     * @param int $id
+     * @return DomainRecord
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
 
     public function get(int $id): DomainRecord
     {
         return $this->getObject($id);
     }
 
+    /**
+     * Fetch the base URI for domain records.
+     * @return string
+     */
     protected function getBaseUri(): string
     {
         return str_replace(':domain_id', (string)$this->domain->id, $this->baseUri);
     }
+
+    /**
+     * Instantiate a new DomainRecord object.
+     * @param string|null $className
+     * @return DomainRecord
+     */
 
     protected function createObject(?string $className = null): DomainRecord
     {

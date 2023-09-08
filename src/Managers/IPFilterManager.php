@@ -18,10 +18,23 @@ class IPFilterManager extends AbstractManager
      */
     protected string $baseUri = '/ipfilters';
 
+    /**
+     * Create a new IP Filter.
+     * @return IPFilter
+     */
     public function create(): IPFilter
     {
         return $this->createObject();
     }
+
+    /**
+     * Fetch an existing IP Filter.
+     * @param int $id
+     * @return IPFilter
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
 
     public function get(int $id): IPFilter
     {

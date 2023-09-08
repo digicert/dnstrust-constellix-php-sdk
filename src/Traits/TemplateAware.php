@@ -9,9 +9,13 @@ use Constellix\Client\Models\Template;
 
 trait TemplateAware
 {
+    /**
+     * @var Template The Template for this object
+     */
     public Template $template;
 
     /**
+     * Set the Template for this object.
      * @param Template $template
      * @return TemplateAwareInterface
      */

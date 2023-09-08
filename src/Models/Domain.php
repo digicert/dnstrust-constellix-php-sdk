@@ -87,10 +87,20 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
     protected ?DomainHistoryManager $history = null;
     protected ?DomainRecordManager $records = null;
 
+    /**
+     * Set initial properties for the domain.
+     * @return void
+     */
     protected function setInitialProperties(): void
     {
         $this->props['soa'] = new SOA();
     }
+
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
 
     public function transformForApi(): \stdClass
     {
@@ -106,6 +116,7 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
             $payload->template = $this->template->id;
         }
 
+        // Flatten tags and contacts to just their IDs.
         $payload->tags = array_map(function ($tag) {
             /**
              * @var \stdClass $tag
@@ -132,40 +143,76 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         return $payload;
     }
 
+    /**
+     * Add a tag to this domain.
+     * @param Tag $tag
+     * @return $this
+     */
     public function addTag(Tag $tag): self
     {
         $this->addToCollection('tags', $tag);
         return $this;
     }
 
+    /**
+     * Remove a tag from this domain.
+     * @param Tag $tag
+     * @return $this
+     */
     public function removeTag(Tag $tag): self
     {
         $this->removeFromCollection('tags', $tag);
         return $this;
     }
 
+    /**
+     * Add a Contact List to this domain.
+     * @param ContactList $contactList
+     * @return $this
+     */
     public function addContactList(ContactList $contactList): self
     {
         $this->addToCollection('contacts', $contactList);
         return $this;
     }
 
+    /**
+     * Remove a Contact List from this domain.
+     * @param ContactList $contactList
+     * @return $this
+     */
     public function removeContactList(ContactList $contactList): self
     {
         $this->removeFromCollection('contacts', $contactList);
         return $this;
     }
 
+    /**
+     * Set the Template for this domain.
+     * @param int|\stdClass|Template|null $template
+     * @return void
+     */
     public function setTemplate(null|int|\stdClass|Template $template): void
     {
         $this->setObjectReference($this->client->templates, Template::class, 'template', $template);
     }
 
+    /**
+     * Set the Vanity Nameserver for this domain.
+     * @param int|\stdClass|VanityNameserver|null $nameserver
+     * @return void
+     */
     public function setVanityNameserver(null|int|\stdClass|VanityNameserver $nameserver): void
     {
         $this->setObjectReference($this->client->vanitynameservers, VanityNameserver::class, 'vanityNameserver', $nameserver);
     }
 
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     * @throws \Exception
+     */
     protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
@@ -201,6 +248,11 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         }
     }
 
+    /**
+     * Get the DomainHistoryManager for this domain.
+     * @return DomainHistoryManager
+     * @throws ConstellixException
+     */
     protected function getHistory(): DomainHistoryManager
     {
         if (!$this->id) {
@@ -213,6 +265,11 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         return $this->history;
     }
 
+    /**
+     * Get the DomainSnapshotManager for this domain.
+     * @return DomainSnapshotManager
+     * @throws ConstellixException
+     */
     protected function getSnapshots(): DomainSnapshotManager
     {
         if (!$this->id) {
@@ -225,6 +282,11 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         return $this->snapshots;
     }
 
+    /**
+     * Get the Records Manager for this domain.
+     * @return DomainRecordManager
+     * @throws ConstellixException
+     */
     protected function getRecords(): DomainRecordManager
     {
         if (!$this->id) {

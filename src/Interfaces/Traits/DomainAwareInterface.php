@@ -15,5 +15,10 @@ use Constellix\Client\Models\Domain;
  */
 interface DomainAwareInterface
 {
+    /**
+     * Set the domain that relates to this object.
+     * @param Domain $domain
+     * @return DomainAwareInterface
+     */
     public function setDomain(Domain $domain): DomainAwareInterface;
 }

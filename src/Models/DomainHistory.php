@@ -35,6 +35,13 @@ class DomainHistory extends AbstractDomainHistory implements DomainAwareInterfac
         'name',
     ];
 
+    /**
+     * Take a snapshot of this point in history of the domain.
+     * @return DomainSnapshot
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\JsonDecodeException
+     * @throws \Constellix\Client\Exceptions\ConstellixException
+     */
     public function snapshot(): DomainSnapshot
     {
         return $this->manager->snapshot($this);

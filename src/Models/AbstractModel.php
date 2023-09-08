@@ -242,7 +242,7 @@ abstract class AbstractModel implements JsonSerializable
     }
 
     /**
-     * Load the full object from the API
+     * Load the full object from the API.
      * @return void
      */
     protected function loadFullObject(): void
@@ -257,11 +257,22 @@ abstract class AbstractModel implements JsonSerializable
         $this->fullyLoaded = true;
     }
 
+    /**
+     * Refreshes the object with the latest version from the API. This will overwrite any changes.
+     * @return void
+     */
     public function refresh(): void
     {
         // Do nothing by default
     }
 
+    /**
+     * Add the input to the appropriate property collection. It will be appended to the collection and an object
+     * can't be added multiple times.
+     * @param string $property
+     * @param mixed $input
+     * @return void
+     */
     protected function addToCollection(string $property, mixed $input): void
     {
         if (in_array($input, $this->{$property})) {
@@ -273,6 +284,12 @@ abstract class AbstractModel implements JsonSerializable
         $this->{$property} = $collection;
     }
 
+    /**
+     * Remove an object from a collection property. The collection will be re-indexed.
+     * @param string $property
+     * @param mixed $input
+     * @return void
+     */
     protected function removeFromCollection(string $property, mixed $input): void
     {
         $collection = $this->{$property};
