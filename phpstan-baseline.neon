@@ -1,0 +1,176 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\AbstractManager\\:\\:createObject\\(\\) should return Constellix\\\\Client\\\\Models\\\\AbstractModel but returns object\\.$#"
+			count: 1
+			path: src/Managers/AbstractManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$objectOrClass of class ReflectionClass constructor expects class\\-string\\<T of object\\>\\|T of object, string given\\.$#"
+			count: 1
+			path: src/Managers/AbstractManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\ContactListManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\ContactList but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/ContactListManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\ContactListManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\ContactList but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/ContactListManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\DomainHistoryManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\DomainHistory but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/DomainHistoryManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\DomainManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\Domain but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/DomainManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\DomainManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\Domain but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/DomainManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\DomainRecordManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\DomainRecord but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/DomainRecordManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\DomainSnapshotManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\DomainSnapshot but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/DomainSnapshotManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\GeoProximityManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\GeoProximity but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/GeoProximityManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\GeoProximityManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\GeoProximity but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/GeoProximityManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\IPFilterManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\IPFilter but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/IPFilterManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\IPFilterManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\IPFilter but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/IPFilterManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\PoolManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\Pool but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/PoolManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\PoolManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\Pool but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 2
+			path: src/Managers/PoolManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\TagManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\Tag but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/TagManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\TagManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\Tag but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/TagManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\TemplateManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\Template but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/TemplateManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\TemplateManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\Template but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/TemplateManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\TemplateRecordManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\TemplateRecord but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/TemplateRecordManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\TemplateRecordManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\TemplateRecord but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/TemplateRecordManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\VanityNameserverManager\\:\\:create\\(\\) should return Constellix\\\\Client\\\\Models\\\\VanityNameserver but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/VanityNameserverManager.php
+
+		-
+			message: "#^Method Constellix\\\\Client\\\\Managers\\\\VanityNameserverManager\\:\\:get\\(\\) should return Constellix\\\\Client\\\\Models\\\\VanityNameserver but returns Constellix\\\\Client\\\\Models\\\\AbstractModel\\.$#"
+			count: 1
+			path: src/Managers/VanityNameserverManager.php
+
+		-
+			message: "#^Call to an undefined method Constellix\\\\Client\\\\Managers\\\\AbstractManager\\:\\:apply\\(\\)\\.$#"
+			count: 1
+			path: src/Models/AbstractDomainHistory.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\ContactList\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\ContactListManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/ContactList.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Domain\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\DomainManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/Domain.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\GeoProximity\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\GeoProximityManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/GeoProximity.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\IPFilter\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\IPFilterManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/IPFilter.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Pool\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\PoolManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/Pool.php
+
+		-
+			message: "#^Access to an undefined property Constellix\\\\Client\\\\Models\\\\Record\\:\\:\\$manager\\.$#"
+			count: 4
+			path: src/Models/Record.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Tag\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\TagManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/Tag.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Template\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\TemplateManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/Template.php
+
+		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\VanityNameserver\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\VanityNameserverManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/VanityNameserver.php
+
+		-
+			message: "#^Access to an undefined property Constellix\\\\Client\\\\Client\\:\\:\\$nonExistentManager\\.$#"
+			count: 1
+			path: tests/Unit/ClientTest.php
+
+		-
+			message: "#^Access to an undefined property Constellix\\\\Client\\\\Models\\\\Domain\\:\\:\\$foobar\\.$#"
+			count: 1
+			path: tests/Unit/Model/DomainTest.php

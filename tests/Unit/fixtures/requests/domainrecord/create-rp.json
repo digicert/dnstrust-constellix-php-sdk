@@ -1,0 +1,17 @@
+{
+  "name": "",
+  "type": "RP",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "mailbox": "admin.example.com",
+    "txt": "admin.example.com"
+  },{
+    "enabled": false,
+    "mailbox": "sysadmin.example.com",
+    "txt": "sysadmin.example.com"
+  }]
+}

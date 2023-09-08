@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
-use Constellix\Client\Interfaces\ClientInterface;
 use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
 use Constellix\Client\Interfaces\Models\AbstractModelInterface;
 use JsonSerializable;
@@ -17,7 +16,7 @@ use Spatie\Enum\Enum;
  * @package Constellix\Client\Models
  * @property-read int $id
  */
-abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
+abstract class AbstractModel implements JsonSerializable
 {
     /**
      * The ID of the object.
@@ -27,38 +26,51 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * A list of properties that have been modified since the object was last saved.
-     * @var array
+     * @var array<string>
      */
     protected array $changed = [];
 
     /**
      * The properties of this object.
-     * @var array
+     * @var array<mixed>
      */
     protected array $props = [];
 
     /**
+     * The properties that we have loaded
+     * @var array<string>
+     */
+    protected array $loadedProps = [];
+
+    /**
      * The original properties from when the object was instantiated/last loaded from the API.
-     * @var array
+     * @var array<mixed>
      */
     protected array $originalProps = [];
 
     /**
      * A list of properties that are editable on this model.
-     * @var array
+     * @var array<string>
      */
     protected array $editable = [];
 
     /**
      * The original data retrieved from the API.
-     * @var object|null
+     * @var ?\stdClass
      */
-    protected ?object $apiData = null;
+    protected ?\stdClass $apiData = null;
+
+    /**
+     * Have we fully loaded this object?
+     * @var bool
+     * @internal
+     */
+    public bool $fullyLoaded = false;
 
     /**
      * Allow easy custom initialisation of properties in models.
      */
-    protected function setInitialProperties()
+    protected function setInitialProperties(): void
     {
         // Do nothing by default
     }
@@ -80,19 +92,21 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
     }
 
     /**
-     * @param object $data
+     * @param ?\stdClass $data
      * @param bool $parse
      * @internal
      */
-    public function populateFromApi(object $data, bool $parse = true): void
+    public function populateFromApi(?\stdClass $data, bool $parse = true): void
     {
         $this->apiData = $data;
-        unset($data->links);
-        if (property_exists($data, 'id')) {
-            $this->id = $data->id;
-        }
-        if ($parse) {
-            $this->parseApiData($data);
+        if ($data !== null) {
+            unset($data->links);
+            if (property_exists($data, 'id')) {
+                $this->id = (int)$data->id;
+            }
+            if ($parse) {
+                $this->parseApiData($data);
+            }
         }
         $this->originalProps = $this->props;
         $this->changed = [];
@@ -100,32 +114,46 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * Parses the API data and assigns it to properties on this object.
-     * @param object $data
+     * @param \stdClass $data
      */
-    protected function parseApiData(object $data): void
+    protected function parseApiData(\stdClass $data): void
     {
-        foreach ($data as $prop => $value) {
+        $changed = $this->changed;
+        foreach ((array)$data as $prop => $value) {
+            if (!in_array($prop, $this->loadedProps)) {
+                $this->loadedProps[] = $prop;
+            }
+            // We skip loading the data if we've changed this property locally
+            if (in_array($prop, $changed)) {
+                continue;
+            }
+            if ($prop === 'id') {
+                $value = (int)$value;
+            }
+
             try {
                 $this->{$prop} = $value;
             } catch (ReadOnlyPropertyException $ex) {
                 $this->props[$prop] = $value;
             }
         }
+        // Reset our changelist back to what it was
+        $this->changed = $changed;
     }
 
     /**
      * Generate a representation of the object for sending to the API.
-     * @return object
+     * @return \stdClass
      * @internal
      */
-    public function transformForApi(): object
+    public function transformForApi(): \stdClass
     {
         $obj = $this->jsonSerialize();
         if ($this->id === null) {
             unset($obj->{$this->id});
         }
         // These don't exist
-        foreach ($obj as $key => $value) {
+        foreach ((array)$obj as $key => $value) {
             if ($value === null || (is_array($value) && !$value)) {
                 unset($obj->$key);
             }
@@ -135,11 +163,12 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
 
     /**
      * Returns a JSON serializable representation of the resource.
-     * @return mixed|object
+     * @return \stdClass
      * @internal
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): \stdClass
     {
+        $this->loadFullObject();
         $result = (object)[
             'id' => $this->id,
         ];
@@ -167,18 +196,22 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
     /**
      * Magic method to fetch properties for the object. If a get{Name} method exists, it will be called  first,
      * otherwise it will try and fetch it from the properties array.
-     * @param $name
+     * @param string $name
      * @return mixed
      * @internal
      */
-    public function __get($name)
+    public function __get(string $name): mixed
     {
         $methodName = 'get' . ucfirst($name);
         if (method_exists($this, $methodName)) {
             return $this->{$methodName}();
         } elseif (array_key_exists($name, $this->props)) {
+            if (!in_array($name, $this->loadedProps) && !$this->fullyLoaded) {
+                $this->loadFulLObject();
+            }
             return $this->props[$name];
         }
+        return null;
     }
 
     /**
@@ -187,21 +220,85 @@ abstract class AbstractModel implements AbstractModelInterface, JsonSerializable
      *
      * Changes are tracked to allow us to see any changes.
      *
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param mixed $value
      * @throws ReadOnlyPropertyException
      * @internal
      */
-    public function __set($name, $value)
+    public function __set(string $name, mixed $value): void
     {
         $methodName = 'set' . ucfirst($name);
         if (method_exists($this, $methodName)) {
             $this->{$methodName}($value);
         } elseif (in_array($name, $this->editable)) {
             $this->props[$name] = $value;
+            if (!in_array($name, $this->loadedProps)) {
+                $this->loadedProps[] = $name;
+            }
             $this->changed[] = $name;
         } elseif (array_key_exists($name, $this->props)) {
             throw new ReadOnlyPropertyException("Unable to set {$name}");
+        }
+    }
+
+    /**
+     * Load the full object from the API.
+     * @return void
+     */
+    protected function loadFullObject(): void
+    {
+        if ($this->fullyLoaded) {
+            return;
+        }
+        if ($this->id === null) {
+            return;
+        }
+        $this->refresh();
+        $this->fullyLoaded = true;
+    }
+
+    /**
+     * Refreshes the object with the latest version from the API. This will overwrite any changes.
+     * @return void
+     */
+    public function refresh(): void
+    {
+        // Do nothing by default
+    }
+
+    /**
+     * Add the input to the appropriate property collection. It will be appended to the collection and an object
+     * can't be added multiple times.
+     * @param string $property
+     * @param mixed $input
+     * @return void
+     */
+    protected function addToCollection(string $property, mixed $input): void
+    {
+        if (in_array($input, $this->{$property})) {
+            return;
+        }
+
+        $collection = $this->{$property};
+        $collection[] = $input;
+        $this->{$property} = $collection;
+    }
+
+    /**
+     * Remove an object from a collection property. The collection will be re-indexed.
+     * @param string $property
+     * @param mixed $input
+     * @return void
+     */
+    protected function removeFromCollection(string $property, mixed $input): void
+    {
+        $collection = $this->{$property};
+        foreach ($collection as $index => $obj) {
+            if ($obj == $input) {
+                unset($collection[$index]);
+                $this->{$property} = array_values($collection);
+                return;
+            }
         }
     }
 }

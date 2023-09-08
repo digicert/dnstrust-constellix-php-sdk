@@ -1,0 +1,13 @@
+{
+  "type": "A",
+  "name": "My Pool",
+  "ito": {
+    "config": {
+      "handicapFactor": "none",
+      "monitoringRegion": "world"
+    },
+    "enabled": false
+  },
+  "values": [],
+  "contacts": []
+}

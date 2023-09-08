@@ -1,0 +1,15 @@
+{
+  "data": {
+    "id": 83675283,
+    "name": "My Template",
+    "version": 3,
+    "geoip": true,
+    "gtd": true,
+    "createdAt": "2019-08-23T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z",
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/templates/83675283",
+      "records": "https://api.dns.constellix.com/v4/templates/83675283/records"
+    }
+  }
+}

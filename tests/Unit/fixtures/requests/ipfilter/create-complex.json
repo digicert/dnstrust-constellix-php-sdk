@@ -1,0 +1,33 @@
+{
+  "name": "My IP filter",
+  "rulesLimit": 100,
+  "continents": [
+    "EU",
+    "NA"
+  ],
+  "countries": [
+    "GB",
+    "FR",
+    "DE"
+  ],
+  "asn": [
+    64496,
+    64499
+  ],
+  "ipv4": [
+    "198.51.100.0/24",
+    "203.0.113.42"
+  ],
+  "ipv6": [
+    "2001:db8:200::/64",
+    "2001:db8:200:42::"
+  ],
+  "regions": [
+    {
+      "continent": "EU",
+      "country": "GB",
+      "region": "EN",
+      "asn": 64499
+    }
+  ]
+}

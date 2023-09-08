@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Interfaces\Traits;
 
-use Constellix\Client\Interfaces\ClientInterface;
 use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
 
 /**
  * Trait for models which can be edited.
  *
  * @package Constellix\Client\Interfaces
+ * @internal
  *
  * @property-read int $id
  */

@@ -1,0 +1,8 @@
+{
+  "name": "My Geo Proximity Location",
+  "country": "GB",
+  "region": "London",
+  "city": 1,
+  "longitude": -0.1275,
+  "latitude": 51.5033
+}

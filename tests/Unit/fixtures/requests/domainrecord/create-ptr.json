@@ -1,0 +1,15 @@
+{
+  "name": "127",
+  "type": "PTR",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "system": "system1.example.com"
+  },{
+    "enabled": false,
+    "system": "system2.example.com"
+  }]
+}

@@ -1,3 +1,10 @@
 /vendor/
 /.idea
 /.phpdoc
+/composer.lock
+/.php-cs-fixer.cache
+/.phpunit.cache/code-coverage
+/.phpunit.cache
+/html-coverage
+/build
+/clover.xml

@@ -1,0 +1,17 @@
+{
+  "name": "www",
+  "type": "A",
+  "mode": "failover",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": {
+      "mode": "normal",
+      "values": [{
+        "enabled": true,
+        "order": 1,
+        "sonarCheckId": 76627,
+        "value": "198.51.100.42"
+      }]
+  }
+}

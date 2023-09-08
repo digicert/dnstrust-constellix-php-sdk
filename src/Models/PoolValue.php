@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Enums\Pools\PoolValuePolicy;
-use Constellix\Client\Interfaces\Models\PoolValueInterface;
-use Constellix\Client\Models\Common\CommonPoolValue;
+use Constellix\Client\Traits\HelperModel;
 
 /**
  * Represents a value for a Pool
@@ -22,9 +21,13 @@ use Constellix\Client\Models\Common\CommonPoolValue;
  * @property-read bool $failed
  * @property-read float $speed
  */
-class PoolValue extends CommonPoolValue implements PoolValueInterface
+class PoolValue extends AbstractModel
 {
+    use HelperModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'value' => null,
         'weight' => 10,
@@ -37,6 +40,9 @@ class PoolValue extends CommonPoolValue implements PoolValueInterface
         'speed' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'value',
         'weight',
@@ -45,7 +51,11 @@ class PoolValue extends CommonPoolValue implements PoolValueInterface
         'sonarCheckId',
     ];
 
-    public function __construct(?object $data = null)
+    /**
+     * Create a new Pool Value
+     * @param \stdClass|null $data
+     */
+    public function __construct(?\stdClass $data = null)
     {
         $this->props['policy'] = PoolValuePolicy::FOLLOW_SONAR();
         $this->originalProps = $this->props;
@@ -54,24 +64,47 @@ class PoolValue extends CommonPoolValue implements PoolValueInterface
         }
     }
 
-    protected function parseApiData(object $data): void
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
+    protected function parseApiData(\stdClass $data): void
     {
         parent::parseApiData($data);
         if (property_exists($data, 'policy') && $data->policy) {
-            $this->props['policy'] = PoolValuePolicy::make($data->policy);
+            $this->props['policy'] = PoolValuePolicy::from($data->policy);
         }
     }
 
-    public function transformForApi(): object
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     */
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
 
-        foreach ($payload as $propName => $value) {
+        foreach ((array) $payload as $propName => $value) {
             if (!in_array($propName, $this->editable)) {
                 unset($payload->{$propName});
             }
         }
 
         return $payload;
+    }
+
+    /**
+     * Return the string representation of this pool value
+     * @return string
+     * @internal
+     */
+    public function __toString()
+    {
+        if ($this->value) {
+            return $this->value;
+        } else {
+            return 'PoolValue';
+        }
     }
 }

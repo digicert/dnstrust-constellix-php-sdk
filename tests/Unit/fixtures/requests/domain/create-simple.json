@@ -1,0 +1,8 @@
+{
+  "name": "example.com",
+  "soa": {},
+  "vanityNameserver": null,
+  "template": null,
+  "tags": [],
+  "contacts": []
+}

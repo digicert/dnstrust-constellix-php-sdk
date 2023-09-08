@@ -6,11 +6,26 @@ namespace Constellix\Client\Traits;
 
 trait EditableModel
 {
-    public function hasChanged(): bool
+    /**
+     * Check if the object or specific property in the object has been changed locally since it was
+     * fetched from the API.
+     * @param string|null $property
+     * @return bool
+     */
+    public function hasChanged(?string $property = null): bool
     {
-        return (bool)$this->changed;
+        if ($property === null) {
+            return (bool)$this->changed;
+        }
+
+        return in_array($property, $this->changed);
     }
 
+    /**
+     * Save the object.
+     * @return void
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     */
     public function save(): void
     {
         if ($this->id && !$this->hasChanged()) {
@@ -21,16 +36,16 @@ trait EditableModel
         $this->changed = [];
     }
 
+    /**
+     * Delete the object.
+     * @return void
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     */
     public function delete(): void
     {
         if (!$this->id) {
             return;
         }
         $this->manager->delete($this);
-    }
-
-    public function refresh(): void
-    {
-        $this->manager->refresh($this);
     }
 }

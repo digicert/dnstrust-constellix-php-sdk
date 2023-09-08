@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\IPFilterManagerInterface;
-use Constellix\Client\Interfaces\Models\IPFilterInterface;
+use Constellix\Client\Models\IPFilter;
 
 /**
  * Manages IP Filter API resources.
  * @package Constellix\Client\Managers
  */
-class IPFilterManager extends AbstractManager implements IPFilterManagerInterface
+class IPFilterManager extends AbstractManager
 {
     /**
      * The base URI for objects.
@@ -19,12 +18,25 @@ class IPFilterManager extends AbstractManager implements IPFilterManagerInterfac
      */
     protected string $baseUri = '/ipfilters';
 
-    public function create(): IPFilterInterface
+    /**
+     * Create a new IP Filter.
+     * @return IPFilter
+     */
+    public function create(): IPFilter
     {
         return $this->createObject();
     }
 
-    public function get(int $id): IPFilterInterface
+    /**
+     * Fetch an existing IP Filter.
+     * @param int $id
+     * @return IPFilter
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
+
+    public function get(int $id): IPFilter
     {
         return $this->getObject($id);
     }

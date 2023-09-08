@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
+use Constellix\Client\Enums\GTDLocation;
 use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Enums\Records\RecordType;
 use Constellix\Client\Exceptions\Client\ReadOnlyPropertyException;
-use Constellix\Client\Exceptions\ConstellixException;
-use Constellix\Client\Interfaces\Models\RecordInterface;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
-use Constellix\Client\Models\Basic\BasicPool;
 use Constellix\Client\Models\Helpers\RecordValue;
 use Constellix\Client\Models\Helpers\RecordValues\CAA;
 use Constellix\Client\Models\Helpers\RecordValues\CERT;
@@ -36,12 +34,29 @@ use Constellix\Client\Traits\ManagedModel;
  * @package Constellix\Client\Models
  *
  * @property string $name
+ * @property RecordType $type
+ * @property int $ttl
+ * @property RecordMode $mode
+ * @property ?GTDLocation $region
+ * @property ?IPFilter $ipfilter
+ * @property ?GeoProximity $geoproximity
+ * @property bool $geoFailover
+ * @property bool $ipfilterDrop
+ * @property bool $enabled
+ * @property ?string $notes
+ * @property ?bool $skipLookup
+ * @property ContactList[] $contacts
+ * @property mixed $value
+ * @property \stdClass $lastValues
  */
-abstract class Record extends AbstractModel implements RecordInterface, EditableModelInterface
+abstract class Record extends AbstractModel implements EditableModelInterface
 {
     use EditableModel;
     use ManagedModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
         'type' => null,
@@ -49,16 +64,21 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         'mode' => null,
         'region' => null,
         'ipfilter' => null,
+        'geoFailover' => null,
         'ipfilterDrop' => null,
         'geoproximity' => null,
         'enabled' => null,
         'value' => null,
-        'lastValues' => [],
+        'lastValues' => null,
         'notes' => null,
         'contacts' => [],
+        'skipLookup' => null,
 
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
         'type',
@@ -66,104 +86,155 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         'mode',
         'region',
         'ipfilter',
+        'geoFailover',
         'ipfilterDrop',
         'geoproximity',
         'enabled',
         'value',
         'notes',
         'contacts',
+        'skipLookup',
     ];
 
-    protected function setInitialProperties()
+    /**
+     * Set initial properties for the record.
+     * @return void
+     */
+    protected function setInitialProperties(): void
     {
         $this->props['mode'] = RecordMode::STANDARD();
     }
 
-    protected function parseApiData(object $data): void
+    /**
+     * Parse the API response data and load it into this object.
+     * @param \stdClass $data
+     * @return void
+     */
+    protected function parseApiData(\stdClass $data): void
     {
         unset(
             $data->domain,
             $data->template,
         );
-        $data->type = RecordType::make($data->type);
-        $data->mode = RecordMode::make($data->mode);
+        $data->mode = RecordMode::from($data->mode);
+        $data->type = RecordType::from($data->type);
 
         parent::parseApiData($data);
 
-        $lastValues = [];
+        $this->props['mode'] = $data->mode;
+
+        $lastValues = new \stdClass();
         foreach ($data->lastValues as $mode => $lastValue) {
-            $mode = RecordMode::make($mode);
-            $lastValues[$mode->value] = $this->parseValue($this->props['type'], $mode, $lastValue);
+            $mode = RecordMode::from($mode);
+            $lastValues->{$mode->value} = $this->parseValue($this->props['type'], $mode, $lastValue);
         }
         $this->props['lastValues'] = $lastValues;
-        $this->props['value'] = $lastValues[$this->props['mode']->value];
+        $this->props['value'] = $lastValues->{$this->props['mode']->value};
+
+        if (property_exists($data, 'ipfilter') && $data->ipfilter) {
+            $this->props['ipfilter'] = new IPFilter($this->client->ipfilters, $this->client, $data->ipfilter);
+        }
+        if (property_exists($data, 'region') && $data->region) {
+            $this->props['region'] = GTDLocation::from($data->region);
+        }
+        if (property_exists($data, 'geoproximity') && $data->geoproximity) {
+            $this->props['geoproximity'] = new GeoProximity($this->client->geoproximity, $this->client, $data->geoproximity);
+        }
+        if (property_exists($data, 'contacts') && $data->contacts) {
+            $this->props['contacts'] = array_map(function ($data) {
+                return new ContactList($this->client->contactlists, $this->client, $data);
+            }, $data->contacts);
+        }
     }
 
-    protected function parseValue(RecordType $type, RecordMode $mode, $data)
+    /**
+     * Parse the record value and return the appropriate local typed object for it.
+     * @param RecordType $type
+     * @param RecordMode $mode
+     * @param mixed $data
+     * @return mixed
+     */
+    protected function parseValue(RecordType $type, RecordMode $mode, mixed $data): mixed
     {
         // Special case - this is not an array of values
-        if ($type == RecordType::HTTP()) {
+        if ($type === RecordType::HTTP()) {
             return new HttpRedirection($data);
         }
 
         switch ($type) {
             case RecordType::A():
+                // Intentionally continuing
             case RecordType::AAAA():
                 // A and AAAA have RoundRobinFailover as modes
-                if ($mode == RecordMode::ROUNDROBINFAILOVER()) {
-                    return array_map(function($value) {
+                if ($mode === RecordMode::ROUNDROBINFAILOVER()) {
+                    return array_map(function ($value) {
                         return new RoundRobinFailover($value);
                     }, $data);
                 }
                 // Intentionally continuing
+                // no break
             case RecordType::CNAME():
+                // Intentionally continuing
             case RecordType::ANAME():
                 switch ($mode) {
                     case RecordMode::STANDARD():
-                        return array_map(function($value) {
+                        return array_map(function ($value) {
                             return new Standard($value);
                         }, $data);
 
                     case RecordMode::POOLS():
-                        return array_map(function($value) {
-                            return new PoolRecordValue((object) [
-                                'pool' => new BasicPool($this->client->pools, $this->client, $value),
+                        return array_map(function ($value) {
+                            $matches = [];
+                            preg_match('/\/pools\/(?<type>.*)\/\d+$/', $value->links->self, $matches);
+                            $value = (object)[
+                                'id' => $value->id,
+                                'name' => $value->name ?? null,
+                                'type' => $matches['type'],
+                            ];
+                            return new PoolRecordValue((object)[
+                                'pool' => new Pool($this->client->pools, $this->client, $value),
                             ]);
                         }, $data);
 
                     case RecordMode::FAILOVER():
                         return new Failover($data);
                 }
+                // Intentionally continuing
+                // no break
             default:
-                $classMap = [
-                    RecordType::CAA()->value => CAA::class,
-                    RecordType::CERT()->value => CERT::class,
-                    RecordType::HINFO()->value => HINFO::class,
-                    RecordType::MX()->value => MX::class,
-                    RecordType::NAPTR()->value => NAPTR::class,
-                    RecordType::NS()->value => NS::class,
-                    RecordType::PTR()->value => PTR::class,
-                    RecordType::RP()->value => RP::class,
-                    RecordType::SPF()->value => SPF::class,
-                    RecordType::SRV()->value => SRV::class,
-                    RecordType::TXT()->value => TXT::class,
-                ];
-                if (array_key_exists($type->value, $classMap)) {
-                    return array_map(function($value) use ($type, $classMap) {
-                        $className = $classMap[$type->value];
-                        return new $className($value);
-                    }, $data);
-                }
                 break;
         }
-        return null;
+
+        $classMap = [
+            RecordType::CAA()->value => CAA::class,
+            RecordType::CERT()->value => CERT::class,
+            RecordType::HINFO()->value => HINFO::class,
+            RecordType::MX()->value => MX::class,
+            RecordType::NAPTR()->value => NAPTR::class,
+            RecordType::NS()->value => NS::class,
+            RecordType::PTR()->value => PTR::class,
+            RecordType::RP()->value => RP::class,
+            RecordType::SPF()->value => SPF::class,
+            RecordType::SRV()->value => SRV::class,
+            RecordType::TXT()->value => TXT::class,
+        ];
+        return array_map(function ($value) use ($type, $classMap) {
+            $className = $classMap[$type->value];
+            return new $className($value);
+        }, $data);
     }
 
-    public function transformForApi(): object
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
+    public function transformForApi(): \stdClass
     {
-        $payload = parent::transformForApi(); // TODO: Change the autogenerated stub
+        $payload = parent::transformForApi();
+
         if (is_array($this->value)) {
-            $payload->value = array_map(function($value) {
+            $payload->value = array_map(function ($value) {
                 return $value->transformForApi();
             }, $this->value);
         } elseif ($this->value) {
@@ -172,10 +243,26 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         unset(
             $payload->lastValues
         );
+
+        $payload->ipfilter = $this->ipfilter->id ?? null;
+        $payload->geoproximity = $this->geoproximity->id ?? null;
+        $payload->contacts = array_map(function ($contact) {
+            /**
+             * @var \stdClass $contact
+             */
+            return $contact->id;
+        }, $this->contacts);
+
         return $payload;
     }
 
-    public function setType(RecordType $type)
+    /**
+     * Set the type of record. This can only be done on new records.
+     * @param RecordType $type
+     * @return void
+     * @throws ReadOnlyPropertyException
+     */
+    public function setType(RecordType $type): void
     {
         if ($this->id) {
             throw new ReadOnlyPropertyException('Unable to set type on a record that has been created');
@@ -184,7 +271,12 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         $this->changed[] = 'type';
     }
 
-    public function setValue($recordValue)
+    /**
+     * Set the value of a record. This can either be an array of values or a single RecordValue object.
+     * @param mixed $recordValue
+     * @return void
+     */
+    public function setValue(mixed $recordValue): void
     {
         $this->changed[] = 'mode';
         $this->changed[] = 'value';
@@ -208,14 +300,62 @@ abstract class Record extends AbstractModel implements RecordInterface, Editable
         }
     }
 
-    public function addValue(RecordValue $recordValue)
+    /**
+     * Add a value to this record.
+     * @param RecordValue $recordValue
+     * @return void
+     */
+    public function addValue(RecordValue $recordValue): void
     {
         if (!$this->value) {
             $this->setValue($recordValue);
         } else {
             $values = $this->value;
             $values[] = $recordValue;
-            $this->values = $values;
+            $this->value = $values;
         }
+    }
+
+    /**
+     * Add a Contact List for this record.
+     * @param ContactList $contactList
+     * @return $this
+     */
+    public function addContactList(ContactList $contactList): self
+    {
+        $this->addToCollection('contacts', $contactList);
+        return $this;
+    }
+
+    /**
+     * Remove a Contact List from this record.
+     * @param ContactList $contactList
+     * @return $this
+     */
+    public function removeContactList(ContactList $contactList): self
+    {
+        $this->removeFromCollection('contacts', $contactList);
+        return $this;
+    }
+
+    /**
+     * Set the IP Filter for this record.
+     * @param int|\stdClass|IPFilter|null $ipfilter
+     * @return void
+     */
+    public function setIPFilter(null|int|\stdClass|IPFilter $ipfilter): void
+    {
+        $this->setObjectReference($this->client->ipfilters, IPFilter::class, 'ipfilter', $ipfilter);
+    }
+
+    /**
+     * Set the GeoProximity for this record.
+     * @param int|\stdClass|GeoProximity|null $geoproximity
+     * @return void
+     */
+
+    public function setGeoProximity(null|int|\stdClass|GeoProximity $geoproximity): void
+    {
+        $this->setObjectReference($this->client->geoproximity, GeoProximity::class, 'geoproximity', $geoproximity);
     }
 }

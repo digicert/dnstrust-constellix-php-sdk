@@ -12,7 +12,7 @@ interface PaginatorFactoryInterface
 {
     /**
      * Returns a pagination object based on the supplied parameters.
-     * @param array $items
+     * @param array<mixed> $items
      * @param int $totalItems
      * @param int $perPage
      * @param int $currentPage

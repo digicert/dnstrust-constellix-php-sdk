@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\ContactListManagerInterface;
-use Constellix\Client\Interfaces\Managers\TagManagerInterface;
-use Constellix\Client\Interfaces\Models\ContactListInterface;
-use Constellix\Client\Interfaces\Models\TagInterface;
 use Constellix\Client\Models\Concise\ConciseContactList;
+use Constellix\Client\Models\ContactList;
 
 /**
  * Managed Contact List Resources.
  * @package Constellix\Client\Managers
  */
-class ContactListManager extends AbstractManager implements ContactListManagerInterface
+class ContactListManager extends AbstractManager
 {
     /**
      * The base URI for contact lists.
@@ -22,23 +19,26 @@ class ContactListManager extends AbstractManager implements ContactListManagerIn
      */
     protected string $baseUri = '/contactlists';
 
-    public function create(): ContactListInterface
+    /**
+     * Create a new Contact List.
+     * @return ContactList
+     */
+    public function create(): ContactList
     {
         return $this->createObject();
     }
 
-    public function get(int $id): ContactListInterface
-    {
-        return $this->getObject($id);
-    }
-
     /**
-     * Return the name of the model class for the concise version of the resource.
-     * @return string
+     * Fetch an existing Contact List.
+     * @param int $id
+     * @return ContactList
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
      * @throws \ReflectionException
      */
-    protected function getConciseModelClass(): string
+
+    public function get(int $id): ContactList
     {
-        return ConciseContactList::class;
+        return $this->getObject($id);
     }
 }

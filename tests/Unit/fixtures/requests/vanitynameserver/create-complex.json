@@ -1,0 +1,11 @@
+{
+  "name": "My Vanity Nameserver",
+  "default": false,
+  "nameserverGroup": {
+    "id": 2
+  },
+  "nameservers": [
+    "ns1.example.com",
+    "ns2.example.com"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "",
+  "type": "SPF",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "value": "v=spf1 include:example.com ?all"
+  },{
+    "enabled": false,
+    "value": "v=spf1 include:subdomain.example.com ?all"
+  }]
+}

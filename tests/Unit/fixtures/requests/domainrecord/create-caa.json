@@ -1,0 +1,19 @@
+{
+  "name": "",
+  "type": "CAA",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "tag": "issue",
+    "data": "digicert.com",
+    "flags": 0
+  },{
+    "enabled": false,
+    "tag": "issue",
+    "data": "letsencrypt.com",
+    "flags": 0
+  }]
+}

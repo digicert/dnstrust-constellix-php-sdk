@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "type": "SRV",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "weight": 10,
+    "priority": 0,
+    "port": 5060,
+    "host": "sip.example.com."
+  }, {
+    "enabled": false,
+    "weight": 20,
+    "priority": 10,
+    "port": 34197,
+    "host": "factorio.example.com."
+  }]
+}

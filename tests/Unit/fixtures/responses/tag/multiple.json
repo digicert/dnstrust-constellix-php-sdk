@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": 33,
+      "name": "My Tag",
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/tags/33"
+      }
+    }, {
+      "id": 44,
+      "name": "My Tag 2",
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/tags/44"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 2,
+      "count": 2,
+      "perPage": 50,
+      "currentPage": 1,
+      "totalPages": 1
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/tags?page=1",
+      "first": "https://api.dns.constellix.com/v4/tags?page=1",
+      "last": "https://api.dns.constellix.com/v4/tags?page=1",
+      "previous": null,
+      "next": null
+    }
+  }
+}

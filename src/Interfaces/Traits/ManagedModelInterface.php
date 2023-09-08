@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Interfaces\Traits;
 
-use Constellix\Client\Interfaces\ClientInterface;
-use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
+use Constellix\Client\Client;
+use Constellix\Client\Managers\AbstractManager;
 
 /**
- * Trait for models which can be edited.
+ * Interface models which can be edited.
  *
  * @package Constellix\Client\Interfaces
+ * @internal
  *
  * @property-read int $id
  */
@@ -19,10 +20,10 @@ interface ManagedModelInterface
     /**
      * Creates a new model of the resource
      *
-     * @param AbstractManagerInterface $manager
-     * @param ClientInterface $client
-     * @param object|null $data
+     * @param AbstractManager $manager
+     * @param Client $client
+     * @param ?\stdClass $data
      * @internal
      */
-    public function __construct(AbstractManagerInterface $manager, ClientInterface $client, ?object $data = null);
+    public function __construct(AbstractManager $manager, Client $client, ?\stdClass $data = null);
 }

@@ -1,0 +1,11 @@
+{
+  "name": "www",
+  "type": "A",
+  "mode": "pools",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [
+    7665
+  ]
+}

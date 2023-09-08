@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Models;
 
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
-use Constellix\Client\Interfaces\Models\TagInterface;
+use Constellix\Client\Managers\TagManager;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
 
@@ -15,15 +15,23 @@ use Constellix\Client\Traits\ManagedModel;
  *
  * @property string $name
  */
-class Tag extends AbstractModel implements TagInterface, EditableModelInterface
+class Tag extends AbstractModel implements EditableModelInterface
 {
     use EditableModel;
     use ManagedModel;
 
+    protected TagManager $manager;
+
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'name' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'name',
     ];

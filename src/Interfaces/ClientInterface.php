@@ -6,162 +6,162 @@ namespace Constellix\Client\Interfaces;
 
 use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\Client\JsonDecodeException;
-use Constellix\Client\Interfaces\Managers\ContactListManagerInterface;
-use Constellix\Client\Interfaces\Managers\DomainManagerInterface;
-use Constellix\Client\Interfaces\Managers\FolderManagerInterface;
-use Constellix\Client\Interfaces\Managers\GeoProximityManagerInterface;
-use Constellix\Client\Interfaces\Managers\IPFilterManagerInterface;
-use Constellix\Client\Interfaces\Managers\ManagedDomainManagerInterface;
-use Constellix\Client\Interfaces\Managers\PoolManagerInterface;
-use Constellix\Client\Interfaces\Managers\RecordFailoverManagerInterface;
-use Constellix\Client\Interfaces\Managers\SecondaryDomainManagerInterface;
-use Constellix\Client\Interfaces\Managers\SecondaryIPSetManagerInterface;
-use Constellix\Client\Interfaces\Managers\SOARecordManagerInterface;
-use Constellix\Client\Interfaces\Managers\TagManagerInterface;
-use Constellix\Client\Interfaces\Managers\TemplateManagerInterface;
-use Constellix\Client\Interfaces\Managers\TransferAclManagerInterface;
-use Constellix\Client\Interfaces\Managers\UsageManagerInterface;
-use Constellix\Client\Interfaces\Managers\VanityNameServerManagerInterface;
+use Constellix\Client\Managers\ContactListManager;
+use Constellix\Client\Managers\DomainManager;
+use Constellix\Client\Managers\GeoProximityManager;
+use Constellix\Client\Managers\IPFilterManager;
+use Constellix\Client\Managers\PoolManager;
+use Constellix\Client\Managers\TagManager;
+use Constellix\Client\Managers\TemplateManager;
+use Constellix\Client\Managers\VanityNameserverManager;
 use DateTime;
 use Psr\Http\Client\ClientInterface as HttpClientInterface;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 /**
- * Constellix API Client SDK
- *
+ * An interface for the Constellix API Client.
  * @package Constellix\Client\Interfaces
- * @property-read TagManagerInterface $tags
- * @property-read ContactListManagerInterface $contactlists;
- * @property-read VanityNameserverManagerInterface $vanitynameservers;
- * @property-read GeoProximityManagerInterface $geoproximity;
- * @property-read IPFilterManagerInterface $ipfilters;
- * @property-read PoolManagerInterface $pools;
- * @property-read TemplateManagerInterface $templates;
- * @property-read DomainManagerInterface $domains;
+ *
+ * @property-read TagManager $tags Manager for Tags
+ * @property-read ContactListManager $contactlists Manager for Contact Lists
+ * @property-read VanityNameserverManager $vanitynameservers Manager for Vanity Nameservers
+ * @property-read GeoProximityManager $geoproximity Manager for Geoproximities
+ * @property-read IPFilterManager $ipfilters Manager for IP Filters
+ * @property-read PoolManager $pools Manager for Pools
+ * @property-read TemplateManager $templates Manager for Templates
+ * @property-read DomainManager $domains Manager for Domains
  */
 interface ClientInterface
 {
     /**
-     * Set a custom HTTP Client for all requests. If one is not provided, one is created automatically.
+     * Sets the HTTP Client for requests to the API. It must be PSR-18 compatible.
      * @param HttpClientInterface $client
      * @return ClientInterface
      */
     public function setHttpClient(HttpClientInterface $client): ClientInterface;
 
     /**
-     * Fetches the current HTTP Client used for requests.
+     * Returns the current HTTP client.
      * @return HttpClientInterface
      */
     public function getHttpClient(): HttpClientInterface;
 
     /**
-     * Set the API endpoint to use. By default this is `https://api.dnsmadeeasy.com/V2.0`. You can set this to
-     * `https://api.sandbox.dnsmadeeasy.com/V2.0` to use the Sandbox API.
+     * Sets the logger to use. The Logger must be PSR-3 compatible.
+     * @param LoggerInterface $logger
+     * @return void
+     */
+    public function setLogger(LoggerInterface $logger): void;
+    /**
+     * Returns the current logger.
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface;
+
+    /**
+     * Set the API endpoint for the Constellix DNS v4 API,
      * @param string $endpoint
      * @return ClientInterface
      */
     public function setEndpoint(string $endpoint): ClientInterface;
 
     /**
-     * Fetch the current API endpoint
+     * Return the current API endpoint,
      * @return string
      */
     public function getEndpoint(): string;
 
     /**
-     * Sets the API key used for requests.
+     * Set the Constellix API Key.
      * @param string $key
      * @return ClientInterface
      */
     public function setApiKey(string $key): ClientInterface;
 
     /**
-     * Fetch the current API key.
+     * Fetch the current Constellix API Key.
      * @return string
      */
     public function getApiKey(): string;
 
     /**
-     * Sets the secret key for requests.
+     * Set the Constellix Secret Key.
      * @param string $key
      * @return ClientInterface
      */
     public function setSecretKey(string $key): ClientInterface;
 
     /**
-     * Fetch the current secret key.
+     * Fetch the current Constellix Secret Key.
      * @return string
      */
     public function getSecretKey(): string;
 
     /**
-     * This sets a Paginator Factory for the client. Any paginated responses will be created using the factory
-     * specified. This is useful if you have a custom pagination class you want to use or one provided by a framework
-     * such as the LengthAwarePaginator in Laravel.
-     *
-     * The default paginator used supports all the usual methods and properties you'd expect from a pagination class
-     * and is iterable.
-     *
+     * Set the pagination factory to use. This factory will be used to construct all paginated results from the managers.
      * @param PaginatorFactoryInterface $factory
      * @return ClientInterface
      */
     public function setPaginatorFactory(PaginatorFactoryInterface $factory): ClientInterface;
 
     /**
-     * Fetch the current paginator factory interface.
+     * Return the current pagination factory.
      * @return PaginatorFactoryInterface
      */
     public function getPaginatorFactory(): PaginatorFactoryInterface;
 
     /**
-     * Make a GET request to the API. The parameters will be encoded as query string parameters.
+     * Make a GET request to the Constellix API.
      * @param string $url
-     * @param array $params
+     * @param array<mixed> $params
      * @return object|null
      * @throws HttpException
      * @throws JsonDecodeException
+     * @internal
      */
     public function get(string $url, array $params = []): ?object;
 
     /**
-     * Make a POST request to the API. The payload will be JSON encoded and sent in the body of the request with
-     * `Content-Type: application/json` headers.
+     * Make a POST request to the Constellix API.
      * @param string $url
      * @param mixed|null $payload
      * @return object|null
      * @throws HttpException
      * @throws JsonDecodeException
+     * @internal
      */
     public function post(string $url, $payload = null): ?object;
 
     /**
-     * Make a PUT request to the API. The payload will be JSON encoded and sent in the body of the request with
-     * `Content-Type: application/json` headers.
+     * Make a PUT request to the Constellix API.
      * @param string $url
      * @param mixed|null $payload
      * @return object|null
      * @throws HttpException
      * @throws JsonDecodeException
+     * @internal
      */
     public function put(string $url, $payload = null): ?object;
 
     /**
-     * Make a DELETE request to the API.
+     * Make a DELETE request to the Constellix API.
      * @param string $url
      * @param mixed|null $payload
      * @return object|null
      * @throws HttpException
      * @throws JsonDecodeException
+     * @internal
      */
     public function delete(string $url, $payload = null): ?object;
 
     /**
-     * Makes a HTTP request to the API.
+     * Build and send a request to the API.
      * @param RequestInterface $request
      * @return object|null
      * @throws HttpException
      * @throws JsonDecodeException
+     * @internal
      */
     public function send(RequestInterface $request): ?object;
 

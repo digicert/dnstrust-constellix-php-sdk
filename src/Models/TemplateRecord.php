@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\TemplateRecordInterface;
 use Constellix\Client\Interfaces\Traits\TemplateAwareInterface;
+use Constellix\Client\Managers\TemplateRecordManager;
 use Constellix\Client\Traits\TemplateAware;
 
 /**
@@ -14,7 +14,9 @@ use Constellix\Client\Traits\TemplateAware;
  *
  * @property string $name
  */
-class TemplateRecord extends Record implements TemplateRecordInterface, TemplateAwareInterface
+class TemplateRecord extends Record implements TemplateAwareInterface
 {
     use TemplateAware;
+
+    protected TemplateRecordManager $manager;
 }

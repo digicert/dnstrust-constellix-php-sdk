@@ -1,0 +1,17 @@
+{
+  "name": "",
+  "type": "MX",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "server": "mail.example.com",
+    "priority": 10
+  },{
+    "enabled": false,
+    "server": "mail2.example.com",
+    "priority": 20
+  }]
+}

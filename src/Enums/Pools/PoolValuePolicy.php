@@ -17,6 +17,9 @@ use Spatie\Enum\Enum;
  */
 class PoolValuePolicy extends Enum
 {
+    /**
+     * @return string[]
+     */
     protected static function values(): array
     {
         return [

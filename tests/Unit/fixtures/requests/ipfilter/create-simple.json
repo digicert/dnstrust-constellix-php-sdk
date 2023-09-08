@@ -1,0 +1,6 @@
+{
+  "name": "My IP filter",
+  "rulesLimit": 100,
+  "continents": [],
+  "regions": []
+}

@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": 4367769,
+      "name": "My Geo Proximity Location",
+      "country": "GB",
+      "region": "Greater London",
+      "city": 58898,
+      "longitude": -0.1275,
+      "latitude": 51.5033,
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/geoproximities/4367769"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "perPage": 50,
+      "currentPage": 1,
+      "totalPages": 1
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/geoproximities?page=1",
+      "first": "https://api.dns.constellix.com/v4/geoproximities?page=1",
+      "last": "https://api.dns.constellix.com/v4/geoproximities?page=1",
+      "previous": null,
+      "next": null
+    }
+  }
+}

@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\Constellix\\Client\\Client",
             "name": "Client",
-            "summary": "Constellix\u0020DNS\u0020API\u0020Client\u0020SDK",
+            "summary": "",
             "url": "classes/Constellix-Client-Client.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003A__construct\u0028\u0029",
@@ -13,83 +13,63 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AsetLogger\u0028\u0029",
             "name": "setLogger",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020logger\u0020to\u0020use.\u0020The\u0020Logger\u0020must\u0020be\u0020PSR\u002D3\u0020compatible.",
             "url": "classes/Constellix-Client-Client.html#method_setLogger"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetLogger\u0028\u0029",
+            "name": "getLogger",
+            "summary": "Returns\u0020the\u0020current\u0020logger.",
+            "url": "classes/Constellix-Client-Client.html#method_getLogger"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AsetHttpClient\u0028\u0029",
             "name": "setHttpClient",
-            "summary": "Set\u0020a\u0020custom\u0020HTTP\u0020Client\u0020for\u0020all\u0020requests.\u0020If\u0020one\u0020is\u0020not\u0020provided,\u0020one\u0020is\u0020created\u0020automatically.",
+            "summary": "Sets\u0020the\u0020HTTP\u0020Client\u0020for\u0020requests\u0020to\u0020the\u0020API.\u0020It\u0020must\u0020be\u0020PSR\u002D18\u0020compatible.",
             "url": "classes/Constellix-Client-Client.html#method_setHttpClient"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetHttpClient\u0028\u0029",
             "name": "getHttpClient",
-            "summary": "Fetches\u0020the\u0020current\u0020HTTP\u0020Client\u0020used\u0020for\u0020requests.",
+            "summary": "Returns\u0020the\u0020current\u0020HTTP\u0020client.",
             "url": "classes/Constellix-Client-Client.html#method_getHttpClient"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AsetEndpoint\u0028\u0029",
             "name": "setEndpoint",
-            "summary": "Set\u0020the\u0020API\u0020endpoint\u0020to\u0020use.\u0020By\u0020default\u0020this\u0020is\u0020\u0060https\u003A\/\/api.dnsmadeeasy.com\/V2.0\u0060.\u0020You\u0020can\u0020set\u0020this\u0020to\n\u0060https\u003A\/\/api.sandbox.dnsmadeeasy.com\/V2.0\u0060\u0020to\u0020use\u0020the\u0020Sandbox\u0020API.",
+            "summary": "Set\u0020the\u0020API\u0020endpoint\u0020for\u0020the\u0020Constellix\u0020DNS\u0020v4\u0020API,",
             "url": "classes/Constellix-Client-Client.html#method_setEndpoint"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetEndpoint\u0028\u0029",
             "name": "getEndpoint",
-            "summary": "Fetch\u0020the\u0020current\u0020API\u0020endpoint",
+            "summary": "Return\u0020the\u0020current\u0020API\u0020endpoint,",
             "url": "classes/Constellix-Client-Client.html#method_getEndpoint"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AsetApiKey\u0028\u0029",
             "name": "setApiKey",
-            "summary": "Sets\u0020the\u0020API\u0020key\u0020used\u0020for\u0020requests.",
+            "summary": "Set\u0020the\u0020Constellix\u0020API\u0020Key.",
             "url": "classes/Constellix-Client-Client.html#method_setApiKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetApiKey\u0028\u0029",
             "name": "getApiKey",
-            "summary": "Fetch\u0020the\u0020current\u0020API\u0020key.",
+            "summary": "Fetch\u0020the\u0020current\u0020Constellix\u0020API\u0020Key.",
             "url": "classes/Constellix-Client-Client.html#method_getApiKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AsetSecretKey\u0028\u0029",
             "name": "setSecretKey",
-            "summary": "Sets\u0020the\u0020secret\u0020key\u0020for\u0020requests.",
+            "summary": "Set\u0020the\u0020Constellix\u0020Secret\u0020Key.",
             "url": "classes/Constellix-Client-Client.html#method_setSecretKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetSecretKey\u0028\u0029",
             "name": "getSecretKey",
-            "summary": "Fetch\u0020the\u0020current\u0020secret\u0020key.",
+            "summary": "Fetch\u0020the\u0020current\u0020Constellix\u0020Secret\u0020Key.",
             "url": "classes/Constellix-Client-Client.html#method_getSecretKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AsetPaginatorFactory\u0028\u0029",
             "name": "setPaginatorFactory",
-            "summary": "This\u0020sets\u0020a\u0020Paginator\u0020Factory\u0020for\u0020the\u0020client.\u0020Any\u0020paginated\u0020responses\u0020will\u0020be\u0020created\u0020using\u0020the\u0020factory\nspecified.\u0020This\u0020is\u0020useful\u0020if\u0020you\u0020have\u0020a\u0020custom\u0020pagination\u0020class\u0020you\u0020want\u0020to\u0020use\u0020or\u0020one\u0020provided\u0020by\u0020a\u0020framework\nsuch\u0020as\u0020the\u0020LengthAwarePaginator\u0020in\u0020Laravel.",
+            "summary": "Set\u0020the\u0020pagination\u0020factory\u0020to\u0020use.\u0020This\u0020factory\u0020will\u0020be\u0020used\u0020to\u0020construct\u0020all\u0020paginated\u0020results\u0020from\u0020the\u0020managers.",
             "url": "classes/Constellix-Client-Client.html#method_setPaginatorFactory"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetPaginatorFactory\u0028\u0029",
             "name": "getPaginatorFactory",
-            "summary": "Fetch\u0020the\u0020current\u0020paginator\u0020factory\u0020interface.",
+            "summary": "Return\u0020the\u0020current\u0020pagination\u0020factory.",
             "url": "classes/Constellix-Client-Client.html#method_getPaginatorFactory"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Client\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Make\u0020a\u0020GET\u0020request\u0020to\u0020the\u0020API.\u0020The\u0020parameters\u0020will\u0020be\u0020encoded\u0020as\u0020query\u0020string\u0020parameters.",
-            "url": "classes/Constellix-Client-Client.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Client\u003A\u003Apost\u0028\u0029",
-            "name": "post",
-            "summary": "Make\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020API.\u0020The\u0020payload\u0020will\u0020be\u0020JSON\u0020encoded\u0020and\u0020sent\u0020in\u0020the\u0020body\u0020of\u0020the\u0020request\u0020with\n\u0060Content\u002DType\u003A\u0020application\/json\u0060\u0020headers.",
-            "url": "classes/Constellix-Client-Client.html#method_post"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Client\u003A\u003Aput\u0028\u0029",
-            "name": "put",
-            "summary": "Make\u0020a\u0020PUT\u0020request\u0020to\u0020the\u0020API.\u0020The\u0020payload\u0020will\u0020be\u0020JSON\u0020encoded\u0020and\u0020sent\u0020in\u0020the\u0020body\u0020of\u0020the\u0020request\u0020with\n\u0060Content\u002DType\u003A\u0020application\/json\u0060\u0020headers.",
-            "url": "classes/Constellix-Client-Client.html#method_put"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Client\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Make\u0020a\u0020DELETE\u0020request\u0020to\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Client.html#method_delete"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Client\u003A\u003Asend\u0028\u0029",
-            "name": "send",
-            "summary": "Makes\u0020a\u0020HTTP\u0020request\u0020to\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Client.html#method_send"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003AgetRequestLimit\u0028\u0029",
             "name": "getRequestLimit",
@@ -105,11 +85,6 @@ Search.appendIndex(
             "name": "getLimitReset",
             "summary": "Get\u0020the\u0020datetime\u0020that\u0020the\u0020request\u0020limit\u0020resets.",
             "url": "classes/Constellix-Client-Client.html#method_getLimitReset"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Client\u003A\u003A__get\u0028\u0029",
-            "name": "__get",
-            "summary": "",
-            "url": "classes/Constellix-Client-Client.html#method___get"
         },                {
             "fqsen": "\\Constellix\\Client\\Client\u003A\u003A\u0024logger",
             "name": "logger",
@@ -150,6 +125,11 @@ Search.appendIndex(
             "name": "PoolValuePolicy",
             "summary": "Enums\u0020to\u0020represent\u0020Pool\u0020Value\u0020policies",
             "url": "classes/Constellix-Client-Enums-Pools-PoolValuePolicy.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Enums\\Records\\FailoverMode",
+            "name": "FailoverMode",
+            "summary": "Enums\u0020to\u0020represent\u0020record\u0020types",
+            "url": "classes/Constellix-Client-Enums-Records-FailoverMode.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Enums\\Records\\RecordMode",
             "name": "RecordMode",
@@ -223,88 +203,73 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Exceptions\\ConstellixException",
             "name": "ConstellixException",
-            "summary": "",
+            "summary": "A\u0020base\u0020class\u0020for\u0020all\u0020exceptions\u0020from\u0020the\u0020Constellix\u0020API\u0020Client",
             "url": "classes/Constellix-Client-Exceptions-ConstellixException.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface",
             "name": "ClientInterface",
-            "summary": "Constellix\u0020API\u0020Client\u0020SDK",
+            "summary": "An\u0020interface\u0020for\u0020the\u0020Constellix\u0020API\u0020Client.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetHttpClient\u0028\u0029",
             "name": "setHttpClient",
-            "summary": "Set\u0020a\u0020custom\u0020HTTP\u0020Client\u0020for\u0020all\u0020requests.\u0020If\u0020one\u0020is\u0020not\u0020provided,\u0020one\u0020is\u0020created\u0020automatically.",
+            "summary": "Sets\u0020the\u0020HTTP\u0020Client\u0020for\u0020requests\u0020to\u0020the\u0020API.\u0020It\u0020must\u0020be\u0020PSR\u002D18\u0020compatible.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setHttpClient"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetHttpClient\u0028\u0029",
             "name": "getHttpClient",
-            "summary": "Fetches\u0020the\u0020current\u0020HTTP\u0020Client\u0020used\u0020for\u0020requests.",
+            "summary": "Returns\u0020the\u0020current\u0020HTTP\u0020client.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getHttpClient"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetLogger\u0028\u0029",
+            "name": "setLogger",
+            "summary": "Sets\u0020the\u0020logger\u0020to\u0020use.\u0020The\u0020Logger\u0020must\u0020be\u0020PSR\u002D3\u0020compatible.",
+            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setLogger"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetLogger\u0028\u0029",
+            "name": "getLogger",
+            "summary": "Returns\u0020the\u0020current\u0020logger.",
+            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getLogger"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetEndpoint\u0028\u0029",
             "name": "setEndpoint",
-            "summary": "Set\u0020the\u0020API\u0020endpoint\u0020to\u0020use.\u0020By\u0020default\u0020this\u0020is\u0020\u0060https\u003A\/\/api.dnsmadeeasy.com\/V2.0\u0060.\u0020You\u0020can\u0020set\u0020this\u0020to\n\u0060https\u003A\/\/api.sandbox.dnsmadeeasy.com\/V2.0\u0060\u0020to\u0020use\u0020the\u0020Sandbox\u0020API.",
+            "summary": "Set\u0020the\u0020API\u0020endpoint\u0020for\u0020the\u0020Constellix\u0020DNS\u0020v4\u0020API,",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setEndpoint"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetEndpoint\u0028\u0029",
             "name": "getEndpoint",
-            "summary": "Fetch\u0020the\u0020current\u0020API\u0020endpoint",
+            "summary": "Return\u0020the\u0020current\u0020API\u0020endpoint,",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getEndpoint"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetApiKey\u0028\u0029",
             "name": "setApiKey",
-            "summary": "Sets\u0020the\u0020API\u0020key\u0020used\u0020for\u0020requests.",
+            "summary": "Set\u0020the\u0020Constellix\u0020API\u0020Key.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setApiKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetApiKey\u0028\u0029",
             "name": "getApiKey",
-            "summary": "Fetch\u0020the\u0020current\u0020API\u0020key.",
+            "summary": "Fetch\u0020the\u0020current\u0020Constellix\u0020API\u0020Key.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getApiKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetSecretKey\u0028\u0029",
             "name": "setSecretKey",
-            "summary": "Sets\u0020the\u0020secret\u0020key\u0020for\u0020requests.",
+            "summary": "Set\u0020the\u0020Constellix\u0020Secret\u0020Key.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setSecretKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetSecretKey\u0028\u0029",
             "name": "getSecretKey",
-            "summary": "Fetch\u0020the\u0020current\u0020secret\u0020key.",
+            "summary": "Fetch\u0020the\u0020current\u0020Constellix\u0020Secret\u0020Key.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getSecretKey"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetPaginatorFactory\u0028\u0029",
             "name": "setPaginatorFactory",
-            "summary": "This\u0020sets\u0020a\u0020Paginator\u0020Factory\u0020for\u0020the\u0020client.\u0020Any\u0020paginated\u0020responses\u0020will\u0020be\u0020created\u0020using\u0020the\u0020factory\nspecified.\u0020This\u0020is\u0020useful\u0020if\u0020you\u0020have\u0020a\u0020custom\u0020pagination\u0020class\u0020you\u0020want\u0020to\u0020use\u0020or\u0020one\u0020provided\u0020by\u0020a\u0020framework\nsuch\u0020as\u0020the\u0020LengthAwarePaginator\u0020in\u0020Laravel.",
+            "summary": "Set\u0020the\u0020pagination\u0020factory\u0020to\u0020use.\u0020This\u0020factory\u0020will\u0020be\u0020used\u0020to\u0020construct\u0020all\u0020paginated\u0020results\u0020from\u0020the\u0020managers.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setPaginatorFactory"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetPaginatorFactory\u0028\u0029",
             "name": "getPaginatorFactory",
-            "summary": "Fetch\u0020the\u0020current\u0020paginator\u0020factory\u0020interface.",
+            "summary": "Return\u0020the\u0020current\u0020pagination\u0020factory.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getPaginatorFactory"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Make\u0020a\u0020GET\u0020request\u0020to\u0020the\u0020API.\u0020The\u0020parameters\u0020will\u0020be\u0020encoded\u0020as\u0020query\u0020string\u0020parameters.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003Apost\u0028\u0029",
-            "name": "post",
-            "summary": "Make\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020API.\u0020The\u0020payload\u0020will\u0020be\u0020JSON\u0020encoded\u0020and\u0020sent\u0020in\u0020the\u0020body\u0020of\u0020the\u0020request\u0020with\n\u0060Content\u002DType\u003A\u0020application\/json\u0060\u0020headers.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_post"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003Aput\u0028\u0029",
-            "name": "put",
-            "summary": "Make\u0020a\u0020PUT\u0020request\u0020to\u0020the\u0020API.\u0020The\u0020payload\u0020will\u0020be\u0020JSON\u0020encoded\u0020and\u0020sent\u0020in\u0020the\u0020body\u0020of\u0020the\u0020request\u0020with\n\u0060Content\u002DType\u003A\u0020application\/json\u0060\u0020headers.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_put"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Make\u0020a\u0020DELETE\u0020request\u0020to\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_delete"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003Asend\u0028\u0029",
-            "name": "send",
-            "summary": "Makes\u0020a\u0020HTTP\u0020request\u0020to\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_send"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetRequestLimit\u0028\u0029",
             "name": "getRequestLimit",
@@ -320,471 +285,6 @@ Search.appendIndex(
             "name": "getLimitReset",
             "summary": "Get\u0020the\u0020datetime\u0020that\u0020the\u0020request\u0020limit\u0020resets.",
             "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getLimitReset"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\AbstractManagerInterface",
-            "name": "AbstractManagerInterface",
-            "summary": "Defines\u0020the\u0020interface\u0020of\u0020a\u0020Manager\u0020for\u0020a\u0020particular\u0020resource\u0020in\u0020the\u0020Constellix\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-AbstractManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\AbstractManagerInterface\u003A\u003Apaginate\u0028\u0029",
-            "name": "paginate",
-            "summary": "Fetch\u0020a\u0020paginated\u0020subset\u0020of\u0020the\u0020resources.\u0020You\u0020can\u0020specify\u0020the\u0020page\u0020and\u0020the\u0020number\u0020of\u0020items\u0020per\u002Dpage.\u0020The\u0020result\nwill\u0020be\u0020an\u0020object\u0020representing\u0020the\u0020paginated\u0020results.\u0020By\u0020specifying\u0020a\u0020custom\u0020Paginator\u0020Factory\u0020on\u0020the\u0020client\nyou\u0020can\u0020change\u0020the\u0020type\u0020of\u0020result\u0020you\u0020get\u0020from\u0020this\u0020method.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-AbstractManagerInterface.html#method_paginate"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\ContactListManagerInterface",
-            "name": "ContactListManagerInterface",
-            "summary": "Manages\u0020Contact\u0020List\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-ContactListManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\ContactListManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Contact\u0020List.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-ContactListManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\ContactListManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020Contact\u0020List\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-ContactListManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainHistoryManagerInterface",
-            "name": "DomainHistoryManagerInterface",
-            "summary": "Manages\u0020domain\u0020history\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainHistoryManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainHistoryManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020domain\u0020history\u0020with\u0020the\u0020specified\u0020version",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainHistoryManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainManagerInterface",
-            "name": "DomainManagerInterface",
-            "summary": "Manages\u0020Domain\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Domain.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020Domain\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainRecordManagerInterface",
-            "name": "DomainRecordManagerInterface",
-            "summary": "Manages\u0020domain\u0020records\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainRecordManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainRecordManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020domain\u0020record.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainRecordManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainRecordManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020domain\u0020record\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainRecordManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainSnapshotManagerInterface",
-            "name": "DomainSnapshotManagerInterface",
-            "summary": "Manages\u0020domain\u0020history\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainSnapshotManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\DomainSnapshotManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020domain\u0020snapshot\u0020with\u0020the\u0020specified\u0020version",
-            "url": "classes/Constellix-Client-Interfaces-Managers-DomainSnapshotManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\GeoProximityManagerInterface",
-            "name": "GeoProximityManagerInterface",
-            "summary": "Manages\u0020GeoProximity\u0020Location\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-GeoProximityManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\GeoProximityManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020GeoProximity\u0020Location.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-GeoProximityManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\GeoProximityManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020GeoProximity\u0020Location\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-GeoProximityManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\IPFilterManagerInterface",
-            "name": "IPFilterManagerInterface",
-            "summary": "Manages\u0020IP\u0020Filter\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-IPFilterManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\IPFilterManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020IP\u0020Filter.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-IPFilterManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\IPFilterManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020IP\u0020Filter\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-IPFilterManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\PoolManagerInterface",
-            "name": "PoolManagerInterface",
-            "summary": "Manages\u0020Contact\u0020List\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-PoolManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\PoolManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Pool.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-PoolManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\PoolManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020Pool\u0020with\u0020the\u0020specified\u0020type\u0020and\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-PoolManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TagManagerInterface",
-            "name": "TagManagerInterface",
-            "summary": "Manages\u0020Tag\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TagManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TagManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Tag.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TagManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TagManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020Tag\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TagManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TemplateManagerInterface",
-            "name": "TemplateManagerInterface",
-            "summary": "Manages\u0020Template\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TemplateManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TemplateManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Template.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TemplateManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TemplateManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020Template\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TemplateManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TemplateRecordManagerInterface",
-            "name": "TemplateRecordManagerInterface",
-            "summary": "Manages\u0020domain\u0020records\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TemplateRecordManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TemplateRecordManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020template\u0020record.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TemplateRecordManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\TemplateRecordManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020template\u0020record\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-TemplateRecordManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\VanityNameServerManagerInterface",
-            "name": "VanityNameServerManagerInterface",
-            "summary": "Manages\u0020Vanity\u0020NameServer\u0020objects\u0020from\u0020the\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-VanityNameServerManagerInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\VanityNameServerManagerInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Vanity\u0020NameServer.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-VanityNameServerManagerInterface.html#method_create"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers\\VanityNameServerManagerInterface\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Gets\u0020the\u0020Vanity\u0020NameServer\u0020with\u0020the\u0020specified\u0020ID.",
-            "url": "classes/Constellix-Client-Interfaces-Managers-VanityNameServerManagerInterface.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\AbstractDomainHistoryInterface",
-            "name": "AbstractDomainHistoryInterface",
-            "summary": "Represents\u0020a\u0020version\u0020of\u0020the\u0020domain\u0020history\/snapshot.",
-            "url": "classes/Constellix-Client-Interfaces-Models-AbstractDomainHistoryInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\AbstractDomainHistoryInterface\u003A\u003Aapply\u0028\u0029",
-            "name": "apply",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-AbstractDomainHistoryInterface.html#method_apply"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\AbstractModelInterface",
-            "name": "AbstractModelInterface",
-            "summary": "Represents\u0020a\u0020resource\u0020from\u0020the\u0020Constellix\u0020API.",
-            "url": "classes/Constellix-Client-Interfaces-Models-AbstractModelInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Basic\\BasicContactListInterface",
-            "name": "BasicContactListInterface",
-            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Basic-BasicContactListInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Basic\\BasicDomainInterface",
-            "name": "BasicDomainInterface",
-            "summary": "Represents\u0020a\u0020Domain\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Basic-BasicDomainInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Basic\\BasicPoolInterface",
-            "name": "BasicPoolInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Basic-BasicPoolInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Basic\\BasicTemplateInterface",
-            "name": "BasicTemplateInterface",
-            "summary": "Represents\u0020a\u0020Template\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Basic-BasicTemplateInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Basic\\BasicVanityNameserverInterface",
-            "name": "BasicVanityNameserverInterface",
-            "summary": "Represents\u0020a\u0020basic\u0020Vanity\u0020Nameserver\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Basic-BasicVanityNameserverInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common\\CommonContactListInterface",
-            "name": "CommonContactListInterface",
-            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Common-CommonContactListInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common\\CommonDomainInterface",
-            "name": "CommonDomainInterface",
-            "summary": "Represents\u0020a\u0020Domain\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Common-CommonDomainInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common\\CommonPoolInterface",
-            "name": "CommonPoolInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Common-CommonPoolInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common\\CommonPoolValueInterface",
-            "name": "CommonPoolValueInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020Value\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Common-CommonPoolValueInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common\\CommonTemplateInterface",
-            "name": "CommonTemplateInterface",
-            "summary": "Represents\u0020a\u0020Template\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Common-CommonTemplateInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common\\CommonVanityNameserverInterface",
-            "name": "CommonVanityNameserverInterface",
-            "summary": "Represents\u0020a\u0020Vanity\u0020Nameserver\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Common-CommonVanityNameserverInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Concise\\ConciseContactListInterface",
-            "name": "ConciseContactListInterface",
-            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Concise-ConciseContactListInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Concise\\ConcisePoolInterface",
-            "name": "ConcisePoolInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Concise-ConcisePoolInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Concise\\ConcisePoolValueInterface",
-            "name": "ConcisePoolValueInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020Value\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-Concise-ConcisePoolValueInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\ContactListInterface",
-            "name": "ContactListInterface",
-            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-ContactListInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\ContactListInterface\u003A\u003AaddEmail\u0028\u0029",
-            "name": "addEmail",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-ContactListInterface.html#method_addEmail"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\ContactListInterface\u003A\u003AremoveEmail\u0028\u0029",
-            "name": "removeEmail",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-ContactListInterface.html#method_removeEmail"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainHistoryInterface",
-            "name": "DomainHistoryInterface",
-            "summary": "Represents\u0020a\u0020version\u0020of\u0020the\u0020domain\u0020history.",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainHistoryInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainHistoryInterface\u003A\u003Asnapshot\u0028\u0029",
-            "name": "snapshot",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainHistoryInterface.html#method_snapshot"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainInterface",
-            "name": "DomainInterface",
-            "summary": "Represents\u0020a\u0020Domain\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainInterface\u003A\u003AaddTag\u0028\u0029",
-            "name": "addTag",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainInterface.html#method_addTag"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainInterface\u003A\u003AremoveTag\u0028\u0029",
-            "name": "removeTag",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainInterface.html#method_removeTag"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainInterface\u003A\u003AaddContactList\u0028\u0029",
-            "name": "addContactList",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainInterface.html#method_addContactList"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainInterface\u003A\u003AremoveContactList\u0028\u0029",
-            "name": "removeContactList",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainInterface.html#method_removeContactList"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainRecordInterface",
-            "name": "DomainRecordInterface",
-            "summary": "Represents\u0020a\u0020domain\u0020record.",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainRecordInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainSnapshotInterface",
-            "name": "DomainSnapshotInterface",
-            "summary": "Represents\u0020a\u0020snapshot\u0020of\u0020a\u0020domain\u0027s\u0020history.",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainSnapshotInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\DomainSnapshotInterface\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-DomainSnapshotInterface.html#method_delete"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\GeoProximityInterface",
-            "name": "GeoProximityInterface",
-            "summary": "Represents\u0020a\u0020Geo\u0020Proximity\u0020Location\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-GeoProximityInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Helpers\\ITOConfigInterface",
-            "name": "ITOConfigInterface",
-            "summary": "Represents\u0020specific\u0020ITO\u0020configuration",
-            "url": "classes/Constellix-Client-Interfaces-Models-Helpers-ITOConfigInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Helpers\\ITOInterface",
-            "name": "ITOInterface",
-            "summary": "Represents\u0020ITO\u0020configuration",
-            "url": "classes/Constellix-Client-Interfaces-Models-Helpers-ITOInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Helpers\\SOAInterface",
-            "name": "SOAInterface",
-            "summary": "Represents\u0020SOA\u0020configuration",
-            "url": "classes/Constellix-Client-Interfaces-Models-Helpers-SOAInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface",
-            "name": "IPFilterInterface",
-            "summary": "Represents\u0020an\u0020IP\u0020Filter\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AaddContinent\u0028\u0029",
-            "name": "addContinent",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_addContinent"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AremoveContinent\u0028\u0029",
-            "name": "removeContinent",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_removeContinent"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AaddCountry\u0028\u0029",
-            "name": "addCountry",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_addCountry"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AremoveCountry\u0028\u0029",
-            "name": "removeCountry",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_removeCountry"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AaddASN\u0028\u0029",
-            "name": "addASN",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_addASN"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AremoveASN\u0028\u0029",
-            "name": "removeASN",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_removeASN"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AaddIPv4\u0028\u0029",
-            "name": "addIPv4",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_addIPv4"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AremoveIPv4\u0028\u0029",
-            "name": "removeIPv4",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_removeIPv4"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AaddIPv6\u0028\u0029",
-            "name": "addIPv6",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_addIPv6"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\IPFilterInterface\u003A\u003AremoveIPv6\u0028\u0029",
-            "name": "removeIPv6",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html#method_removeIPv6"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\PoolInterface",
-            "name": "PoolInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-PoolInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\PoolInterface\u003A\u003AaddContactList\u0028\u0029",
-            "name": "addContactList",
-            "summary": "Add\u0020a\u0020contact\u0020list\u0020to\u0020be\u0020notified\u0020when\u0020this\u0020pool\u0020changes",
-            "url": "classes/Constellix-Client-Interfaces-Models-PoolInterface.html#method_addContactList"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\PoolInterface\u003A\u003AremoveContactList\u0028\u0029",
-            "name": "removeContactList",
-            "summary": "Remove\u0020a\u0020contact\u0020list\u0020from\u0020being\u0020notified\u0020when\u0020this\u0020pool\u0020changes",
-            "url": "classes/Constellix-Client-Interfaces-Models-PoolInterface.html#method_removeContactList"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\PoolInterface\u003A\u003AcreateValue\u0028\u0029",
-            "name": "createValue",
-            "summary": "Add\u0020a\u0020new\u0020value\u0020to\u0020this\u0020pool.\u0020This\u0020is\u0020not\u0020saved\u0020until\u0020you\u0020save\u0020the\u0020pool.",
-            "url": "classes/Constellix-Client-Interfaces-Models-PoolInterface.html#method_createValue"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\PoolValueInterface",
-            "name": "PoolValueInterface",
-            "summary": "Represents\u0020a\u0020Pool\u0020Value\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-PoolValueInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\RecordInterface",
-            "name": "RecordInterface",
-            "summary": "Represents\u0020a\u0020DNS\u0020record",
-            "url": "classes/Constellix-Client-Interfaces-Models-RecordInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\TagInterface",
-            "name": "TagInterface",
-            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-TagInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\TemplateInterface",
-            "name": "TemplateInterface",
-            "summary": "Represents\u0020a\u0020Template\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-TemplateInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\TemplateRecordInterface",
-            "name": "TemplateRecordInterface",
-            "summary": "Represents\u0020a\u0020template\u0020record",
-            "url": "classes/Constellix-Client-Interfaces-Models-TemplateRecordInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\VanityNameserverInterface",
-            "name": "VanityNameserverInterface",
-            "summary": "Represents\u0020a\u0020Vanity\u0020NameServer\u0020resource",
-            "url": "classes/Constellix-Client-Interfaces-Models-VanityNameserverInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\VanityNameserverInterface\u003A\u003AaddNameServer\u0028\u0029",
-            "name": "addNameServer",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-VanityNameserverInterface.html#method_addNameServer"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\VanityNameserverInterface\u003A\u003AremoveNameServer\u0028\u0029",
-            "name": "removeNameServer",
-            "summary": "",
-            "url": "classes/Constellix-Client-Interfaces-Models-VanityNameserverInterface.html#method_removeNameServer"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\PaginatorFactoryInterface",
             "name": "PaginatorFactoryInterface",
@@ -803,38 +303,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\DomainAwareInterface\u003A\u003AsetDomain\u0028\u0029",
             "name": "setDomain",
-            "summary": "",
+            "summary": "Set\u0020the\u0020domain\u0020that\u0020relates\u0020to\u0020this\u0020object.",
             "url": "classes/Constellix-Client-Interfaces-Traits-DomainAwareInterface.html#method_setDomain"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\EditableModelInterface",
-            "name": "EditableModelInterface",
-            "summary": "Trait\u0020for\u0020models\u0020which\u0020can\u0020be\u0020edited.",
-            "url": "classes/Constellix-Client-Interfaces-Traits-EditableModelInterface.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\EditableModelInterface\u003A\u003Asave\u0028\u0029",
-            "name": "save",
-            "summary": "Saves\u0020the\u0020object.",
-            "url": "classes/Constellix-Client-Interfaces-Traits-EditableModelInterface.html#method_save"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\EditableModelInterface\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Deletes\u0020the\u0020object.",
-            "url": "classes/Constellix-Client-Interfaces-Traits-EditableModelInterface.html#method_delete"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\EditableModelInterface\u003A\u003AhasChanged\u0028\u0029",
-            "name": "hasChanged",
-            "summary": "Returns\u0020true\u0020if\u0020the\u0020object\u0020has\u0020been\u0020modified\u0020since\u0020it\u0020was\u0020fetched.",
-            "url": "classes/Constellix-Client-Interfaces-Traits-EditableModelInterface.html#method_hasChanged"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\EditableModelInterface\u003A\u003Arefresh\u0028\u0029",
-            "name": "refresh",
-            "summary": "Fetch\u0020the\u0020latest\u0020version\u0020of\u0020the\u0020object\u0020from\u0020the\u0020API.\u0020This\u0020will\u0020overwrite\u0020changes\u0020that\u0020have\u0020been\u0020made.",
-            "url": "classes/Constellix-Client-Interfaces-Traits-EditableModelInterface.html#method_refresh"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\ManagedModelInterface",
-            "name": "ManagedModelInterface",
-            "summary": "Trait\u0020for\u0020models\u0020which\u0020can\u0020be\u0020edited.",
-            "url": "classes/Constellix-Client-Interfaces-Traits-ManagedModelInterface.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\TemplateAwareInterface",
             "name": "TemplateAwareInterface",
@@ -843,7 +313,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\TemplateAwareInterface\u003A\u003AsetTemplate\u0028\u0029",
             "name": "setTemplate",
-            "summary": "",
+            "summary": "Set\u0020the\u0020template\u0020relating\u0020to\u0020this\u0020object.",
             "url": "classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html#method_setTemplate"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\AbstractManager",
@@ -863,12 +333,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\ContactListManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Contact\u0020List.",
+            "summary": "Create\u0020a\u0020new\u0020Contact\u0020List.",
             "url": "classes/Constellix-Client-Managers-ContactListManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\ContactListManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020Contact\u0020List\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Contact\u0020List.",
             "url": "classes/Constellix-Client-Managers-ContactListManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainHistoryManager",
@@ -878,18 +348,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainHistoryManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020domain\u0020history\u0020with\u0020the\u0020specified\u0020version",
+            "summary": "Fetch\u0020a\u0020specific\u0020version\u0020of\u0020the\u0020domain\u0027s\u0020history.",
             "url": "classes/Constellix-Client-Managers-DomainHistoryManager.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Managers\\DomainHistoryManager\u003A\u003Aapply\u0028\u0029",
-            "name": "apply",
-            "summary": "",
-            "url": "classes/Constellix-Client-Managers-DomainHistoryManager.html#method_apply"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Managers\\DomainHistoryManager\u003A\u003Asnapshot\u0028\u0029",
-            "name": "snapshot",
-            "summary": "",
-            "url": "classes/Constellix-Client-Managers-DomainHistoryManager.html#method_snapshot"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainManager",
             "name": "DomainManager",
@@ -898,12 +358,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Domain.",
+            "summary": "Create\u0020a\u0020new\u0020Domain.",
             "url": "classes/Constellix-Client-Managers-DomainManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020Domain\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Domain.",
             "url": "classes/Constellix-Client-Managers-DomainManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainRecordManager",
@@ -913,28 +373,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainRecordManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020domain\u0020record.",
+            "summary": "Create\u0020a\u0020new\u0020Domain\u0020Record.",
             "url": "classes/Constellix-Client-Managers-DomainRecordManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainRecordManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020domain\u0020record\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Domain\u0020Record.",
             "url": "classes/Constellix-Client-Managers-DomainRecordManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainSnapshotManager",
             "name": "DomainSnapshotManager",
-            "summary": "Manages\u0020domain\u0020history\u0020snapshots",
+            "summary": "Manages\u0020domain\u0020history\u0020snapshots.",
             "url": "classes/Constellix-Client-Managers-DomainSnapshotManager.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainSnapshotManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020domain\u0020snapshot\u0020with\u0020the\u0020specified\u0020version",
+            "summary": "Fetch\u0020a\u0020specific\u0020version\u0020snapshot\u0020for\u0020a\u0020Domain.",
             "url": "classes/Constellix-Client-Managers-DomainSnapshotManager.html#method_get"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Managers\\DomainSnapshotManager\u003A\u003Aapply\u0028\u0029",
-            "name": "apply",
-            "summary": "",
-            "url": "classes/Constellix-Client-Managers-DomainSnapshotManager.html#method_apply"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\GeoProximityManager",
             "name": "GeoProximityManager",
@@ -943,12 +398,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\GeoProximityManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020GeoProximity\u0020Location.",
+            "summary": "Create\u0020a\u0020new\u0020GeoProximity\u0020Location.",
             "url": "classes/Constellix-Client-Managers-GeoProximityManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\GeoProximityManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020GeoProximity\u0020Location\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020GeoProximity\u0020Location",
             "url": "classes/Constellix-Client-Managers-GeoProximityManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\IPFilterManager",
@@ -958,12 +413,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\IPFilterManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020IP\u0020Filter.",
+            "summary": "Create\u0020a\u0020new\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Managers-IPFilterManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\IPFilterManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020IP\u0020Filter\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Managers-IPFilterManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\PoolManager",
@@ -973,17 +428,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\PoolManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Pool.",
+            "summary": "Create\u0020a\u0020new\u0020Pool.",
             "url": "classes/Constellix-Client-Managers-PoolManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\PoolManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020Pool\u0020with\u0020the\u0020specified\u0020type\u0020and\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Pool.",
             "url": "classes/Constellix-Client-Managers-PoolManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\PoolManager\u003A\u003Arefresh\u0028\u0029",
             "name": "refresh",
-            "summary": "",
+            "summary": "Refresh\u0020the\u0020Pool\u0020with\u0020the\u0020latest\u0020information\u0020from\u0020the\u0020API.\u0020Changes\u0020will\u0020be\u0020discarded.",
             "url": "classes/Constellix-Client-Managers-PoolManager.html#method_refresh"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TagManager",
@@ -993,12 +448,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TagManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Tag.",
+            "summary": "Create\u0020a\u0020new\u0020Tag.",
             "url": "classes/Constellix-Client-Managers-TagManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TagManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020Tag\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Tag.",
             "url": "classes/Constellix-Client-Managers-TagManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TemplateManager",
@@ -1008,12 +463,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TemplateManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Template.",
+            "summary": "Create\u0020a\u0020new\u0020Template.",
             "url": "classes/Constellix-Client-Managers-TemplateManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TemplateManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020Template\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Template.",
             "url": "classes/Constellix-Client-Managers-TemplateManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TemplateRecordManager",
@@ -1023,12 +478,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TemplateRecordManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020template\u0020record.",
+            "summary": "Create\u0020a\u0020new\u0020Template\u0020Record.",
             "url": "classes/Constellix-Client-Managers-TemplateRecordManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\TemplateRecordManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020template\u0020record\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Template\u0020Record.",
             "url": "classes/Constellix-Client-Managers-TemplateRecordManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\VanityNameserverManager",
@@ -1038,12 +493,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\VanityNameserverManager\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "Creates\u0020a\u0020new\u0020Vanity\u0020NameServer.",
+            "summary": "Create\u0020a\u0020new\u0020Vanity\u0020Nameserver.",
             "url": "classes/Constellix-Client-Managers-VanityNameserverManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\VanityNameserverManager\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Gets\u0020the\u0020Vanity\u0020NameServer\u0020with\u0020the\u0020specified\u0020ID.",
+            "summary": "Fetch\u0020an\u0020existing\u0020Vanity\u0020Nameserver.",
             "url": "classes/Constellix-Client-Managers-VanityNameserverManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\AbstractDomainHistory",
@@ -1051,14 +506,9 @@ Search.appendIndex(
             "summary": "Represents\u0020a\u0020point\u0020in\u0020the\u0020domain\u0027s\u0020history",
             "url": "classes/Constellix-Client-Models-AbstractDomainHistory.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\AbstractDomainHistory\u003A\u003AjsonSerialize\u0028\u0029",
-            "name": "jsonSerialize",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-AbstractDomainHistory.html#method_jsonSerialize"
-        },                {
             "fqsen": "\\Constellix\\Client\\Models\\AbstractDomainHistory\u003A\u003Aapply\u0028\u0029",
             "name": "apply",
-            "summary": "",
+            "summary": "Apply\u0020the\u0020domain\u0020history\u0020or\u0020snapshot\u0020to\u0020the\u0020domain.",
             "url": "classes/Constellix-Client-Models-AbstractDomainHistory.html#method_apply"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\AbstractModel",
@@ -1066,80 +516,10 @@ Search.appendIndex(
             "summary": "An\u0020abstract\u0020class\u0020for\u0020resource\u0020models\u0020in\u0020the\u0020Constellix\u0020API.",
             "url": "classes/Constellix-Client-Models-AbstractModel.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Basic\\BasicContactList",
-            "name": "BasicContactList",
-            "summary": "Represents\u0020a\u0020concise\u0020representation\u0020of\u0020a\u0020Contact\u0020List\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Basic-BasicContactList.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Basic\\BasicDomain",
-            "name": "BasicDomain",
-            "summary": "Represents\u0020a\u0020basic\u0020representation\u0020of\u0020a\u0020Domain\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Basic-BasicDomain.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Basic\\BasicPool",
-            "name": "BasicPool",
-            "summary": "Represents\u0020a\u0020basic\u0020representation\u0020of\u0020a\u0020Domain\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Basic-BasicPool.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Basic\\BasicTemplate",
-            "name": "BasicTemplate",
-            "summary": "Represents\u0020a\u0020concise\u0020representation\u0020of\u0020a\u0020Template\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Basic-BasicTemplate.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Basic\\BasicVanityNameserver",
-            "name": "BasicVanityNameserver",
-            "summary": "Represents\u0020a\u0020concise\u0020representation\u0020of\u0020a\u0020Vanity\u0020NS\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Basic-BasicVanityNameserver.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonContactList",
-            "name": "CommonContactList",
-            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Common-CommonContactList.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonDomain",
-            "name": "CommonDomain",
-            "summary": "Represents\u0020a\u0020Domain\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Common-CommonDomain.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonPool",
-            "name": "CommonPool",
-            "summary": "Represents\u0020a\u0020Pool\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Common-CommonPool.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonPoolValue",
-            "name": "CommonPoolValue",
-            "summary": "Represents\u0020a\u0020Pool\u0020Value\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Common-CommonPoolValue.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonPoolValue\u003A\u003A__toString\u0028\u0029",
-            "name": "__toString",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Common-CommonPoolValue.html#method___toString"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonTemplate",
-            "name": "CommonTemplate",
-            "summary": "Represents\u0020a\u0020Template\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Common-CommonTemplate.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common\\CommonVanityNameserver",
-            "name": "CommonVanityNameserver",
-            "summary": "Represents\u0020a\u0020Vanity\u0020NS\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Common-CommonVanityNameserver.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Concise\\ConciseContactList",
-            "name": "ConciseContactList",
-            "summary": "Represents\u0020a\u0020concise\u0020representation\u0020of\u0020a\u0020Contact\u0020List\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Concise-ConciseContactList.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Concise\\ConcisePool",
-            "name": "ConcisePool",
-            "summary": "Represents\u0020a\u0020concise\u0020representation\u0020of\u0020a\u0020Pool\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Concise-ConcisePool.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Concise\\ConcisePoolValue",
-            "name": "ConcisePoolValue",
-            "summary": "Represents\u0020a\u0020concise\u0020representation\u0020of\u0020a\u0020Pool\u0020Value\u0020resource.",
-            "url": "classes/Constellix-Client-Models-Concise-ConcisePoolValue.html"
+            "fqsen": "\\Constellix\\Client\\Models\\AbstractModel\u003A\u003Arefresh\u0028\u0029",
+            "name": "refresh",
+            "summary": "Refreshes\u0020the\u0020object\u0020with\u0020the\u0020latest\u0020version\u0020from\u0020the\u0020API.\u0020This\u0020will\u0020overwrite\u0020any\u0020changes.",
+            "url": "classes/Constellix-Client-Models-AbstractModel.html#method_refresh"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\ContactList",
             "name": "ContactList",
@@ -1148,48 +528,48 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\ContactList\u003A\u003AaddEmail\u0028\u0029",
             "name": "addEmail",
-            "summary": "",
+            "summary": "Add\u0020an\u0020email\u0020to\u0020the\u0020contact\u0020list.",
             "url": "classes/Constellix-Client-Models-ContactList.html#method_addEmail"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\ContactList\u003A\u003AremoveEmail\u0028\u0029",
             "name": "removeEmail",
-            "summary": "",
+            "summary": "Remove\u0020an\u0020email\u0020from\u0020the\u0020contact\u0020list.",
             "url": "classes/Constellix-Client-Models-ContactList.html#method_removeEmail"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\ContactList\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-ContactList.html#method_transformForApi"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Domain",
             "name": "Domain",
             "summary": "Represents\u0020a\u0020Domain\u0020resource.",
             "url": "classes/Constellix-Client-Models-Domain.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Domain.html#method_transformForApi"
-        },                {
             "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AaddTag\u0028\u0029",
             "name": "addTag",
-            "summary": "",
+            "summary": "Add\u0020a\u0020tag\u0020to\u0020this\u0020domain.",
             "url": "classes/Constellix-Client-Models-Domain.html#method_addTag"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AremoveTag\u0028\u0029",
             "name": "removeTag",
-            "summary": "",
+            "summary": "Remove\u0020a\u0020tag\u0020from\u0020this\u0020domain.",
             "url": "classes/Constellix-Client-Models-Domain.html#method_removeTag"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AaddContactList\u0028\u0029",
             "name": "addContactList",
-            "summary": "",
+            "summary": "Add\u0020a\u0020Contact\u0020List\u0020to\u0020this\u0020domain.",
             "url": "classes/Constellix-Client-Models-Domain.html#method_addContactList"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AremoveContactList\u0028\u0029",
             "name": "removeContactList",
-            "summary": "",
+            "summary": "Remove\u0020a\u0020Contact\u0020List\u0020from\u0020this\u0020domain.",
             "url": "classes/Constellix-Client-Models-Domain.html#method_removeContactList"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AsetTemplate\u0028\u0029",
+            "name": "setTemplate",
+            "summary": "Set\u0020the\u0020Template\u0020for\u0020this\u0020domain.",
+            "url": "classes/Constellix-Client-Models-Domain.html#method_setTemplate"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AsetVanityNameserver\u0028\u0029",
+            "name": "setVanityNameserver",
+            "summary": "Set\u0020the\u0020Vanity\u0020Nameserver\u0020for\u0020this\u0020domain.",
+            "url": "classes/Constellix-Client-Models-Domain.html#method_setVanityNameserver"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\DomainHistory",
             "name": "DomainHistory",
@@ -1198,7 +578,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\DomainHistory\u003A\u003Asnapshot\u0028\u0029",
             "name": "snapshot",
-            "summary": "",
+            "summary": "Take\u0020a\u0020snapshot\u0020of\u0020this\u0020point\u0020in\u0020history\u0020of\u0020the\u0020domain.",
             "url": "classes/Constellix-Client-Models-DomainHistory.html#method_snapshot"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\DomainRecord",
@@ -1213,13 +593,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\DomainSnapshot\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Delete\u0020the\u0020domain\u0020snapshot.",
             "url": "classes/Constellix-Client-Models-DomainSnapshot.html#method_delete"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\GeoProximity",
             "name": "GeoProximity",
             "summary": "Represents\u0020a\u0020GeoProximity\u0020Location\u0020resource.",
             "url": "classes/Constellix-Client-Models-GeoProximity.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\IPFilterRegion",
+            "name": "IPFilterRegion",
+            "summary": "Represents\u0020IP\u0020Filter\u0020Region\u0020configuration.",
+            "url": "classes/Constellix-Client-Models-Helpers-IPFilterRegion.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\ITO",
             "name": "ITO",
@@ -1228,13 +613,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\ITO\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Create\u0020a\u0020new\u0020ITO\u0020object\u0020to\u0020represent\u0020ITO\u0020configuration.",
             "url": "classes/Constellix-Client-Models-Helpers-ITO.html#method___construct"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\ITO\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Helpers-ITO.html#method_transformForApi"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\ITOConfig",
             "name": "ITOConfig",
@@ -1243,12 +623,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\ITOConfig\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Create\u0020a\u0020new\u0020ITO\u0020Config.",
             "url": "classes/Constellix-Client-Models-Helpers-ITOConfig.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\NameserverGroup",
+            "name": "NameserverGroup",
+            "summary": "Represents\u0020a\u0020Nameserver\u0020Group\u0020on\u0020a\u0020Vanity\u0020Nameserver",
+            "url": "classes/Constellix-Client-Models-Helpers-NameserverGroup.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\NameserverGroup\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020nameserver\u0020group\u0020for\u0020a\u0020Vanity\u0020Nameserver.",
+            "url": "classes/Constellix-Client-Models-Helpers-NameserverGroup.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\NameserverGroup\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-NameserverGroup.html#property_id"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\NameserverGroup\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-NameserverGroup.html#property_name"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValue",
             "name": "RecordValue",
-            "summary": "",
+            "summary": "Abstract\u0020class\u0020to\u0020represents\u0020a\u0020record\u0020value",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValue.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValue\u003A\u003A__construct\u0028\u0029",
@@ -1256,19 +656,9 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValue.html#method___construct"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValue\u003A\u003ApopulateFromApi\u0028\u0029",
-            "name": "populateFromApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Helpers-RecordValue.html#method_populateFromApi"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValue\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Helpers-RecordValue.html#method_transformForApi"
-        },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\CAA",
             "name": "CAA",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020CAA\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-CAA.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\CAA\u003A\u003A\u0024enabled",
@@ -1293,7 +683,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\CERT",
             "name": "CERT",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020CERT\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-CERT.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\CERT\u003A\u003A\u0024enabled",
@@ -1323,13 +713,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Failover",
             "name": "Failover",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020in\u0020failover\u0020mode\u0020for\u0020A,\u0020AAAA,\u0020CNAME\u0020and\u0020ANAME\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Failover.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Failover\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Failover.html#method_transformForApi"
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Failover\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Construct\u0020a\u0020new\u0020Failover\u0020record\u0020value",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Failover.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Failover\u003A\u003AparseApiData\u0028\u0029",
+            "name": "parseApiData",
+            "summary": "Parse\u0020the\u0020API\u0020response\u0020data\u0020and\u0020load\u0020it\u0020into\u0020this\u0020object.",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Failover.html#method_parseApiData"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Failover\u003A\u003AaddValue\u0028\u0029",
+            "name": "addValue",
+            "summary": "Add\u0020a\u0020failover\u0020value\u0020to\u0020this\u0020failover\u0020record.",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Failover.html#method_addValue"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Failover\u003A\u003A\u0024mode",
             "name": "mode",
@@ -1346,9 +746,49 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Failover.html#property_values"
         },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue",
+            "name": "FailoverValue",
+            "summary": "Represents\u0020the\u0020values\u0020of\u0020failover\u0020mode\u0020A,\u0020AAAA,\u0020CNAME\u0020and\u0020ANAME\u0020records.",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024enabled",
+            "name": "enabled",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_enabled"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024order",
+            "name": "order",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_order"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024sonarCheckId",
+            "name": "sonarCheckId",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_sonarCheckId"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024value",
+            "name": "value",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_value"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024status",
+            "name": "status",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_status"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024failed",
+            "name": "failed",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_failed"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\FailoverValue\u003A\u003A\u0024active",
+            "name": "active",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-FailoverValue.html#property_active"
+        },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\HINFO",
             "name": "HINFO",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020HINFO\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-HINFO.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\HINFO\u003A\u003A\u0024enabled",
@@ -1368,13 +808,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\HttpRedirection",
             "name": "HttpRedirection",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020HTTP\u0020redirection\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-HttpRedirection.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\HttpRedirection\u003A\u003A\u0024enabled",
-            "name": "enabled",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Helpers-RecordValues-HttpRedirection.html#property_enabled"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\HttpRedirection\u003A\u003A\u0024hard",
             "name": "hard",
@@ -1408,7 +843,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\MX",
             "name": "MX",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020MX\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-MX.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\MX\u003A\u003A\u0024enabled",
@@ -1428,7 +863,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\NAPTR",
             "name": "NAPTR",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020NAPTR\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-NAPTR.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\NAPTR\u003A\u003A\u0024enabled",
@@ -1468,7 +903,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\NS",
             "name": "NS",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020NS\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-NS.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\NS\u003A\u003A\u0024enabled",
@@ -1483,7 +918,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Pool",
             "name": "Pool",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020pool\u0020mode\u0020data\u0020for\u0020A,\u0020AAAA,\u0020CNAME\u0020and\u0020ANAME\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Pool.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Pool\u003A\u003AtransformForApi\u0028\u0029",
@@ -1498,7 +933,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\PTR",
             "name": "PTR",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020PTR\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-PTR.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\PTR\u003A\u003A\u0024enabled",
@@ -1513,7 +948,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\RoundRobinFailover",
             "name": "RoundRobinFailover",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020round\u0020robin\u0020failover\u0020record\u0020data\u0020for\u0020A\u0020and\u0020AAAA\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-RoundRobinFailover.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\RoundRobinFailover\u003A\u003AtransformForApi\u0028\u0029",
@@ -1558,7 +993,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\RP",
             "name": "RP",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020RP\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-RP.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\RP\u003A\u003A\u0024enabled",
@@ -1578,7 +1013,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\SPF",
             "name": "SPF",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020SPF\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-SPF.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\SPF\u003A\u003A\u0024enabled",
@@ -1593,7 +1028,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\SRV",
             "name": "SRV",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020for\u0020SRV\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-SRV.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\SRV\u003A\u003A\u0024enabled",
@@ -1623,7 +1058,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Standard",
             "name": "Standard",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020standard\u0020mode\u0020data\u0020for\u0020A,\u0020AAAA,\u0020CNAME\u0020and\u0020ANAME\u0020records.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-Standard.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\Standard\u003A\u003A\u0024value",
@@ -1638,7 +1073,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\TXT",
             "name": "TXT",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020data\u0020in\u0020a\u0020TXT\u0020record.",
             "url": "classes/Constellix-Client-Models-Helpers-RecordValues-TXT.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\RecordValues\\TXT\u003A\u003A\u0024enabled",
@@ -1653,102 +1088,102 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\SOA",
             "name": "SOA",
-            "summary": "Represents\u0020basic\u0020ITO\u0020configuration\u0020for\u0020a\u0020pool",
+            "summary": "Represents\u0020SOA\u0020configuration\u0020for\u0020a\u0020domain",
             "url": "classes/Constellix-Client-Models-Helpers-SOA.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\SOA\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Helpers-SOA.html#method_transformForApi"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter",
             "name": "IPFilter",
             "summary": "Represents\u0020an\u0020IP\u0020Filter\u0020resource.",
             "url": "classes/Constellix-Client-Models-IPFilter.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-IPFilter.html#method_transformForApi"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveValue\u0028\u0029",
-            "name": "removeValue",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeValue"
-        },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AaddContinent\u0028\u0029",
             "name": "addContinent",
-            "summary": "",
+            "summary": "Add\u0020a\u0020continent\u0020to\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_addContinent"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveContinent\u0028\u0029",
             "name": "removeContinent",
-            "summary": "",
+            "summary": "Remove\u0020a\u0020continent\u0020from\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeContinent"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AaddCountry\u0028\u0029",
             "name": "addCountry",
-            "summary": "",
+            "summary": "Add\u0020a\u0020country\u0020\u00282\u0020digit\u0020ISO\u0020code\u0029\u0020to\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_addCountry"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveCountry\u0028\u0029",
             "name": "removeCountry",
-            "summary": "",
+            "summary": "Remove\u0020a\u0020country\u0020from\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeCountry"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AaddASN\u0028\u0029",
             "name": "addASN",
-            "summary": "",
+            "summary": "Add\u0020an\u0020ASN\u0020to\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_addASN"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveASN\u0028\u0029",
             "name": "removeASN",
-            "summary": "",
+            "summary": "Remove\u0020an\u0020ASN\u0020from\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeASN"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AaddIPv4\u0028\u0029",
             "name": "addIPv4",
-            "summary": "",
+            "summary": "Add\u0020an\u0020IPv4\u0020address\u0020to\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_addIPv4"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveIPv4\u0028\u0029",
             "name": "removeIPv4",
-            "summary": "",
+            "summary": "Remove\u0020an\u0020IPv4\u0020address\u0020from\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeIPv4"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AaddIPv6\u0028\u0029",
             "name": "addIPv6",
-            "summary": "",
+            "summary": "Add\u0020an\u0020IPv6\u0020address\u0020to\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_addIPv6"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveIPv6\u0028\u0029",
             "name": "removeIPv6",
-            "summary": "",
+            "summary": "Remove\u0020an\u0020IPv6\u0020address\u0020from\u0020the\u0020IP\u0020Filter.",
             "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeIPv6"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AaddRegion\u0028\u0029",
+            "name": "addRegion",
+            "summary": "Add\u0020a\u0020region\u0020to\u0020the\u0020IP\u0020Filter.",
+            "url": "classes/Constellix-Client-Models-IPFilter.html#method_addRegion"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\IPFilter\u003A\u003AremoveRegion\u0028\u0029",
+            "name": "removeRegion",
+            "summary": "Remove\u0020a\u0020region\u0020from\u0020the\u0020IP\u0020Filter.",
+            "url": "classes/Constellix-Client-Models-IPFilter.html#method_removeRegion"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Pool",
             "name": "Pool",
             "summary": "Represents\u0020a\u0020Pool\u0020resource.",
             "url": "classes/Constellix-Client-Models-Pool.html"
         },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Pool\u003A\u003AsetType\u0028\u0029",
+            "name": "setType",
+            "summary": "Set\u0020the\u0020type\u0020of\u0020Pool.\u0020This\u0020can\u0020only\u0020be\u0020done\u0020on\u0020Pool\u0020creation.",
+            "url": "classes/Constellix-Client-Models-Pool.html#method_setType"
+        },                {
             "fqsen": "\\Constellix\\Client\\Models\\Pool\u003A\u003AtransformForApi\u0028\u0029",
             "name": "transformForApi",
-            "summary": "",
+            "summary": "Transform\u0020this\u0020object\u0020and\u0020return\u0020a\u0020representation\u0020suitable\u0020for\u0020submitting\u0020to\u0020the\u0020API.",
             "url": "classes/Constellix-Client-Models-Pool.html#method_transformForApi"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Pool\u003A\u003AaddContactList\u0028\u0029",
             "name": "addContactList",
-            "summary": "Add\u0020a\u0020contact\u0020list\u0020to\u0020be\u0020notified\u0020when\u0020this\u0020pool\u0020changes",
+            "summary": "Add\u0020a\u0020Contact\u0020List\u0020to\u0020this\u0020pool.",
             "url": "classes/Constellix-Client-Models-Pool.html#method_addContactList"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Pool\u003A\u003AremoveContactList\u0028\u0029",
             "name": "removeContactList",
-            "summary": "Remove\u0020a\u0020contact\u0020list\u0020from\u0020being\u0020notified\u0020when\u0020this\u0020pool\u0020changes",
+            "summary": "Remove\u0020a\u0020Contact\u0020List\u0020from\u0020this\u0020pool.",
             "url": "classes/Constellix-Client-Models-Pool.html#method_removeContactList"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Pool\u003A\u003AcreateValue\u0028\u0029",
             "name": "createValue",
-            "summary": "Add\u0020a\u0020new\u0020value\u0020to\u0020this\u0020pool.\u0020This\u0020is\u0020not\u0020saved\u0020until\u0020you\u0020save\u0020the\u0020pool.",
+            "summary": "Create\u0020a\u0020new\u0020Pool\u0020Value\u0020and\u0020add\u0020it\u0020to\u0020this\u0020Pool.",
             "url": "classes/Constellix-Client-Models-Pool.html#method_createValue"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\PoolValue",
@@ -1758,12 +1193,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\PoolValue\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Create\u0020a\u0020new\u0020Pool\u0020Value",
             "url": "classes/Constellix-Client-Models-PoolValue.html#method___construct"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\PoolValue\u003A\u003AtransformForApi\u0028\u0029",
             "name": "transformForApi",
-            "summary": "",
+            "summary": "Transform\u0020this\u0020object\u0020and\u0020return\u0020a\u0020representation\u0020suitable\u0020for\u0020submitting\u0020to\u0020the\u0020API.",
             "url": "classes/Constellix-Client-Models-PoolValue.html#method_transformForApi"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Record",
@@ -1771,25 +1206,40 @@ Search.appendIndex(
             "summary": "Represents\u0020a\u0020Record\u0020resource.",
             "url": "classes/Constellix-Client-Models-Record.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-Record.html#method_transformForApi"
-        },                {
             "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AsetType\u0028\u0029",
             "name": "setType",
-            "summary": "",
+            "summary": "Set\u0020the\u0020type\u0020of\u0020record.\u0020This\u0020can\u0020only\u0020be\u0020done\u0020on\u0020new\u0020records.",
             "url": "classes/Constellix-Client-Models-Record.html#method_setType"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AsetValue\u0028\u0029",
             "name": "setValue",
-            "summary": "",
+            "summary": "Set\u0020the\u0020value\u0020of\u0020a\u0020record.\u0020This\u0020can\u0020either\u0020be\u0020an\u0020array\u0020of\u0020values\u0020or\u0020a\u0020single\u0020RecordValue\u0020object.",
             "url": "classes/Constellix-Client-Models-Record.html#method_setValue"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AaddValue\u0028\u0029",
             "name": "addValue",
-            "summary": "",
+            "summary": "Add\u0020a\u0020value\u0020to\u0020this\u0020record.",
             "url": "classes/Constellix-Client-Models-Record.html#method_addValue"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AaddContactList\u0028\u0029",
+            "name": "addContactList",
+            "summary": "Add\u0020a\u0020Contact\u0020List\u0020for\u0020this\u0020record.",
+            "url": "classes/Constellix-Client-Models-Record.html#method_addContactList"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AremoveContactList\u0028\u0029",
+            "name": "removeContactList",
+            "summary": "Remove\u0020a\u0020Contact\u0020List\u0020from\u0020this\u0020record.",
+            "url": "classes/Constellix-Client-Models-Record.html#method_removeContactList"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AsetIPFilter\u0028\u0029",
+            "name": "setIPFilter",
+            "summary": "Set\u0020the\u0020IP\u0020Filter\u0020for\u0020this\u0020record.",
+            "url": "classes/Constellix-Client-Models-Record.html#method_setIPFilter"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Record\u003A\u003AsetGeoProximity\u0028\u0029",
+            "name": "setGeoProximity",
+            "summary": "Set\u0020the\u0020GeoProximity\u0020for\u0020this\u0020record.",
+            "url": "classes/Constellix-Client-Models-Record.html#method_setGeoProximity"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Tag",
             "name": "Tag",
@@ -1813,28 +1263,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\VanityNameserver\u003A\u003AaddNameServer\u0028\u0029",
             "name": "addNameServer",
-            "summary": "",
+            "summary": "Add\u0020a\u0020nameserver\u0020to\u0020the\u0020Vanity\u0020Nameserver.",
             "url": "classes/Constellix-Client-Models-VanityNameserver.html#method_addNameServer"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\VanityNameserver\u003A\u003AremoveNameServer\u0028\u0029",
             "name": "removeNameServer",
-            "summary": "",
+            "summary": "Remove\u0020a\u0020nameserver\u0020from\u0020the\u0020Vanity\u0020Nameserver.",
             "url": "classes/Constellix-Client-Models-VanityNameserver.html#method_removeNameServer"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\VanityNameserver\u003A\u003AtransformForApi\u0028\u0029",
-            "name": "transformForApi",
-            "summary": "",
-            "url": "classes/Constellix-Client-Models-VanityNameserver.html#method_transformForApi"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Pagination\\Factories\\IlluminatePaginatorFactory",
-            "name": "IlluminatePaginatorFactory",
-            "summary": "A\u0020pagination\u0020factory\u0020for\u0020use\u0020with\u0020Laravel\/Lumen\u0020frameworks\u0020or\u0020anything\u0020that\u0020is\u0020also\u0020using\u0020the\u0020Illuminate\u0020pagination\nlibraries.",
-            "url": "classes/Constellix-Client-Pagination-Factories-IlluminatePaginatorFactory.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Pagination\\Factories\\IlluminatePaginatorFactory\u003A\u003Apaginate\u0028\u0029",
-            "name": "paginate",
-            "summary": "Returns\u0020a\u0020LengthAwarePaginator\u0020for\u0020the\u0020items\u0020and\u0020paramters.",
-            "url": "classes/Constellix-Client-Pagination-Factories-IlluminatePaginatorFactory.html#method_paginate"
         },                {
             "fqsen": "\\Constellix\\Client\\Pagination\\Factories\\PaginatorFactory",
             "name": "PaginatorFactory",
@@ -1846,95 +1281,90 @@ Search.appendIndex(
             "summary": "Returns\u0020a\u0020paginator\u0020based\u0020on\u0020the\u0020supplied\u0020items\u0020and\u0020parameters.",
             "url": "classes/Constellix-Client-Pagination-Factories-PaginatorFactory.html#method_paginate"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator",
             "name": "Paginator",
             "summary": "Simple\u0020object\u0020paginator.\u0020Can\u0020be\u0020iterated\u0020over,\u0020accessed\u0020like\u0020an\u0020array\u0020and\u0020used\u0020in\u0020a\u0020similar\u0020manner\u0020to\u0020Illuminate\u0027s\nLengthAwarePaginator.",
-            "url": "classes/Constellix-Pagination-Paginator.html"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Creates\u0020a\u0020new\u0020Paginator",
-            "url": "classes/Constellix-Pagination-Paginator.html#method___construct"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method___construct"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AoffsetExists\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AoffsetExists\u0028\u0029",
             "name": "offsetExists",
             "summary": "Returns\u0020true\u0020if\u0020the\u0020specified\u0020offset\u0020exists\u0020in\u0020the\u0020items.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_offsetExists"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_offsetExists"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AoffsetGet\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AoffsetGet\u0028\u0029",
             "name": "offsetGet",
             "summary": "Get\u0020the\u0020item\u0020at\u0020the\u0020specified\u0020offset.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_offsetGet"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_offsetGet"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AoffsetSet\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AoffsetSet\u0028\u0029",
             "name": "offsetSet",
             "summary": "Sets\u0020the\u0020item\u0020at\u0020the\u0020specified\u0020offset.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_offsetSet"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_offsetSet"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AoffsetUnset\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AoffsetUnset\u0028\u0029",
             "name": "offsetUnset",
             "summary": "Removes\u0020the\u0020item\u0020at\u0020the\u0020specified\u0020offset.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_offsetUnset"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_offsetUnset"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003Acount\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003Acount\u0028\u0029",
             "name": "count",
             "summary": "Gets\u0020the\u0020number\u0020of\u0020items\u0020in\u0020the\u0020current\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_count"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_count"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003Aitems\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003Aitems\u0028\u0029",
             "name": "items",
             "summary": "Gets\u0020the\u0020items\u0020in\u0020the\u0020current\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_items"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_items"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AfirstItem\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AfirstItem\u0028\u0029",
             "name": "firstItem",
             "summary": "Get\u0020the\u0020index\u0020of\u0020the\u0020first\u0020item\u0020in\u0020the\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_firstItem"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_firstItem"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AlastItem\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AlastItem\u0028\u0029",
             "name": "lastItem",
             "summary": "Get\u0020the\u0020index\u0020of\u0020the\u0020last\u0020item\u0020in\u0020the\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_lastItem"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_lastItem"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AperPage\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AperPage\u0028\u0029",
             "name": "perPage",
             "summary": "Get\u0020the\u0020current\u0020number\u0020of\u0020items\u0020per\u0020page\u0020in\u0020the\u0020pagination.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_perPage"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_perPage"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003Atotal\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003Atotal\u0028\u0029",
             "name": "total",
             "summary": "Get\u0020the\u0020total\u0020number\u0020of\u0020items\u0020we\u0020are\u0020paginating\u0020through.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_total"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_total"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AlastPage\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AlastPage\u0028\u0029",
             "name": "lastPage",
             "summary": "Get\u0020the\u0020number\u0020of\u0020the\u0020last\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_lastPage"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_lastPage"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AcurrentPage\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AcurrentPage\u0028\u0029",
             "name": "currentPage",
             "summary": "Get\u0020the\u0020number\u0020of\u0020the\u0020current\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_currentPage"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_currentPage"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AonFirstPage\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AonFirstPage\u0028\u0029",
             "name": "onFirstPage",
             "summary": "Return\u0020true\u0020if\u0020this\u0020is\u0020the\u0020first\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_onFirstPage"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_onFirstPage"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AhasMorePages\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AhasMorePages\u0028\u0029",
             "name": "hasMorePages",
             "summary": "Return\u0020true\u0020if\u0020there\u0020are\u0020more\u0020pages\u0020after\u0020this\u0020page.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_hasMorePages"
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_hasMorePages"
         },                {
-            "fqsen": "\\Constellix\\Pagination\\Paginator\u003A\u003AgetIterator\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Pagination\\Paginator\u003A\u003AgetIterator\u0028\u0029",
             "name": "getIterator",
-            "summary": "Fetch\u0020an\u0020iterator\u0020for\u0020the\u0020items\u0020in\u0020the\u0020page.\u0020Allows\u0020the\u0020paginator\u0020to\u0020be\u0020iterated\u0020through.",
-            "url": "classes/Constellix-Pagination-Paginator.html#method_getIterator"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Traits\\ConciseModel",
-            "name": "ConciseModel",
-            "summary": "Trait\u0020ConciseModel",
-            "url": "classes/Constellix-Client-Traits-ConciseModel.html"
+            "summary": "Returns\u0020the\u0020iterator\u0020for\u0020the\u0020paginator",
+            "url": "classes/Constellix-Client-Pagination-Paginator.html#method_getIterator"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\DomainAware",
             "name": "DomainAware",
@@ -1943,8 +1373,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\DomainAware\u003A\u003AsetDomain\u0028\u0029",
             "name": "setDomain",
-            "summary": "",
+            "summary": "Set\u0020the\u0020Domain\u0020for\u0020this\u0020object.",
             "url": "classes/Constellix-Client-Traits-DomainAware.html#method_setDomain"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\DomainAware\u003A\u003A\u0024domain",
+            "name": "domain",
+            "summary": "",
+            "url": "classes/Constellix-Client-Traits-DomainAware.html#property_domain"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\EditableModel",
             "name": "EditableModel",
@@ -1953,23 +1388,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\EditableModel\u003A\u003AhasChanged\u0028\u0029",
             "name": "hasChanged",
-            "summary": "",
+            "summary": "Check\u0020if\u0020the\u0020object\u0020or\u0020specific\u0020property\u0020in\u0020the\u0020object\u0020has\u0020been\u0020changed\u0020locally\u0020since\u0020it\u0020was\nfetched\u0020from\u0020the\u0020API.",
             "url": "classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\EditableModel\u003A\u003Asave\u0028\u0029",
             "name": "save",
-            "summary": "",
+            "summary": "Save\u0020the\u0020object.",
             "url": "classes/Constellix-Client-Traits-EditableModel.html#method_save"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\EditableModel\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Delete\u0020the\u0020object.",
             "url": "classes/Constellix-Client-Traits-EditableModel.html#method_delete"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Traits\\EditableModel\u003A\u003Arefresh\u0028\u0029",
-            "name": "refresh",
-            "summary": "",
-            "url": "classes/Constellix-Client-Traits-EditableModel.html#method_refresh"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\HelperModel",
             "name": "HelperModel",
@@ -1986,6 +1416,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Constellix-Client-Traits-ManagedModel.html"
         },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\ManagedModel\u003A\u003Arefresh\u0028\u0029",
+            "name": "refresh",
+            "summary": "Refresh\u0020the\u0020object\u0020with\u0020the\u0020representation\u0020from\u0020the\u0020API",
+            "url": "classes/Constellix-Client-Traits-ManagedModel.html#method_refresh"
+        },                {
             "fqsen": "\\Constellix\\Client\\Traits\\TemplateAware",
             "name": "TemplateAware",
             "summary": "",
@@ -1993,8 +1428,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\TemplateAware\u003A\u003AsetTemplate\u0028\u0029",
             "name": "setTemplate",
-            "summary": "",
+            "summary": "Set\u0020the\u0020Template\u0020for\u0020this\u0020object.",
             "url": "classes/Constellix-Client-Traits-TemplateAware.html#method_setTemplate"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\TemplateAware\u003A\u003A\u0024template",
+            "name": "template",
+            "summary": "",
+            "url": "classes/Constellix-Client-Traits-TemplateAware.html#property_template"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -2046,36 +1486,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/constellix-client-interfaces.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Managers",
-            "name": "Managers",
-            "summary": "",
-            "url": "namespaces/constellix-client-interfaces-managers.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models",
-            "name": "Models",
-            "summary": "",
-            "url": "namespaces/constellix-client-interfaces-models.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Basic",
-            "name": "Basic",
-            "summary": "",
-            "url": "namespaces/constellix-client-interfaces-models-basic.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Common",
-            "name": "Common",
-            "summary": "",
-            "url": "namespaces/constellix-client-interfaces-models-common.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Concise",
-            "name": "Concise",
-            "summary": "",
-            "url": "namespaces/constellix-client-interfaces-models-concise.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\Models\\Helpers",
-            "name": "Helpers",
-            "summary": "",
-            "url": "namespaces/constellix-client-interfaces-models-helpers.html"
-        },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\Traits",
             "name": "Traits",
             "summary": "",
@@ -2090,21 +1500,6 @@ Search.appendIndex(
             "name": "Models",
             "summary": "",
             "url": "namespaces/constellix-client-models.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Basic",
-            "name": "Basic",
-            "summary": "",
-            "url": "namespaces/constellix-client-models-basic.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Common",
-            "name": "Common",
-            "summary": "",
-            "url": "namespaces/constellix-client-models-common.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Models\\Concise",
-            "name": "Concise",
-            "summary": "",
-            "url": "namespaces/constellix-client-models-concise.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers",
             "name": "Helpers",
@@ -2125,11 +1520,6 @@ Search.appendIndex(
             "name": "Pagination",
             "summary": "",
             "url": "namespaces/constellix-client-pagination.html"
-        },                {
-            "fqsen": "\\Constellix\\Pagination",
-            "name": "Pagination",
-            "summary": "",
-            "url": "namespaces/constellix-pagination.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits",
             "name": "Traits",

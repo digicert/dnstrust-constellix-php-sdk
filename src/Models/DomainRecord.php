@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
-use Constellix\Client\Interfaces\Models\DomainRecordInterface;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
+use Constellix\Client\Managers\DomainRecordManager;
 use Constellix\Client\Traits\DomainAware;
 
 /**
@@ -14,7 +14,9 @@ use Constellix\Client\Traits\DomainAware;
  *
  * @property string $name
  */
-class DomainRecord extends Record implements DomainRecordInterface, DomainAwareInterface
+class DomainRecord extends Record implements DomainAwareInterface
 {
     use DomainAware;
+
+    protected DomainRecordManager $manager;
 }

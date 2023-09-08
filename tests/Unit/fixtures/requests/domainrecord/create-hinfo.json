@@ -1,0 +1,17 @@
+{
+  "name": "www",
+  "type": "HINFO",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [{
+    "enabled": true,
+    "cpu": "x86",
+    "os": "Linux"
+  },{
+    "enabled": false,
+    "cpu": "x64",
+    "os": "Windows"
+  }]
+}

@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Documentation</title>
+            <title>Documentation</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../">
     <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -46,27 +53,38 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
-        
-    <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/constellix.html"><abbr title="\Constellix">Constellix</abbr></a></h4>
-                <ul class="phpdocumentor-list">
-                                            <li><a href="namespaces/constellix-client.html"><abbr title="\Constellix\Client">Client</abbr></a></li>
-                                            <li><a href="namespaces/constellix-pagination.html"><abbr title="\Constellix\Pagination">Pagination</abbr></a></li>
-                                    </ul>
-                        </section>
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
+                    <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/constellix.html" class="">Constellix</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/constellix-client.html" class="">Client</a>
+                
+            </li>
+            </ul>
 
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Constellix.html"><abbr title="\Constellix">Constellix</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/Constellix-Client.html"><abbr title="\Constellix\Client">Client</abbr></a></li>
-                                    <li><a href="packages/Constellix-Pagination.html"><abbr title="\Constellix\Pagination">Pagination</abbr></a></li>
-                            </ul>
                         </section>
-    
+                <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Constellix.html" class="">Constellix</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="packages/Constellix-Client.html" class="">Client</a>
+                
+            </li>
+                    <li>
+                <a href="packages/Constellix-Pagination.html" class="">Pagination</a>
+                
+            </li>
+            </ul>
+
+                        </section>
+            
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
@@ -80,8 +98,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="packages/Constellix.html">Constellix</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="packages/Constellix-Client.html">Client</a></li>
     </ul>
@@ -90,128 +109,147 @@
         <h2 class="phpdocumentor-content__title">Interfaces</h2>
 
         
+<h3 id="toc">
+    Table of Contents
+    <a href="packages/Constellix-Client-Interfaces.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes and Traits
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
 </h3>
 
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-ClientInterface.html"><abbr title="\Constellix\Client\Interfaces\ClientInterface">ClientInterface</abbr></a></dt>
-        <dd>Constellix API Client SDK</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-AbstractManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\AbstractManagerInterface">AbstractManagerInterface</abbr></a></dt>
-        <dd>Defines the interface of a Manager for a particular resource in the Constellix API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-ContactListManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\ContactListManagerInterface">ContactListManagerInterface</abbr></a></dt>
-        <dd>Manages Contact List objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-DomainHistoryManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\DomainHistoryManagerInterface">DomainHistoryManagerInterface</abbr></a></dt>
-        <dd>Manages domain history objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-DomainManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\DomainManagerInterface">DomainManagerInterface</abbr></a></dt>
-        <dd>Manages Domain objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-DomainRecordManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\DomainRecordManagerInterface">DomainRecordManagerInterface</abbr></a></dt>
-        <dd>Manages domain records objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-DomainSnapshotManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\DomainSnapshotManagerInterface">DomainSnapshotManagerInterface</abbr></a></dt>
-        <dd>Manages domain history objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-GeoProximityManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\GeoProximityManagerInterface">GeoProximityManagerInterface</abbr></a></dt>
-        <dd>Manages GeoProximity Location objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-IPFilterManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\IPFilterManagerInterface">IPFilterManagerInterface</abbr></a></dt>
-        <dd>Manages IP Filter objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-PoolManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\PoolManagerInterface">PoolManagerInterface</abbr></a></dt>
-        <dd>Manages Contact List objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-TagManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\TagManagerInterface">TagManagerInterface</abbr></a></dt>
-        <dd>Manages Tag objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-TemplateManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\TemplateManagerInterface">TemplateManagerInterface</abbr></a></dt>
-        <dd>Manages Template objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-TemplateRecordManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\TemplateRecordManagerInterface">TemplateRecordManagerInterface</abbr></a></dt>
-        <dd>Manages domain records objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Managers-VanityNameServerManagerInterface.html"><abbr title="\Constellix\Client\Interfaces\Managers\VanityNameServerManagerInterface">VanityNameServerManagerInterface</abbr></a></dt>
-        <dd>Manages Vanity NameServer objects from the API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-AbstractDomainHistoryInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\AbstractDomainHistoryInterface">AbstractDomainHistoryInterface</abbr></a></dt>
-        <dd>Represents a version of the domain history/snapshot.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-AbstractModelInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\AbstractModelInterface">AbstractModelInterface</abbr></a></dt>
-        <dd>Represents a resource from the Constellix API.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Basic-BasicContactListInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Basic\BasicContactListInterface">BasicContactListInterface</abbr></a></dt>
-        <dd>Represents a Contact List resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Basic-BasicDomainInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Basic\BasicDomainInterface">BasicDomainInterface</abbr></a></dt>
-        <dd>Represents a Domain resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Basic-BasicPoolInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Basic\BasicPoolInterface">BasicPoolInterface</abbr></a></dt>
-        <dd>Represents a Pool resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Basic-BasicTemplateInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Basic\BasicTemplateInterface">BasicTemplateInterface</abbr></a></dt>
-        <dd>Represents a Template resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Basic-BasicVanityNameserverInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Basic\BasicVanityNameserverInterface">BasicVanityNameserverInterface</abbr></a></dt>
-        <dd>Represents a basic Vanity Nameserver resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonContactListInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonContactListInterface">CommonContactListInterface</abbr></a></dt>
-        <dd>Represents a Contact List resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonDomainInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonDomainInterface">CommonDomainInterface</abbr></a></dt>
-        <dd>Represents a Domain resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonPoolInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonPoolInterface">CommonPoolInterface</abbr></a></dt>
-        <dd>Represents a Pool resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonPoolValueInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonPoolValueInterface">CommonPoolValueInterface</abbr></a></dt>
-        <dd>Represents a Pool Value resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonTemplateInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonTemplateInterface">CommonTemplateInterface</abbr></a></dt>
-        <dd>Represents a Template resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonVanityNameserverInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonVanityNameserverInterface">CommonVanityNameserverInterface</abbr></a></dt>
-        <dd>Represents a Vanity Nameserver resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Concise-ConciseContactListInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Concise\ConciseContactListInterface">ConciseContactListInterface</abbr></a></dt>
-        <dd>Represents a Contact List resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Concise-ConcisePoolInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Concise\ConcisePoolInterface">ConcisePoolInterface</abbr></a></dt>
-        <dd>Represents a Pool resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Concise-ConcisePoolValueInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Concise\ConcisePoolValueInterface">ConcisePoolValueInterface</abbr></a></dt>
-        <dd>Represents a Pool Value resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-ContactListInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\ContactListInterface">ContactListInterface</abbr></a></dt>
-        <dd>Represents a Contact List resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-DomainHistoryInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\DomainHistoryInterface">DomainHistoryInterface</abbr></a></dt>
-        <dd>Represents a version of the domain history.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-DomainInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\DomainInterface">DomainInterface</abbr></a></dt>
-        <dd>Represents a Domain resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-DomainRecordInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\DomainRecordInterface">DomainRecordInterface</abbr></a></dt>
-        <dd>Represents a domain record.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-DomainSnapshotInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\DomainSnapshotInterface">DomainSnapshotInterface</abbr></a></dt>
-        <dd>Represents a snapshot of a domain&#039;s history.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-GeoProximityInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\GeoProximityInterface">GeoProximityInterface</abbr></a></dt>
-        <dd>Represents a Geo Proximity Location resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Helpers-ITOConfigInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Helpers\ITOConfigInterface">ITOConfigInterface</abbr></a></dt>
-        <dd>Represents specific ITO configuration</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Helpers-ITOInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Helpers\ITOInterface">ITOInterface</abbr></a></dt>
-        <dd>Represents ITO configuration</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-Helpers-SOAInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Helpers\SOAInterface">SOAInterface</abbr></a></dt>
-        <dd>Represents SOA configuration</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-IPFilterInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\IPFilterInterface">IPFilterInterface</abbr></a></dt>
-        <dd>Represents an IP Filter resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-PoolInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\PoolInterface">PoolInterface</abbr></a></dt>
-        <dd>Represents a Pool resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-PoolValueInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\PoolValueInterface">PoolValueInterface</abbr></a></dt>
-        <dd>Represents a Pool Value resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-RecordInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\RecordInterface">RecordInterface</abbr></a></dt>
-        <dd>Represents a DNS record</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-TagInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\TagInterface">TagInterface</abbr></a></dt>
-        <dd>Represents a Contact List resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-TemplateInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\TemplateInterface">TemplateInterface</abbr></a></dt>
-        <dd>Represents a Template resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-TemplateRecordInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\TemplateRecordInterface">TemplateRecordInterface</abbr></a></dt>
-        <dd>Represents a template record</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-VanityNameserverInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\VanityNameserverInterface">VanityNameserverInterface</abbr></a></dt>
-        <dd>Represents a Vanity NameServer resource</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-PaginatorFactoryInterface.html"><abbr title="\Constellix\Client\Interfaces\PaginatorFactoryInterface">PaginatorFactoryInterface</abbr></a></dt>
-        <dd>A factory for creating paginated collections of items.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-DomainAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\DomainAwareInterface">DomainAwareInterface</abbr></a></dt>
-        <dd>Trait for objects that know about domains</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-EditableModelInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\EditableModelInterface">EditableModelInterface</abbr></a></dt>
-        <dd>Trait for models which can be edited.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-ManagedModelInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\ManagedModelInterface">ManagedModelInterface</abbr></a></dt>
-        <dd>Trait for models which can be edited.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></dt>
-        <dd>Trait for objects that know about templates.</dd>
-    
-    
-    </dl>
+
+
+    <h4 id="toc-interfaces">
+        Interfaces
+        <a href="packages/Constellix-Client-Interfaces.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-ClientInterface.html"><abbr title="\Constellix\Client\Interfaces\ClientInterface">ClientInterface</abbr></a></dt><dd>An interface for the Constellix API Client.</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-PaginatorFactoryInterface.html"><abbr title="\Constellix\Client\Interfaces\PaginatorFactoryInterface">PaginatorFactoryInterface</abbr></a></dt><dd>A factory for creating paginated collections of items.</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-DomainAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\DomainAwareInterface">DomainAwareInterface</abbr></a></dt><dd>Trait for objects that know about domains</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></dt><dd>Trait for objects that know about templates.</dd>    </dl>
+
+
+
+
+
+
 
 
 
         
 
         
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
+
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', src, true);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+                            Prism.highlightElement(code);
+                            return;
+                        }
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
+                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
+                    }
+                    modal.classList.add("phpdocumentor-modal__open");
+
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                            
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                                                                    <li><a href="packages/Constellix-Client-Interfaces.html#toc-interfaces">Interfaces</a></li>
+                                                                                                                                        </ul>
+            </li>
+
+            
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -222,7 +260,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="packages/Constellix-Client-Interfaces.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
@@ -231,5 +268,9 @@
     <script>
         cssVars({});
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
 </body>
 </html>

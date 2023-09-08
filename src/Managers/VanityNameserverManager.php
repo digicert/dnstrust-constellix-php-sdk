@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
-use Constellix\Client\Interfaces\Managers\VanityNameServerManagerInterface;
-use Constellix\Client\Interfaces\Models\VanityNameserverInterface;
+use Constellix\Client\Models\VanityNameserver;
 
 /**
  * Manages Vanity NameServer API resources.
  * @package Constellix\Client\Managers
  */
-class VanityNameserverManager extends AbstractManager implements VanityNameServerManagerInterface
+class VanityNameserverManager extends AbstractManager
 {
     /**
      * The base URI for the object.
@@ -19,12 +18,24 @@ class VanityNameserverManager extends AbstractManager implements VanityNameServe
      */
     protected string $baseUri = '/vanitynameservers';
 
-    public function create(): VanityNameserverInterface
+    /**
+     * Create a new Vanity Nameserver.
+     * @return VanityNameserver
+     */
+    public function create(): VanityNameserver
     {
         return $this->createObject();
     }
 
-    public function get(int $id): VanityNameserverInterface
+    /**
+     * Fetch an existing Vanity Nameserver.
+     * @param int $id
+     * @return VanityNameserver
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     * @throws \Constellix\Client\Exceptions\Client\ModelNotFoundException
+     * @throws \ReflectionException
+     */
+    public function get(int $id): VanityNameserver
     {
         return $this->getObject($id);
     }

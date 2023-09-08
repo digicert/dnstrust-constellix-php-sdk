@@ -4,23 +4,16 @@ declare(strict_types=1);
 
 namespace Constellix\Client;
 
+use Carbon\Carbon;
 use Constellix\Client\Exceptions\Client\Http\AuthenticationException;
 use Constellix\Client\Exceptions\Client\Http\BadRequestException;
 use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\Client\Http\NotFoundException;
 use Constellix\Client\Exceptions\Client\JsonDecodeException;
 use Constellix\Client\Exceptions\Client\ManagerNotFoundException;
-use Constellix\Client\Interfaces\ClientInterface;
-use Constellix\Client\Interfaces\Managers\AbstractManagerInterface;
-use Constellix\Client\Interfaces\Managers\ContactListManagerInterface;
-use Constellix\Client\Interfaces\Managers\DomainManagerInterface;
-use Constellix\Client\Interfaces\Managers\GeoProximityManagerInterface;
-use Constellix\Client\Interfaces\Managers\IPFilterManagerInterface;
-use Constellix\Client\Interfaces\Managers\PoolManagerInterface;
-use Constellix\Client\Interfaces\Managers\TagManagerInterface;
-use Constellix\Client\Interfaces\Managers\TemplateManagerInterface;
-use Constellix\Client\Interfaces\Managers\VanityNameserverManagerInterface;
+use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\PaginatorFactoryInterface;
+use Constellix\Client\Managers\AbstractManager;
 use Constellix\Client\Managers\ContactListManager;
 use Constellix\Client\Managers\DomainManager;
 use Constellix\Client\Managers\GeoProximityManager;
@@ -30,7 +23,6 @@ use Constellix\Client\Managers\TagManager;
 use Constellix\Client\Managers\TemplateManager;
 use Constellix\Client\Managers\VanityNameserverManager;
 use Constellix\Client\Pagination\Factories\PaginatorFactory;
-use DateTime;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Client\ClientInterface as HttpClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -40,59 +32,56 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 /**
- * Constellix DNS API Client SDK
- * @package Constellix
- *
- * @property-read TagManagerInterface $tags
- * @property-read ContactListManagerInterface $contactlists;
- * @property-read VanityNameserverManagerInterface $vanitynameservers;
- * @property-read GeoProximityManagerInterface $geoproximity;
- * @property-read IPFilterManagerInterface $ipfilters;
- * @property-read PoolManagerInterface $pools;
- * @property-read TemplateManagerInterface $templates;
- * @property-read DomainManagerInterface $domains;
+ * @property-read TagManager $tags Manager for Tags
+ * @property-read ContactListManager $contactlists Manager for Contact Lists
+ * @property-read VanityNameserverManager $vanitynameservers Manager for Vanity Nameservers
+ * @property-read GeoProximityManager $geoproximity Manager for Geoproximities
+ * @property-read IPFilterManager $ipfilters Manager for IP Filters
+ * @property-read PoolManager $pools Manager for Pools
+ * @property-read TemplateManager $templates Manager for Templates
+ * @property-read DomainManager $domains Manager for Domains
  */
-class Client implements ClientInterface, LoggerAwareInterface
+class Client implements LoggerAwareInterface
 {
     /**
      * The HTTP Client for all requests.
-     * @var HttpClientInterface
+     * @var null|HttpClientInterface
      */
-    protected HttpClientInterface $client;
+    protected ?HttpClientInterface $client = null;
 
     /**
      * The Constellix API Key
-     * @var string
+     * @var null|string
      */
-    protected string $apiKey;
+    protected ?string $apiKey = null;
 
     /**
      * The Constellix Secret Key
-     * @var string
+     * @var null|string
      */
-    protected string $secretKey;
+    protected ?string $secretKey = null;
 
     /**
      * The Constellix API Endpoint
      * @var string
      */
-    protected string $endpoint = 'https://api.constellix.com/v4';
+    protected string $endpoint = 'https://api.dns.constellix.com/v4';
 
     /**
      * The pagination factory to use for paginated resource collections
-     * @var PaginatorFactoryInterface|PaginatorFactory
+     * @var PaginatorFactoryInterface
      */
     protected PaginatorFactoryInterface $paginatorFactory;
 
     /**
      * Logger interface to use for log messages
-     * @var LoggerInterface|NullLogger|null
+     * @var LoggerInterface|NullLogger
      */
     public LoggerInterface $logger;
 
     /**
      * A cache of instantiated manager classes.
-     * @var array
+     * @var array<AbstractManager>
      */
     protected array $managers = [];
 
@@ -115,19 +104,19 @@ class Client implements ClientInterface, LoggerAwareInterface
      * The request limit on the API.
      * @var int|null
      */
-    protected ?int $requestLimit;
+    protected ?int $requestLimit = null;
 
     /**
      * The number of requests remaining until the limit is hit.
      * @var int|null
      */
-    protected ?int $requestsRemaining;
+    protected ?int $requestsRemaining = null;
 
     /**
      * The time that the request limit resets
-     * @var DateTime|null
+     * @var Carbon|null
      */
-    protected ?DateTime $limitReset;
+    protected ?Carbon $limitReset = null;
 
     /**
      * Creates a new client.
@@ -141,17 +130,15 @@ class Client implements ClientInterface, LoggerAwareInterface
         ?PaginatorFactoryInterface $paginatorFactory = null,
         ?LoggerInterface $logger = null
     ) {
-        // If we weren't given a HTTP client, create a new Guzzle client.
-        if ($client === null) {
-            $client = new \GuzzleHttp\Client;
-        }
 
         // If we don't have a paginator factory, use our own.
         if ($paginatorFactory === null) {
-            $this->paginatorFactory = new PaginatorFactory;
+            $this->paginatorFactory = new PaginatorFactory();
         }
 
-        $this->setHttpClient($client);
+        if ($client) {
+            $this->setHttpClient($client);
+        }
 
         // If we don't have a logger, use the null logger.
         if ($logger === null) {
@@ -160,67 +147,131 @@ class Client implements ClientInterface, LoggerAwareInterface
         $this->logger = $logger;
     }
 
-    public function setLogger(LoggerInterface $logger)
+    /**
+     * Sets the logger to use. The Logger must be PSR-3 compatible.
+     * @param LoggerInterface $logger
+     * @return void
+     */
+    public function setLogger(LoggerInterface $logger): void
     {
         $this->logger = $logger;
     }
 
-    public function setHttpClient(HttpClientInterface $client): self
+    /**
+     * Returns the current logger.
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface
     {
-        $this->client = $client;
-        return $this;
+        return $this->logger;
     }
 
-    public function getHttpClient(): HttpClientInterface
+    /**
+     * Sets the HTTP Client for requests to the API. It must be PSR-18 compatible.
+     * @param HttpClientInterface $client
+     * @return void
+     */
+    public function setHttpClient(HttpClientInterface $client): void
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * Returns the current HTTP client.
+     * @return HttpClientInterface|null
+     */
+    public function getHttpClient(): ?HttpClientInterface
     {
         return $this->client;
     }
 
-    public function setEndpoint(string $endpoint): self
+    /**
+     * Set the API endpoint for the Constellix DNS v4 API,
+     * @param string $endpoint
+     * @return void
+     */
+    public function setEndpoint(string $endpoint): void
     {
         $this->endpoint = $endpoint;
-        return $this;
     }
 
+    /**
+     * Return the current API endpoint,
+     * @return string
+     */
     public function getEndpoint(): string
     {
         return $this->endpoint;
     }
 
-    public function setApiKey(string $key): self
+    /**
+     * Set the Constellix API Key.
+     * @param string $key
+     * @return void
+     */
+    public function setApiKey(string $key): void
     {
         $this->apiKey = $key;
-        return $this;
     }
 
-    public function getApiKey(): string
+    /**
+     * Fetch the current Constellix API Key.
+     * @return string|null
+     */
+    public function getApiKey(): ?string
     {
         return $this->apiKey;
     }
 
-    public function setSecretKey(string $key): self
+    /**
+     * Set the Constellix Secret Key.
+     * @param string $key
+     * @return void
+     */
+    public function setSecretKey(string $key): void
     {
         $this->secretKey = $key;
-        return $this;
     }
 
-    public function getSecretKey(): string
+    /**
+     * Fetch the current Constellix Secret Key.
+     * @return string|null
+     */
+    public function getSecretKey(): ?string
     {
         return $this->secretKey;
     }
 
+    /**
+     * Set the pagination factory to use. This factory will be used to construct all paginated results from the managers.
+     * @param PaginatorFactoryInterface $factory
+     * @return $this
+     */
     public function setPaginatorFactory(PaginatorFactoryInterface $factory): self
     {
         $this->paginatorFactory = $factory;
         return $this;
     }
 
+    /**
+     * Return the current pagination factory.
+     * @return PaginatorFactoryInterface
+     */
     public function getPaginatorFactory(): PaginatorFactoryInterface
     {
         return $this->paginatorFactory;
     }
 
-    public function get(string $url, array $params = []): ?object
+    /**
+     * Make a GET request to the Constellix API.
+     * @param string $url
+     * @param array<mixed> $params
+     * @return \stdClass|null
+     * @throws HttpException
+     * @throws JsonDecodeException
+     * @internal
+     */
+    public function get(string $url, array $params = []): ?\stdClass
     {
         $queryString = '';
         if ($params) {
@@ -232,38 +283,93 @@ class Client implements ClientInterface, LoggerAwareInterface
         return $this->send($request);
     }
 
-    public function post(string $url, $payload = null): ?object
+    /**
+     * Make a POST request to the Constellix API.
+     * @param string $url
+     * @param mixed|null $payload
+     * @return \stdClass|null
+     * @throws ConstellixException
+     * @throws HttpException
+     * @throws JsonDecodeException
+     * @internal
+     */
+    public function post(string $url, mixed $payload = null): ?\stdClass
     {
         $request = new Request('POST', $this->endpoint . $url, [], 'php://temp');
         if ($payload !== null) {
             $request = $request->withHeader('Content-Type', 'application/json');
-            $request->getBody()->write(json_encode($payload));
+            $jsonPayload = json_encode($payload);
+            if ($jsonPayload === false) {
+                throw new ConstellixException('Unable to encode API payload');
+            }
+            $request->getBody()->write($jsonPayload);
         }
         return $this->send($request);
     }
 
-    public function put(string $url, $payload = null): ?object
+    /**
+     * Make a PUT request to the Constellix API.
+     * @param string $url
+     * @param mixed|null $payload
+     * @return \stdClass|null
+     * @throws ConstellixException
+     * @throws HttpException
+     * @throws JsonDecodeException
+     * @internal
+     */
+    public function put(string $url, mixed $payload = null): ?\stdClass
     {
         $request = new Request('PUT', $this->endpoint . $url, [], 'php://temp');
         if ($payload !== null) {
             $request = $request->withHeader('Content-Type', 'application/json');
-            $request->getBody()->write(json_encode($payload));
+            $jsonPayload = json_encode($payload);
+            if ($jsonPayload === false) {
+                throw new ConstellixException('Unable to encode API payload');
+            }
+            $request->getBody()->write($jsonPayload);
         }
         return $this->send($request);
     }
 
-    public function delete(string $url, $payload = null): ?object
+    /**
+     * Make a DELETE request to the Constellix API.
+     * @param string $url
+     * @param mixed|null $payload
+     * @return \stdClass|null
+     * @throws ConstellixException
+     * @throws HttpException
+     * @throws JsonDecodeException
+     * @internal
+     */
+    public function delete(string $url, mixed $payload = null): ?\stdClass
     {
         $request = new Request('DELETE', $this->endpoint . $url);
         if ($payload) {
             $request = $request->withHeader('Content-Type', 'application/json');
-            $request->getBody()->write(json_encode($payload));
+            $jsonPayload = json_encode($payload);
+            if ($jsonPayload === false) {
+                throw new ConstellixException('Unable to encode API payload');
+            }
+            $request->getBody()->write($jsonPayload);
         }
         return $this->send($request);
     }
 
-    public function send(RequestInterface $request): ?object
+    /**
+     * Build and send a request to the API.
+     * @param RequestInterface $request
+     * @return \stdClass|null
+     * @throws ConstellixException
+     * @throws HttpException
+     * @throws JsonDecodeException
+     * @throws \Psr\Http\Client\ClientExceptionInterface
+     * @internal
+     */
+    public function send(RequestInterface $request): ?\stdClass
     {
+        if (!$this->client) {
+            throw new ConstellixException('No HTTP client has been specified');
+        }
         $this->logger->debug("[Constellix] API Request: {$request->getMethod()} {$request->getUri()}");
 
         $request = $request->withHeader('Accept', 'application/json');
@@ -274,9 +380,15 @@ class Client implements ClientInterface, LoggerAwareInterface
         $this->updateLimits($response);
         $statusCode = $response->getStatusCode();
         if ((int)substr((string)$statusCode, 0, 1) <= 3) {
-            $body = json_decode((string) $response->getBody());
-            if ($body === false) {
-                throw new JsonDecodeException('Failed to decode request');
+            $body = (string)$response->getBody();
+            if ($body) {
+                try {
+                    $body = json_decode(json: $body, flags: JSON_THROW_ON_ERROR);
+                } catch (\JsonException) {
+                    throw new JsonDecodeException('Failed to decode request');
+                }
+            } else {
+                $body = null;
             }
             return $body;
         } else {
@@ -301,20 +413,12 @@ class Client implements ClientInterface, LoggerAwareInterface
      * Fetch the API request details from the last API response.
      * @param ResponseInterface $response
      */
-    protected function updateLimits(ResponseInterface $response)
+    protected function updateLimits(ResponseInterface $response): void
     {
         $this->requestsRemaining = (int)current($response->getHeader('X-RateLimit-Remaining'));
-        if ($this->requestsRemaining === false) {
-            $this->requestsRemaining = null;
-        }
-
         $this->requestLimit = (int)current($response->getHeader('X-RateLimit-Limit'));
-        if ($this->requestLimit === false) {
-            $this->requestLimit = null;
-        }
-
         $reset = (int)current($response->getHeader('X-RateLimit-Reset'));
-        $this->limitReset = new DateTime('@' . (time() + $reset));
+        $this->limitReset = Carbon::now()->addSeconds($reset);
     }
 
     /**
@@ -337,9 +441,9 @@ class Client implements ClientInterface, LoggerAwareInterface
 
     /**
      * Get the datetime that the request limit resets.
-     * @return DateTime|null
+     * @return Carbon|null
      */
-    public function getLimitReset(): ?DateTime
+    public function getLimitReset(): ?Carbon
     {
         return $this->limitReset;
     }
@@ -349,12 +453,13 @@ class Client implements ClientInterface, LoggerAwareInterface
      * @param RequestInterface $request
      * @return RequestInterface
      * @throws \Exception
+     * @internal
      */
     protected function addAuthHeaders(RequestInterface $request): RequestInterface
     {
-        $now = new DateTime('now', new \DateTimeZone('UTC'));
+        $now = Carbon::now('UTC');
         $timestamp = (string) ($now->getTimestamp() * 1000);
-        $hmac = base64_encode(hash_hmac('sha1', $timestamp, $this->getSecretKey(), true));
+        $hmac = base64_encode(hash_hmac('sha1', $timestamp, (string)$this->getSecretKey(), true));
 
         $request = $request->withHeader('Authorization', "Bearer {$this->getApiKey()}:{$hmac}:{$timestamp}");
         return $request;
@@ -362,10 +467,10 @@ class Client implements ClientInterface, LoggerAwareInterface
 
     /**
      * Check if a manager exists with that name in our manager map.
-     * @param $name
+     * @param string $name
      * @return bool
      */
-    protected function hasManager($name): bool
+    protected function hasManager(string $name): bool
     {
         $name = strtolower($name);
         return array_key_exists($name, $this->managerMap);
@@ -373,30 +478,38 @@ class Client implements ClientInterface, LoggerAwareInterface
 
     /**
      * Gets the manager with the specified name.
-     * @param $name
-     * @return AbstractManagerInterface
-     * @throws ManagerNotFoundException
+     * @param string $name
+     * @return AbstractManager
      */
-    protected function getManager($name): AbstractManagerInterface
+    protected function getManager(string $name): AbstractManager
     {
-        if (!$this->hasManager($name)) {
-            throw new ManagerNotFoundException;
-        }
-
         $name = strtolower($name);
 
         if (!isset($this->managers[$name])) {
-            $this->managers[$name] = new $this->managerMap[$name]($this);
+            /**
+             * @var AbstractManager $manager
+             */
+            $manager = new $this->managerMap[$name]($this);
+            $this->managers[$name] = $manager;
         }
 
         return $this->managers[$name];
     }
 
-    public function __get($name)
+    /**
+     * Magic method for fetching managers through magic properties.
+     * @param string $name
+     * @return AbstractManager|void
+     * @throws ManagerNotFoundException
+     * @internal
+     */
+    public function __get(string $name)
     {
         // If we have a manager with this name, return it.
         if ($this->hasManager($name)) {
             return $this->getManager($name);
+        } else {
+            throw new ManagerNotFoundException();
         }
     }
 }

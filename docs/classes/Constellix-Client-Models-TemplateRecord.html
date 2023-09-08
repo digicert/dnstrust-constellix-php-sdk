@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Documentation</title>
+            <title>Documentation</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../">
     <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -46,27 +53,38 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
-        
-    <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/constellix.html"><abbr title="\Constellix">Constellix</abbr></a></h4>
-                <ul class="phpdocumentor-list">
-                                            <li><a href="namespaces/constellix-client.html"><abbr title="\Constellix\Client">Client</abbr></a></li>
-                                            <li><a href="namespaces/constellix-pagination.html"><abbr title="\Constellix\Pagination">Pagination</abbr></a></li>
-                                    </ul>
-                        </section>
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
+                    <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/constellix.html" class="">Constellix</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/constellix-client.html" class="">Client</a>
+                
+            </li>
+            </ul>
 
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Constellix.html"><abbr title="\Constellix">Constellix</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/Constellix-Client.html"><abbr title="\Constellix\Client">Client</abbr></a></li>
-                                    <li><a href="packages/Constellix-Pagination.html"><abbr title="\Constellix\Pagination">Pagination</abbr></a></li>
-                            </ul>
                         </section>
-    
+                <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Constellix.html" class="">Constellix</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="packages/Constellix-Client.html" class="">Client</a>
+                
+            </li>
+                    <li>
+                <a href="packages/Constellix-Pagination.html" class="">Pagination</a>
+                
+            </li>
+            </ul>
+
+                        </section>
+            
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
@@ -80,8 +98,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix.html">Constellix</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix-client.html">Client</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix-client-models.html">Models</a></li>
@@ -106,134 +125,262 @@
     
             <span class="phpdocumentor-element__implements">
             implements
-                            <a href="classes/Constellix-Client-Interfaces-Models-TemplateRecordInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\TemplateRecordInterface">TemplateRecordInterface</abbr></a>,                             <a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a>                    </span>
+                            <a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a>                    </span>
     
             <span class="phpdocumentor-element__extends">
             Uses
                             <a href="classes/Constellix-Client-Traits-TemplateAware.html"><abbr title="\Constellix\Client\Traits\TemplateAware">TemplateAware</abbr></a>                    </span>
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/TemplateRecord.php"><a href="files/src-models-templaterecord.html"><abbr title="src/Models/TemplateRecord.php">TemplateRecord.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">17</span>
-</aside>
+
+    </aside>
 
             <p class="phpdocumentor-summary">Represents a Template Record resource.</p>
 
-    <section class="phpdocumentor-description"></section>
 
 
 
-
-
-
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes and Traits
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Models-TemplateRecordInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\TemplateRecordInterface">TemplateRecordInterface</abbr></a></dt>
-        <dd>Represents a template record</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></dt>
-        <dd>Trait for objects that know about templates.</dd>
-    
-    
-    </dl>
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Constellix-Client-Models-TemplateRecord.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+    <h4 id="toc-interfaces">
+        Interfaces
+        <a href="classes/Constellix-Client-Models-TemplateRecord.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></dt><dd>Trait for objects that know about templates.</dd>    </dl>
+
+
+
+
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/Constellix-Client-Models-TemplateRecord.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
-                <dt class="phpdocumentor-table-of-contents__entry -property -public">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_contacts">$contacts</a>
+    <span>
+                        &nbsp;: array&lt;string|int, <a href="classes/Constellix-Client-Models-ContactList.html"><abbr title="\Constellix\Client\Models\ContactList">ContactList</abbr></a>&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_enabled">$enabled</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_geoFailover">$geoFailover</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_geoproximity">$geoproximity</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-GeoProximity.html"><abbr title="\Constellix\Client\Models\GeoProximity">GeoProximity</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id</a>
     <span>
-                &nbsp;: int            </span>
+                        &nbsp;: int            </span>
 </dt>
-<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_ipfilter">$ipfilter</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-IPFilter.html"><abbr title="\Constellix\Client\Models\IPFilter">IPFilter</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_ipfilterDrop">$ipfilterDrop</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_lastValues">$lastValues</a>
+    <span>
+                        &nbsp;: <abbr title="\stdClass">stdClass</abbr>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_mode">$mode</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Enums-Records-RecordMode.html"><abbr title="\Constellix\Client\Enums\Records\RecordMode">RecordMode</abbr></a>            </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Constellix-Client-Models-TemplateRecord.html#property_name">$name</a>
     <span>
-                &nbsp;: string            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Constellix-Client-Models-Record.html#property_name">$name</a>
     <span>
-                &nbsp;: string            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_notes">$notes</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_region">$region</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Enums-GTDLocation.html"><abbr title="\Constellix\Client\Enums\GTDLocation">GTDLocation</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_skipLookup">$skipLookup</a>
+    <span>
+                        &nbsp;: bool|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Traits-TemplateAware.html#property_template">$template</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Template.html"><abbr title="\Constellix\Client\Models\Template">Template</abbr></a>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_ttl">$ttl</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_type">$type</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Enums-Records-RecordType.html"><abbr title="\Constellix\Client\Enums\Records\RecordType">RecordType</abbr></a>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Record.html#property_value">$value</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/Constellix-Client-Models-TemplateRecord.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Constellix-Client-Models-Record.html#method_addContactList">addContactList()</a>
+    <span>
+                                &nbsp;: $this    </span>
+</dt>
+<dd>Add a Contact List for this record.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Models-Record.html#method_addValue">addValue()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Add a value to this record.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete">delete()</a>
     <span>
-                        &nbsp;: void    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Delete the object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged">hasChanged()</a>
     <span>
-                        &nbsp;: bool    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>Check if the object or specific property in the object has been changed locally since it was
+fetched from the API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Traits-EditableModel.html#method_refresh">refresh()</a>
+    <a href="classes/Constellix-Client-Models-AbstractModel.html#method_refresh">refresh()</a>
     <span>
-                        &nbsp;: void    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Refreshes the object with the latest version from the API. This will overwrite any changes.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Constellix-Client-Models-Record.html#method_removeContactList">removeContactList()</a>
+    <span>
+                                &nbsp;: $this    </span>
+</dt>
+<dd>Remove a Contact List from this record.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-EditableModel.html#method_save">save()</a>
     <span>
-                        &nbsp;: void    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Save the object.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Constellix-Client-Models-Record.html#method_setGeoProximity">setGeoProximity()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Set the GeoProximity for this record.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Constellix-Client-Models-Record.html#method_setIPFilter">setIPFilter()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Set the IP Filter for this record.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-TemplateAware.html#method_setTemplate">setTemplate()</a>
     <span>
-                        &nbsp;: <a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a>    </span>
+                                &nbsp;: <a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Set the Template for this object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Models-Record.html#method_setType">setType()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Set the type of record. This can only be done on new records.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Models-Record.html#method_setValue">setValue()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Set the value of a record. This can either be an array of values or a single RecordValue object.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Models-Record.html#method_transformForApi">transformForApi()</a>
-    <span>
-                        &nbsp;: object    </span>
-</dt>
-<dd></dd>
+    </dl>
 
-        </dl>
 
 
 
@@ -244,7 +391,140 @@
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/Constellix-Client-Models-TemplateRecord.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_contacts">
+        $contacts
+        <a href="classes/Constellix-Client-Models-Record.html#property_contacts" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, <a href="classes/Constellix-Client-Models-ContactList.html"><abbr title="\Constellix\Client\Models\ContactList">ContactList</abbr></a>&gt;</span>
+    <span class="phpdocumentor-signature__name">$contacts</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_enabled">
+        $enabled
+        <a href="classes/Constellix-Client-Models-Record.html#property_enabled" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$enabled</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_geoFailover">
+        $geoFailover
+        <a href="classes/Constellix-Client-Models-Record.html#property_geoFailover" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$geoFailover</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_geoproximity">
+        $geoproximity
+        <a href="classes/Constellix-Client-Models-Record.html#property_geoproximity" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-GeoProximity.html"><abbr title="\Constellix\Client\Models\GeoProximity">GeoProximity</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$geoproximity</span>
+    </code>
+
+    
+    
+    
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -255,6 +535,7 @@
     <h4 class="phpdocumentor-element__name" id="property_id">
         $id
         <a href="classes/Constellix-Client-Models-AbstractModel.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                         <small class="phpdocumentor-element__modifier">read-only</small>        </span>
     </h4>
@@ -262,7 +543,8 @@
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractModel.php"><a href="files/src-models-abstractmodel.html"><abbr title="src/Models/AbstractModel.php">AbstractModel.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -271,8 +553,140 @@
     <span class="phpdocumentor-signature__name">$id</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+    
+    
+    
 
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_ipfilter">
+        $ipfilter
+        <a href="classes/Constellix-Client-Models-Record.html#property_ipfilter" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-IPFilter.html"><abbr title="\Constellix\Client\Models\IPFilter">IPFilter</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$ipfilter</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_ipfilterDrop">
+        $ipfilterDrop
+        <a href="classes/Constellix-Client-Models-Record.html#property_ipfilterDrop" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$ipfilterDrop</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_lastValues">
+        $lastValues
+        <a href="classes/Constellix-Client-Models-Record.html#property_lastValues" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\stdClass">stdClass</abbr></span>
+    <span class="phpdocumentor-signature__name">$lastValues</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_mode">
+        $mode
+        <a href="classes/Constellix-Client-Models-Record.html#property_mode" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Enums-Records-RecordMode.html"><abbr title="\Constellix\Client\Enums\Records\RecordMode">RecordMode</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$mode</span>
+    </code>
+
+    
+    
     
 
 </article>
@@ -286,6 +700,7 @@
     <h4 class="phpdocumentor-element__name" id="property_name">
         $name
         <a href="classes/Constellix-Client-Models-TemplateRecord.html#property_name" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -293,7 +708,8 @@
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/TemplateRecord.php"><a href="files/src-models-templaterecord.html"><abbr title="src/Models/TemplateRecord.php">TemplateRecord.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -302,8 +718,8 @@
     <span class="phpdocumentor-signature__name">$name</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -317,6 +733,7 @@
     <h4 class="phpdocumentor-element__name" id="property_name">
         $name
         <a href="classes/Constellix-Client-Models-Record.html#property_name" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -324,7 +741,8 @@
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -333,8 +751,241 @@
     <span class="phpdocumentor-signature__name">$name</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+    
+    
+    
 
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_notes">
+        $notes
+        <a href="classes/Constellix-Client-Models-Record.html#property_notes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$notes</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_region">
+        $region
+        <a href="classes/Constellix-Client-Models-Record.html#property_region" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Enums-GTDLocation.html"><abbr title="\Constellix\Client\Enums\GTDLocation">GTDLocation</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$region</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_skipLookup">
+        $skipLookup
+        <a href="classes/Constellix-Client-Models-Record.html#property_skipLookup" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">bool|null</span>
+    <span class="phpdocumentor-signature__name">$skipLookup</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_template">
+        $template
+        <a href="classes/Constellix-Client-Traits-TemplateAware.html#property_template" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/TemplateAware.php"><a href="files/src-traits-templateaware.html"><abbr title="src/Traits/TemplateAware.php">TemplateAware.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Template.html"><abbr title="\Constellix\Client\Models\Template">Template</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$template</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"><p>The Template for this object</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_ttl">
+        $ttl
+        <a href="classes/Constellix-Client-Models-Record.html#property_ttl" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$ttl</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_type">
+        $type
+        <a href="classes/Constellix-Client-Models-Record.html#property_type" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Enums-Records-RecordType.html"><abbr title="\Constellix\Client\Enums\Records\RecordType">RecordType</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$type</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_value">
+        $value
+        <a href="classes/Constellix-Client-Models-Record.html#property_value" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$value</span>
+    </code>
+
+    
+    
     
 
 </article>
@@ -344,7 +995,54 @@
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
             <a href="classes/Constellix-Client-Models-TemplateRecord.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addContactList">
+        addContactList()
+        <a href="classes/Constellix-Client-Models-Record.html#method_addContactList" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">324</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Add a Contact List for this record.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addContactList</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-ContactList.html"><abbr title="\Constellix\Client\Models\ContactList">ContactList</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$contactList</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$contactList</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-ContactList.html"><abbr title="\Constellix\Client\Models\ContactList">ContactList</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">$this</span>
+            </section>
+
+</article>
                     <article
         class="phpdocumentor-element
             -method
@@ -354,18 +1052,23 @@
     <h4 class="phpdocumentor-element__name" id="method_addValue">
         addValue()
         <a href="classes/Constellix-Client-Models-Record.html#method_addValue" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">308</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Add a value to this record.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">addValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-Helpers-RecordValue.html"><abbr title="\Constellix\Client\Models\Helpers\RecordValue">RecordValue</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$recordValue</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">addValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-Helpers-RecordValue.html"><abbr title="\Constellix\Client\Models\Helpers\RecordValue">RecordValue</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$recordValue</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -380,11 +1083,6 @@
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
     
 </article>
                     <article
@@ -396,26 +1094,41 @@
     <h4 class="phpdocumentor-element__name" id="method_delete">
         delete()
         <a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/EditableModel.php"><a href="files/src-traits-editablemodel.html"><abbr title="src/Traits/EditableModel.php">EditableModel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Delete the object.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">delete</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-Http-HttpException.html"><abbr title="\Constellix\Client\Exceptions\Client\Http\HttpException">HttpException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
 
     
 </article>
@@ -428,28 +1141,43 @@
     <h4 class="phpdocumentor-element__name" id="method_hasChanged">
         hasChanged()
         <a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/EditableModel.php"><a href="files/src-traits-editablemodel.html"><abbr title="src/Traits/EditableModel.php">EditableModel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Check if the object or specific property in the object has been changed locally since it was
+fetched from the API.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">hasChanged</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">hasChanged</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$property</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$property</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
 
     
-    
-    
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
 
-    
 </article>
                     <article
         class="phpdocumentor-element
@@ -459,29 +1187,75 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_refresh">
         refresh()
-        <a href="classes/Constellix-Client-Traits-EditableModel.html#method_refresh" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Constellix-Client-Models-AbstractModel.html#method_refresh" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/EditableModel.php"><a href="files/src-traits-editablemodel.html"><abbr title="src/Traits/EditableModel.php">EditableModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractModel.php"><a href="files/src-models-abstractmodel.html"><abbr title="src/Models/AbstractModel.php">AbstractModel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">264</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Refreshes the object with the latest version from the API. This will overwrite any changes.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">refresh</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">refresh</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
 
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_removeContactList">
+        removeContactList()
+        <a href="classes/Constellix-Client-Models-Record.html#method_removeContactList" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">335</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Remove a Contact List from this record.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">removeContactList</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-ContactList.html"><abbr title="\Constellix\Client\Models\ContactList">ContactList</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$contactList</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
     
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$contactList</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-ContactList.html"><abbr title="\Constellix\Client\Models\ContactList">ContactList</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+        <span class="phpdocumentor-signature__response_type">$this</span>
+            </section>
 
-    
 </article>
                     <article
         class="phpdocumentor-element
@@ -492,26 +1266,125 @@
     <h4 class="phpdocumentor-element__name" id="method_save">
         save()
         <a href="classes/Constellix-Client-Traits-EditableModel.html#method_save" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/EditableModel.php"><a href="files/src-traits-editablemodel.html"><abbr title="src/Traits/EditableModel.php">EditableModel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Save the object.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">save</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">save</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/Constellix-Client-Traits-EditableModel.html#method_save#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-Http-HttpException.html"><abbr title="\Constellix\Client\Exceptions\Client\Http\HttpException">HttpException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
 
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setGeoProximity">
+        setGeoProximity()
+        <a href="classes/Constellix-Client-Models-Record.html#method_setGeoProximity" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">357</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set the GeoProximity for this record.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setGeoProximity</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|<abbr title="\stdClass">stdClass</abbr>|<a href="classes/Constellix-Client-Models-GeoProximity.html"><abbr title="\Constellix\Client\Models\GeoProximity">GeoProximity</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$geoproximity</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
     
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$geoproximity</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|<abbr title="\stdClass">stdClass</abbr>|<a href="classes/Constellix-Client-Models-GeoProximity.html"><abbr title="\Constellix\Client\Models\GeoProximity">GeoProximity</abbr></a>|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setIPFilter">
+        setIPFilter()
+        <a href="classes/Constellix-Client-Models-Record.html#method_setIPFilter" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">346</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set the IP Filter for this record.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setIPFilter</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|<abbr title="\stdClass">stdClass</abbr>|<a href="classes/Constellix-Client-Models-IPFilter.html"><abbr title="\Constellix\Client\Models\IPFilter">IPFilter</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ipfilter</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$ipfilter</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|<abbr title="\stdClass">stdClass</abbr>|<a href="classes/Constellix-Client-Models-IPFilter.html"><abbr title="\Constellix\Client\Models\IPFilter">IPFilter</abbr></a>|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
 
     
 </article>
@@ -524,24 +1397,29 @@
     <h4 class="phpdocumentor-element__name" id="method_setTemplate">
         setTemplate()
         <a href="classes/Constellix-Client-Traits-TemplateAware.html#method_setTemplate" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/TemplateAware.php"><a href="files/src-traits-templateaware.html"><abbr title="src/Traits/TemplateAware.php">TemplateAware.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Set the Template for this object.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">setTemplate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonTemplateInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonTemplateInterface">CommonTemplateInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$template</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">setTemplate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-Template.html"><abbr title="\Constellix\Client\Models\Template">Template</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$template</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$template</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Interfaces-Models-Common-CommonTemplateInterface.html"><abbr title="\Constellix\Client\Interfaces\Models\Common\CommonTemplateInterface">CommonTemplateInterface</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Models-Template.html"><abbr title="\Constellix\Client\Models\Template">Template</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -550,12 +1428,11 @@
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Constellix-Client-Interfaces-Traits-TemplateAwareInterface.html"><abbr title="\Constellix\Client\Interfaces\Traits\TemplateAwareInterface">TemplateAwareInterface</abbr></a></span>
+            </section>
 
-    
 </article>
                     <article
         class="phpdocumentor-element
@@ -566,18 +1443,23 @@
     <h4 class="phpdocumentor-element__name" id="method_setType">
         setType()
         <a href="classes/Constellix-Client-Models-Record.html#method_setType" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">265</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Set the type of record. This can only be done on new records.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">setType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Enums-Records-RecordType.html"><abbr title="\Constellix\Client\Enums\Records\RecordType">RecordType</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">setType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Constellix-Client-Enums-Records-RecordType.html"><abbr title="\Constellix\Client\Enums\Records\RecordType">RecordType</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -591,11 +1473,21 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/Constellix-Client-Models-Record.html#method_setType#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-ReadOnlyPropertyException.html"><abbr title="\Constellix\Client\Exceptions\Client\ReadOnlyPropertyException">ReadOnlyPropertyException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
 
     
 </article>
@@ -608,18 +1500,23 @@
     <h4 class="phpdocumentor-element__name" id="method_setValue">
         setValue()
         <a href="classes/Constellix-Client-Models-Record.html#method_setValue" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">187</span>
-</aside>
+    <span class="phpdocumentor-element-found-in__line">279</span>
 
-    
+    </aside>
+
+        <p class="phpdocumentor-summary">Set the value of a record. This can either be an array of values or a single RecordValue object.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">setValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$recordValue</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">setValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$recordValue</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -634,49 +1531,165 @@
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_transformForApi">
-        transformForApi()
-        <a href="classes/Constellix-Client-Models-Record.html#method_transformForApi" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Record.php"><a href="files/src-models-record.html"><abbr title="src/Models/Record.php">Record.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">162</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">transformForApi</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">object</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
     
 </article>
             </section>
 
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Models/TemplateRecord.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
+
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', src, true);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+                            Prism.highlightElement(code);
+                            return;
+                        }
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
+                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
+                    }
+                    modal.classList.add("phpdocumentor-modal__open");
+
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                                            <li><a href="classes/Constellix-Client-Models-TemplateRecord.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/Constellix-Client-Models-TemplateRecord.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_contacts">$contacts<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_enabled">$enabled<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_geoFailover">$geoFailover<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_geoproximity">$geoproximity<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_ipfilter">$ipfilter<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_ipfilterDrop">$ipfilterDrop<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_lastValues">$lastValues<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_mode">$mode<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-TemplateRecord.html#property_name">$name<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_name">$name<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_notes">$notes<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_region">$region<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_skipLookup">$skipLookup<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Traits-TemplateAware.html#property_template">$template<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_ttl">$ttl<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_type">$type<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Record.html#property_value">$value<a href="classes/Constellix-Client-Models-TemplateRecord.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_addContactList">addContactList()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_addValue">addValue()</a></li>
+                                            <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete">delete()</a></li>
+                                            <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged">hasChanged()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-AbstractModel.html#method_refresh">refresh()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_removeContactList">removeContactList()</a></li>
+                                            <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_save">save()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_setGeoProximity">setGeoProximity()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_setIPFilter">setIPFilter()</a></li>
+                                            <li><a href="classes/Constellix-Client-Traits-TemplateAware.html#method_setTemplate">setTemplate()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_setType">setType()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Record.html#method_setValue">setValue()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -687,7 +1700,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/Constellix-Client-Models-TemplateRecord.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
@@ -696,5 +1708,9 @@
     <script>
         cssVars({});
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
 </body>
 </html>

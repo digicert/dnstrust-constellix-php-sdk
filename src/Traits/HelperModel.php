@@ -6,23 +6,22 @@ namespace Constellix\Client\Traits;
 
 trait HelperModel
 {
-    public function __construct(?object $data = null)
+    public function __construct(?\stdClass $data = null)
     {
-        if ($data) {
+        if ($data !== null) {
             $this->populateFromApi($data);
         }
     }
 
     /**
      * Returns a JSON serializable representation of the resource.
-     * @return mixed|object
+     * @return \stdClass
      * @internal
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): \stdClass
     {
         $json = parent::jsonSerialize();
         unset($json->id);
         return $json;
     }
 }
-

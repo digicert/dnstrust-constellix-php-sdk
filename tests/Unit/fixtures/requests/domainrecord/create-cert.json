@@ -1,0 +1,24 @@
+{
+  "name": "",
+  "type": "CERT",
+  "mode": "standard",
+  "ipfilter": null,
+  "geoproximity": null,
+  "contacts": [],
+  "value": [
+    {
+      "enabled": true,
+      "certificateType": 1,
+      "keyTag": 2,
+      "algorithm": 3,
+      "certificate": "Q2VydGlmaWNhdGUgRGF0YQ=="
+    },
+    {
+      "enabled": false,
+      "certificateType": 5,
+      "keyTag": 6,
+      "algorithm": 7,
+      "certificate": "Q2VydGlmaWNhdGUgRGF0YQ=="
+    }
+  ]
+}

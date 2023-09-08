@@ -11,7 +11,7 @@ use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Traits\HelperModel;
 
 /**
- * Represents basic ITO configuration for a pool
+ * Represents SOA configuration for a domain
  * @package Constellix\Client\Models
  *
  * @property string $primaryNameserver
@@ -23,10 +23,13 @@ use Constellix\Client\Traits\HelperModel;
  * @property int $expire
  * @property int $negativeCache
  */
-class SOA extends AbstractModel implements SOAInterface
+class SOA extends AbstractModel
 {
     use HelperModel;
 
+    /**
+     * @var array<mixed>
+     */
     protected array $props = [
         'primaryNameserver' => null,
         'email' => null,
@@ -38,6 +41,9 @@ class SOA extends AbstractModel implements SOAInterface
         'negativeCache' => null,
     ];
 
+    /**
+     * @var string[]
+     */
     protected array $editable = [
         'primaryNameserver',
         'email',
@@ -48,7 +54,14 @@ class SOA extends AbstractModel implements SOAInterface
         'negativeCache',
     ];
 
-    public function transformForApi(): object
+
+    /**
+     * Transform this object and return a representation suitable for submitting to the API.
+     * @return \stdClass
+     * @internal
+     */
+
+    public function transformForApi(): \stdClass
     {
         $payload = parent::transformForApi();
         unset($payload->serial);
