@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": 366246,
+      "name": "example.com",
+      "links": {
+        "domain": "https://api.dns.constellix.com/v4/domains/366246"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "perPage": 20,
+      "currentPage": 1,
+      "totalPages": 1
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/search/domains?page=1",
+      "first": "https://api.dns.constellix.com/v4/search/domains?page=1",
+      "last": "https://api.dns.constellix.com/v4/search/domains?page=1",
+      "previous": null,
+      "next": null
+    }
+  }
+}
