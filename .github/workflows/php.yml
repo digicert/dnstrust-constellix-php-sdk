@@ -37,7 +37,7 @@ jobs:
           extensions: mbstring, json
           ini-values: post_max_size=256M, max_execution_time=180
           coverage: xdebug
-          tools: php-cs-fixer, phpstan, phpunit
+          tools: phpcs, phpstan, phpunit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
