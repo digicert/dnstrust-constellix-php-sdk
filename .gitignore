@@ -8,3 +8,4 @@
 /html-coverage
 /build
 /clover.xml
+/.phpunit.result.cache
