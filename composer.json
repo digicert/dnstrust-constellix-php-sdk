@@ -3,9 +3,9 @@
     "description": "PHP SDK for the Constellix API",
     "type": "library",
     "require": {
-        "ext-json": "^8.0||^8.1||^8.2",
-        "php": "^8.0||^8.1||^8.2",
-        "ext-mbstring": "^8.0||^8.1||^8.2",
+        "ext-json": "^8.0||^8.1||^8.2||^8.3",
+        "php": "^8.0||^8.1||^8.2||^8.3",
+        "ext-mbstring": "^8.0||^8.1||^8.2||^8.3",
         "spatie/enum": "^3.13",
         "psr/log": "^3.0",
         "guzzlehttp/psr7": "^2.6",
