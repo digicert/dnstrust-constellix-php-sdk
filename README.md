@@ -266,6 +266,18 @@ $record->save();
 
 Some record types (A, AAAA, CNAME and ANAME) have different types of value you can use, including Failover, RoundRobinFailover and Pools. You can assign these values by creating the correct type of value object. For more details on all these classes, see the docs folder.
 
+### Searching for a Domain
+
+You can search for domains matching wildcards like `*example.com` or `mydomain.*` by passing the name to the filter parameter on the domains pagination method, eg.
+
+```php
+$client->domains->paginate(filters: ['name' => '*example.com']);
+```
+
+This will return only domains matching your filter.
+
+The domain objects retrieved are lazy loaded, so only the ID and name are fetched. If you attempt to access any other properties of the domain then it will fetch the full domain object from the API.
+
 ## Contributing
 
 If you want to contribute to this SDK, we are open to pull requests. We use the following standards:
