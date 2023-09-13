@@ -261,4 +261,32 @@ class DomainManagerTest extends TestCase
         $this->mock->append(new Response(200, [], ''));
         $this->api->domains->paginate();
     }
+
+    public function testSearchingForDomain(): void
+    {
+        $history = &$this->history();
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/search.json')));
+        $page = $this->api->domains->paginate(12, 15, ['name' => '*example.com']);
+
+        // Test our request
+        $request = $history[0]['request'];
+        $this->assertEquals('GET', $request->getMethod());
+        $this->assertEquals('/v4/search/domains', $history[0]['request']->getUri()->getPath());
+        $this->assertEquals('name=%2Aexample.com&page=12&perPage=15', $request->getUri()->getQuery());
+
+        // Test our response processing
+        $this->assertInstanceOf(Paginator::class, $page);
+        $this->assertCount(1, $page);
+        $this->assertInstanceOf(Domain::class, $page[0]);
+        $this->assertEquals(366246, $page[0]->id);
+        $this->assertEquals('example.com', $page[0]->name);
+    }
+
+    public function testSearchWithoutData(): void
+    {
+        $this->expectException(ConstellixException::class);
+        $this->expectExceptionMessage('No data returned from API');
+        $this->mock->append(new Response(200, [], ''));
+        $this->api->domains->paginate(filters: ['name' => '*example.com']);
+    }
 }

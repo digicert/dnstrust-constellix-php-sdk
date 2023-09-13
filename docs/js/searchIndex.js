@@ -366,6 +366,11 @@ Search.appendIndex(
             "summary": "Fetch\u0020an\u0020existing\u0020Domain.",
             "url": "classes/Constellix-Client-Managers-DomainManager.html#method_get"
         },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\DomainManager\u003A\u003Apaginate\u0028\u0029",
+            "name": "paginate",
+            "summary": "Fetch\u0020a\u0020paginated\u0020subset\u0020of\u0020the\u0020resources.\u0020You\u0020can\u0020specify\u0020the\u0020page\u0020and\u0020the\u0020number\u0020of\u0020items\u0020per\u002Dpage.\u0020The\u0020result\nwill\u0020be\u0020an\u0020object\u0020representing\u0020the\u0020paginated\u0020results.\u0020By\u0020specifying\u0020a\u0020custom\u0020Paginator\u0020Factory\u0020on\u0020the\u0020client\nyou\u0020can\u0020change\u0020the\u0020type\u0020of\u0020result\u0020you\u0020get\u0020from\u0020this\u0020method.",
+            "url": "classes/Constellix-Client-Managers-DomainManager.html#method_paginate"
+        },                {
             "fqsen": "\\Constellix\\Client\\Managers\\DomainRecordManager",
             "name": "DomainRecordManager",
             "summary": "Manages\u0020domain\u0020record\u0020resources.",
