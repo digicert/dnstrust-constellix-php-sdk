@@ -14,6 +14,7 @@ use Constellix\Client\Exceptions\Client\ManagerNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\PaginatorFactoryInterface;
 use Constellix\Client\Managers\AbstractManager;
+use Constellix\Client\Managers\AnalyticsManager;
 use Constellix\Client\Managers\ContactListManager;
 use Constellix\Client\Managers\DomainManager;
 use Constellix\Client\Managers\GeoProximityManager;
@@ -40,6 +41,7 @@ use Psr\Log\NullLogger;
  * @property-read PoolManager $pools Manager for Pools
  * @property-read TemplateManager $templates Manager for Templates
  * @property-read DomainManager $domains Manager for Domains
+ * @property-read AnalyticsManager $analytics Manager for Account Analytics
  */
 class Client implements LoggerAwareInterface
 {
@@ -98,6 +100,7 @@ class Client implements LoggerAwareInterface
         'pools' => PoolManager::class,
         'templates' => TemplateManager::class,
         'domains' => DomainManager::class,
+        'analytics' => AnalyticsManager::class,
     ];
 
     /**

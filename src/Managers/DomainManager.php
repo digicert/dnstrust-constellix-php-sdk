@@ -8,6 +8,7 @@ use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Models\Domain;
 use Constellix\Client\Pagination\Paginator;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages Domain API resources.
@@ -15,6 +16,10 @@ use Constellix\Client\Pagination\Paginator;
  */
 class DomainManager extends AbstractManager
 {
+    use HasPagination {
+        paginate as protected basePaginate;
+    }
+
     /**
      * The base URI for objects.
      * @var string
@@ -68,7 +73,7 @@ class DomainManager extends AbstractManager
     public function paginate(int $page = 1, int $perPage = 20, array $filters = [])
     {
         if (!array_key_exists('name', $filters)) {
-            return parent::paginate($page, $perPage, $filters);
+            return $this->basePaginate($page, $perPage, $filters);
         }
 
         $params = $filters + [

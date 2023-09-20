@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Managers;
 
 use Constellix\Client\Models\VanityNameserver;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages Vanity NameServer API resources.
@@ -12,6 +13,8 @@ use Constellix\Client\Models\VanityNameserver;
  */
 class VanityNameserverManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for the object.
      * @var string

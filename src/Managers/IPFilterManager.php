@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Managers;
 
 use Constellix\Client\Models\IPFilter;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages IP Filter API resources.
@@ -12,6 +13,8 @@ use Constellix\Client\Models\IPFilter;
  */
 class IPFilterManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for objects.
      * @var string

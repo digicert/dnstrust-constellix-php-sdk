@@ -10,6 +10,7 @@ use Constellix\Client\Exceptions\Client\ModelNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Models\Pool;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages Pool Resources
@@ -17,6 +18,8 @@ use Constellix\Client\Models\Pool;
  */
 class PoolManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for resources.
      * @var string

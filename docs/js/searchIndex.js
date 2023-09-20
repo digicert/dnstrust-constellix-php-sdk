@@ -321,10 +321,15 @@ Search.appendIndex(
             "summary": "Abstract\u0020class\u0020for\u0020a\u0020resource\u0020manager.",
             "url": "classes/Constellix-Client-Managers-AbstractManager.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Managers\\AbstractManager\u003A\u003Apaginate\u0028\u0029",
-            "name": "paginate",
-            "summary": "Fetch\u0020a\u0020paginated\u0020subset\u0020of\u0020the\u0020resources.\u0020You\u0020can\u0020specify\u0020the\u0020page\u0020and\u0020the\u0020number\u0020of\u0020items\u0020per\u002Dpage.\u0020The\u0020result\nwill\u0020be\u0020an\u0020object\u0020representing\u0020the\u0020paginated\u0020results.\u0020By\u0020specifying\u0020a\u0020custom\u0020Paginator\u0020Factory\u0020on\u0020the\u0020client\nyou\u0020can\u0020change\u0020the\u0020type\u0020of\u0020result\u0020you\u0020get\u0020from\u0020this\u0020method.",
-            "url": "classes/Constellix-Client-Managers-AbstractManager.html#method_paginate"
+            "fqsen": "\\Constellix\\Client\\Managers\\AnalyticsManager",
+            "name": "AnalyticsManager",
+            "summary": "Manages\u0020Account\u0020Analytics",
+            "url": "classes/Constellix-Client-Managers-AnalyticsManager.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\AnalyticsManager\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Fetch\u0020the\u0020Analytics\u0020data\u0020for\u0020the\u0020account.",
+            "url": "classes/Constellix-Client-Managers-AnalyticsManager.html#method_get"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\ContactListManager",
             "name": "ContactListManager",
@@ -526,6 +531,11 @@ Search.appendIndex(
             "summary": "Refreshes\u0020the\u0020object\u0020with\u0020the\u0020latest\u0020version\u0020from\u0020the\u0020API.\u0020This\u0020will\u0020overwrite\u0020any\u0020changes.",
             "url": "classes/Constellix-Client-Models-AbstractModel.html#method_refresh"
         },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Analytics",
+            "name": "Analytics",
+            "summary": "Represents\u0020Account\u0020Analytics",
+            "url": "classes/Constellix-Client-Models-Analytics.html"
+        },                {
             "fqsen": "\\Constellix\\Client\\Models\\ContactList",
             "name": "ContactList",
             "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource.",
@@ -605,6 +615,86 @@ Search.appendIndex(
             "name": "GeoProximity",
             "summary": "Represents\u0020a\u0020GeoProximity\u0020Location\u0020resource.",
             "url": "classes/Constellix-Client-Models-GeoProximity.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Interval",
+            "name": "Interval",
+            "summary": "Represents\u0020information\u0020about\u0020the\u0020interval\u0020for\u0020data\u0020points\u0020in\u0020the\u0020analytics\u0020result\u0020set.",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Interval.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Interval\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Interval.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Interval\u003A\u003A\u0024max",
+            "name": "max",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Interval.html#property_max"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Interval\u003A\u003A\u0024min",
+            "name": "min",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Interval.html#property_min"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Interval\u003A\u003A\u0024mean",
+            "name": "mean",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Interval.html#property_mean"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats",
+            "name": "Stats",
+            "summary": "Represents\u0020statistics\u0020about\u0020an\u0020analytics\u0020data\u0020set.",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats\u003A\u003A\u0024sum",
+            "name": "sum",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html#property_sum"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats\u003A\u003A\u0024max",
+            "name": "max",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html#property_max"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats\u003A\u003A\u0024min",
+            "name": "min",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html#property_min"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats\u003A\u003A\u0024mean",
+            "name": "mean",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html#property_mean"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats\u003A\u003A\u0024count",
+            "name": "count",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Stats.html#property_count"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Value",
+            "name": "Value",
+            "summary": "Represents\u0020a\u0020data\u0020point\u0020in\u0020an\u0020analytics\u0020data\u0020set.",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Value.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Value\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Value.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Value\u003A\u003A\u0024date",
+            "name": "date",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Value.html#property_date"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Value\u003A\u003A\u0024value",
+            "name": "value",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Value.html#property_value"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\IPFilterRegion",
             "name": "IPFilterRegion",
@@ -1406,6 +1496,16 @@ Search.appendIndex(
             "summary": "Delete\u0020the\u0020object.",
             "url": "classes/Constellix-Client-Traits-EditableModel.html#method_delete"
         },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\HasPagination",
+            "name": "HasPagination",
+            "summary": "Implements\u0020pagination\u0020in\u0020AbstractManager\u0020objects.",
+            "url": "classes/Constellix-Client-Traits-HasPagination.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\HasPagination\u003A\u003Apaginate\u0028\u0029",
+            "name": "paginate",
+            "summary": "Fetch\u0020a\u0020paginated\u0020subset\u0020of\u0020the\u0020resources.\u0020You\u0020can\u0020specify\u0020the\u0020page\u0020and\u0020the\u0020number\u0020of\u0020items\u0020per\u002Dpage.\u0020The\u0020result\nwill\u0020be\u0020an\u0020object\u0020representing\u0020the\u0020paginated\u0020results.\u0020By\u0020specifying\u0020a\u0020custom\u0020Paginator\u0020Factory\u0020on\u0020the\u0020client\nyou\u0020can\u0020change\u0020the\u0020type\u0020of\u0020result\u0020you\u0020get\u0020from\u0020this\u0020method.",
+            "url": "classes/Constellix-Client-Traits-HasPagination.html#method_paginate"
+        },                {
             "fqsen": "\\Constellix\\Client\\Traits\\HelperModel",
             "name": "HelperModel",
             "summary": "",
@@ -1505,6 +1605,11 @@ Search.appendIndex(
             "name": "Models",
             "summary": "",
             "url": "namespaces/constellix-client-models.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics",
+            "name": "Analytics",
+            "summary": "",
+            "url": "namespaces/constellix-client-models-helpers-analytics.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers",
             "name": "Helpers",

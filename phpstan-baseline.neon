@@ -121,6 +121,11 @@ parameters:
 			path: src/Models/AbstractDomainHistory.php
 
 		-
+			message: "#^Property Constellix\\\\Client\\\\Models\\\\Analytics\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\AnalyticsManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
+			count: 1
+			path: src/Models/Analytics.php
+
+		-
 			message: "#^Property Constellix\\\\Client\\\\Models\\\\ContactList\\:\\:\\$manager \\(Constellix\\\\Client\\\\Managers\\\\ContactListManager\\) does not accept Constellix\\\\Client\\\\Managers\\\\AbstractManager\\.$#"
 			count: 1
 			path: src/Models/ContactList.php

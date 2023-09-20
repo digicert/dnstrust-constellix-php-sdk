@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Managers;
 
 use Constellix\Client\Models\Template;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages Template API resources.
@@ -12,6 +13,8 @@ use Constellix\Client\Models\Template;
  */
 class TemplateManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for objects.
      * @var string
