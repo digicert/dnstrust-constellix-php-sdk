@@ -319,7 +319,7 @@ class ClientTest extends TestCase
 
         $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
         $apiClient->get('/domains/1');
-
+        Carbonite::release();
         $this->assertEquals('Bearer 1234:LZ6jDnnsZ+mehbpdBUSt5c+8FNk=:1672531200000', $history[0]['request']->getHeader('Authorization')[0]);
     }
 }

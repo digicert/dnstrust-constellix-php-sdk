@@ -3,6 +3,7 @@
 namespace Constellix\Client\Tests\Unit\Manager;
 
 use Carbon\Carbon;
+use Carbon\Carbonite;
 use Constellix\Client\Client;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Managers\AnalyticsManager;
@@ -50,13 +51,15 @@ class AnalyticsManagerTest extends TestCase
         $history = &$this->history();
         $this->mock->append(new Response(200, [], $this->getFixture('responses/analytics/get.json')));
 
+        Carbonite::freeze('2023-09-08 00:00:00');
+
         $start = new Carbon('2023-09-01 00:00:00');
         $this->api->analytics->get($start);
 
-        $now = Carbon::now()->format('Ymd');
         $this->assertEquals('GET', $history[0]['request']->getMethod());
         $this->assertEquals('/v4/analytics', $history[0]['request']->getUri()->getPath());
-        $this->assertEquals("start=20230901&end={$now}", $history[0]['request']->getUri()->getQuery());
+        $this->assertEquals("start=20230901&end=20230908", $history[0]['request']->getUri()->getQuery());
+        Carbonite::release();
     }
 
     public function testNoApiResponse(): void

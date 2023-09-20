@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
+use Carbon\Carbon;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Models\Analytics;
@@ -33,7 +34,7 @@ class AnalyticsManager extends AbstractManager
     public function get(\DateTime $start, ?\DateTime $end = null): Analytics
     {
         if ($end === null) {
-            $end = new \DateTime();
+            $end = Carbon::now();
         }
 
         $params = [
