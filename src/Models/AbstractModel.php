@@ -253,17 +253,10 @@ abstract class AbstractModel implements JsonSerializable
         if ($this->id === null) {
             return;
         }
-        $this->refresh();
+        if (method_exists($this, 'refresh')) {
+            $this->refresh();
+        }
         $this->fullyLoaded = true;
-    }
-
-    /**
-     * Refreshes the object with the latest version from the API. This will overwrite any changes.
-     * @return void
-     */
-    public function refresh(): void
-    {
-        // Do nothing by default
     }
 
     /**

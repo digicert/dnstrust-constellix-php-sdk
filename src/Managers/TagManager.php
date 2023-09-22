@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Managers;
 
 use Constellix\Client\Models\Tag;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages Tag API resources.
@@ -12,6 +13,8 @@ use Constellix\Client\Models\Tag;
  */
 class TagManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for tags.
      * @var string

@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers;
 
+use Carbon\Carbon;
 use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Models\Domain;
+use Constellix\Client\Models\DomainAnalytics;
 use Constellix\Client\Pagination\Paginator;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages Domain API resources.
@@ -15,6 +18,10 @@ use Constellix\Client\Pagination\Paginator;
  */
 class DomainManager extends AbstractManager
 {
+    use HasPagination {
+        paginate as protected basePaginate;
+    }
+
     /**
      * The base URI for objects.
      * @var string
@@ -64,11 +71,13 @@ class DomainManager extends AbstractManager
      * @param array<mixed> $filters
      * @return Paginator|mixed
      * @throws HttpException
+     * @throws ConstellixException
+     * @throws \ReflectionException
      */
     public function paginate(int $page = 1, int $perPage = 20, array $filters = [])
     {
         if (!array_key_exists('name', $filters)) {
-            return parent::paginate($page, $perPage, $filters);
+            return $this->basePaginate($page, $perPage, $filters);
         }
 
         $params = $filters + [
@@ -91,5 +100,37 @@ class DomainManager extends AbstractManager
         );
 
         return $this->client->getPaginatorFactory()->paginate($items, $data->meta->pagination->total, $perPage, $page);
+    }
+
+    /**
+     * Fetch analytics for a domain and returns a DomainAnalytics object to represent them.
+     *
+     * @param Domain $domain
+     * @param \DateTime $start
+     * @param \DateTime|null $end
+     * @return DomainAnalytics
+     * @throws HttpException
+     * @throws ConstellixException
+     * @internal
+     */
+    public function getAnalytics(Domain $domain, \DateTime $start, ?\DateTime $end = null): DomainAnalytics
+    {
+        if ($end === null) {
+            $end = Carbon::now();
+        }
+        $params = [
+            'start' => $start->format('Ymd'),
+            'end' => $end->format('Ymd'),
+        ];
+        $data = $this->client->get("/domains/{$domain->id}/analytics", $params);
+        if (!$data) {
+            throw new ConstellixException('No data returned from API');
+        }
+
+        $analytics = new DomainAnalytics();
+        $analytics->setDomain($domain);
+        $analytics->populateFromApi($data->data);
+        $analytics->fullyLoaded = true;
+        return $analytics;
     }
 }

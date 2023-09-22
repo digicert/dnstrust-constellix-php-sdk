@@ -322,6 +322,13 @@
 <dd>Delete the object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Constellix-Client-Models-Domain.html#method_getAnalytics">getAnalytics()</a>
+    <span>
+                                &nbsp;: <a href="classes/Constellix-Client-Models-DomainAnalytics.html"><abbr title="\Constellix\Client\Models\DomainAnalytics">DomainAnalytics</abbr></a>    </span>
+</dt>
+<dd>Fetch analytics for this domain. If end date is null or not provided, the current date is used.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged">hasChanged()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -330,11 +337,11 @@
 fetched from the API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Models-AbstractModel.html#method_refresh">refresh()</a>
+    <a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh">refresh()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Refreshes the object with the latest version from the API. This will overwrite any changes.</dd>
+<dd>Refresh the object with the representation from the API</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Models-Domain.html#method_removeContactList">removeContactList()</a>
@@ -1165,6 +1172,82 @@ fetched from the API.</dd>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getAnalytics">
+        getAnalytics()
+        <a href="classes/Constellix-Client-Models-Domain.html#method_getAnalytics" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Domain.php"><a href="files/src-models-domain.html"><abbr title="src/Models/Domain.php">Domain.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">311</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Fetch analytics for this domain. If end date is null or not provided, the current date is used.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getAnalytics</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTime">DateTime</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$start</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTime">DateTime</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$end</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Constellix-Client-Models-DomainAnalytics.html"><abbr title="\Constellix\Client\Models\DomainAnalytics">DomainAnalytics</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$start</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTime">DateTime</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$end</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTime">DateTime</abbr>|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/Constellix-Client-Models-Domain.html#method_getAnalytics#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-ConstellixException.html"><abbr title="\Constellix\Client\Exceptions\ConstellixException">ConstellixException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-Http-HttpException.html"><abbr title="\Constellix\Client\Exceptions\Client\Http\HttpException">HttpException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Constellix-Client-Models-DomainAnalytics.html"><abbr title="\Constellix\Client\Models\DomainAnalytics">DomainAnalytics</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_hasChanged">
         hasChanged()
         <a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1214,17 +1297,17 @@ fetched from the API.</p>
 >
     <h4 class="phpdocumentor-element__name" id="method_refresh">
         refresh()
-        <a href="classes/Constellix-Client-Models-AbstractModel.html#method_refresh" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractModel.php"><a href="files/src-models-abstractmodel.html"><abbr title="src/Models/AbstractModel.php">AbstractModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/ManagedModel.php"><a href="files/src-traits-managedmodel.html"><abbr title="src/Traits/ManagedModel.php">ManagedModel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">264</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Refreshes the object with the latest version from the API. This will overwrite any changes.</p>
+        <p class="phpdocumentor-summary">Refresh the object with the representation from the API</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1235,6 +1318,21 @@ fetched from the API.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-ModelNotFoundException.html"><abbr title="\Constellix\Client\Exceptions\Client\ModelNotFoundException">ModelNotFoundException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
 
     
 </article>
@@ -1602,8 +1700,9 @@ fetched from the API.</p>
                                             <li><a href="classes/Constellix-Client-Models-Domain.html#method_addContactList">addContactList()</a></li>
                                             <li><a href="classes/Constellix-Client-Models-Domain.html#method_addTag">addTag()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete">delete()</a></li>
+                                            <li><a href="classes/Constellix-Client-Models-Domain.html#method_getAnalytics">getAnalytics()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged">hasChanged()</a></li>
-                                            <li><a href="classes/Constellix-Client-Models-AbstractModel.html#method_refresh">refresh()</a></li>
+                                            <li><a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh">refresh()</a></li>
                                             <li><a href="classes/Constellix-Client-Models-Domain.html#method_removeContactList">removeContactList()</a></li>
                                             <li><a href="classes/Constellix-Client-Models-Domain.html#method_removeTag">removeTag()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_save">save()</a></li>

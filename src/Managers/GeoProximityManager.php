@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Constellix\Client\Managers;
 
 use Constellix\Client\Models\GeoProximity;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages GeoProximity Location API resources.
@@ -12,6 +13,8 @@ use Constellix\Client\Models\GeoProximity;
  */
 class GeoProximityManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for the object.
      * @var string

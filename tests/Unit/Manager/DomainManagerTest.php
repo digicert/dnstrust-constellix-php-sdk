@@ -2,11 +2,15 @@
 
 namespace Constellix\Client\Tests\Unit\Manager;
 
+use Carbon\Carbon;
+use Carbon\Carbonite;
 use Constellix\Client\Client;
 use Constellix\Client\Exceptions\Client\ModelNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Managers\DomainManager;
+use Constellix\Client\Models\Analytics;
 use Constellix\Client\Models\Domain;
+use Constellix\Client\Models\DomainAnalytics;
 use Constellix\Client\Pagination\Paginator;
 use Constellix\Client\Tests\Unit\TestCase;
 use GuzzleHttp\Psr7\Response;
@@ -288,5 +292,57 @@ class DomainManagerTest extends TestCase
         $this->expectExceptionMessage('No data returned from API');
         $this->mock->append(new Response(200, [], ''));
         $this->api->domains->paginate(filters: ['name' => '*example.com']);
+    }
+    public function testFetchingAnalytics(): void
+    {
+        $history = &$this->history();
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
+        $domain = $this->api->domains->get(366246);
+
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/analytics.json')));
+
+        $start = new Carbon('2023-09-01 00:00:00');
+        $end = new Carbon('2023-09-08 00:00:00');
+        $analytics = $domain->getAnalytics($start, $end);
+        $this->assertInstanceOf(DomainAnalytics::class, $analytics);
+
+        $this->assertEquals('Mon, 10 Jan 2022 00:00:00 +0000', $analytics->start->format('r'));
+        $this->assertTrue($analytics->fullyLoaded);
+
+        $this->assertEquals('GET', $history[0]['request']->getMethod());
+        $this->assertEquals('/v4/domains/366246/analytics', $history[1]['request']->getUri()->getPath());
+        $this->assertEquals('start=20230901&end=20230908', $history[1]['request']->getUri()->getQuery());
+    }
+
+    public function testAnalyticsDefaultValueForEndDate(): void
+    {
+        $history = &$this->history();
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
+        $domain = $this->api->domains->get(366246);
+
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/analytics.json')));
+
+        Carbonite::freeze('2023-09-08 00:00:00');
+
+        $start = new Carbon('2023-09-01 00:00:00');
+        $domain->getAnalytics($start);
+
+        $this->assertEquals('GET', $history[1]['request']->getMethod());
+        $this->assertEquals('/v4/domains/366246/analytics', $history[1]['request']->getUri()->getPath());
+        $this->assertEquals("start=20230901&end=20230908", $history[1]['request']->getUri()->getQuery());
+        Carbonite::release();
+    }
+
+    public function testAnalyticsNoApiResponse(): void
+    {
+        $this->expectException(ConstellixException::class);
+        $this->expectExceptionMessage('No data returned from API');
+
+        $this->mock->append(new Response(200, [], $this->getFixture('responses/domain/get.json')));
+        $domain = $this->api->domains->get(366246);
+        $this->mock->append(new Response(200, [], ''));
+
+        $start = new Carbon('2023-09-01 00:00:00');
+        $domain->getAnalytics($start);
     }
 }

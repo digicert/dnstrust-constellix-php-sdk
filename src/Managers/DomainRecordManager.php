@@ -7,6 +7,7 @@ namespace Constellix\Client\Managers;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
 use Constellix\Client\Models\DomainRecord;
 use Constellix\Client\Traits\DomainAware;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages domain record resources.
@@ -15,6 +16,7 @@ use Constellix\Client\Traits\DomainAware;
 class DomainRecordManager extends AbstractManager implements DomainAwareInterface
 {
     use DomainAware;
+    use HasPagination;
 
     /**
      * The base URI for objects.

@@ -10,6 +10,7 @@ use Constellix\Client\Models\AbstractDomainHistory;
 use Constellix\Client\Models\DomainHistory;
 use Constellix\Client\Models\DomainSnapshot;
 use Constellix\Client\Traits\DomainAware;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Manages domain history resources.
@@ -18,6 +19,7 @@ use Constellix\Client\Traits\DomainAware;
 class DomainHistoryManager extends AbstractManager implements DomainAwareInterface
 {
     use DomainAware;
+    use HasPagination;
 
     /**
      * The base URI for objects.

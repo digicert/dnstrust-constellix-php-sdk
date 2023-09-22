@@ -6,6 +6,7 @@ namespace Constellix\Client\Managers;
 
 use Constellix\Client\Models\Concise\ConciseContactList;
 use Constellix\Client\Models\ContactList;
+use Constellix\Client\Traits\HasPagination;
 
 /**
  * Managed Contact List Resources.
@@ -13,6 +14,8 @@ use Constellix\Client\Models\ContactList;
  */
 class ContactListManager extends AbstractManager
 {
+    use HasPagination;
+
     /**
      * The base URI for contact lists.
      * @var string

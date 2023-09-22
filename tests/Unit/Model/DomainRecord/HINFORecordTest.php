@@ -5,7 +5,6 @@ namespace Constellix\Client\Tests\Unit\Model\DomainRecord;
 use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Enums\Records\RecordType;
 use Constellix\Client\Models\Helpers\RecordValues\HINFO;
-use Constellix\Client\Models\Helpers\RecordValues\MX;
 use GuzzleHttp\Psr7\Response;
 
 class HINFORecordTest extends RecordTestCase

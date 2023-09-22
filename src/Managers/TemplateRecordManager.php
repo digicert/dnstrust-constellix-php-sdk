@@ -7,6 +7,7 @@ namespace Constellix\Client\Managers;
 use Constellix\Client\Interfaces\Traits\TemplateAwareInterface;
 use Constellix\Client\Models\AbstractModel;
 use Constellix\Client\Models\TemplateRecord;
+use Constellix\Client\Traits\HasPagination;
 use Constellix\Client\Traits\TemplateAware;
 
 /**
@@ -16,6 +17,7 @@ use Constellix\Client\Traits\TemplateAware;
 class TemplateRecordManager extends AbstractManager implements TemplateAwareInterface
 {
     use TemplateAware;
+    use HasPagination;
 
     /**
      * The base URI for objects.
