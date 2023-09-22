@@ -18,6 +18,7 @@ trait DomainAware
      * Set the Domain for this object.
      * @param Domain $domain
      * @return DomainAwareInterface
+     * @internal
      */
     public function setDomain(Domain $domain): DomainAwareInterface
     {

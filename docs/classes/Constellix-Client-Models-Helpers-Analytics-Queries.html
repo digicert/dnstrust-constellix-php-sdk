@@ -104,43 +104,38 @@
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix.html">Constellix</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix-client.html">Client</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix-client-models.html">Models</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix-client-models-helpers.html">Helpers</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/constellix-client-models-helpers-analytics.html">Analytics</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    AbstractModel
+    Queries
 
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
                                     <li class="phpdocumentor-breadcrumb"><a href="packages/Constellix.html">Constellix</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Constellix-Client.html">Client</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Constellix-Client-Models.html">Models</a></li>
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\JsonSerializable">JsonSerializable</abbr>                    </span>
     
     </h2>
 
 <div class="phpdocumentor-label-line">
 
 
-    <div class="phpdocumentor-label phpdocumentor-label--success"><span>Abstract</span><span>Yes</span></div>
-
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractModel.php"><a href="files/src-models-abstractmodel.html"><abbr title="src/Models/AbstractModel.php">AbstractModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Helpers/Analytics/Queries.php"><a href="files/src-models-helpers-analytics-queries.html"><abbr title="src/Models/Helpers/Analytics/Queries.php">Queries.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">An abstract class for resource models in the Constellix API.</p>
+            <p class="phpdocumentor-summary">Represents query data for the analytics</p>
 
 
 
@@ -149,19 +144,12 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/Constellix-Client-Models-AbstractModel.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
 
 
-    <h4 id="toc-interfaces">
-        Interfaces
-        <a href="classes/Constellix-Client-Models-AbstractModel.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\JsonSerializable">JsonSerializable</abbr></dt>    </dl>
 
 
 
@@ -170,18 +158,43 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/Constellix-Client-Models-AbstractModel.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id</a>
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoFilter">$geoFilter</a>
     <span>
-                        &nbsp;: int            </span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\QueryType">QueryType</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoProximity">$geoProximity</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\QueryType">QueryType</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_standard">$standard</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\QueryType">QueryType</abbr></a>|null            </span>
 </dt>
 
     </dl>
 
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#method___construct">__construct()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+    </dl>
 
 
 
@@ -192,7 +205,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Constellix-Client-Models-AbstractModel.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -200,42 +213,164 @@
             phpdocumentor-element
             -property
             -public
-                                                -read-only        "
+                                                        "
 >
-    <h4 class="phpdocumentor-element__name" id="property_id">
-        $id
-        <a href="classes/Constellix-Client-Models-AbstractModel.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_geoFilter">
+        $geoFilter
+        <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoFilter" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
-                        <small class="phpdocumentor-element__modifier">read-only</small>        </span>
+                                </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractModel.php"><a href="files/src-models-abstractmodel.html"><abbr title="src/Models/AbstractModel.php">AbstractModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Helpers/Analytics/Queries.php"><a href="files/src-models-helpers-analytics-queries.html"><abbr title="src/Models/Helpers/Analytics/Queries.php">Queries.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">0</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$id</span>
-    </code>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\QueryType">QueryType</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$geoFilter</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
+        <section class="phpdocumentor-description"><p>Geofilter query data</p>
+</section>
+
     
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_geoProximity">
+        $geoProximity
+        <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoProximity" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Helpers/Analytics/Queries.php"><a href="files/src-models-helpers-analytics-queries.html"><abbr title="src/Models/Helpers/Analytics/Queries.php">Queries.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\QueryType">QueryType</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$geoProximity</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>GeoProximity query data</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_standard">
+        $standard
+        <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_standard" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Helpers/Analytics/Queries.php"><a href="files/src-models-helpers-analytics-queries.html"><abbr title="src/Models/Helpers/Analytics/Queries.php">Queries.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\QueryType">QueryType</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$standard</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Standard query data</p>
+</section>
+
     
 
 </article>
             </section>
 
-        
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Helpers/Analytics/Queries.php"><a href="files/src-models-helpers-analytics-queries.html"><abbr title="src/Models/Helpers/Analytics/Queries.php">Queries.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$data</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The raw API data</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+            </section>
+
         <div class="phpdocumentor-modal" id="source-view">
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Models/AbstractModel.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Models/Helpers/Analytics/Queries.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -334,17 +469,26 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/Constellix-Client-Models-AbstractModel.html#toc-properties">Properties</a></li>
-                                                        </ul>
+                                                            <li><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#toc-methods">Methods</a></li>
+                                    </ul>
             </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id<a href="classes/Constellix-Client-Models-AbstractModel.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoFilter">$geoFilter<a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoProximity">$geoProximity<a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_standard">$standard<a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html"></li>
                                             </ul>
                 </li>
             
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#method___construct">__construct()</a></li>
+                                    </ul>
+            </li>
                     </ul>
     </section>
 
@@ -362,7 +506,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/Constellix-Client-Models-AbstractModel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

@@ -71,42 +71,4 @@ class AnalyticsManagerTest extends TestCase
         $start = new Carbon('2023-09-01 00:00:00');
         $this->api->analytics->get($start);
     }
-
-    public function testRefresh(): void
-    {
-        $history = &$this->history();
-        $this->mock->append(new Response(200, [], $this->getFixture('responses/analytics/get.json')));
-
-        $start = new Carbon('2023-09-01 00:00:00');
-        $analytics = $this->api->analytics->get($start);
-
-        // Our test fixture gets different dates to what we've requests, don't worry about it
-        $this->assertEquals('20220110', $analytics->start->format('Ymd'));
-        $this->assertEquals('20220124', $analytics->end->format('Ymd'));
-
-        $this->assertCount(1, $history);
-
-        $this->mock->append(new Response(200, [], $this->getFixture('responses/analytics/get.json')));
-        $this->api->analytics->refresh($analytics);
-
-        $this->assertCount(2, $history);
-        $this->assertEquals('GET', $history[1]['request']->getMethod());
-        $this->assertEquals('/v4/analytics', $history[1]['request']->getUri()->getPath());
-        $this->assertEquals("start=20220110&end=20220124", $history[1]['request']->getUri()->getQuery());
-    }
-
-    public function testRefreshWithNoData(): void
-    {
-        $this->mock->append(new Response(200, [], $this->getFixture('responses/analytics/get.json')));
-
-        $start = new Carbon('2023-09-01 00:00:00');
-        $analytics = $this->api->analytics->get($start);
-
-
-        $this->expectException(ConstellixException::class);
-        $this->expectExceptionMessage('No data returned from API');
-        $this->mock->append(new Response(200, [], ''));
-
-        $this->api->analytics->refresh($analytics);
-    }
 }

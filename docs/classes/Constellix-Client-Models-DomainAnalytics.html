@@ -108,10 +108,10 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    DomainSnapshot
+    DomainAnalytics
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html"><abbr title="\Constellix\Client\Models\AbstractDomainHistory">AbstractDomainHistory</abbr></a>
+        extends <a href="classes/Constellix-Client-Models-AbstractModel.html"><abbr title="\Constellix\Client\Models\AbstractModel">AbstractModel</abbr></a>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -138,13 +138,13 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainSnapshot.php"><a href="files/src-models-domainsnapshot.html"><abbr title="src/Models/DomainSnapshot.php">DomainSnapshot.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainAnalytics.php"><a href="files/src-models-domainanalytics.html"><abbr title="src/Models/DomainAnalytics.php">DomainAnalytics.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Represents a snapshot in the domain&#039;s history.</p>
+            <p class="phpdocumentor-summary">Represents Domain Analytics</p>
 
 
 
@@ -153,7 +153,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/Constellix-Client-Models-DomainSnapshot.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -161,7 +161,7 @@
 
     <h4 id="toc-interfaces">
         Interfaces
-        <a href="classes/Constellix-Client-Models-DomainSnapshot.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <dl class="phpdocumentor-table-of-contents">
@@ -174,7 +174,7 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/Constellix-Client-Models-DomainSnapshot.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -185,77 +185,43 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_end">$end</a>
+    <span>
+                        &nbsp;: <abbr title="\Carbon\Carbon">Carbon</abbr>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_manager">$manager</a>
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_interval">$interval</a>
     <span>
-                        &nbsp;: <a href="classes/Constellix-Client-Managers-AbstractManager.html"><abbr title="\Constellix\Client\Managers\AbstractManager">AbstractManager</abbr></a>            </span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Helpers-Analytics-Interval.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\Interval">Interval</abbr></a>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-DomainSnapshot.html#property_name">$name</a>
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_queries">$queries</a>
     <span>
-                        &nbsp;: string            </span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\Queries">Queries</abbr></a>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_name">$name</a>
-    <span>
-                        &nbsp;: string            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_updatedAt">$updatedAt</a>
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_start">$start</a>
     <span>
                         &nbsp;: <abbr title="\Carbon\Carbon">Carbon</abbr>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-DomainSnapshot.html#property_version">$version</a>
+    <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_stats">$stats</a>
     <span>
-                        &nbsp;: int            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_version">$version</a>
-    <span>
-                        &nbsp;: string            </span>
+                        &nbsp;: <a href="classes/Constellix-Client-Models-Helpers-Analytics-Stats.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\Stats">Stats</abbr></a>            </span>
 </dt>
 
     </dl>
 
-<h4 id="toc-methods">
-    Methods
-    <a href="classes/Constellix-Client-Models-DomainSnapshot.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
-
-</h4>
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#method_apply">apply()</a>
-    <span>
-                                &nbsp;: $this    </span>
-</dt>
-<dd>Apply the domain history or snapshot to the domain.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Models-DomainSnapshot.html#method_delete">delete()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>Delete the domain snapshot.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh">refresh()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>Refresh the object with the representation from the API</dd>
-
-    </dl>
 
 
 
@@ -266,7 +232,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Constellix-Client-Models-DomainSnapshot.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Constellix-Client-Models-DomainAnalytics.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -301,6 +267,39 @@
         <section class="phpdocumentor-description"><p>The Domain for this object</p>
 </section>
 
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_end">
+        $end
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_end" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainAnalytics.php"><a href="files/src-models-domainanalytics.html"><abbr title="src/Models/DomainAnalytics.php">DomainAnalytics.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Carbon\Carbon">Carbon</abbr></span>
+    <span class="phpdocumentor-signature__name">$end</span>
+    </code>
+
+    
+    
     
 
 </article>
@@ -344,15 +343,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_manager">
-        $manager
-        <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_manager" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_interval">
+        $interval
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_interval" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractDomainHistory.php"><a href="files/src-models-abstractdomainhistory.html"><abbr title="src/Models/AbstractDomainHistory.php">AbstractDomainHistory.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainAnalytics.php"><a href="files/src-models-domainanalytics.html"><abbr title="src/Models/DomainAnalytics.php">DomainAnalytics.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
 
@@ -361,8 +360,8 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Managers-AbstractManager.html"><abbr title="\Constellix\Client\Managers\AbstractManager">AbstractManager</abbr></a></span>
-    <span class="phpdocumentor-signature__name">$manager</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Helpers-Analytics-Interval.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\Interval">Interval</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$interval</span>
     </code>
 
     
@@ -377,15 +376,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_name">
-        $name
-        <a href="classes/Constellix-Client-Models-DomainSnapshot.html#property_name" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_queries">
+        $queries
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_queries" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainSnapshot.php"><a href="files/src-models-domainsnapshot.html"><abbr title="src/Models/DomainSnapshot.php">DomainSnapshot.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainAnalytics.php"><a href="files/src-models-domainanalytics.html"><abbr title="src/Models/DomainAnalytics.php">DomainAnalytics.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
 
@@ -394,8 +393,8 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$name</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Helpers-Analytics-Queries.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\Queries">Queries</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$queries</span>
     </code>
 
     
@@ -410,48 +409,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_name">
-        $name
-        <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_name" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_start">
+        $start
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_start" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractDomainHistory.php"><a href="files/src-models-abstractdomainhistory.html"><abbr title="src/Models/AbstractDomainHistory.php">AbstractDomainHistory.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">0</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$name</span>
-    </code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-                                                -read-only        "
->
-    <h4 class="phpdocumentor-element__name" id="property_updatedAt">
-        $updatedAt
-        <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_updatedAt" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                        <small class="phpdocumentor-element__modifier">read-only</small>        </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractDomainHistory.php"><a href="files/src-models-abstractdomainhistory.html"><abbr title="src/Models/AbstractDomainHistory.php">AbstractDomainHistory.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainAnalytics.php"><a href="files/src-models-domainanalytics.html"><abbr title="src/Models/DomainAnalytics.php">DomainAnalytics.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
 
@@ -461,7 +427,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Carbon\Carbon">Carbon</abbr></span>
-    <span class="phpdocumentor-signature__name">$updatedAt</span>
+    <span class="phpdocumentor-signature__name">$start</span>
     </code>
 
     
@@ -476,15 +442,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_version">
-        $version
-        <a href="classes/Constellix-Client-Models-DomainSnapshot.html#property_version" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_stats">
+        $stats
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_stats" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainSnapshot.php"><a href="files/src-models-domainsnapshot.html"><abbr title="src/Models/DomainSnapshot.php">DomainSnapshot.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainAnalytics.php"><a href="files/src-models-domainanalytics.html"><abbr title="src/Models/DomainAnalytics.php">DomainAnalytics.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">0</span>
 
@@ -493,41 +459,8 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$version</span>
-    </code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-                                                -read-only        "
->
-    <h4 class="phpdocumentor-element__name" id="property_version">
-        $version
-        <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_version" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                        <small class="phpdocumentor-element__modifier">read-only</small>        </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractDomainHistory.php"><a href="files/src-models-abstractdomainhistory.html"><abbr title="src/Models/AbstractDomainHistory.php">AbstractDomainHistory.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">0</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$version</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Models-Helpers-Analytics-Stats.html"><abbr title="\Constellix\Client\Models\Helpers\Analytics\Stats">Stats</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$stats</span>
     </code>
 
     
@@ -537,149 +470,12 @@
 </article>
             </section>
 
-            <section class="phpdocumentor-methods">
-        <h3 class="phpdocumentor-elements__header" id="methods">
-            Methods
-            <a href="classes/Constellix-Client-Models-DomainSnapshot.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
-
-        </h3>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_apply">
-        apply()
-        <a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#method_apply" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/AbstractDomainHistory.php"><a href="files/src-models-abstractdomainhistory.html"><abbr title="src/Models/AbstractDomainHistory.php">AbstractDomainHistory.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">82</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Apply the domain history or snapshot to the domain.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">apply</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">$this</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_delete">
-        delete()
-        <a href="classes/Constellix-Client-Models-DomainSnapshot.html#method_delete" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DomainSnapshot.php"><a href="files/src-models-domainsnapshot.html"><abbr title="src/Models/DomainSnapshot.php">DomainSnapshot.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">37</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Delete the domain snapshot.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/Constellix-Client-Models-DomainSnapshot.html#method_delete#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-Http-HttpException.html"><abbr title="\Constellix\Client\Exceptions\Client\Http\HttpException">HttpException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_refresh">
-        refresh()
-        <a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Traits/ManagedModel.php"><a href="files/src-traits-managedmodel.html"><abbr title="src/Traits/ManagedModel.php">ManagedModel.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">42</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Refresh the object with the representation from the API</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">refresh</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/Constellix-Client-Exceptions-Client-ModelNotFoundException.html"><abbr title="\Constellix\Client\Exceptions\Client\ModelNotFoundException">ModelNotFoundException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-            </section>
-
+        
         <div class="phpdocumentor-modal" id="source-view">
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Models/DomainSnapshot.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Models/DomainAnalytics.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -778,33 +574,23 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/Constellix-Client-Models-DomainSnapshot.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/Constellix-Client-Models-DomainSnapshot.html#toc-methods">Methods</a></li>
-                                    </ul>
+                                                            <li><a href="classes/Constellix-Client-Models-DomainAnalytics.html#toc-properties">Properties</a></li>
+                                                        </ul>
             </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/Constellix-Client-Traits-DomainAware.html#property_domain">$domain<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_manager">$manager<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-DomainSnapshot.html#property_name">$name<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_name">$name<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_updatedAt">$updatedAt<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-DomainSnapshot.html#property_version">$version<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
-                                                    <li><a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#property_version">$version<a href="classes/Constellix-Client-Models-DomainSnapshot.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Traits-DomainAware.html#property_domain">$domain<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_end">$end<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_interval">$interval<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_queries">$queries<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_start">$start<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-DomainAnalytics.html#property_stats">$stats<a href="classes/Constellix-Client-Models-DomainAnalytics.html"></li>
                                             </ul>
                 </li>
             
-                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
-            <li>
-                <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/Constellix-Client-Models-AbstractDomainHistory.html#method_apply">apply()</a></li>
-                                            <li><a href="classes/Constellix-Client-Models-DomainSnapshot.html#method_delete">delete()</a></li>
-                                            <li><a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh">refresh()</a></li>
-                                    </ul>
-            </li>
                     </ul>
     </section>
 
@@ -822,7 +608,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/Constellix-Client-Models-DomainSnapshot.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Constellix-Client-Models-DomainAnalytics.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

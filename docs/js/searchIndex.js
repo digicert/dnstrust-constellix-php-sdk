@@ -526,11 +526,6 @@ Search.appendIndex(
             "summary": "An\u0020abstract\u0020class\u0020for\u0020resource\u0020models\u0020in\u0020the\u0020Constellix\u0020API.",
             "url": "classes/Constellix-Client-Models-AbstractModel.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\AbstractModel\u003A\u003Arefresh\u0028\u0029",
-            "name": "refresh",
-            "summary": "Refreshes\u0020the\u0020object\u0020with\u0020the\u0020latest\u0020version\u0020from\u0020the\u0020API.\u0020This\u0020will\u0020overwrite\u0020any\u0020changes.",
-            "url": "classes/Constellix-Client-Models-AbstractModel.html#method_refresh"
-        },                {
             "fqsen": "\\Constellix\\Client\\Models\\Analytics",
             "name": "Analytics",
             "summary": "Represents\u0020Account\u0020Analytics",
@@ -586,6 +581,16 @@ Search.appendIndex(
             "summary": "Set\u0020the\u0020Vanity\u0020Nameserver\u0020for\u0020this\u0020domain.",
             "url": "classes/Constellix-Client-Models-Domain.html#method_setVanityNameserver"
         },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Domain\u003A\u003AgetAnalytics\u0028\u0029",
+            "name": "getAnalytics",
+            "summary": "Fetch\u0020analytics\u0020for\u0020this\u0020domain.\u0020If\u0020end\u0020date\u0020is\u0020null\u0020or\u0020not\u0020provided,\u0020the\u0020current\u0020date\u0020is\u0020used.",
+            "url": "classes/Constellix-Client-Models-Domain.html#method_getAnalytics"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\DomainAnalytics",
+            "name": "DomainAnalytics",
+            "summary": "Represents\u0020Domain\u0020Analytics",
+            "url": "classes/Constellix-Client-Models-DomainAnalytics.html"
+        },                {
             "fqsen": "\\Constellix\\Client\\Models\\DomainHistory",
             "name": "DomainHistory",
             "summary": "Represents\u0020a\u0020poing\u0020in\u0020the\u0020domain\u0027s\u0020history.",
@@ -640,6 +645,51 @@ Search.appendIndex(
             "name": "mean",
             "summary": "",
             "url": "classes/Constellix-Client-Models-Helpers-Analytics-Interval.html#property_mean"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Queries",
+            "name": "Queries",
+            "summary": "Represents\u0020query\u0020data\u0020for\u0020the\u0020analytics",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Queries.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Queries\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Queries\u003A\u003A\u0024geoProximity",
+            "name": "geoProximity",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoProximity"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Queries\u003A\u003A\u0024standard",
+            "name": "standard",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_standard"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Queries\u003A\u003A\u0024geoFilter",
+            "name": "geoFilter",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-Queries.html#property_geoFilter"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\QueryType",
+            "name": "QueryType",
+            "summary": "Represents\u0020query\u0020data\u0020and\u0020statistics\u0020for\u0020a\u0020particular\u0020query\u0020type",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\QueryType\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html#method___construct"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\QueryType\u003A\u003A\u0024stats",
+            "name": "stats",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html#property_stats"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\QueryType\u003A\u003A\u0024values",
+            "name": "values",
+            "summary": "",
+            "url": "classes/Constellix-Client-Models-Helpers-Analytics-QueryType.html#property_values"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics\\Stats",
             "name": "Stats",
@@ -1465,11 +1515,6 @@ Search.appendIndex(
             "name": "DomainAware",
             "summary": "",
             "url": "classes/Constellix-Client-Traits-DomainAware.html"
-        },                {
-            "fqsen": "\\Constellix\\Client\\Traits\\DomainAware\u003A\u003AsetDomain\u0028\u0029",
-            "name": "setDomain",
-            "summary": "Set\u0020the\u0020Domain\u0020for\u0020this\u0020object.",
-            "url": "classes/Constellix-Client-Traits-DomainAware.html#method_setDomain"
         },                {
             "fqsen": "\\Constellix\\Client\\Traits\\DomainAware\u003A\u003A\u0024domain",
             "name": "domain",

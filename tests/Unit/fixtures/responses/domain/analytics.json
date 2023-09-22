@@ -1,0 +1,70 @@
+{
+  "data": {
+    "queries": [
+      {
+        "type": "standard",
+        "values": [
+          {
+            "date": "2022-01-10T00:00:00+00:00",
+            "value": 342
+          }
+        ],
+        "stats": {
+          "sum": 1480,
+          "min": 50,
+          "max": 201,
+          "mean": 105.7143,
+          "count": 14
+        }
+      },
+      {
+        "type": "nonexistent",
+        "values": [],
+        "stats": {}
+      }
+    ],
+    "start": "2022-01-10T00:00:00+00:00",
+    "end": "2022-01-24T00:00:00+00:00",
+    "stats": {
+      "sum": 1480,
+      "min": 50,
+      "max": 201,
+      "mean": 105.7143,
+      "count": 14
+    },
+    "interval": {
+      "min": 86398,
+      "max": 86401,
+      "mean": 86399.5
+    },
+    "domain": {
+      "id": 366246,
+      "name": "example.com",
+      "note": "My Domain",
+      "status": "ACTIVE",
+      "enabled": true,
+      "version": 3,
+      "geoip": true,
+      "gtd": true,
+      "tags": [
+        {
+          "id": 824,
+          "name": "My Tag",
+          "links": {
+            "self": "https://api.dns.constellix.com/v4/tags/824"
+          }
+        }
+      ],
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z",
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/domains/366246",
+        "records": "https://api.dns.constellix.com/v4/domains/366246/records"
+      }
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/domains/366246/analytics?start=20220110&end=20220124",
+      "domain": "https://api.dns.constellix.com/v4/domains/366246"
+    }
+  }
+}

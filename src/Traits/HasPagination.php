@@ -2,15 +2,12 @@
 
 namespace Constellix\Client\Traits;
 
-use Constellix\Client\Client;
 use Constellix\Client\Exceptions\Client\Http\HttpException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Pagination\Paginator;
 
 /**
  * Implements pagination in AbstractManager objects.
- *
- * @property Client $client;
  */
 trait HasPagination
 {

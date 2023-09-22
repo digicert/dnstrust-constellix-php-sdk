@@ -299,4 +299,17 @@ class Domain extends AbstractModel implements EditableModelInterface, ManagedMod
         }
         return $this->records;
     }
+
+    /**
+     * Fetch analytics for this domain. If end date is null or not provided, the current date is used.
+     * @param \DateTime $start
+     * @param \DateTime|null $end
+     * @return DomainAnalytics
+     * @throws ConstellixException
+     * @throws \Constellix\Client\Exceptions\Client\Http\HttpException
+     */
+    public function getAnalytics(\DateTime $start, ?\DateTime $end = null): DomainAnalytics
+    {
+        return $this->manager->getAnalytics($this, $start, $end);
+    }
 }

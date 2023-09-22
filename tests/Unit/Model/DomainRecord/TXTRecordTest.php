@@ -4,8 +4,6 @@ namespace Constellix\Client\Tests\Unit\Model\DomainRecord;
 
 use Constellix\Client\Enums\Records\RecordMode;
 use Constellix\Client\Enums\Records\RecordType;
-use Constellix\Client\Models\Helpers\RecordValues\MX;
-use Constellix\Client\Models\Helpers\RecordValues\NS;
 use Constellix\Client\Models\Helpers\RecordValues\TXT;
 use GuzzleHttp\Psr7\Response;
 
