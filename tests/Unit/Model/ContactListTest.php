@@ -78,17 +78,6 @@ class ContactListTest extends TestCase
 
         $this->assertCount(1, $history);
         $this->assertJsonStringEqualsJsonString($this->getFixture('requests/contactlist/create-simple.json'), $history[0]['request']->getBody());
-
-        $list2 = $this->api->contactlists->create();
-        $list2->name = 'My Contact List';
-        $list2->addEmail('bob@example.com');
-        $list2->addEmail('alice@example.com');
-
-        $this->mock->append(new Response(201, [], $this->getFixture('responses/contactlist/create.json')));
-        $list2->save();
-
-        $this->assertCount(2, $history);
-        $this->assertJsonStringEqualsJsonString($this->getFixture('requests/contactlist/create-complex.json'), $history[1]['request']->getBody());
     }
 
     public function testApiDataParsedCorrectly(): void
@@ -98,43 +87,5 @@ class ContactListTest extends TestCase
 
         $this->assertEquals(2668228, $list->id);
         $this->assertEquals('My Contact List', $list->name);
-        $this->assertEquals(2, $list->emailCount);
-
-        $this->assertCount(2, $list->emails);
-        $this->assertEquals('bob@example.com', $list->emails[0]->address);
-        $this->assertTrue($list->emails[0]->verified);
-        $this->assertEquals('alice@example.com', $list->emails[1]->address);
-        $this->assertFalse($list->emails[1]->verified);
-    }
-
-    public function testEmails(): void
-    {
-        $list = $this->api->contactlists->create();
-        $this->assertCount(0, $list->emails);
-
-        $list->addEmail('bob@example.com');
-        $this->assertCount(1, $list->emails);
-
-
-        // Adding the same email shouldn't increase the amount
-        $list->addEmail('bob@example.com');
-        $this->assertCount(1, $list->emails);
-        $this->assertEquals('bob@example.com', $list->emails[0]->address);
-
-        // Adding a new email should add it
-        $list->addEmail('alice@example.com');
-        $this->assertCount(2, $list->emails);
-        $this->assertEquals('alice@example.com', $list->emails[1]->address);
-
-        // Now removing an email should remove it
-        $list->removeEmail('bob@example.com');
-        $this->assertCount(1, $list->emails);
-
-        // Removing it a second time will do nothing
-        $list->removeEmail('bob@example.com');
-        $this->assertCount(1, $list->emails);
-
-        // Emails will re-index
-        $this->assertSame('alice@example.com', $list->emails[0]->address);
     }
 }

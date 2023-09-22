@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Models;
 
+use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\Traits\EditableModelInterface;
+use Constellix\Client\Managers\ContactList\EmailManager;
+use Constellix\Client\Managers\ContactList\SlackWebhookManager;
+use Constellix\Client\Managers\ContactList\TeamsWebhookManager;
 use Constellix\Client\Managers\ContactListManager;
 use Constellix\Client\Traits\EditableModel;
 use Constellix\Client\Traits\ManagedModel;
@@ -23,14 +27,15 @@ class ContactList extends AbstractModel implements EditableModelInterface
     use ManagedModel;
 
     protected ContactListManager $manager;
+    protected ?SlackWebhookManager $slack = null;
+    protected ?TeamsWebhookManager $teams = null;
+    protected ?EmailManager $emails = null;
 
     /**
      * @var array<mixed>
      */
     protected array $props = [
         'name' => null,
-        'emailCount' => null,
-        'emails' => [],
     ];
 
     /**
@@ -38,53 +43,68 @@ class ContactList extends AbstractModel implements EditableModelInterface
      */
     protected array $editable = [
         'name',
-        'emails',
     ];
 
+
     /**
-     * Add an email to the contact list.
-     * @param string $email
-     * @return $this
+     * Parses the API data and assigns it to properties on this object.
+     * @param \stdClass $data
      */
-    public function addEmail(string $email): self
+    protected function parseApiData(\stdClass $data): void
     {
-        $obj = (object)[
-            'address' => $email,
-            'verified' => false,
-        ];
-        $this->addToCollection('emails', $obj);
-        return $this;
+        unset($data->emails);
+        unset($data->emailCount);
+        parent::parseApiData($data);
     }
 
     /**
-     * Remove an email from the contact list.
-     * @param string $email
-     * @return $this
+     * Get the Slack Webhook Manager for this contact list.
+     * @return SlackWebhookManager
+     * @throws ConstellixException
      */
-    public function removeEmail(string $email): self
+    protected function getSlack(): SlackWebhookManager
     {
-        $obj = (object)[
-            'address' => $email,
-            'verified' => false,
-        ];
-        $this->removeFromCollection('emails', $obj);
-        $obj->verified = true;
-        $this->removeFromCollection('emails', $obj);
-        return $this;
-    }
-
-    /**
-     * Transform this object and return a representation suitable for submitting to the API.
-     * @return \stdClass
-     * @internal
-     */
-    public function transformForApi(): \stdClass
-    {
-        $payload = parent::transformForApi();
-        $payload->emails = [];
-        foreach ($this->emails as $email) {
-            $payload->emails[] = $email->address;
+        if (!$this->id) {
+            throw new ConstellixException('Contact list must be created before you can access Slack webhooks');
         }
-        return $payload;
+        if ($this->slack === null) {
+            $this->slack = new SlackWebhookManager($this->client);
+            $this->slack->setContactList($this);
+        }
+        return $this->slack;
+    }
+
+    /**
+     * Get the Teams Webhook Manager for this contact list.
+     * @return SlackWebhookManager
+     * @throws ConstellixException
+     */
+    protected function getTeams(): TeamsWebhookManager
+    {
+        if (!$this->id) {
+            throw new ConstellixException('Contact list must be created before you can access Teams webhooks');
+        }
+        if ($this->teams === null) {
+            $this->teams = new TeamsWebhookManager($this->client);
+            $this->teams->setContactList($this);
+        }
+        return $this->teams;
+    }
+
+    /**
+     * Get the Emails Manager for this contact list.
+     * @return EmailManager
+     * @throws ConstellixException
+     */
+    protected function getEmails(): EmailManager
+    {
+        if (!$this->id) {
+            throw new ConstellixException('Contact list must be created before you can access Teams webhooks');
+        }
+        if ($this->emails === null) {
+            $this->emails = new EmailManager($this->client);
+            $this->emails->setContactList($this);
+        }
+        return $this->emails;
     }
 }
