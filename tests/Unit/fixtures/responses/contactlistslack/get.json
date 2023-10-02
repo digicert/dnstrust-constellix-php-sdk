@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 75225,
+    "webhook": "https://hooks.slack.com/services/T1234/B4321/ABCD1234",
+    "channel": "dnsalerts",
+    "contactlist": {
+      "id": 2668228,
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+      }
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/contactlists/2668228/slack/75225"
+    }
+  }
+}

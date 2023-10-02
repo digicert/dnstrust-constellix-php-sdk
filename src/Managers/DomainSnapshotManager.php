@@ -34,7 +34,11 @@ class DomainSnapshotManager extends AbstractManager implements DomainAwareInterf
      */
     public function get(int $version): DomainSnapshot
     {
-        return $this->getObject($version);
+        /**
+         * @var DomainSnapshot $object
+         */
+        $object = $this->getObject($version);
+        return $object;
     }
 
     /**

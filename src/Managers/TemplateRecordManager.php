@@ -31,7 +31,11 @@ class TemplateRecordManager extends AbstractManager implements TemplateAwareInte
      */
     public function create(): TemplateRecord
     {
-        return $this->createObject();
+        /**
+         * @var TemplateRecord $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -44,7 +48,11 @@ class TemplateRecordManager extends AbstractManager implements TemplateAwareInte
      */
     public function get(int $id): TemplateRecord
     {
-        return $this->getObject($id);
+        /**
+         * @var TemplateRecord $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 
     /**

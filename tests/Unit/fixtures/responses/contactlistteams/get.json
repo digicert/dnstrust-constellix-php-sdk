@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 83267,
+    "webhook": "https://outlook.office.com/webhook/123456789",
+    "channel": "dnsalerts",
+    "contactlist": {
+      "id": 2668228,
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+      }
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/contactlists/2668228/teams/83267"
+    }
+  }
+}

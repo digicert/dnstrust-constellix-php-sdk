@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 36245,
+    "address": "bob@example.com",
+    "verified": true,
+    "contactlist": {
+      "id": 2668228,
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+      }
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/contactlists/2668228/emails/36245"
+    }
+  }
+}

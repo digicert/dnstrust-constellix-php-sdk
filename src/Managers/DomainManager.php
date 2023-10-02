@@ -34,7 +34,11 @@ class DomainManager extends AbstractManager
      */
     public function create(): Domain
     {
-        return $this->createObject();
+        /**
+         * @var Domain $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -47,7 +51,11 @@ class DomainManager extends AbstractManager
      */
     public function get(int $id): Domain
     {
-        return $this->getObject($id);
+        /**
+         * @var Domain $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 
     /**

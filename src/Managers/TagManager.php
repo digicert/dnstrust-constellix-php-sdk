@@ -27,7 +27,11 @@ class TagManager extends AbstractManager
      */
     public function create(): Tag
     {
-        return $this->createObject();
+        /**
+         * @var Tag $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -41,6 +45,10 @@ class TagManager extends AbstractManager
 
     public function get(int $id): Tag
     {
-        return $this->getObject($id);
+        /**
+         * @var Tag $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 }

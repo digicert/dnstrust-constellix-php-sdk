@@ -140,7 +140,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ContactList.php"><a href="files/src-models-contactlist.html"><abbr title="src/Models/ContactList.php">ContactList.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -179,15 +179,9 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Constellix-Client-Models-ContactList.html#property_emailCount">$emailCount</a>
-    <span>
-                        &nbsp;: int            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Constellix-Client-Models-ContactList.html#property_emails">$emails</a>
     <span>
-                        &nbsp;: array&lt;string|int, <abbr title="\stdClass">stdClass</abbr>&gt;            </span>
+                        &nbsp;: <a href="classes/Constellix-Client-Managers-ContactList-EmailManager.html"><abbr title="\Constellix\Client\Managers\ContactList\EmailManager">EmailManager</abbr></a>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
@@ -202,6 +196,18 @@
                         &nbsp;: string            </span>
 </dt>
 
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-ContactList.html#property_slack">$slack</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Managers-ContactList-SlackWebhookManager.html"><abbr title="\Constellix\Client\Managers\ContactList\SlackWebhookManager">SlackWebhookManager</abbr></a>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Constellix-Client-Models-ContactList.html#property_teams">$teams</a>
+    <span>
+                        &nbsp;: <a href="classes/Constellix-Client-Managers-ContactList-TeamsWebhookManager.html"><abbr title="\Constellix\Client\Managers\ContactList\TeamsWebhookManager">TeamsWebhookManager</abbr></a>            </span>
+</dt>
+
     </dl>
 
 <h4 id="toc-methods">
@@ -210,13 +216,6 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Models-ContactList.html#method_addEmail">addEmail()</a>
-    <span>
-                                &nbsp;: $this    </span>
-</dt>
-<dd>Add an email to the contact list.</dd>
-
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete">delete()</a>
     <span>
@@ -238,13 +237,6 @@ fetched from the API.</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Refresh the object with the representation from the API</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Constellix-Client-Models-ContactList.html#method_removeEmail">removeEmail()</a>
-    <span>
-                                &nbsp;: $this    </span>
-</dt>
-<dd>Remove an email from the contact list.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Constellix-Client-Traits-EditableModel.html#method_save">save()</a>
@@ -272,39 +264,6 @@ fetched from the API.</dd>
             phpdocumentor-element
             -property
             -public
-                                                -read-only        "
->
-    <h4 class="phpdocumentor-element__name" id="property_emailCount">
-        $emailCount
-        <a href="classes/Constellix-Client-Models-ContactList.html#property_emailCount" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                        <small class="phpdocumentor-element__modifier">read-only</small>        </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ContactList.php"><a href="files/src-models-contactlist.html"><abbr title="src/Models/ContactList.php">ContactList.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">0</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$emailCount</span>
-    </code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_emails">
@@ -324,7 +283,7 @@ fetched from the API.</dd>
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, <abbr title="\stdClass">stdClass</abbr>&gt;</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Managers-ContactList-EmailManager.html"><abbr title="\Constellix\Client\Managers\ContactList\EmailManager">EmailManager</abbr></a></span>
     <span class="phpdocumentor-signature__name">$emails</span>
     </code>
 
@@ -399,6 +358,72 @@ fetched from the API.</dd>
     
 
 </article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_slack">
+        $slack
+        <a href="classes/Constellix-Client-Models-ContactList.html#property_slack" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ContactList.php"><a href="files/src-models-contactlist.html"><abbr title="src/Models/ContactList.php">ContactList.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Managers-ContactList-SlackWebhookManager.html"><abbr title="\Constellix\Client\Managers\ContactList\SlackWebhookManager">SlackWebhookManager</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$slack</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_teams">
+        $teams
+        <a href="classes/Constellix-Client-Models-ContactList.html#property_teams" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ContactList.php"><a href="files/src-models-contactlist.html"><abbr title="src/Models/ContactList.php">ContactList.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Constellix-Client-Managers-ContactList-TeamsWebhookManager.html"><abbr title="\Constellix\Client\Managers\ContactList\TeamsWebhookManager">TeamsWebhookManager</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$teams</span>
+    </code>
+
+    
+    
+    
+
+</article>
             </section>
 
             <section class="phpdocumentor-methods">
@@ -407,52 +432,6 @@ fetched from the API.</dd>
             <a href="classes/Constellix-Client-Models-ContactList.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_addEmail">
-        addEmail()
-        <a href="classes/Constellix-Client-Models-ContactList.html#method_addEmail" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ContactList.php"><a href="files/src-models-contactlist.html"><abbr title="src/Models/ContactList.php">ContactList.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">49</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Add an email to the contact list.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addEmail</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$email</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$email</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">$this</span>
-            </section>
-
-</article>
                     <article
         class="phpdocumentor-element
             -method
@@ -593,52 +572,6 @@ fetched from the API.</p>
                                             </dl>
 
     
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_removeEmail">
-        removeEmail()
-        <a href="classes/Constellix-Client-Models-ContactList.html#method_removeEmail" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ContactList.php"><a href="files/src-models-contactlist.html"><abbr title="src/Models/ContactList.php">ContactList.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">64</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Remove an email from the contact list.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">removeEmail</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$email</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$email</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">$this</span>
-            </section>
-
 </article>
                     <article
         class="phpdocumentor-element
@@ -800,21 +733,20 @@ fetched from the API.</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/Constellix-Client-Models-ContactList.html#property_emailCount">$emailCount<a href="classes/Constellix-Client-Models-ContactList.html"></li>
                                                     <li><a href="classes/Constellix-Client-Models-ContactList.html#property_emails">$emails<a href="classes/Constellix-Client-Models-ContactList.html"></li>
                                                     <li><a href="classes/Constellix-Client-Models-AbstractModel.html#property_id">$id<a href="classes/Constellix-Client-Models-ContactList.html"></li>
                                                     <li><a href="classes/Constellix-Client-Models-ContactList.html#property_name">$name<a href="classes/Constellix-Client-Models-ContactList.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-ContactList.html#property_slack">$slack<a href="classes/Constellix-Client-Models-ContactList.html"></li>
+                                                    <li><a href="classes/Constellix-Client-Models-ContactList.html#property_teams">$teams<a href="classes/Constellix-Client-Models-ContactList.html"></li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/Constellix-Client-Models-ContactList.html#method_addEmail">addEmail()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_delete">delete()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_hasChanged">hasChanged()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-ManagedModel.html#method_refresh">refresh()</a></li>
-                                            <li><a href="classes/Constellix-Client-Models-ContactList.html#method_removeEmail">removeEmail()</a></li>
                                             <li><a href="classes/Constellix-Client-Traits-EditableModel.html#method_save">save()</a></li>
                                     </ul>
             </li>

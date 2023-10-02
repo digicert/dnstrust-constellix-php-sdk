@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": 75225,
+      "webhook": "https://hooks.slack.com/services/T1234/B4321/ABCD1234",
+      "channel": "dnsalerts",
+      "contactlist": {
+        "id": 2668228,
+        "links": {
+          "self": "https://api.dns.constellix.com/v4/contactlists/2668228"
+        }
+      },
+      "links": {
+        "self": "https://api.dns.constellix.com/v4/contactlists/2668228/slack/75225"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "perPage": 50,
+      "currentPage": 1,
+      "totalPages": 1
+    },
+    "links": {
+      "self": "https://api.dns.constellix.com/v4/domains?page=1",
+      "first": "https://api.dns.constellix.com/v4/domains?page=1",
+      "last": "https://api.dns.constellix.com/v4/domains?page=1",
+      "previous": "https://api.dns.constellix.com/v4/domains?page=1",
+      "next": "https://api.dns.constellix.com/v4/domains?page=1"
+    }
+  }
+}

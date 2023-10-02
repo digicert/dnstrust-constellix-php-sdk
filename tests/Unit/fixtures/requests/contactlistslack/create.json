@@ -1,0 +1,4 @@
+{
+  "webhook": "https://hooks.slack.com/services/T1234/B4321/ABCD1234",
+  "channel": "dnsalerts"
+}

@@ -27,7 +27,11 @@ class TemplateManager extends AbstractManager
      */
     public function create(): Template
     {
-        return $this->createObject();
+        /**
+         * @var Template $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -40,6 +44,10 @@ class TemplateManager extends AbstractManager
      */
     public function get(int $id): Template
     {
-        return $this->getObject($id);
+        /**
+         * @var Template $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 }

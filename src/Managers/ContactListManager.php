@@ -28,7 +28,11 @@ class ContactListManager extends AbstractManager
      */
     public function create(): ContactList
     {
-        return $this->createObject();
+        /**
+         * @var ContactList $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -42,6 +46,10 @@ class ContactListManager extends AbstractManager
 
     public function get(int $id): ContactList
     {
-        return $this->getObject($id);
+        /**
+         * @var ContactList $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 }
