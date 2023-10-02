@@ -1,4 +1,5 @@
 <?php
+
 namespace Constellix\Client\Managers\ContactList;
 
 use Constellix\Client\Interfaces\Traits\ContactListAwareInterface;

@@ -29,7 +29,20 @@ class TeamsWebhookManager extends AbstractContactListItemManager
      */
     public function get(int $id): TeamsWebhook
     {
-        return $this->getObject($id);
+        /**
+         * @var TeamsWebhook $object
+         */
+        $object = $this->getObject($id);
+        return $object;
+    }
+
+    /**
+     * Create a new MS Teams Webhook for the Contact List.
+     * @return TeamsWebhook
+     */
+    public function create(): TeamsWebhook
+    {
+        return $this->createObject();
     }
 
     /**
@@ -39,6 +52,9 @@ class TeamsWebhookManager extends AbstractContactListItemManager
      */
     protected function createObject(?string $className = null): TeamsWebhook
     {
+        /**
+         * @var TeamsWebhook $object
+         */
         $object = parent::createObject($className);
         $object->setContactList($this->contactList);
         return $object;

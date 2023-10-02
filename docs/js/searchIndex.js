@@ -296,6 +296,16 @@ Search.appendIndex(
             "summary": "Returns\u0020a\u0020pagination\u0020object\u0020based\u0020on\u0020the\u0020supplied\u0020parameters.",
             "url": "classes/Constellix-Client-Interfaces-PaginatorFactoryInterface.html#method_paginate"
         },                {
+            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\ContactListAwareInterface",
+            "name": "ContactListAwareInterface",
+            "summary": "Trait\u0020for\u0020objects\u0020that\u0020know\u0020about\u0020contact\u0020lists",
+            "url": "classes/Constellix-Client-Interfaces-Traits-ContactListAwareInterface.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\ContactListAwareInterface\u003A\u003AsetContactList\u0028\u0029",
+            "name": "setContactList",
+            "summary": "Set\u0020the\u0020contact\u0020list\u0020that\u0020relates\u0020to\u0020this\u0020object.",
+            "url": "classes/Constellix-Client-Interfaces-Traits-ContactListAwareInterface.html#method_setContactList"
+        },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\Traits\\DomainAwareInterface",
             "name": "DomainAwareInterface",
             "summary": "Trait\u0020for\u0020objects\u0020that\u0020know\u0020about\u0020domains",
@@ -330,6 +340,56 @@ Search.appendIndex(
             "name": "get",
             "summary": "Fetch\u0020the\u0020Analytics\u0020data\u0020for\u0020the\u0020account.",
             "url": "classes/Constellix-Client-Managers-AnalyticsManager.html#method_get"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\AbstractContactListItemManager",
+            "name": "AbstractContactListItemManager",
+            "summary": "Abstract\u0020class\u0020for\u0020a\u0020resource\u0020manager.",
+            "url": "classes/Constellix-Client-Managers-ContactList-AbstractContactListItemManager.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\EmailManager",
+            "name": "EmailManager",
+            "summary": "Manages\u0020contact\u0020list\u0020email\u0020resources",
+            "url": "classes/Constellix-Client-Managers-ContactList-EmailManager.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\EmailManager\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Fetch\u0020a\u0020specific\u0020email",
+            "url": "classes/Constellix-Client-Managers-ContactList-EmailManager.html#method_get"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\EmailManager\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020a\u0020new\u0020Email\u0020for\u0020the\u0020Contact\u0020List",
+            "url": "classes/Constellix-Client-Managers-ContactList-EmailManager.html#method_create"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\SlackWebhookManager",
+            "name": "SlackWebhookManager",
+            "summary": "Manages\u0020contact\u0020list\u0020Slack\u0020Webhook\u0020resources",
+            "url": "classes/Constellix-Client-Managers-ContactList-SlackWebhookManager.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\SlackWebhookManager\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Fetch\u0020a\u0020specific\u0020Slack\u0020webhook",
+            "url": "classes/Constellix-Client-Managers-ContactList-SlackWebhookManager.html#method_get"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\SlackWebhookManager\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020a\u0020new\u0020SLack\u0020Webhook\u0020for\u0020the\u0020Contact\u0020List.",
+            "url": "classes/Constellix-Client-Managers-ContactList-SlackWebhookManager.html#method_create"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\TeamsWebhookManager",
+            "name": "TeamsWebhookManager",
+            "summary": "Manages\u0020contact\u0020list\u0020Teams\u0020Webhook\u0020resources",
+            "url": "classes/Constellix-Client-Managers-ContactList-TeamsWebhookManager.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\TeamsWebhookManager\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Fetch\u0020a\u0020specific\u0020Teams\u0020webhook",
+            "url": "classes/Constellix-Client-Managers-ContactList-TeamsWebhookManager.html#method_get"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList\\TeamsWebhookManager\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020a\u0020new\u0020MS\u0020Teams\u0020Webhook\u0020for\u0020the\u0020Contact\u0020List.",
+            "url": "classes/Constellix-Client-Managers-ContactList-TeamsWebhookManager.html#method_create"
         },                {
             "fqsen": "\\Constellix\\Client\\Managers\\ContactListManager",
             "name": "ContactListManager",
@@ -536,15 +596,40 @@ Search.appendIndex(
             "summary": "Represents\u0020a\u0020Contact\u0020List\u0020resource.",
             "url": "classes/Constellix-Client-Models-ContactList.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\ContactList\u003A\u003AaddEmail\u0028\u0029",
-            "name": "addEmail",
-            "summary": "Add\u0020an\u0020email\u0020to\u0020the\u0020contact\u0020list.",
-            "url": "classes/Constellix-Client-Models-ContactList.html#method_addEmail"
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\Email",
+            "name": "Email",
+            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020Email\u0020resource",
+            "url": "classes/Constellix-Client-Models-ContactLists-Email.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Models\\ContactList\u003A\u003AremoveEmail\u0028\u0029",
-            "name": "removeEmail",
-            "summary": "Remove\u0020an\u0020email\u0020from\u0020the\u0020contact\u0020list.",
-            "url": "classes/Constellix-Client-Models-ContactList.html#method_removeEmail"
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\Email\u003A\u003AtransformForApi\u0028\u0029",
+            "name": "transformForApi",
+            "summary": "Transform\u0020this\u0020object\u0020and\u0020return\u0020a\u0020representation\u0020suitable\u0020for\u0020submitting\u0020to\u0020the\u0020API.",
+            "url": "classes/Constellix-Client-Models-ContactLists-Email.html#method_transformForApi"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\Email\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "Saves\u0020the\u0020Email\u0020object.\u0020This\u0020is\u0020only\u0020possible\u0020on\u0020new\u0020instances,\u0020existing\u0020objects\u0020can\u0020only\u0020be\ndeleted.",
+            "url": "classes/Constellix-Client-Models-ContactLists-Email.html#method_save"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\SlackWebhook",
+            "name": "SlackWebhook",
+            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020Slack\u0020Webhook\u0020resource",
+            "url": "classes/Constellix-Client-Models-ContactLists-SlackWebhook.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\SlackWebhook\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "Saves\u0020the\u0020Webhook\u0020object.\u0020This\u0020is\u0020only\u0020possible\u0020on\u0020new\u0020instances,\u0020existing\u0020objects\u0020can\u0020only\u0020be\ndeleted.",
+            "url": "classes/Constellix-Client-Models-ContactLists-SlackWebhook.html#method_save"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\TeamsWebhook",
+            "name": "TeamsWebhook",
+            "summary": "Represents\u0020a\u0020Contact\u0020List\u0020Teams\u0020Webhook\u0020resource",
+            "url": "classes/Constellix-Client-Models-ContactLists-TeamsWebhook.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists\\TeamsWebhook\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "Saves\u0020the\u0020Webhook\u0020object.\u0020This\u0020is\u0020only\u0020possible\u0020on\u0020new\u0020instances,\u0020existing\u0020objects\u0020can\u0020only\u0020be\ndeleted.",
+            "url": "classes/Constellix-Client-Models-ContactLists-TeamsWebhook.html#method_save"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Domain",
             "name": "Domain",
@@ -1511,6 +1596,16 @@ Search.appendIndex(
             "summary": "Returns\u0020the\u0020iterator\u0020for\u0020the\u0020paginator",
             "url": "classes/Constellix-Client-Pagination-Paginator.html#method_getIterator"
         },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\ContactListAware",
+            "name": "ContactListAware",
+            "summary": "",
+            "url": "classes/Constellix-Client-Traits-ContactListAware.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Traits\\ContactListAware\u003A\u003A\u0024contactList",
+            "name": "contactList",
+            "summary": "",
+            "url": "classes/Constellix-Client-Traits-ContactListAware.html#property_contactList"
+        },                {
             "fqsen": "\\Constellix\\Client\\Traits\\DomainAware",
             "name": "DomainAware",
             "summary": "",
@@ -1646,10 +1741,20 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/constellix-client-managers.html"
         },                {
+            "fqsen": "\\Constellix\\Client\\Managers\\ContactList",
+            "name": "ContactList",
+            "summary": "",
+            "url": "namespaces/constellix-client-managers-contactlist.html"
+        },                {
             "fqsen": "\\Constellix\\Client\\Models",
             "name": "Models",
             "summary": "",
             "url": "namespaces/constellix-client-models.html"
+        },                {
+            "fqsen": "\\Constellix\\Client\\Models\\ContactLists",
+            "name": "ContactLists",
+            "summary": "",
+            "url": "namespaces/constellix-client-models-contactlists.html"
         },                {
             "fqsen": "\\Constellix\\Client\\Models\\Helpers\\Analytics",
             "name": "Analytics",

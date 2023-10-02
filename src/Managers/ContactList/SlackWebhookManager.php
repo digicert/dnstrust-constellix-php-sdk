@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Constellix\Client\Managers\ContactList;
 
+use Constellix\Client\Models\ContactLists\Email;
 use Constellix\Client\Models\ContactLists\SlackWebhook;
 
 /**
@@ -12,7 +13,6 @@ use Constellix\Client\Models\ContactLists\SlackWebhook;
  */
 class SlackWebhookManager extends AbstractContactListItemManager
 {
-
     /**
      * The base URI for objects.
      * @var string
@@ -30,7 +30,20 @@ class SlackWebhookManager extends AbstractContactListItemManager
      */
     public function get(int $id): SlackWebhook
     {
-        return $this->getObject($id);
+        /**
+         * @var SlackWebhook $object
+         */
+        $object = $this->getObject($id);
+        return $object;
+    }
+
+    /**
+     * Create a new SLack Webhook for the Contact List.
+     * @return SlackWebhook
+     */
+    public function create(): SlackWebhook
+    {
+        return $this->createObject();
     }
 
     /**
@@ -40,6 +53,9 @@ class SlackWebhookManager extends AbstractContactListItemManager
      */
     protected function createObject(?string $className = null): SlackWebhook
     {
+        /**
+         * @var SlackWebhook $object
+         */
         $object = parent::createObject($className);
         $object->setContactList($this->contactList);
         return $object;

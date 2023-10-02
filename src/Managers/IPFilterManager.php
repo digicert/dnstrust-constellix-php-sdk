@@ -27,7 +27,11 @@ class IPFilterManager extends AbstractManager
      */
     public function create(): IPFilter
     {
-        return $this->createObject();
+        /**
+         * @var IPFilter $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -41,6 +45,10 @@ class IPFilterManager extends AbstractManager
 
     public function get(int $id): IPFilter
     {
-        return $this->getObject($id);
+        /**
+         * @var IPFilter $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 }

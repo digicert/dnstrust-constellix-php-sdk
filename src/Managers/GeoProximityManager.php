@@ -27,7 +27,11 @@ class GeoProximityManager extends AbstractManager
      */
     public function create(): GeoProximity
     {
-        return $this->createObject();
+        /**
+         * @var GeoProximity $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -40,6 +44,10 @@ class GeoProximityManager extends AbstractManager
      */
     public function get(int $id): GeoProximity
     {
-        return $this->getObject($id);
+        /**
+         * @var GeoProximity $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 }

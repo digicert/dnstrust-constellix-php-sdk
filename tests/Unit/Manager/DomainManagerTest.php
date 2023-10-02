@@ -8,7 +8,6 @@ use Constellix\Client\Client;
 use Constellix\Client\Exceptions\Client\ModelNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Managers\DomainManager;
-use Constellix\Client\Models\Analytics;
 use Constellix\Client\Models\Domain;
 use Constellix\Client\Models\DomainAnalytics;
 use Constellix\Client\Pagination\Paginator;

@@ -27,7 +27,11 @@ class VanityNameserverManager extends AbstractManager
      */
     public function create(): VanityNameserver
     {
-        return $this->createObject();
+        /**
+         * @var VanityNameserver $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -40,6 +44,10 @@ class VanityNameserverManager extends AbstractManager
      */
     public function get(int $id): VanityNameserver
     {
-        return $this->getObject($id);
+        /**
+         * @var VanityNameserver $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 }

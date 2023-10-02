@@ -12,7 +12,6 @@ use Constellix\Client\Models\ContactLists\Email;
  */
 class EmailManager extends AbstractContactListItemManager
 {
-
     /**
      * The base URI for objects.
      * @var string
@@ -30,7 +29,20 @@ class EmailManager extends AbstractContactListItemManager
      */
     public function get(int $id): Email
     {
-        return $this->getObject($id);
+        /**
+         * @var Email $object
+         */
+        $object = $this->getObject($id);
+        return $object;
+    }
+
+    /**
+     * Create a new Email for the Contact List
+     * @return Email
+     */
+    public function create(): Email
+    {
+        return $this->createObject(Email::class);
     }
 
     /**
@@ -40,6 +52,9 @@ class EmailManager extends AbstractContactListItemManager
      */
     protected function createObject(?string $className = null): Email
     {
+        /**
+         * @var Email $object
+         */
         $object = parent::createObject($className);
         $object->setContactList($this->contactList);
         return $object;

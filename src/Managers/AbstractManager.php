@@ -88,7 +88,11 @@ abstract class AbstractManager
         if (!$className) {
             $className = $this->getModelClass();
         }
-        return new $className($this, $this->client);
+        /**
+         * @var AbstractModel $object
+         */
+        $object = new $className($this, $this->client);
+        return $object;
     }
 
     /**

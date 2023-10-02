@@ -30,7 +30,11 @@ class DomainRecordManager extends AbstractManager implements DomainAwareInterfac
      */
     public function create(): DomainRecord
     {
-        return $this->createObject();
+        /**
+         * @var DomainRecord $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -44,7 +48,11 @@ class DomainRecordManager extends AbstractManager implements DomainAwareInterfac
 
     public function get(int $id): DomainRecord
     {
-        return $this->getObject($id);
+        /**
+         * @var DomainRecord $object
+         */
+        $object = $this->getObject($id);
+        return $object;
     }
 
     /**

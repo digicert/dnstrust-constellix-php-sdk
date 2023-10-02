@@ -18,8 +18,9 @@ use Constellix\Client\Traits\ManagedModel;
  * @package Constellix\Client\Models
  *
  * @property string $name
- * @property-read int $emailCount
- * @property \stdClass[] $emails
+ * @property EmailManager $emails
+ * @property SlackWebhookManager $slack
+ * @property TeamsWebhookManager $teams
  */
 class ContactList extends AbstractModel implements EditableModelInterface
 {
@@ -76,7 +77,7 @@ class ContactList extends AbstractModel implements EditableModelInterface
 
     /**
      * Get the Teams Webhook Manager for this contact list.
-     * @return SlackWebhookManager
+     * @return TeamsWebhookManager
      * @throws ConstellixException
      */
     protected function getTeams(): TeamsWebhookManager
@@ -99,7 +100,7 @@ class ContactList extends AbstractModel implements EditableModelInterface
     protected function getEmails(): EmailManager
     {
         if (!$this->id) {
-            throw new ConstellixException('Contact list must be created before you can access Teams webhooks');
+            throw new ConstellixException('Contact list must be created before you can access emails');
         }
         if ($this->emails === null) {
             $this->emails = new EmailManager($this->client);

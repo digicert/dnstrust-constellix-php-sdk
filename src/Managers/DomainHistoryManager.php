@@ -7,6 +7,7 @@ namespace Constellix\Client\Managers;
 use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Interfaces\Traits\DomainAwareInterface;
 use Constellix\Client\Models\AbstractDomainHistory;
+use Constellix\Client\Models\Domain;
 use Constellix\Client\Models\DomainHistory;
 use Constellix\Client\Models\DomainSnapshot;
 use Constellix\Client\Traits\DomainAware;
@@ -37,7 +38,11 @@ class DomainHistoryManager extends AbstractManager implements DomainAwareInterfa
      */
     public function get(int $version): DomainHistory
     {
-        return $this->getObject($version);
+        /**
+         * @var DomainHistory $object
+         */
+        $object = $this->getObject($version);
+        return $object;
     }
 
     /**

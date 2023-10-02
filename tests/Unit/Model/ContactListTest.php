@@ -3,6 +3,7 @@
 namespace Constellix\Client\Tests\Unit\Model;
 
 use Constellix\Client\Client;
+use Constellix\Client\Exceptions\ConstellixException;
 use Constellix\Client\Tests\Unit\TestCase;
 use GuzzleHttp\Psr7\Response;
 
@@ -87,5 +88,32 @@ class ContactListTest extends TestCase
 
         $this->assertEquals(2668228, $list->id);
         $this->assertEquals('My Contact List', $list->name);
+    }
+
+    public function testCannotAccessTeamsWebhookOnNewObject(): void
+    {
+        $this->expectException(ConstellixException::class);
+        $this->expectExceptionMessage('Contact list must be created before you can access Teams webhooks');
+
+        $list = $this->api->contactlists->create();
+        $list->teams->create();
+    }
+
+    public function testCannotAccessSlackWebhookOnNewObject(): void
+    {
+        $this->expectException(ConstellixException::class);
+        $this->expectExceptionMessage('Contact list must be created before you can access Slack webhooks');
+
+        $list = $this->api->contactlists->create();
+        $list->slack->create();
+    }
+
+    public function testCannotAccessEmailsOnNewObject(): void
+    {
+        $this->expectException(ConstellixException::class);
+        $this->expectExceptionMessage('Contact list must be created before you can access emails');
+
+        $list = $this->api->contactlists->create();
+        $list->emails->create();
     }
 }

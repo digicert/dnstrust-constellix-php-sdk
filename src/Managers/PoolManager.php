@@ -32,7 +32,11 @@ class PoolManager extends AbstractManager
      */
     public function create(): Pool
     {
-        return $this->createObject();
+        /**
+         * @var Pool $object
+         */
+        $object = $this->createObject();
+        return $object;
     }
 
     /**
@@ -65,6 +69,9 @@ class PoolManager extends AbstractManager
         }
 
         $data = $this->getPoolFromApi($type, $id);
+        /**
+         * @var Pool $object
+         */
         $object = $this->createExistingObject($data, $this->getModelClass());
         $object->fullyLoaded = true;
         return $object;
