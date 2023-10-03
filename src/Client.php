@@ -12,6 +12,7 @@ use Constellix\Client\Exceptions\Client\Http\NotFoundException;
 use Constellix\Client\Exceptions\Client\JsonDecodeException;
 use Constellix\Client\Exceptions\Client\ManagerNotFoundException;
 use Constellix\Client\Exceptions\ConstellixException;
+use Constellix\Client\Interfaces\ConstellixApiClient;
 use Constellix\Client\Interfaces\PaginatorFactoryInterface;
 use Constellix\Client\Managers\AbstractManager;
 use Constellix\Client\Managers\AnalyticsManager;
@@ -43,7 +44,7 @@ use Psr\Log\NullLogger;
  * @property-read DomainManager $domains Manager for Domains
  * @property-read AnalyticsManager $analytics Manager for Account Analytics
  */
-class Client implements LoggerAwareInterface
+class Client implements LoggerAwareInterface, ConstellixApiClient
 {
     /**
      * The HTTP Client for all requests.
@@ -173,11 +174,12 @@ class Client implements LoggerAwareInterface
     /**
      * Sets the HTTP Client for requests to the API. It must be PSR-18 compatible.
      * @param HttpClientInterface $client
-     * @return void
+     * @return self
      */
-    public function setHttpClient(HttpClientInterface $client): void
+    public function setHttpClient(HttpClientInterface $client): self
     {
         $this->client = $client;
+        return $this;
     }
 
     /**
@@ -192,11 +194,12 @@ class Client implements LoggerAwareInterface
     /**
      * Set the API endpoint for the Constellix DNS v4 API,
      * @param string $endpoint
-     * @return void
+     * @return self
      */
-    public function setEndpoint(string $endpoint): void
+    public function setEndpoint(string $endpoint): self
     {
         $this->endpoint = $endpoint;
+        return $this;
     }
 
     /**
@@ -211,11 +214,12 @@ class Client implements LoggerAwareInterface
     /**
      * Set the Constellix API Key.
      * @param string $key
-     * @return void
+     * @return self
      */
-    public function setApiKey(string $key): void
+    public function setApiKey(string $key): self
     {
         $this->apiKey = $key;
+        return $this;
     }
 
     /**
@@ -230,11 +234,12 @@ class Client implements LoggerAwareInterface
     /**
      * Set the Constellix Secret Key.
      * @param string $key
-     * @return void
+     * @return self
      */
-    public function setSecretKey(string $key): void
+    public function setSecretKey(string $key): self
     {
         $this->secretKey = $key;
+        return $this;
     }
 
     /**
