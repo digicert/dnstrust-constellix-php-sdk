@@ -32,20 +32,20 @@ use Psr\Log\LoggerInterface;
  * @property-read TemplateManager $templates Manager for Templates
  * @property-read DomainManager $domains Manager for Domains
  */
-interface ClientInterface
+interface ConstellixApiClient
 {
     /**
      * Sets the HTTP Client for requests to the API. It must be PSR-18 compatible.
      * @param HttpClientInterface $client
-     * @return ClientInterface
+     * @return ConstellixApiClient
      */
-    public function setHttpClient(HttpClientInterface $client): ClientInterface;
+    public function setHttpClient(HttpClientInterface $client): ConstellixApiClient;
 
     /**
      * Returns the current HTTP client.
      * @return HttpClientInterface
      */
-    public function getHttpClient(): HttpClientInterface;
+    public function getHttpClient(): ?HttpClientInterface;
 
     /**
      * Sets the logger to use. The Logger must be PSR-3 compatible.
@@ -62,9 +62,9 @@ interface ClientInterface
     /**
      * Set the API endpoint for the Constellix DNS v4 API,
      * @param string $endpoint
-     * @return ClientInterface
+     * @return ConstellixApiClient
      */
-    public function setEndpoint(string $endpoint): ClientInterface;
+    public function setEndpoint(string $endpoint): ConstellixApiClient;
 
     /**
      * Return the current API endpoint,
@@ -75,35 +75,35 @@ interface ClientInterface
     /**
      * Set the Constellix API Key.
      * @param string $key
-     * @return ClientInterface
+     * @return ConstellixApiClient
      */
-    public function setApiKey(string $key): ClientInterface;
+    public function setApiKey(string $key): ConstellixApiClient;
 
     /**
      * Fetch the current Constellix API Key.
-     * @return string
+     * @return ?string
      */
-    public function getApiKey(): string;
+    public function getApiKey(): ?string;
 
     /**
      * Set the Constellix Secret Key.
      * @param string $key
-     * @return ClientInterface
+     * @return ConstellixApiClient
      */
-    public function setSecretKey(string $key): ClientInterface;
+    public function setSecretKey(string $key): ConstellixApiClient;
 
     /**
      * Fetch the current Constellix Secret Key.
-     * @return string
+     * @return ?string
      */
-    public function getSecretKey(): string;
+    public function getSecretKey(): ?string;
 
     /**
      * Set the pagination factory to use. This factory will be used to construct all paginated results from the managers.
      * @param PaginatorFactoryInterface $factory
-     * @return ClientInterface
+     * @return ConstellixApiClient
      */
-    public function setPaginatorFactory(PaginatorFactoryInterface $factory): ClientInterface;
+    public function setPaginatorFactory(PaginatorFactoryInterface $factory): ConstellixApiClient;
 
     /**
      * Return the current pagination factory.

@@ -206,85 +206,85 @@ Search.appendIndex(
             "summary": "A\u0020base\u0020class\u0020for\u0020all\u0020exceptions\u0020from\u0020the\u0020Constellix\u0020API\u0020Client",
             "url": "classes/Constellix-Client-Exceptions-ConstellixException.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface",
-            "name": "ClientInterface",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient",
+            "name": "ConstellixApiClient",
             "summary": "An\u0020interface\u0020for\u0020the\u0020Constellix\u0020API\u0020Client.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetHttpClient\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AsetHttpClient\u0028\u0029",
             "name": "setHttpClient",
             "summary": "Sets\u0020the\u0020HTTP\u0020Client\u0020for\u0020requests\u0020to\u0020the\u0020API.\u0020It\u0020must\u0020be\u0020PSR\u002D18\u0020compatible.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setHttpClient"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_setHttpClient"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetHttpClient\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetHttpClient\u0028\u0029",
             "name": "getHttpClient",
             "summary": "Returns\u0020the\u0020current\u0020HTTP\u0020client.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getHttpClient"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getHttpClient"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetLogger\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AsetLogger\u0028\u0029",
             "name": "setLogger",
             "summary": "Sets\u0020the\u0020logger\u0020to\u0020use.\u0020The\u0020Logger\u0020must\u0020be\u0020PSR\u002D3\u0020compatible.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setLogger"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_setLogger"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetLogger\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetLogger\u0028\u0029",
             "name": "getLogger",
             "summary": "Returns\u0020the\u0020current\u0020logger.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getLogger"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getLogger"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetEndpoint\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AsetEndpoint\u0028\u0029",
             "name": "setEndpoint",
             "summary": "Set\u0020the\u0020API\u0020endpoint\u0020for\u0020the\u0020Constellix\u0020DNS\u0020v4\u0020API,",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setEndpoint"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_setEndpoint"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetEndpoint\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetEndpoint\u0028\u0029",
             "name": "getEndpoint",
             "summary": "Return\u0020the\u0020current\u0020API\u0020endpoint,",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getEndpoint"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getEndpoint"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetApiKey\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AsetApiKey\u0028\u0029",
             "name": "setApiKey",
             "summary": "Set\u0020the\u0020Constellix\u0020API\u0020Key.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setApiKey"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_setApiKey"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetApiKey\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetApiKey\u0028\u0029",
             "name": "getApiKey",
             "summary": "Fetch\u0020the\u0020current\u0020Constellix\u0020API\u0020Key.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getApiKey"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getApiKey"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetSecretKey\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AsetSecretKey\u0028\u0029",
             "name": "setSecretKey",
             "summary": "Set\u0020the\u0020Constellix\u0020Secret\u0020Key.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setSecretKey"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_setSecretKey"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetSecretKey\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetSecretKey\u0028\u0029",
             "name": "getSecretKey",
             "summary": "Fetch\u0020the\u0020current\u0020Constellix\u0020Secret\u0020Key.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getSecretKey"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getSecretKey"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AsetPaginatorFactory\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AsetPaginatorFactory\u0028\u0029",
             "name": "setPaginatorFactory",
             "summary": "Set\u0020the\u0020pagination\u0020factory\u0020to\u0020use.\u0020This\u0020factory\u0020will\u0020be\u0020used\u0020to\u0020construct\u0020all\u0020paginated\u0020results\u0020from\u0020the\u0020managers.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_setPaginatorFactory"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_setPaginatorFactory"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetPaginatorFactory\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetPaginatorFactory\u0028\u0029",
             "name": "getPaginatorFactory",
             "summary": "Return\u0020the\u0020current\u0020pagination\u0020factory.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getPaginatorFactory"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getPaginatorFactory"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetRequestLimit\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetRequestLimit\u0028\u0029",
             "name": "getRequestLimit",
             "summary": "Get\u0020the\u0020request\u0020limit.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getRequestLimit"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getRequestLimit"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetRequestsRemaining\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetRequestsRemaining\u0028\u0029",
             "name": "getRequestsRemaining",
             "summary": "Get\u0020the\u0020number\u0020of\u0020requests\u0020remaining\u0020before\u0020you\u0020hit\u0020the\u0020request\u0020limit.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getRequestsRemaining"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getRequestsRemaining"
         },                {
-            "fqsen": "\\Constellix\\Client\\Interfaces\\ClientInterface\u003A\u003AgetLimitReset\u0028\u0029",
+            "fqsen": "\\Constellix\\Client\\Interfaces\\ConstellixApiClient\u003A\u003AgetLimitReset\u0028\u0029",
             "name": "getLimitReset",
             "summary": "Get\u0020the\u0020datetime\u0020that\u0020the\u0020request\u0020limit\u0020resets.",
-            "url": "classes/Constellix-Client-Interfaces-ClientInterface.html#method_getLimitReset"
+            "url": "classes/Constellix-Client-Interfaces-ConstellixApiClient.html#method_getLimitReset"
         },                {
             "fqsen": "\\Constellix\\Client\\Interfaces\\PaginatorFactoryInterface",
             "name": "PaginatorFactoryInterface",
