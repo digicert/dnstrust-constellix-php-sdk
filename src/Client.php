@@ -136,8 +136,9 @@ class Client implements LoggerAwareInterface
 
         // If we don't have a paginator factory, use our own.
         if ($paginatorFactory === null) {
-            $this->paginatorFactory = new PaginatorFactory();
+            $paginatorFactory = new PaginatorFactory();
         }
+        $this->paginatorFactory = $paginatorFactory;
 
         if ($client) {
             $this->setHttpClient($client);
